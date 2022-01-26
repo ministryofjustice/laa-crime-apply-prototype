@@ -1,27 +1,27 @@
-# MoJ Prototype Kit Template
+# Crime Apply prototype
 
-Create a [Gov.UK Prototype Kit] website, hosted on the [MoJ Cloud Platform].
+Frontend prototype of a service to apply for criminal legal aid.
 
-In addition to the protype kit v9.11.2, this repository contains:
+# View the prototype
 
-### Files to build a docker image to run the prototype site
+<URL>
+Username: crime Password: apply
 
-* Dockerfile
-* .dockerignore
-* start.sh
+# Setup the app locally
 
-### A continuous deployment (CD) workflow, targeting the Cloud Platform
+The prototype is based on the [Gov UK prototype kit]: https://govuk-prototype-kit.herokuapp.com/docs and has the same [requirements]: https://govuk-prototype-kit.herokuapp.com/docs/install/requirements.md (Node.js, Git)
 
-* .github/workflows/cd.yaml
-* kubernetes-deploy.tpl
+To install the app:
+- Download or clone the repository
+- Open a terminal an navigate to the folder for the prototype
+- Run `npm install` to install all modules and their dependencies
 
-## Usage
+To start the app:
+- Open a terminal an navigate to the folder for the prototype
+- Run `npm start`
+- Visit http://localhost:3000
 
-This is a template repository. It requires a namespace on the Cloud Platform, and [github actions secrets] in the prototype github repository which enable the CD workflow.
-
-The [Cloud Platform CLI] should facilitate creating the namespace and a github repository based on this template, along with all the required [github actions secrets]
+# References
 
 [Gov.UK Prototype Kit]: https://govuk-prototype-kit.herokuapp.com/docs
 [MoJ Cloud Platform]: https://user-guide.cloud-platform.service.justice.gov.uk/documentation/concepts/about-the-cloud-platform.html
-[Cloud Platform CLI]: https://user-guide.cloud-platform.service.justice.gov.uk/documentation/getting-started/cloud-platform-cli.html
-[github actions secrets]: https://docs.github.com/en/actions/reference/encrypted-secrets
