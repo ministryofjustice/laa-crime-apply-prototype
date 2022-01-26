@@ -1,0 +1,148 @@
+{% extends "layout.html" %}
+{% from "govuk/components/phase-banner/macro.njk"  import govukPhaseBanner %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
+
+{% block pageTitle %}
+Apply for legal aid - Statement of case
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "home_cao"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <form action="check_answers_final" method="post" novalidate>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="more-detail">
+
+              <h1 class="govuk-heading-xl">Upload supporting evidence</h1>
+
+              <p class="govuk-body">Use this page to upload:</p>
+
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>evidence that your client receives Universal Credit</li>
+                    <li>evidence of your client's employment</li>
+                    <li>gateway evidence for Section 8 proceedings (optional)</li>
+              </ul>
+
+            </label>
+          </div>
+
+
+      <!-- <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+              <span class="govuk-warning-text__assistive">Warning</span>
+              You must upload all supporting evidence now. You cannot do it after submitting your application.
+            </strong>
+          </div> -->
+
+
+          <div class="document-upload">
+            <form action="check" method="post" enctype="multipart/form-data">
+
+              <div class="moj-multi-file-upload">
+                <div class="moj-multi-file__uploaded-files">
+                  <h2 class="govuk-heading-m">Files added</h2>
+                  <div class="govuk-summary-list moj-multi-file-upload__list">
+
+                  </div>
+                </div>
+
+                <div class="moj-multi-file-upload__upload">
+
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--m" for="documents">
+                      Upload files
+                      <span id="more-detail-hint" class="govuk-hint">
+                        The maximum file size is 8MB.</span>
+                    </label>
+
+                    <input class="govuk-file-upload moj-multi-file-upload__input" id="documents" name="documents" type="file" multiple="">
+                  </div>
+
+                  <button class="govuk-button govuk-button--secondary moj-multi-file-upload__button" data-module="govuk-button">
+                    Upload file
+                  </button>
+
+                </div>
+              </div>
+
+            </form>
+          </div>
+
+
+
+          <a href="/check_answers_final">
+          <button type="submit" class="govuk-button">
+            Save and continue
+          </button>
+          </a>
+
+
+          <a href="/dashboard" role="button" style="margin-left: 15px;" class="govuk-button draft-button">
+            Save and come back later
+          </a>
+
+        <!--  <p class="govuk-body"><a href="check_answers">I do not need to upload evidence</a></p> -->
+
+        </form>
+      </div>
+    </div>
+
+
+
+</div>
+
+</div>
+
+{% endblock %}
+
+{% block footer %}
+{{ govukFooter({
+  meta: {
+    items: [
+    {
+      href: "#",
+      text: "Contact"
+    },
+    {
+      href: "#",
+      text: "Feedback"
+    },
+    {
+      href: "https://www.gov.uk/help/cookies",
+      text: "Cookies"
+    },
+    {
+      href: "https://www.gov.uk/government/publications/laa-online-portal-help-and-information",
+      text: "Terms and conditions"
+    },
+    {
+      href: "https://mojdigital.blog.gov.uk/",
+      text: "MOJ Digital Services"
+    },
+    {
+      href: "/prototype-admin/clear-data",
+      text: "Clear data"
+    }
+    ]
+  }
+}) }}
+{% endblock %}

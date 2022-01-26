@@ -1,0 +1,308 @@
+{% extends "layout.html" %}
+{% from "govuk/components/phase-banner/macro.njk"  import govukPhaseBanner %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
+
+{% block pageTitle %}
+Apply for legal aid - Check your answers
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+      href: "limits"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Check your answers
+      </h1>
+
+     <h2 class="govuk-heading-m">
+       Client details
+     </h2>
+
+     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+           First name
+         </dt>
+         <dd class="govuk-summary-list__value">
+           Sam
+         </dd>
+         <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="client_details">
+             Change <span class="govuk-visually-hidden">first name</span>
+           </a>
+         </dd>
+       </div>
+       <div class="govuk-summary-list__row">
+         <dt class="govuk-summary-list__key">
+           Last name
+         </dt>
+         <dd class="govuk-summary-list__value">
+           Doe
+         </dd>
+         <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="client_details">
+             Change <span class="govuk-visually-hidden">last name</span>
+           </a>
+         </dd>
+       </div>
+       <div class="govuk-summary-list__row">
+         <dt class="govuk-summary-list__key">
+           Date of birth
+         </dt>
+         <dd class="govuk-summary-list__value">
+           1 January 1980
+         </dd>
+         <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="client_details">
+             Change <span class="govuk-visually-hidden">dob</span>
+           </a>
+         </dd>
+       </div>
+       <div class="govuk-summary-list__row">
+         <dt class="govuk-summary-list__key">
+           National Insurance number
+         </dt>
+         <dd class="govuk-summary-list__value">
+           QQ123456C
+         </dd>
+         <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="client_details">
+             Change <span class="govuk-visually-hidden">national insurance number</span>
+           </a>
+         </dd>
+       </div>
+       <div class="govuk-summary-list__row">
+         <dt class="govuk-summary-list__key">
+           Correspondence address
+         </dt>
+         <dd class="govuk-summary-list__value">
+           1 Main Street<br/>London<br/>SE15 5NP
+         </dd>
+         <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="postcode_finder">
+             Change <span class="govuk-visually-hidden">correspondance address</span>
+           </a>
+         </dd>
+       </div>
+       <div class="govuk-summary-list__row">
+         <dt class="govuk-summary-list__key">
+           Employment status
+         </dt>
+         <dd class="govuk-summary-list__value">
+           Employed
+         </dd>
+         <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="employment_status">
+             Change <span class="govuk-visually-hidden">correspondance address</span>
+           </a>
+         </dd>
+       </div>
+       <div class="govuk-summary-list__row">
+         <dt class="govuk-summary-list__key">
+           Marital status
+         </dt>
+         <dd class="govuk-summary-list__value">
+           Single
+         </dd>
+         <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="employment_status">
+             Change <span class="govuk-visually-hidden">correspondance address</span>
+           </a>
+         </dd>
+       </div>
+    </dl>
+<br>
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-m">Case details</h2>
+  </div>
+  <div class="govuk-grid-column-one-third">
+    <p><a class="govuk-link" style="float:right;" href="proceedings">Change</a></p>
+  </div>
+</div>
+
+  <dl class="govuk-summary-list">
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Case type
+      </dt>
+      <dd class="govuk-summary-list__value">
+        Indictable
+      </dd>
+      <dd class="govuk-summary-list__actions">
+      <!--  <a href="proceedings">
+          Change <span class="govuk-visually-hidden">proceeding</span>
+        </a> -->
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Court type
+      </dt>
+      <dd class="govuk-summary-list__value">
+        Crown Court
+      </dd>
+      <dd class="govuk-summary-list__actions">
+      <!--  <a href="proceedings">
+          Change <span class="govuk-visually-hidden">proceeding</span>
+        </a> -->
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Co-defendant
+      </dt>
+      <dd class="govuk-summary-list__value">
+        No
+      </dd>
+      <dd class="govuk-summary-list__actions">
+      <!--  <a href="proceedings">
+          Change <span class="govuk-visually-hidden">proceeding</span>
+        </a> -->
+      </dd>
+    </div>
+ </dl>
+<br>
+
+<h2 class="govuk-heading-m">
+  Offence details
+</h2>
+
+<dl class="govuk-summary-list">
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    Offence class
+  </dt>
+  <dd class="govuk-summary-list__value">
+    Class A
+  </dd>
+  <dd class="govuk-summary-list__actions">
+    <a href="laspo">
+      Change <span class="govuk-visually-hidden">proceeding</span>
+    </a>
+  </dd>
+</div>
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    Other criminal cases or charges
+  </dt>
+  <dd class="govuk-summary-list__value">
+    No
+  </dd>
+  <dd class="govuk-summary-list__actions">
+    <a href="laspo">
+      Change <span class="govuk-visually-hidden">proceeding</span>
+    </a>
+  </dd>
+</div>
+</dl>
+<br>
+
+<h2 class="govuk-heading-m">
+  Interest of justice
+</h2>
+
+<dl class="govuk-summary-list">
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    Remand
+  </dt>
+  <dd class="govuk-summary-list__value">
+    No
+  </dd>
+  <dd class="govuk-summary-list__actions">
+    <a href="laspo">
+      Change <span class="govuk-visually-hidden">proceeding</span>
+    </a>
+  </dd>
+</div>
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    Liberty at risk
+  </dt>
+  <dd class="govuk-summary-list__value">
+    Yes
+  </dd>
+  <dd class="govuk-summary-list__actions">
+    <a href="laspo">
+      Change <span class="govuk-visually-hidden">proceeding</span>
+    </a>
+  </dd>
+</div>
+</dl>
+
+<br>
+
+    <h2 class="govuk-heading-m">What happens next</h2>
+
+    <p class="govuk-body">
+      We'll check your client's:</p>
+      <ul class="govuk-list govuk-list--bullet">
+      <li>benefits status with the Department of Work and Pensions (DWP)</li>
+      <li>employment details with HM Revenue and Customs (HMRC)</li>
+    </ul>
+    <br>
+
+      <a class="govuk-button" href="passported" role="button">
+        Save and continue
+      </a>
+
+      <a role="button" style="margin-left: 15px;" class="govuk-button draft-button">
+        Save and come back later
+      </a>
+
+    </div>
+  </div>
+
+  {% endblock %}
+
+  {% block footer %}
+      {{ govukFooter({
+        meta: {
+            items: [
+              {
+                href: "#",
+                text: "Contact"
+              },
+              {
+                href: "#",
+                text: "Feedback"
+              },
+              {
+                href: "https://www.gov.uk/help/cookies",
+                text: "Cookies"
+              },
+              {
+                href: "https://www.gov.uk/government/publications/laa-online-portal-help-and-information",
+                text: "Terms and conditions"
+              },
+              {
+                href: "https://mojdigital.blog.gov.uk/",
+                text: "MOJ Digital Services"
+              },
+              {
+                href: "/prototype-admin/clear-data",
+                text: "Clear data"
+              }
+            ]
+          }
+        }) }}
+      {% endblock %}

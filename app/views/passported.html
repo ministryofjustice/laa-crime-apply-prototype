@@ -1,0 +1,156 @@
+{% extends "layout.html" %}
+{% from "govuk/components/phase-banner/macro.njk"  import govukPhaseBanner %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
+
+{% block pageTitle %}
+Apply for legal aid - Confirmation page
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+  text: "Back",
+  href: "check_answers"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="flash-card">
+  <header>
+    <h1 class="govuk-heading-l">DWP records show that your client receives a passporting benefit</h1>
+  </header>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <ul class="how-to-renew" data-id="how-to-renew-uk">
+
+        <!-- <li>
+          <h2 class="govuk-heading-m">Your client's benefits status</h2>
+          <p style="margin-top: 5px; color: #fff;">
+          Your client does not receive benefits that qualify for legal aid.</p>
+        </li> -->
+
+
+        <!--  <h2 class="govuk-heading-m" style="margin-bottom: 20px;">What happens next</h2>
+
+          <p style="margin-top: 8px; color: #fff;">You need to tell us about your client's property, savings and other assets.</p>
+          </ul> -->
+
+
+      <div class="govuk-!-padding-bottom-4"></div>
+
+
+      <a href="/application_cert_review" role="button" class="govuk-button white-button right">
+          Continue</a>
+      <a href=#" role="button" class="govuk-button draft-button">
+        Save and come back later
+      </a>
+
+    </div>
+  </div>
+</div>
+
+
+  <!--  <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-panel govuk-panel--confirmation">
+
+          <h1 class="govuk-panel__body govuk-!-font-size-48">
+            {{ data['firstname'] }} {{ data['lastname'] }}</h1>
+
+            <div class="govuk-panel__title">
+            receives benefits that qualify for legal aid</div>
+        </div>
+
+        <div class="govuk-!-padding-top-4"></div>
+
+         <h3 class="govuk-heading-m">Your client's benefits status</h3>
+
+          <p class="govuk-body">Your client receives benefits that qualify for legal aid.</p>
+
+          <h3 class="govuk-heading-m">What happens next</h3>
+
+          <p class="govuk-body">You'll need to:</p>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>answer questions about your client's financial situation</li>
+            <li>provide details of the case</li>
+          </ul> -->
+
+        <!--  <p class="govuk-body">You'll need to tell us if your client has any property, savings, investments or other assets.</p>
+
+ <p class="govuk-body">
+            You will also have to complete a merits assessment for your client's case.
+          </p> -->
+
+
+
+      <!--  <p class="govuk-body">You'll also need to enter:</p>
+
+          <ul class="govuk-list govuk-list--bullet">
+          <li>a statement of case</li>
+          <li>information about any attempts to settle</li>
+          <li>cost estimates</li>
+          <li>the prospects of success</li>
+        </ul>
+
+<br>
+        <a href="property" role="button" class="govuk-button right">
+          Continue to assessment
+        </a>
+
+        <a role="button" class="govuk-button draft-button">
+          Save and come back later
+        </a>
+
+    </div>
+  </div>   -->
+
+
+
+{% endblock %}
+
+{% block footer %}
+    {{ govukFooter({
+      meta: {
+          items: [
+            {
+              href: "#",
+              text: "Help"
+            },
+            {
+              href: "https://www.gov.uk/help/cookies",
+              text: "Cookies"
+            },
+            {
+              href: "#",
+              text: "Contact"
+            },
+            {
+              href: "#",
+              text: "Feedback"
+            },
+            {
+              href: "#",
+              text: "Terms and conditions"
+            },
+            {
+              href: "https://mojdigital.blog.gov.uk/",
+              text: "MOJ Digital Services"
+            },
+            {
+              href: "/prototype-admin/clear-data",
+              text: "Clear data"
+            }
+          ]
+        }
+      }) }}
+    {% endblock %}
