@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+{% from "govuk/components/phase-banner/macro.njk"  import govukPhaseBanner %}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
+
+{% block pageTitle %}
+Apply for legal aid - Homepage
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <div class="govuk-!-padding-top-4"></div>
+
+    <h1 class="govuk-heading-xl">Your legal aid applications</h1>
+      <h3 class="govuk-heading-m">Make a new application</h3>
+      <p>
+        Tell us the basic case details and see if your client’s benefits or income qualifies for legal aid.
+      </p>
+
+      <a href="/declaration_provider" class="govuk-button govuk-button--start">
+        Start now
+      </a>
+
+    </div>
+  </div>
+
+  <div class="govuk-!-padding-bottom-8"></div>
+
+  <h3 class="govuk-heading-m">Current applications</h3>
+  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <table class="govuk-table">
+
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Client's name</th>
+          <th class="govuk-table__header govuk-table__header--numeric" scope="col">Date started</th>
+          <th class="govuk-table__header govuk-table__header--numeric" scope="col">Case reference</th>
+          <th class="govuk-table__header govuk-table__header--numeric" scope="col">Status</th>
+        </tr>
+      </thead>
+      <!-- <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell" scope="row"><a class="govuk-link" href="application_page">John Doe</a></td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">23/10/2018</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">2018/LAA/4ewrgfdd</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag">Application submitted</strong></td>
+        </tr>
+      </tbody> -->
+    </table>
+
+</div>
+
+{% endblock %}
+
+{% block footer %}
+    {{ govukFooter({
+      meta: {
+          items: [
+            {
+              href: "#",
+              text: "Help"
+            },
+            {
+              href: "https://www.gov.uk/help/cookies",
+              text: "Cookies"
+            },
+            {
+              href: "#",
+              text: "Contact"
+            },
+            {
+              href: "#",
+              text: "Feedback"
+            },
+            {
+              href: "#",
+              text: "Terms and conditions"
+            },
+            {
+              href: "https://mojdigital.blog.gov.uk/",
+              text: "MOJ Digital Services"
+            },
+            {
+              href: "/prototype-admin/clear-data",
+              text: "Clear data"
+            }
+          ]
+        }
+      }) }}
+    {% endblock %}

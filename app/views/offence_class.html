@@ -1,0 +1,113 @@
+
+{% extends "layout.html" %}
+{% from "govuk/components/phase-banner/macro.njk"  import govukPhaseBanner %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
+
+{% block pageTitle %}
+Apply for legal aid - Correspondence address lookup
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:goBack()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        What does your client want legal aid for?
+      </h1>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="marriage-civil-partnership" name="marriage-civil-partnership" type="radio" value="never">
+        <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership">
+          Class A: Homicide and related grave offences
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="marriage-civil-partnership-2" name="marriage-civil-partnership" type="radio" value="married">
+        <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership-2">
+          Class B: Offences involving serious violence or damage, and serious drugs offences
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="marriage-civil-partnership-3" name="marriage-civil-partnership" type="radio" value="civil-partnership">
+        <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership-3">
+          Class C: Lesser offences involving violence or damage, and less serious drugs offences
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="marriage-civil-partnership-4" name="marriage-civil-partnership" type="radio" value="separated-married">
+        <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership-4">
+          Class D: Sexual offences and offences against children
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="marriage-civil-partnership-5" name="marriage-civil-partnership" type="radio" value="separated-civil-partnership">
+        <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership-5">
+          Class E: Burglary etc.
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="marriage-civil-partnership-6" name="marriage-civil-partnership" type="radio" value="divorced">
+        <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership-6">
+          Class F: Other offences of dishonesty (specified offences and offences where the value is £30,000 or less)
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="marriage-civil-partnership-7" name="marriage-civil-partnership" type="radio" value="dissolved-civil-partnership">
+        <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership-7">
+          Class G: Other offences of dishonesty (specified offences and offences where the value involved exceeds £30,000 but does not exceed £100,000)
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="marriage-civil-partnership-8" name="marriage-civil-partnership" type="radio" value="widowed">
+        <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership-8">
+          Class H: Miscellaneous other offences
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="marriage-civil-partnership-9" name="marriage-civil-partnership" type="radio" value="widowed-civil-partnership">
+        <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership-9">
+          Class I: Offences against public justice and similar offences
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="marriage-civil-partnership-11" name="marriage-civil-partnership" type="radio" value="skip">
+        <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership-11">
+          Class J: Serious sexual offences
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="marriage-civil-partnership-11" name="marriage-civil-partnership" type="radio" value="skip">
+        <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership-11">
+          Class K: Other offences of dishonesty (high value: if the value involved exceeds £100,000)
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+
+<a href="/other_charges"
+<button class="govuk-button" data-module="govuk-button">
+  Continue
+</button>
+</a>
+
+{% endblock %}

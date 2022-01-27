@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+{% from "govuk/components/phase-banner/macro.njk"  import govukPhaseBanner %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
+
+{% block pageTitle %}
+Apply for legal aid - Correspondence address lookup
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:goBack()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<h1 class="govuk-heading-l">Equality questions</h1>
+
+<p>[Add reminder of why you’re asking the questions and what you’ll do with the information].</p>
+
+<div class="govuk-form-group">
+<fieldset class="govuk-fieldset" aria-describedby="equalities-info-hint">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+    Question 1
+  </legend>
+  <div id="equalities-info-hint" class="govuk-hint">
+
+  </div>
+  <div class="govuk-radios" data-module="govuk-radios">
+    <div class="govuk-radios__item">
+      <input class="govuk-radios__input" id="equalities-info" name="equalities-info" type="radio" value="yes">
+      <label class="govuk-label govuk-radios__label" for="equalities-info">
+        Answer
+      </label>
+    </div>
+    <div class="govuk-radios__item">
+      <input class="govuk-radios__input" id="equalities-info-2" name="equalities-info" type="radio" value="no">
+      <label class="govuk-label govuk-radios__label" for="equalities-info-2">
+        Answer
+      </label>
+    </div>
+  </div>
+
+</fieldset>
+</div>
+
+<div class="govuk-form-group">
+<fieldset class="govuk-fieldset" aria-describedby="equalities-info-hint">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+    Question 2
+  </legend>
+  <div id="equalities-info-hint" class="govuk-hint">
+
+  </div>
+  <div class="govuk-radios" data-module="govuk-radios">
+    <div class="govuk-radios__item">
+      <input class="govuk-radios__input" id="equalities-info" name="equalities-info" type="radio" value="yes">
+      <label class="govuk-label govuk-radios__label" for="equalities-info">
+        Answer
+      </label>
+    </div>
+    <div class="govuk-radios__item">
+      <input class="govuk-radios__input" id="equalities-info-2" name="equalities-info" type="radio" value="no">
+      <label class="govuk-label govuk-radios__label" for="equalities-info-2">
+        Answer
+      </label>
+    </div>
+  </div>
+
+</fieldset>
+</div>
+
+<a href="/application_submitted"
+<button class="govuk-button" data-module="govuk-button">
+Continue
+</button>
+</a>
+
+{% endblock %}

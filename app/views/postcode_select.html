@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+{% from "govuk/components/phase-banner/macro.njk"  import govukPhaseBanner %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
+
+{% block pageTitle %}
+Apply for legal aid - Correspondence address select
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+      href: "/postcode_finder"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Enter a correspondence address for your client</h1>
+
+    <form action="employment_status" method="post" novalidate>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m"> Postcode
+          </legend>
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-!-font-weight-bold postcode_change" for="change-postcode">{{ data['postcode'] }}</label>
+              <p class="postcode_change"><a class="govuk-link" href="postcode_finder" aria-label="change postcode">Change</a></p>
+            </div>
+
+          <div class="govuk-form-group">
+              <label class="govuk-label" for="address-select">
+              Select an address
+              </label>
+              <select class="govuk-select govuk-!-width-three-quarters" id="address-select" name="address-select">
+                <option>5 addresses found</option>
+                <option>1 Main Street, London, {{ data['postcode'] }} </option>
+                <option>2 Main Street, London, {{ data['postcode'] }} </option>
+                <option>3 Main Street, London, {{ data['postcode'] }} </option>
+                <option>4 Main Street, London, {{ data['postcode'] }} </option>
+                <option>5 Main Street, London, {{ data['postcode'] }} </option>
+              </select>
+          </div>
+
+          <div class="govuk-form-group">
+            <p>
+              <a class="govuk-link" href="manual_address">I can't find the address in the list</a>
+            </p>
+          </div>
+        </fieldset>
+      </div>
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+      <a role="button" style="margin-left: 15px;" class="govuk-button draft-button">
+        Save and come back later
+      </a>
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+    {{ govukFooter({
+      meta: {
+          items: [
+            {
+              href: "#",
+              text: "Help"
+            },
+            {
+              href: "https://www.gov.uk/help/cookies",
+              text: "Cookies"
+            },
+            {
+              href: "#",
+              text: "Contact"
+            },
+            {
+              href: "#",
+              text: "Feedback"
+            },
+            {
+              href: "#",
+              text: "Terms and conditions"
+            },
+            {
+              href: "https://mojdigital.blog.gov.uk/",
+              text: "MOJ Digital Services"
+            },
+            {
+              href: "/prototype-admin/clear-data",
+              text: "Clear data"
+            }
+          ]
+        }
+      }) }}
+    {% endblock %}

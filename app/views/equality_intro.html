@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+{% from "govuk/components/phase-banner/macro.njk"  import govukPhaseBanner %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
+
+{% block pageTitle %}
+Apply for legal aid - Correspondence address lookup
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:goBack()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<h1 class="govuk-heading-l">We have received your application</h1>
+
+<p class="govuk-body">Before you finish using the service, we’d like to ask some equality questions.</p>
+
+<div class="govuk-form-group">
+<fieldset class="govuk-fieldset" aria-describedby="equalities-info-hint">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+    Do you want to answer the equality questions?
+  </legend>
+  <div id="equalities-info-hint" class="govuk-hint">
+    <p class="govuk-!-margin-top-0">These questions are optional. [Add a couple of sentences explaining why you’re asking the questions and what you’ll do with the information].</p>
+    <p>Your answers will not affect your application.</p>
+
+  </div>
+  <div class="govuk-radios" data-module="govuk-radios">
+    <div class="govuk-radios__item">
+      <input class="govuk-radios__input" id="equalities-info" name="equalities-info" type="radio" value="yes">
+      <label class="govuk-label govuk-radios__label" for="equalities-info">
+        Yes, answer the equality questions (takes 2 minutes)
+      </label>
+    </div>
+    <div class="govuk-radios__item">
+      <input class="govuk-radios__input" id="equalities-info-2" name="equalities-info" type="radio" value="no">
+      <label class="govuk-label govuk-radios__label" for="equalities-info-2">
+        No, skip the equality questions
+      </label>
+    </div>
+  </div>
+
+</fieldset>
+</div>
+
+<details class="govuk-details" data-module="govuk-details">
+<summary class="govuk-details__summary">
+  <span class="govuk-details__summary-text">
+    Why we ask equality questions
+  </span>
+</summary>
+<div class="govuk-details__text">
+  [Consider adding an optional longer explanation of what you’re asking the questions and what you’ll do with the information].
+</div>
+</details>
+
+<a href="/equality_questions"
+<button class="govuk-button" data-module="govuk-button">
+Continue
+</button>
+
+{% endblock %}
