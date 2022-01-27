@@ -13,13 +13,13 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl">Case details</h1>
+      <h1 class="govuk-heading-xl">Provide details of the case</h1>
 
       <form class="form" action="/url/of/next/page" method="post">
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
               <h1 class="govuk-fieldset__heading">
                 What is the type of your client's case?
               </h1>
@@ -62,7 +62,7 @@
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
               <h1 class="govuk-fieldset__heading">
                 What type of court will be hearing your client's case?
               </h1>
@@ -85,7 +85,7 @@
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
               <h1 class="govuk-fieldset__heading">
                 Does your client have any co-defendants in this case?
               </h1>
@@ -108,7 +108,7 @@
           </fieldset>
         </div>
 
-        <a href="/offence_class"
+        <a href="/offence_details"
         <button class="govuk-button" data-module="govuk-button">Continue</button>
       </a>
       </form>
@@ -116,4 +116,45 @@
     </div>
   </div>
 
+{% endblock %}
+
+{% block footer %}
+{{ govukFooter({
+  meta: {
+    items: [
+    {
+      href: "https://www.gov.uk/help/cookies",
+      text: "Cookies"
+    },
+    {
+      href: "#",
+      text: "Contact"
+    },
+    {
+      href: "#",
+      text: "Feedback"
+    },
+    {
+      href: "/privacy-policy",
+      text: "Privacy policy"
+    },
+    {
+      href: "#",
+      text: "Accessibility statement"
+    },
+    {
+      href: "#",
+      text: "Terms and conditions"
+    },
+    {
+      href: "https://mojdigital.blog.gov.uk/",
+      text: "MOJ Digital Services"
+    },
+    {
+      href: "/prototype-admin/clear-data",
+      text: "Clear data"
+    }
+    ]
+  }
+}) }}
 {% endblock %}

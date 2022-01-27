@@ -1,51 +1,167 @@
 {% extends "layout.html" %}
+{% from "govuk/components/phase-banner/macro.njk"  import govukPhaseBanner %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
 
 {% block pageTitle %}
-  Question page
+Apply for legal aid - Employment status
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" href="/url/of/previous/page">Back</a>
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+      href: "postcode_select"
+  }) }}
 {% endblock %}
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+<div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <form action="benefit_checker" method="post" class="form">
 
-      <form class="form" action="/url/of/next/page" method="post">
 
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 class="govuk-fieldset__heading">
-                Is your client's liberty at risk?
-              </h1>
-            </legend>
-            <div class="govuk-radios" data-module="govuk-radios">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="marriage-civil-partnership" name="marriage-civil-partnership" type="radio" value="never">
-                <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership">
-                  Yes
-                </label>
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                <h1 class="govuk-fieldset__heading">
+                  Why does your client want legal aid?
+                </h1>
+              </legend>
+              <div id="waste-hint" class="govuk-hint">
+                Select all that apply.
               </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="marriage-civil-partnership-2" name="marriage-civil-partnership" type="radio" value="married">
-                <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership-2">
-                  No
-                </label>
+              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses">
+                  <label class="govuk-label govuk-checkboxes__label" for="waste">
+                    It is likely that they will lose their liberty if any matter in the proceedings is decided against them.
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines">
+                  <label class="govuk-label govuk-checkboxes__label" for="waste-2">
+                    They have been given a sentence that is suspended or non-custodial. If they break this, the court may be able to deal with them for the original offence.
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                  <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                    It is likely that they will lose their livelihood.
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                  <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                    It is likely that they will suffer serious damage to their reputation.
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                  <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                    A substantial question of law may be involved (whether arising from legislation, judicial authority or other source of law).
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                  <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                    They may not be able to understand the court proceedings or present their own case.
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                  <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                    Witnesses may need to be traced or interviewed on their behalf.
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                  <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                    The proceedings may involve expert cross-examination of a prosecution witness (whether an expert or not).
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                  <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                    It is in the interests of another person (such as the person making a complaint or other witness) that they are represented.
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                  <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                    Other
+                  </label>
+                </div>
               </div>
-            </div>
 
-          </fieldset>
-        </div>
+            </fieldset>
+          </div>
 
-        <a href="/check_answers"
-        <button class="govuk-button" data-module="govuk-button">Continue</button>
-      </a>
-      </form>
 
+
+          <button type="submit" class="govuk-button">
+            Save and continue
+          </button>
+
+          <a role="button" style="margin-left: 15px;" class="govuk-button draft-button">
+            Save and come back later
+          </a>
+
+        </form>
+
+      <!--  <p class="govuk-body"><a href="use_ccms_employment">If 'self-employed' and/or 'HM Forces' selected</a></p>
+       <p class="govuk-body"><a href="error">API fail</a></p>
+         <p class="govuk-body"><a href="open_banking_consent">not employed</a></p> -->
+
+      </div>
     </div>
-  </div>
 
 {% endblock %}
+
+{% block footer %}
+    {{ govukFooter({
+      meta: {
+          items: [
+          {
+            href: "https://www.gov.uk/help/cookies",
+            text: "Cookies"
+          },
+          {
+            href: "#",
+            text: "Contact"
+          },
+          {
+            href: "#",
+            text: "Feedback"
+          },
+          {
+            href: "/privacy-policy",
+            text: "Privacy policy"
+          },
+          {
+            href: "#",
+            text: "Accessibility statement"
+          },
+          {
+            href: "#",
+            text: "Terms and conditions"
+          },
+          {
+            href: "https://mojdigital.blog.gov.uk/",
+            text: "MOJ Digital Services"
+          },
+          {
+            href: "/prototype-admin/clear-data",
+            text: "Clear data"
+          }
+          ]
+        }
+      }) }}
+    {% endblock %}

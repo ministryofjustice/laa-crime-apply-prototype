@@ -52,23 +52,12 @@ Apply for legal aid - Employment status
                <div class="govuk-checkboxes__item">
                  <input class="govuk-checkboxes__input" id="income-conditional-7" name="financial_help" type="checkbox" value="yes" data-aria-controls="income-citizenship-conditional-7" {{ checked("financial_help","yes") }}>
                  <label class="govuk-label govuk-checkboxes__label" for="income-conditional-7">
-                   Self-employed
+                   Self-employed, business partner, company director or shareholder
                  </label>
                <!--  <span id="nationality-1-item-hint" class="govuk-hint govuk-checkboxes__hint" style="padding-left: 15px">
                      Select if you receive regular payments from a relative or friend for living costs. Do not include one-off payments.
                  </span> -->
                </div>
-
-               <div class="govuk-checkboxes__item">
-                 <input class="govuk-checkboxes__input" id="income-conditional-3" name="maintenance" type="checkbox" value="yes" data-aria-controls="income-conditional-3" {{ checked("maintenance","yes") }}>
-                 <label class="govuk-label govuk-checkboxes__label" for="income-conditional-3">
-                   Member of HM Forces
-                 </label>
-             <!--  <span id="nationality-1-item-hint" class="govuk-hint govuk-checkboxes__hint" style="padding-left: 15px">
-                   This includes child maintenance.
-                 </span> -->
-               </div>
-
 
              <p class="govuk-body">or</p>
 
@@ -109,34 +98,38 @@ Apply for legal aid - Employment status
     {{ govukFooter({
       meta: {
           items: [
-            {
-              href: "#",
-              text: "Help"
-            },
-            {
-              href: "https://www.gov.uk/help/cookies",
-              text: "Cookies"
-            },
-            {
-              href: "#",
-              text: "Contact"
-            },
-            {
-              href: "#",
-              text: "Feedback"
-            },
-            {
-              href: "#",
-              text: "Terms and conditions"
-            },
-            {
-              href: "https://mojdigital.blog.gov.uk/",
-              text: "MOJ Digital Services"
-            },
-            {
-              href: "/prototype-admin/clear-data",
-              text: "Clear data"
-            }
+          {
+            href: "https://www.gov.uk/help/cookies",
+            text: "Cookies"
+          },
+          {
+            href: "#",
+            text: "Contact"
+          },
+          {
+            href: "#",
+            text: "Feedback"
+          },
+          {
+            href: "/privacy-policy",
+            text: "Privacy policy"
+          },
+          {
+            href: "#",
+            text: "Accessibility statement"
+          },
+          {
+            href: "#",
+            text: "Terms and conditions"
+          },
+          {
+            href: "https://mojdigital.blog.gov.uk/",
+            text: "MOJ Digital Services"
+          },
+          {
+            href: "/prototype-admin/clear-data",
+            text: "Clear data"
+          }
           ]
         }
       }) }}
