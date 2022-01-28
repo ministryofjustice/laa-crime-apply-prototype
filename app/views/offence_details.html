@@ -100,22 +100,37 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
               <h1 class="govuk-fieldset__heading">
-                Does your client have any other criminal cases or charges which are still in progress?
+                Does your client have any other criminal cases or charges still in progress?
               </h1>
             </legend>
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
-                <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                <!-- REMEMBER: data-aria-controls -->
+                <input class="govuk-radios__input" id="marriage-civil-partnership" name="marriage-civil-partnership" type="radio" value="never" data-aria-controls="conditional-yes">
+                <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership">
                   Yes
                 </label>
               </div>
+              <!-- START: CONDITIONAL REVEAL -->
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-yes"> <!-- id needs to match data-aria-controls -->
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="contact-by-email">
+                    Enter details
+                  </label>
+                  <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint">
+                  </textarea>
+                </div>
+              </div>
+              <div class="govuk-form-group">
+              <!-- END: CONDITIONAL REVEAL  -->
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
-                <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+                <input class="govuk-radios__input" id="marriage-civil-partnership-2" name="marriage-civil-partnership" type="radio" value="married">
+                <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership-2">
                   No
                 </label>
               </div>
+            </div>
+
           </fieldset>
         </div>
 
@@ -128,11 +143,54 @@
             </legend>
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="marriage-civil-partnership" name="marriage-civil-partnership" type="radio" value="never">
+                <input class="govuk-radios__input" id="marriage-civil-partnership" name="marriage-civil-partnership" type="radio" value="never" data-aria-controls="remand-yes">
                 <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership">
                   Yes
                 </label>
               </div>
+
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="remand-yes"> <!-- id needs to match data-aria-controls -->
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="contact-by-email">
+                    Date your client was remanded
+                  </label>
+                  <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+                      <div id="passport-issued-hint" class="govuk-hint">
+                        For example, 27 3 2007
+                      </div>
+                      <div class="govuk-date-input" id="passport-issued">
+                        <div class="govuk-date-input__item">
+                          <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                              Day
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                        </div>
+                        <div class="govuk-date-input__item">
+                          <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                              Month
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                        </div>
+                        <div class="govuk-date-input__item">
+                          <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                              Year
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                        </div>
+                      </div>
+
+                    </fieldset>
+                  </div>
+
+
+                </div>
+              </div>
+              <div class="govuk-form-group">
+
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="marriage-civil-partnership-2" name="marriage-civil-partnership" type="radio" value="married">
                 <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership-2">

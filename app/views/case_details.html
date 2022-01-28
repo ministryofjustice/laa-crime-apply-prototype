@@ -92,11 +92,22 @@
             </legend>
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="marriage-civil-partnership" name="marriage-civil-partnership" type="radio" value="never">
+                <!-- REMEMBER: data-aria-controls -->
+                <input class="govuk-radios__input" id="marriage-civil-partnership" name="marriage-civil-partnership" type="radio" value="never" data-aria-controls="conditional-yes">
                 <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership">
                   Yes
                 </label>
               </div>
+              <!-- START: CONDITIONAL REVEAL -->
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-yes"> <!-- id needs to match data-aria-controls -->
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="contact-by-email">
+                    Full name
+                  </label>
+                  <input class="govuk-input govuk-!-width-one-third" id="contact-by-email" name="contact-by-email" type="email" spellcheck="false" autocomplete="email">
+                </div>
+              </div>
+              <!-- END: CONDITIONAL REVEAL  -->
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="marriage-civil-partnership-2" name="marriage-civil-partnership" type="radio" value="married">
                 <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership-2">

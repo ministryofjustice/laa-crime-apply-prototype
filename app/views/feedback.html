@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{% from "govuk/components/phase-banner/macro.njk"  import govukPhaseBanner %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
+
+{% block pageTitle %}
+Apply for legal aid - Correspondence address lookup
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:goBack()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<main class="" id="main-content" role="main">
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Help us improve this service</h1>
+
+
+    <form class="new_feedback" id="new_feedback" action="feedback_thankyou">
+
+      <div class="govuk-form-group"><fieldset class="govuk-fieldset"><legend class="govuk-fieldset__legend govuk-fieldset__legend--m"><h1 class="govuk-fieldset__heading">Were you able to do what you needed today?</h1></legend><div class="govuk-radios govuk-radios--inline"><div class="govuk-radios__item"><input class="govuk-radios__input" type="radio" value="yes" name="feedback[done_all_needed]" id="feedback_done_all_needed_yes"><label class="govuk-label govuk-radios__label" for="feedback_done_all_needed_yes">Yes</label></div><div class="govuk-radios__item"><input class="govuk-radios__input" type="radio" value="no" name="feedback[done_all_needed]" id="feedback_done_all_needed_no"><label class="govuk-label govuk-radios__label" for="feedback_done_all_needed_no">No</label></div></div></fieldset></div>
+
+      <div class="govuk-form-group"><fieldset class="govuk-fieldset"><legend class="govuk-fieldset__legend govuk-fieldset__legend--m"><h1 class="govuk-fieldset__heading">Overall, how satisfied were you with this service?</h1></legend><div class="govuk-radios govuk-!-padding-top-2"><div class="govuk-radios__item"><input class="govuk-radios__input" type="radio" value="very_satisfied" name="feedback[satisfaction]" id="feedback_satisfaction_very_satisfied"><label class="govuk-label govuk-radios__label" for="feedback_satisfaction_very_satisfied">Very satisfied</label></div><div class="govuk-radios__item"><input class="govuk-radios__input" type="radio" value="satisfied" name="feedback[satisfaction]" id="feedback_satisfaction_satisfied"><label class="govuk-label govuk-radios__label" for="feedback_satisfaction_satisfied">Satisfied</label></div><div class="govuk-radios__item"><input class="govuk-radios__input" type="radio" value="neither_dissatisfied_nor_satisfied" name="feedback[satisfaction]" id="feedback_satisfaction_neither_dissatisfied_nor_satisfied"><label class="govuk-label govuk-radios__label" for="feedback_satisfaction_neither_dissatisfied_nor_satisfied">Neither satisfied nor dissatisfied</label></div><div class="govuk-radios__item"><input class="govuk-radios__input" type="radio" value="dissatisfied" name="feedback[satisfaction]" id="feedback_satisfaction_dissatisfied"><label class="govuk-label govuk-radios__label" for="feedback_satisfaction_dissatisfied">Dissatisfied</label></div><div class="govuk-radios__item"><input class="govuk-radios__input" type="radio" value="very_dissatisfied" name="feedback[satisfaction]" id="feedback_satisfaction_very_dissatisfied"><label class="govuk-label govuk-radios__label" for="feedback_satisfaction_very_dissatisfied">Very dissatisfied</label></div></div></fieldset></div>
+
+      <div class="govuk-form-group"><label class="govuk-label govuk-label--m" for="improvement_suggestion">How could we improve this service?</label><textarea rows="4" class="govuk-!-width-full govuk-textarea" id="improvement_suggestion" name="feedback[improvement_suggestion]"></textarea></div>
+
+      <input type="submit" name="commit" value="Send" class="govuk-button" data-disable-with="Send">
+
+</form>
+  </div>
+</div>
+
+      </main>
+{% endblock %}
+
+{% block footer %}
+{{ govukFooter({
+  meta: {
+    items: [
+    {
+      href: "#",
+      text: "Contact"
+    },
+    {
+      href: "#",
+      text: "Feedback"
+    },
+    {
+      href: "https://www.gov.uk/help/cookies",
+      text: "Cookies"
+    },
+    {
+      href: "https://www.gov.uk/government/publications/laa-online-portal-help-and-information",
+      text: "Terms and conditions"
+    },
+    {
+      href: "https://mojdigital.blog.gov.uk/",
+      text: "MOJ Digital Services"
+    },
+    {
+      href: "/prototype-admin/clear-data",
+      text: "Clear data"
+    }
+    ]
+  }
+}) }}
+{% endblock %}

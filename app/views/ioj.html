@@ -40,65 +40,195 @@ Apply for legal aid - Employment status
               </div>
               <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses">
+                  <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses" data-aria-controls="carcasses-yes">
                   <label class="govuk-label govuk-checkboxes__label" for="waste">
                     It is likely that they will lose their liberty if any matter in the proceedings is decided against them.
                   </label>
                 </div>
+                <!-- START: CONDITIONAL REVEAL -->
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="carcasses-yes"> <!-- id needs to match data-aria-controls -->
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="contact-by-email">
+                      Enter justification
+                    </label>
+                    <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint">
+                    </textarea>
+                  </div>
+                </div>
+                <div class="govuk-form-group">
+                <!-- END: CONDITIONAL REVEAL  -->
+
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines">
+                  <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines" data-aria-controls="mines-yes">
                   <label class="govuk-label govuk-checkboxes__label" for="waste-2">
                     They have been given a sentence that is suspended or non-custodial. If they break this, the court may be able to deal with them for the original offence.
                   </label>
                 </div>
+                <!-- START: CONDITIONAL REVEAL -->
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="mines-yes"> <!-- id needs to match data-aria-controls -->
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="contact-by-email">
+                      Enter justification
+                    </label>
+                    <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint">
+                    </textarea>
+                  </div>
+                </div>
+                <div class="govuk-form-group">
+                <!-- END: CONDITIONAL REVEAL  -->
+
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm" data-aria-controls="farm-yes">
                   <label class="govuk-label govuk-checkboxes__label" for="waste-3">
                     It is likely that they will lose their livelihood.
                   </label>
                 </div>
+                <!-- START: CONDITIONAL REVEAL -->
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="farm-yes"> <!-- id needs to match data-aria-controls -->
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="contact-by-email">
+                      Enter justification
+                    </label>
+                    <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint">
+                    </textarea>
+                  </div>
+                </div>
+                <div class="govuk-form-group">
+                <!-- END: CONDITIONAL REVEAL  -->
+
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm" data-aria-controls="farm2-yes">
                   <label class="govuk-label govuk-checkboxes__label" for="waste-3">
                     It is likely that they will suffer serious damage to their reputation.
                   </label>
                 </div>
+                <!-- START: CONDITIONAL REVEAL -->
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="farm2-yes"> <!-- id needs to match data-aria-controls -->
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="contact-by-email">
+                      Enter justification
+                    </label>
+                    <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint">
+                    </textarea>
+                  </div>
+                </div>
+                <div class="govuk-form-group">
+                <!-- END: CONDITIONAL REVEAL  -->
+
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm" data-aria-controls="farm3-yes">
                   <label class="govuk-label govuk-checkboxes__label" for="waste-3">
                     A substantial question of law may be involved (whether arising from legislation, judicial authority or other source of law).
                   </label>
                 </div>
+                <!-- START: CONDITIONAL REVEAL -->
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="farm3-yes"> <!-- id needs to match data-aria-controls -->
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="contact-by-email">
+                      Enter justification
+                    </label>
+                    <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint">
+                    </textarea>
+                  </div>
+                </div>
+                <div class="govuk-form-group">
+                <!-- END: CONDITIONAL REVEAL  -->
+
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm" data-aria-controls="farm4-yes">
                   <label class="govuk-label govuk-checkboxes__label" for="waste-3">
                     They may not be able to understand the court proceedings or present their own case.
                   </label>
                 </div>
+                <!-- START: CONDITIONAL REVEAL -->
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="farm4-yes"> <!-- id needs to match data-aria-controls -->
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="contact-by-email">
+                      Enter justification
+                    </label>
+                    <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint">
+                    </textarea>
+                  </div>
+                </div>
+                <div class="govuk-form-group">
+                <!-- END: CONDITIONAL REVEAL  -->
+
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm" data-aria-controls="farm5-yes">
                   <label class="govuk-label govuk-checkboxes__label" for="waste-3">
                     Witnesses may need to be traced or interviewed on their behalf.
                   </label>
                 </div>
+                <!-- START: CONDITIONAL REVEAL -->
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="farm5-yes"> <!-- id needs to match data-aria-controls -->
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="contact-by-email">
+                      Enter justification
+                    </label>
+                    <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint">
+                    </textarea>
+                  </div>
+                </div>
+                <div class="govuk-form-group">
+                <!-- END: CONDITIONAL REVEAL  -->
+
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm" data-aria-controls="farm6-yes">
                   <label class="govuk-label govuk-checkboxes__label" for="waste-3">
                     The proceedings may involve expert cross-examination of a prosecution witness (whether an expert or not).
                   </label>
                 </div>
+                <!-- START: CONDITIONAL REVEAL -->
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="farm6-yes"> <!-- id needs to match data-aria-controls -->
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="contact-by-email">
+                      Enter justification
+                    </label>
+                    <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint">
+                    </textarea>
+                  </div>
+                </div>
+                <div class="govuk-form-group">
+                <!-- END: CONDITIONAL REVEAL  -->
+
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm" data-aria-controls="farm7-yes">
                   <label class="govuk-label govuk-checkboxes__label" for="waste-3">
                     It is in the interests of another person (such as the person making a complaint or other witness) that they are represented.
                   </label>
                 </div>
+                <!-- START: CONDITIONAL REVEAL -->
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="farm7-yes"> <!-- id needs to match data-aria-controls -->
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="contact-by-email">
+                      Enter justification
+                    </label>
+                    <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint">
+                    </textarea>
+                  </div>
+                </div>
+                <div class="govuk-form-group">
+                <!-- END: CONDITIONAL REVEAL  -->
+
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm" data-aria-controls="farm8-yes">
                   <label class="govuk-label govuk-checkboxes__label" for="waste-3">
                     Other
                   </label>
                 </div>
+                <!-- START: CONDITIONAL REVEAL -->
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="farm8-yes"> <!-- id needs to match data-aria-controls -->
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="contact-by-email">
+                      Enter details
+                    </label>
+                    <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint">
+                    </textarea>
+                  </div>
+                </div>
+                <div class="govuk-form-group">
+                <!-- END: CONDITIONAL REVEAL  -->
+
               </div>
 
             </fieldset>
