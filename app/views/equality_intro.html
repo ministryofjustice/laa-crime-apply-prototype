@@ -23,7 +23,7 @@ Apply for legal aid - Correspondence address lookup
 
 {% block content %}
 
-<h1 class="govuk-heading-l">We have received your application</h1>
+<h1 class="govuk-heading-xl">We have received your application</h1>
 
 <p class="govuk-body">Before you finish using the service, we’d like to ask some equality questions.</p>
 
@@ -70,5 +70,47 @@ Apply for legal aid - Correspondence address lookup
 <button class="govuk-button" data-module="govuk-button">
 Continue
 </button>
+</a>
 
 {% endblock %}
+
+{% block footer %}
+    {{ govukFooter({
+      meta: {
+          items: [
+          {
+            href: "https://www.gov.uk/help/cookies",
+            text: "Cookies"
+          },
+          {
+            href: "#",
+            text: "Contact"
+          },
+          {
+            href: "#",
+            text: "Feedback"
+          },
+          {
+            href: "/privacy-policy",
+            text: "Privacy policy"
+          },
+          {
+            href: "#",
+            text: "Accessibility statement"
+          },
+          {
+            href: "#",
+            text: "Terms and conditions"
+          },
+          {
+            href: "https://mojdigital.blog.gov.uk/",
+            text: "MOJ Digital Services"
+          },
+          {
+            href: "/prototype-admin/clear-data",
+            text: "Clear data"
+          }
+          ]
+        }
+      }) }}
+    {% endblock %}

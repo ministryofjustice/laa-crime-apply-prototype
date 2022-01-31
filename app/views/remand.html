@@ -17,7 +17,7 @@
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
               <h1 class="govuk-fieldset__heading">
                 Is your client on remand?
               </h1>
@@ -49,3 +49,44 @@
   </div>
 
 {% endblock %}
+
+{% block footer %}
+    {{ govukFooter({
+      meta: {
+          items: [
+          {
+            href: "https://www.gov.uk/help/cookies",
+            text: "Cookies"
+          },
+          {
+            href: "#",
+            text: "Contact"
+          },
+          {
+            href: "#",
+            text: "Feedback"
+          },
+          {
+            href: "/privacy-policy",
+            text: "Privacy policy"
+          },
+          {
+            href: "#",
+            text: "Accessibility statement"
+          },
+          {
+            href: "#",
+            text: "Terms and conditions"
+          },
+          {
+            href: "https://mojdigital.blog.gov.uk/",
+            text: "MOJ Digital Services"
+          },
+          {
+            href: "/prototype-admin/clear-data",
+            text: "Clear data"
+          }
+          ]
+        }
+      }) }}
+    {% endblock %}
