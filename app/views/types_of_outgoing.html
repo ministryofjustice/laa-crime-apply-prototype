@@ -1,0 +1,148 @@
+{% extends "layout.html" %}
+{% from "govuk/components/phase-banner/macro.njk"  import govukPhaseBanner %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
+
+{% block pageTitle %}
+Apply for legal aid - Types of outgoing
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+      href: "outgoings"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <form action="outgoings" method="post" class="form">
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="citizenship-conditional-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                <h1 class="govuk-fieldset__heading">
+                  Which regular payments does your client make?
+                </h1>
+              </legend>
+
+              <div class="govuk-!-padding-bottom-4"></div>
+
+               <span class="govuk-hint">Select all that apply</span>
+
+              <div class="govuk-checkboxes" data-module="checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="income-conditional-1" name="salary" type="checkbox" value="yes" data-aria-controls="income-conditional-1" {{ checked("salary","yes") }}>
+                  <label class="govuk-label govuk-checkboxes__label" for="income-conditional-1">
+                    Housing costs
+                  </label>
+                  <span id="nationality-1-item-hint" class="govuk-hint govuk-checkboxes__hint" style="padding-left: 15px">
+                        For example, rent, mortgage or board and lodging.
+                    </span>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="income-conditional-3" name="maintenance" type="checkbox" value="yes" data-aria-controls="income-conditional-3" {{ checked("maintenance","yes") }}>
+                  <label class="govuk-label govuk-checkboxes__label" for="income-conditional-3">
+                    Childcare costs
+                  </label>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="income-conditional-4" name="property" type="checkbox" value="yes" data-aria-controls="income-citizenship-conditional-4" {{ checked("property","yes") }}>
+                  <label class="govuk-label govuk-checkboxes__label" for="income-conditional-4">
+                  Maintenance payments
+                  </label>
+                <!--  <span id="nationality-1-item-hint" class="govuk-hint govuk-checkboxes__hint" style="padding-left: 15px">
+                      For example, for children or to an ex-partner
+                  </span> -->
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="income-conditional-5" name="student-loan" type="checkbox" value="yes" data-aria-controls="income-citizenship-conditional-5" {{ checked("student-loan","yes") }}>
+                  <label class="govuk-label govuk-checkboxes__label" for="income-conditional-5">
+                    Payments towards legal aid in a criminal case
+                    <!-- Payments towards a criminal legal aid case -->
+                    <!-- Payments for legal aid you received in a criminal case -->
+                    <!-- Existing criminal legal aid contributions -->
+                  </label>
+                </div>
+
+                 <p class="govuk-body">or</p>
+
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="income-conditional-8" name="estates" type="checkbox" value="yes">
+                  <label class="govuk-label govuk-checkboxes__label" for="income-conditional-8">
+                  <!--  I make none of these payments --> None of these
+                  </label>
+                </div>
+
+              </div>
+
+            </fieldset>
+          </div>
+
+        <!--  <div class="govuk-inset-text">
+          <p class="govuk-body">
+            Do not select any if you make no regular payments.
+           Your online banking details are not saved.</p>
+        </div> -->
+
+          <button type="submit" class="govuk-button">
+            Save and continue
+          </button>
+
+         <a role="button" style="margin-left: 15px;" class="govuk-button draft-button">
+            Save and come back later
+          </a>
+
+
+
+        </form>
+      </div>
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+    {{ govukFooter({
+      meta: {
+          items: [
+            {
+              href: "#",
+              text: "Contact"
+            },
+            {
+              href: "#",
+              text: "Feedback"
+            },
+            {
+              href: "https://www.gov.uk/help/cookies",
+              text: "Cookies"
+            },
+            {
+              href: "https://www.gov.uk/government/publications/laa-online-portal-help-and-information",
+              text: "Terms and conditions"
+            },
+            {
+              href: "https://mojdigital.blog.gov.uk/",
+              text: "MOJ Digital Services"
+            },
+            {
+              href: "/prototype-admin/clear-data",
+              text: "Clear data"
+            }
+          ]
+        }
+      }) }}
+    {% endblock %}
