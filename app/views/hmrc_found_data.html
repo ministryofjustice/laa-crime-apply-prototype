@@ -1,0 +1,271 @@
+{% extends "layout.html" %}
+{% from "govuk/components/phase-banner/macro.njk"  import govukPhaseBanner %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
+
+{% block pageTitle %}
+Apply for legal aid - Confirmation page
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+  text: "Back",
+  href: "check_answers"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="moj-banner">
+
+  <div class="moj-banner__message">
+
+    <h2 class="govuk-heading-m">The information on this page has been provided by HMRC.</h2>
+  </div>
+
+</div>
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">HMRC found a record of your client's employment</h1>
+
+        <p class="govuk-body-l">You told us your client is not employed but HMRC shared the following information with us:</p>
+
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header app-custom-class">Date  </th>
+              <th scope="col" class="govuk-table__header app-custom-class" colspan="2">Income</th>
+              <th scope="col" class="govuk-table__header app-custom-class" colspan="2"> Deductions</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" rowspan="2"> 7 Jan 2021</td>
+              <td class="govuk-table__cell" rowspan="2"><strong>Gross</strong></td>
+              <td class="govuk-table__cell govuk-table__cell--numeric" rowspan="2">£125</td>
+              <td class="govuk-table__cell" style="border-bottom: none"><strong>Tax</strong></td>
+              <td class="govuk-table__cell govuk-table__cell--numeric" style="border-bottom: none">-£10</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><strong>National Insurance</strong></td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">-£2</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell" rowspan="2">31 Dec 2020</td>
+              <td class="govuk-table__cell" rowspan="2"><strong>Gross</strong></td>
+              <td class="govuk-table__cell govuk-table__cell--numeric" rowspan="2">£125</td>
+              <td class="govuk-table__cell" style="border-bottom: none"><strong>Tax</strong></td>
+              <td class="govuk-table__cell govuk-table__cell--numeric" style="border-bottom: none">-£10</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><strong>National Insurance</strong></td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">-£2</td>
+            </tr>
+            <tr class="govuk-table__row">
+              </tr><tr class="govuk-table__row">
+                <td class="govuk-table__cell" rowspan="2">24 Dec 2020</td>
+                <td class="govuk-table__cell" rowspan="2"><strong>Gross</strong></td>
+                <td class="govuk-table__cell govuk-table__cell--numeric" rowspan="2">£125</td>
+                <td class="govuk-table__cell" style="border-bottom: none"><strong>Tax</strong></td>
+                <td class="govuk-table__cell govuk-table__cell--numeric" style="border-bottom: none">-£10</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><strong>National Insurance</strong></td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">-£2</td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell" rowspan="2">17 Dec 2020</td>
+                <td class="govuk-table__cell" rowspan="2"><strong>Gross</strong></td>
+                <td class="govuk-table__cell govuk-table__cell--numeric" rowspan="2">£125</td>
+                <td class="govuk-table__cell" style="border-bottom: none"><strong>Tax</strong></td>
+                <td class="govuk-table__cell govuk-table__cell--numeric" style="border-bottom: none">-£10</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><strong>National Insurance</strong></td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">-£2</td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell" rowspan="2">10 Dec 2020</td>
+                <td class="govuk-table__cell" rowspan="2"><strong>Gross</strong></td>
+                <td class="govuk-table__cell govuk-table__cell--numeric" rowspan="2">£125</td>
+                <td class="govuk-table__cell" style="border-bottom: none"><strong>Tax</strong></td>
+                <td class="govuk-table__cell govuk-table__cell--numeric" style="border-bottom: none">-£10</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><strong>National Insurance</strong></td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">-£2</td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell" rowspan="2">3 Dec 2020</td>
+                <td class="govuk-table__cell" rowspan="2"><strong>Gross</strong></td>
+                <td class="govuk-table__cell govuk-table__cell--numeric" rowspan="2">£125</td>
+                <td class="govuk-table__cell" style="border-bottom: none"><strong>Tax</strong></td>
+                <td class="govuk-table__cell govuk-table__cell--numeric" style="border-bottom: none">-£10</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><strong>National Insurance</strong></td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">-£2</td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell" rowspan="2">24 Nov 2020</td>
+                <td class="govuk-table__cell" rowspan="2"><strong>Gross</strong></td>
+                <td class="govuk-table__cell govuk-table__cell--numeric" rowspan="2">£125</td>
+                <td class="govuk-table__cell" style="border-bottom: none"><strong>Tax</strong></td>
+                <td class="govuk-table__cell govuk-table__cell--numeric" style="border-bottom: none">-£10</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><strong>National Insurance</strong></td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">-£2</td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell" rowspan="2">19 Nov 2020</td>
+                <td class="govuk-table__cell" rowspan="2"><strong>Gross</strong></td>
+                <td class="govuk-table__cell govuk-table__cell--numeric" rowspan="2">£125</td>
+                <td class="govuk-table__cell" style="border-bottom: none"><strong>Tax</strong></td>
+                <td class="govuk-table__cell govuk-table__cell--numeric" style="border-bottom: none">-£10</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><strong>National Insurance</strong></td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">-£2</td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell" rowspan="2">12 Nov 2020</td>
+                <td class="govuk-table__cell" rowspan="2"><strong>Gross</strong></td>
+                <td class="govuk-table__cell govuk-table__cell--numeric" rowspan="2">£125</td>
+                <td class="govuk-table__cell" style="border-bottom: none"><strong>Tax</strong></td>
+                <td class="govuk-table__cell govuk-table__cell--numeric" style="border-bottom: none">-£10</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><strong>National Insurance</strong></td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">-£2</td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell" rowspan="2">5 Nov 2020</td>
+                <td class="govuk-table__cell" rowspan="2"><strong>Gross</strong></td>
+                <td class="govuk-table__cell govuk-table__cell--numeric" rowspan="2">£125</td>
+                <td class="govuk-table__cell" style="border-bottom: none"><strong>Tax</strong></td>
+                <td class="govuk-table__cell govuk-table__cell--numeric" style="border-bottom: none">-£10</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><strong>National Insurance</strong></td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">-£2</td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell" rowspan="2">29 Oct 2020</td>
+                <td class="govuk-table__cell" rowspan="2"><strong>Gross</strong></td>
+                <td class="govuk-table__cell govuk-table__cell--numeric" rowspan="2">£125</td>
+                <td class="govuk-table__cell" style="border-bottom: none"><strong>Tax</strong></td>
+                <td class="govuk-table__cell govuk-table__cell--numeric" style="border-bottom: none">-£10</td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><strong>National Insurance</strong></td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">-£2</td>
+              </tr>
+
+          </tbody>
+        </table>
+
+        <div class="govuk-!-padding-bottom-2"></div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Do you need to tell us anything else about your client's employment?
+              </h1>
+            </legend>
+            <div id="sign-in-hint" class="govuk-hint">
+              For example, if they get cash in hand pay, have zero-hours contracts, or recently started or ended employment.
+            </div>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="client-employment" name="client-employment" type="radio" value="yes" data-aria-controls="anything-yes">
+                <label class="govuk-label govuk-radios__label" for="client-employment">
+                  Yes
+                </label>
+              </div>
+               <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="anything-yes">
+                 <div class="govuk-form-group">
+                   <label class="govuk-hint" for="client-employment">
+                     You will need to upload evidence of this later on.
+                   </label>
+                   <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+                 </div>
+
+               </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="client-employment-2" name="client-employment-2" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="client-employment-2">
+                  No
+                </label>
+              </div>
+            </div>
+
+          </fieldset>
+        </div>
+
+      <div class="govuk-!-padding-bottom-6"></div>
+
+      <a href="types_of_income">
+      <button type="submit" class="govuk-button">
+      Save and continue
+      </button>
+      </a>
+    <a role="button" style="margin-left: 15px;" class="govuk-button draft-button">
+      Save and come back later
+    </a>
+
+
+{% endblock %}
+
+{% block footer %}
+    {{ govukFooter({
+      meta: {
+          items: [
+            {
+              href: "#",
+              text: "Contact"
+            },
+            {
+              href: "#",
+              text: "Feedback"
+            },
+            {
+              href: "https://www.gov.uk/help/cookies",
+              text: "Cookies"
+            },
+            {
+              href: "https://www.gov.uk/government/publications/laa-online-portal-help-and-information",
+              text: "Terms and conditions"
+            },
+            {
+              href: "https://mojdigital.blog.gov.uk/",
+              text: "MOJ Digital Services"
+            },
+            {
+              href: "/prototype-admin/clear-data",
+              text: "Clear data"
+            }
+          ]
+        }
+      }) }}
+    {% endblock %}
