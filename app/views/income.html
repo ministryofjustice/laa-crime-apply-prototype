@@ -1,0 +1,158 @@
+{% extends "layout.html" %}
+{% from "govuk/components/phase-banner/macro.njk"  import govukPhaseBanner %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
+
+{% block pageTitle %}
+Apply for legal aid - Types of income
+{% endblock %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: "Apply for criminal legal aid",
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+  }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+      href: "income"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              What is the total amount of money you receive on a year?
+            </h1>
+          </legend>
+
+          <p>You need to consider the money you received from:</p>
+          <ul class="govuk-list govuk-list--bullet">
+          <li>benefits</li>
+          <li>cash in hand pay</li>
+          <li>financial help from friends or family</li>
+          </ul>
+
+          <p>Enter the amount you receive before tax or any other deduction have bene taken off.</p>
+
+          <p>You may need to provide additional evidence to validate the income you declare.</p>
+
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
+              <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                Less than £12,475
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland" data-aria-controls="how-much-1">
+              <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+                Between £12,475 and £22,325
+              </label>
+            </div>
+            <!-- START: CONDITIONAL REVEAL -->
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="how-much-1"> <!-- id needs to match data-aria-controls -->
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="contact-by-email">
+                  Enter total amount
+                </label>
+                <div class="govuk-input__wrapper">
+                  <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                  <input class="govuk-input govuk-input--width-5" id="cost" name="cost" type="text" spellcheck="false">
+                </div>
+              </div>
+            </div>
+            <div class="govuk-form-group">
+            <!-- END: CONDITIONAL REVEAL  -->
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="where-do-you-live-3" name="where-do-you-live" type="radio" value="wales" data-aria-controls="how-much-2">
+              <label class="govuk-label govuk-radios__label" for="where-do-you-live-3">
+                More than  £22,325
+              </label>
+            </div>
+            <!-- START: CONDITIONAL REVEAL -->
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="how-much-2"> <!-- id needs to match data-aria-controls -->
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="contact-by-email">
+                  Enter total amount
+                </label>
+                <div class="govuk-input__wrapper">
+                  <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                  <input class="govuk-input govuk-input--width-5" id="cost" name="cost" type="text" spellcheck="false">
+                </div>
+              </div>
+            </div>
+            <div class="govuk-form-group">
+            <!-- END: CONDITIONAL REVEAL  -->
+          </div>
+
+        </fieldset>
+      </div>
+
+      <div class="govuk-!-padding-bottom-6"></div>
+
+      <a href="" role="button" class="govuk-button">
+        Save and continue
+      </a>
+
+      <a role="button" style="margin-left: 15px;" class="govuk-button draft-button">
+        Save and come back later
+      </a>
+
+</div>
+</div>
+
+  {% endblock %}
+
+  {% block footer %}
+      {{ govukFooter({
+        meta: {
+            items: [
+              {
+                href: "#",
+                text: "Contact"
+              },
+              {
+                href: "#",
+                text: "Feedback"
+              },
+              {
+                href: "https://www.gov.uk/help/cookies",
+                text: "Cookies"
+              },
+              {
+                href: "https://www.gov.uk/government/publications/laa-online-portal-help-and-information",
+                text: "Terms and conditions"
+              },
+              {
+                href: "https://mojdigital.blog.gov.uk/",
+                text: "MOJ Digital Services"
+              },
+              {
+                href: "/prototype-admin/clear-data",
+                text: "Clear data"
+              }
+            ]
+          }
+        }) }}
+      {% endblock %}

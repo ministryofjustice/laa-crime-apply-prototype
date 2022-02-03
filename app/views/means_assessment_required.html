@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+{% from "govuk/components/phase-banner/macro.njk"  import govukPhaseBanner %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
+
+{% block pageTitle %}
+Apply for legal aid - Confirmation page
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+  text: "Back",
+  href: "check_answers"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="flash-card">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <header>
+          <h1 class="govuk-heading-l">DWP records show that your client does not receive a passporting benefit – is this correct?</h1>
+        </header>
+        <form action="client_details" method="post" class="form">
+        <ul class="how-to-renew" data-id="how-to-renew-uk">
+          <li>
+
+
+            <div class="govuk-radios govuk-radios">
+     <div class="govuk-radios__item">
+       <input class="govuk-radios__input" style="color: #fff" id="changed-name" name="check" type="radio" value="yes">
+       <label style="color: #fff;" class="govuk-label govuk-radios__label" for="changed-name">
+         Yes
+       </label>
+     </div>
+     <div class="govuk-radios__item">
+       <input class="govuk-radios__input" id="changed-name-2" name="check" type="radio" value="no">
+       <label style="color: #fff;" class="govuk-label govuk-radios__label" for="changed-name-2">
+         No, my client receives a passporting benefit
+       </label>
+     </div>
+   </div>
+        </ul>
+
+        <div class="govuk-!-padding-bottom-4"></div>
+        <a href="employment_details" role="button" class="govuk-button white-button right">
+          Save and continue</a>
+
+          <a role="button" style="margin-left: 15px;" class="govuk-button draft-button">
+            Save and come back later
+          </a>
+
+          </form>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}
+
+{% block footer %}
+    {{ govukFooter({
+      meta: {
+          items: [
+            {
+              href: "#",
+              text: "Contact"
+            },
+            {
+              href: "#",
+              text: "Feedback"
+            },
+            {
+              href: "https://www.gov.uk/help/cookies",
+              text: "Cookies"
+            },
+            {
+              href: "https://www.gov.uk/government/publications/laa-online-portal-help-and-information",
+              text: "Terms and conditions"
+            },
+            {
+              href: "https://mojdigital.blog.gov.uk/",
+              text: "MOJ Digital Services"
+            },
+            {
+              href: "/prototype-admin/clear-data",
+              text: "Clear data"
+            }
+          ]
+        }
+      }) }}
+    {% endblock %}

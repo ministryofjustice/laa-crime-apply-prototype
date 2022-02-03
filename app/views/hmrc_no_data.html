@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+{% from "govuk/components/phase-banner/macro.njk"  import govukPhaseBanner %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
+
+{% block pageTitle %}
+Apply for legal aid - Confirmation page
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+  text: "Back",
+  href: "check_answers"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">HMRC has no record of your client's employment in the last 3 months</h1>
+
+        <p class="govuk-body-l">You told us your client is employed but HMRC could not confirm this.</p>
+
+        <p>Enter details of your client's employment in the last 3 months, including:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>how much they earned before tax</li>
+          <li>how much National Insurance they paid</li>
+          <li>how much tax they paid</li>
+          <li>any benefits in kind they received</li>
+          </ul>
+
+        <!--  <p>We also need to know if they get cash in hand pay, have zero-hours contracts, or recently started or ended employment.</p> -->
+
+
+  <h2 class="govuk-heading-m">Enter your client's employment details</h2>
+  <span class="govuk-hint">You'll need to upload supporting evidence later.</span>
+
+    <textarea class="govuk-textarea" id="more-detail" name="statement" rows="10
+    " aria-describedby="more-detail-hint">{{ data['statement'] }}</textarea>
+
+  </div>
+</div>
+
+  <a href="types_of_income">
+    <button type="submit" class="govuk-button">
+      Save and continue
+    </button>
+  </a>
+
+    <a role="button" style="margin-left: 15px;" class="govuk-button draft-button">
+      Save and come back later
+    </a>
+
+
+{% endblock %}
+
+{% block footer %}
+    {{ govukFooter({
+      meta: {
+          items: [
+            {
+              href: "#",
+              text: "Contact"
+            },
+            {
+              href: "#",
+              text: "Feedback"
+            },
+            {
+              href: "https://www.gov.uk/help/cookies",
+              text: "Cookies"
+            },
+            {
+              href: "https://www.gov.uk/government/publications/laa-online-portal-help-and-information",
+              text: "Terms and conditions"
+            },
+            {
+              href: "https://mojdigital.blog.gov.uk/",
+              text: "MOJ Digital Services"
+            },
+            {
+              href: "/prototype-admin/clear-data",
+              text: "Clear data"
+            }
+          ]
+        }
+      }) }}
+    {% endblock %}

@@ -12,7 +12,7 @@ Apply for legal aid - Types of income
   {# Set serviceName in config.js. #}
   {{ govukHeader({
     homepageUrl: "/",
-    serviceName: "Apply for legal aid",
+    serviceName: "Apply for criminal legal aid",
     serviceUrl: "/",
     containerClasses: "govuk-width-container"
   }) }}
@@ -42,28 +42,24 @@ Apply for legal aid - Types of income
             <fieldset class="govuk-fieldset" aria-describedby="citizenship-conditional-hint">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
                 <h1 class="govuk-fieldset__heading">
-                  Which types of income do you receive?
+                  Where do you receive money from?
                 </h1>
               </legend>
 
-               <span class="govuk-hint">Select all that apply.</span>
+              <span class="govuk-hint">Select all that apply.</span>
+
+              <div class="govuk-!-padding-bottom-2">
+              </div>
 
               <div class="govuk-checkboxes" data-module="checkboxes">
-
-              <!--  <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="income-conditional-1" name="salary" type="checkbox" value="yes" data-aria-controls="income-conditional-1" {{ checked("salary","yes") }}>
-                  <label class="govuk-label govuk-checkboxes__label" for="income-conditional-1">
-                    Salary or wages
-                  </label>
-                </div> -->
 
                 <div class="govuk-checkboxes__item">
                   <input class="govuk-checkboxes__input" id="income-conditional-2" name="benefits" type="checkbox" value="yes" data-aria-controls="income-conditional-2" {{ checked("benefits","yes") }}>
                   <label class="govuk-label govuk-checkboxes__label" for="income-conditional-2">
                     Benefits
                   </label>
-               <span id="nationality-1-item-hint" class="govuk-hint govuk-checkboxes__hint" style="padding-left: 15px">
-                      For example, Universal Credit or Child Benefit.
+               <span id="1-item-hint" class="govuk-hint govuk-checkboxes__hint" style="padding-left: 15px">
+                      For example, a non-passporting benefit such as Child Benefit.
                   </span>
                 </div>
 
@@ -72,7 +68,7 @@ Apply for legal aid - Types of income
                   <label class="govuk-label govuk-checkboxes__label" for="income-conditional-7">
                     Financial help from friends or family
                   </label>
-                  <span id="nationality-1-item-hint" class="govuk-hint govuk-checkboxes__hint" style="padding-left: 15px">
+                  <span id="2-item-hint" class="govuk-hint govuk-checkboxes__hint" style="padding-left: 15px">
                       For example, money from a family member for rent or bills.
                   </span>
                 </div>
@@ -80,17 +76,17 @@ Apply for legal aid - Types of income
                 <div class="govuk-checkboxes__item">
                   <input class="govuk-checkboxes__input" id="income-conditional-3" name="maintenance" type="checkbox" value="yes" data-aria-controls="income-conditional-3" {{ checked("maintenance","yes") }}>
                   <label class="govuk-label govuk-checkboxes__label" for="income-conditional-3">
-                    Maintenance payments <!-- for you or your children -->
+                    Maintenance payments
                   </label>
-                <!--  <span id="nationality-1-item-hint" class="govuk-hint govuk-checkboxes__hint" style="padding-left: 15px">
-                      For example, payments from an ex-partner to you or any children
-                  </span> -->
+                  <span id="3-item-hint" class="govuk-hint govuk-checkboxes__hint" style="padding-left: 15px">
+                      For example, payments from an ex-partner to you or any children.
+                  </span>
                 </div>
 
                 <div class="govuk-checkboxes__item">
                   <input class="govuk-checkboxes__input" id="income-conditional-4" name="property" type="checkbox" value="yes" data-aria-controls="income-citizenship-conditional-4" {{ checked("property","yes") }}>
                   <label class="govuk-label govuk-checkboxes__label" for="income-conditional-4">
-                    Income from a property or lodger
+                    Cash in hand pay
                   </label>
                 </div>
 
@@ -110,6 +106,24 @@ Apply for legal aid - Types of income
                       Include State, workplace and personal pensions.
                   </span>
                 </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="income-conditional-6" name="pensions" type="checkbox" value="yes" data-aria-controls="income-citizenship-conditional-6" {{ checked("policies","yes") }}>
+                  <label class="govuk-label govuk-checkboxes__label" for="income-conditional-6">
+                     Rent from anyone living with you or from other properties
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="income-conditional-6" name="pensions" type="checkbox" value="yes" data-aria-controls="income-citizenship-conditional-6" {{ checked("policies","yes") }}>
+                  <label class="govuk-label govuk-checkboxes__label" for="income-conditional-6">
+                     Working and Child Tax Credits
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="income-conditional-6" name="pensions" type="checkbox" value="yes" data-aria-controls="income-citizenship-conditional-6" {{ checked("policies","yes") }}>
+                  <label class="govuk-label govuk-checkboxes__label" for="income-conditional-6">
+                     Other sources
+                  </label>
+                </div>
              <p class="govuk-body">or</p>
 
 
@@ -126,9 +140,11 @@ Apply for legal aid - Types of income
             </fieldset>
           </div>
 
+          <a href="/income">
           <button type="submit" class="govuk-button">
             Save and continue
           </button>
+          </a>
 
         <!--  <a role="button" style="margin-left: 15px;" class="govuk-button draft-button">
             Save and come back later
