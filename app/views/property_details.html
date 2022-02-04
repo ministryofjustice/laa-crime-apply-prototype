@@ -1,0 +1,192 @@
+{% extends "layout.html" %}
+{% from "govuk/components/phase-banner/macro.njk"  import govukPhaseBanner %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
+
+{% block pageTitle %}
+Apply for legal aid -
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+      href: "property"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="vehicles" method="post" class="form">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            <h1 class="govuk-fieldset__heading">
+            Your client's property</h1>
+            </legend>
+<br>
+
+              <div class="govuk-form-group">
+                <h1 class="govuk-label-wrapper">
+                  <label class="govuk-label govuk-label--m" for="cost">
+                    How much is your client's home worth?
+                    <div>
+                    <span id="postcode-hint" class="govuk-hint">
+                      You can use property websites to find the estimated value.
+                    </span>
+                    </div>
+                  </label>
+                </h1>
+                <div class="govuk-input__wrapper">
+                  <div class="govuk-input__prefix" aria-hidden="true">£
+                  </div>
+                  <input class="govuk-input govuk-input--width-5" id="cost" name="cost" type="text" spellcheck="false">
+                </div>
+              </div>
+
+              <div class="govuk-form-group">
+                <h1 class="govuk-label-wrapper">
+                  <label class="govuk-label govuk-label--m" for="cost">
+                    What is the outstanding mortgage on your client's home?
+                    <div>
+                    <span id="postcode-hint" class="govuk-hint">
+                      You can use property websites to find the estimated value.
+                    </span>
+                    </div>
+                  </label>
+                </h1>
+                <div class="govuk-input__wrapper">
+                  <div class="govuk-input__prefix" aria-hidden="true">£
+                  </div>
+                  <input class="govuk-input govuk-input--width-5" id="cost" name="cost" type="text" spellcheck="false">
+                </div>
+              </div>
+
+              <div class="govuk-form-group">
+                <h1 class="govuk-label-wrapper">
+                  <label class="govuk-label govuk-label--m" for="cost">
+                    What is the outstanding mortgage on your client's home?
+                    <div>
+                    <span id="postcode-hint" class="govuk-hint">
+                      You can use property websites to find the estimated value.
+                    </span>
+                    </div>
+                  </label>
+                </h1>
+                <div class="govuk-input__wrapper">
+                  <div class="govuk-input__prefix" aria-hidden="true">£
+                  </div>
+                  <input class="govuk-input govuk-input--width-5" id="cost" name="cost" type="text" spellcheck="false">
+                </div>
+              </div>
+
+
+      <h2 class="govuk-heading-m">Does your client own their home with anyone else?</h2>
+
+      <div class="govuk-radios">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="property-1" name="property" type="radio" value="yes">
+          <label class="govuk-label govuk-radios__label" for="capital-1">
+            Yes, with a partner or ex-partner
+          </label>
+        </div>
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="property-1" name="property" type="radio" value="yes">
+          <label class="govuk-label govuk-radios__label" for="capital-1">
+            Yes, with a housing association or landlord
+          </label>
+        </div>
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="property-3" name="property" type="radio" value="no">
+          <label class="govuk-label govuk-radios__label" for="property-3">
+            Yes, with a friend, family member or other person
+          </label>
+        </div>
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="property-3" name="property" type="radio" value="no">
+          <label class="govuk-label govuk-radios__label" for="property-3">
+            No, they're the sole owner
+          </label>
+        </div>
+      </div>
+
+      <div class="govuk-!-padding-bottom-6"></div>
+
+      <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper">
+          <label class="govuk-label govuk-label--m" for="cost">
+            What % share of their home does your client legally own?
+            <div>
+            <span id="postcode-hint" class="govuk-hint">
+              Your client's name must be on the property deeds, lease, freehold or mortgage.
+            </span>
+            </div>
+          </label>
+        </h1>
+        <div class="govuk-input__wrapper">
+          <input class="govuk-input govuk-input--width-5" id="weight" name="weight" type="text" spellcheck="false">
+          <div class="govuk-input__suffix" aria-hidden="true">%</div>
+        </div>
+      </div>
+      </div>
+
+      <div class="govuk-!-padding-bottom-4"></div>
+
+      <button type="submit" class="govuk-button">
+        Save and continue
+      </button>
+
+      <a role="button" style="margin-left: 15px;" class="govuk-button draft-button">
+        Save and come back later
+      </a>
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+    {{ govukFooter({
+      meta: {
+          items: [
+            {
+              href: "#",
+              text: "Contact"
+            },
+            {
+              href: "#",
+              text: "Feedback"
+            },
+            {
+              href: "https://www.gov.uk/help/cookies",
+              text: "Cookies"
+            },
+            {
+              href: "https://www.gov.uk/government/publications/laa-online-portal-help-and-information",
+              text: "Terms and conditions"
+            },
+            {
+              href: "https://mojdigital.blog.gov.uk/",
+              text: "MOJ Digital Services"
+            },
+            {
+              href: "/prototype-admin/clear-data",
+              text: "Clear data"
+            }
+          ]
+        }
+      }) }}
+    {% endblock %}
