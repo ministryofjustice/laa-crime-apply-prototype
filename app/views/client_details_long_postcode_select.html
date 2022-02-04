@@ -27,7 +27,7 @@ Apply for legal aid - Client details
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">Enter your client's details</h1>
 
-      <form action="client_details_long_postcode_select#email-hint" method="post" novalidate>
+      <form action="postcode_finder" method="post" novalidate>
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
@@ -115,28 +115,49 @@ Apply for legal aid - Client details
 
         <div class="govuk-!-padding-bottom-2"></div>
 
-        <div class="govuk-form-group">
-         <label class="govuk-label govuk-label--m" for="national-insurance-number">
-           Postcode
-         </label>
-          <div id="postcode-hint" class="govuk-hint">
-            We’ll only use this to send your client correspondence about their legal aid.
-          </div>
-          <input class="govuk-input govuk-input--width-10" id="postcode" name="postcode" type="text" value="{{ data['postcode'] }}">
-        </div>
 
-        <a href=/client_details_long_postcode_select#postcode-hint>
-        <button type="submit" class="govuk-button">
-          Find address
-        </button>
-        </a>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m"> Postcode
+            </legend>
+            <div id="poscode-hint" class="govuk-hint">
+              We’ll only use this to send your client correspondence about their legal aid.
+            </div>
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-!-font-weight-bold postcode_change" for="change-postcode">{{ data['postcode'] }}
+                </label>
+                <p class="postcode_change">
+                  <a class="govuk-link" href="client_details_long#email-hint" aria-label="change postcode">Change</a>
+                </p>
+              </div>
+
+            <div class="govuk-form-group">
+                <label class="govuk-label" for="address-select">
+                Select an address
+                </label>
+                <select class="govuk-select govuk-!-width-three-quarters" id="address-select" name="address-select">
+                  <option>5 addresses found</option>
+                  <option>1 Main Street, London, {{ data['postcode'] }} </option>
+                  <option>2 Main Street, London, {{ data['postcode'] }} </option>
+                  <option>3 Main Street, London, {{ data['postcode'] }} </option>
+                  <option>4 Main Street, London, {{ data['postcode'] }} </option>
+                  <option>5 Main Street, London, {{ data['postcode'] }} </option>
+                </select>
+            </div>
+
+          </fieldset>
+        </div>
 
         <details class="govuk-details" data-module="govuk-details">
               <summary class="govuk-details__summary">
                 <span class="govuk-details__summary-text">
-                  Enter your client's correspondence address manually
+                  I can't find the address in the list
                 </span>
               </summary>
+
+                <div class="govuk-!-padding-bottom-4"></div>
+
+                <p> Enter your client's correspondence address manually. </p>
 
                 <div class="govuk-!-padding-bottom-2"></div>
 
@@ -175,9 +196,7 @@ Apply for legal aid - Client details
                   </label>
                   <input class="govuk-input govuk-input--width-10" id="address-postcode" name="address-postcode" type="text">
                 </div>
-
                 </fieldset>
-
               </form>
         </details>
 
@@ -187,7 +206,7 @@ Apply for legal aid - Client details
           <label class="govuk-label govuk-label--m" for="national-insurance-number">
             Does your client have a partner?
           </label>
-          <div id="partner-hint" class="govuk-hint">
+          <div id="email-hint" class="govuk-hint">
             By partner we mean someone they are married to, in a civil partnership with, cohabit with or otherwise share finances.
           </div>
           <div class="govuk-radios__item">
