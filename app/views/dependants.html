@@ -1,0 +1,166 @@
+{% extends "layout.html" %}
+{% from "govuk/components/phase-banner/macro.njk"  import govukPhaseBanner %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
+
+{% block pageTitle %}
+Apply for legal aid - Dependants
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "PROTOTYPE"
+    },
+    html: 'This is a prototype. Some things may not work as expected.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+      href: "benefits_selected"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <form action="dependant_add" method="post" class="form">
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                <h1 class="govuk-fieldset__heading">
+                  Does your client have any dependants?
+                </h1>
+              </legend>
+              <p class="govuk-body">A dependant is a child who:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>lives with your client</li>
+                    <li>depends on your client for financial support</li>
+                    </ul>
+
+              <div class="govuk-inset-text">Do not include children over 18 years old (if they have one).</div>
+
+              <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                  <div class="govuk-radios" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="marriage-civil-partnership" name="marriage-civil-partnership" type="radio" value="never" data-aria-controls="remand-yes">
+                      <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership">
+                        Yes
+                      </label>
+                    </div>
+
+                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="remand-yes"> <!-- id needs to match data-aria-controls -->
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="contact-by-email">
+                          Their date of birth
+                        </label>
+                        <div class="govuk-form-group">
+                          <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+                            <div id="passport-issued-hint" class="govuk-hint">
+                              For example, 27 3 2007
+                            </div>
+                            <div class="govuk-date-input" id="passport-issued">
+                              <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                  <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                                    Day
+                                  </label>
+                                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                              </div>
+                              <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                  <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                                    Month
+                                  </label>
+                                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                              </div>
+                              <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                  <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                                    Year
+                                  </label>
+                                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                              </div>
+                            </div>
+
+                          </fieldset>
+                        </div>
+
+
+                      </div>
+                    </div>
+                    <div class="govuk-form-group">
+
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="marriage-civil-partnership-2" name="marriage-civil-partnership" type="radio" value="married">
+                      <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership-2">
+                        No
+                      </label>
+                    </div>
+                  </div>
+
+                </fieldset>
+              </div>
+
+              <div class="govuk-!-padding-bottom-4"></div>
+
+              <a href="/outgoings"
+               <button type="submit" class="govuk-button">
+                Continue
+               </button>
+              </a>
+
+
+              <a role="button" style="margin-left: 15px;" class="govuk-button draft-button">
+                Save and come back later
+              </a>
+
+
+              </form>
+
+              </div>
+
+    </div>
+
+
+{% endblock %}
+
+{% block footer %}
+    {{ govukFooter({
+      meta: {
+          items: [
+            {
+              href: "#",
+              text: "Help"
+            },
+            {
+              href: "https://www.gov.uk/help/cookies",
+              text: "Cookies"
+            },
+            {
+              href: "#",
+              text: "Contact"
+            },
+            {
+              href: "#",
+              text: "Feedback"
+            },
+            {
+              href: "#",
+              text: "Terms and conditions"
+            },
+            {
+              href: "https://mojdigital.blog.gov.uk/",
+              text: "MOJ Digital Services"
+            },
+            {
+              href: "/PROTOTYPE-admin/clear-data",
+              text: "Clear data"
+            }
+          ]
+        }
+      }) }}
+    {% endblock %}

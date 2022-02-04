@@ -35,49 +35,69 @@ Apply for legal aid - Costs
       </h1>
     </legend>
 <br>
-          <h2 class="govuk-heading-m">What is the estimated value of the vehicle?</h2>
 
-          <span class="govuk-hint">
-            You can use car valuation websites to find this out.
-          </span>
-
-        <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
-        <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="costs" name="costs" type="text"">
-
-        <div class="govuk-!-padding-bottom-6"></div>
-
-        <h2 class="govuk-heading-m">
-      Are there any payments left on the vehicle?</h2>
-
-      <span class="govuk-hint">
-        Include any outstanding payments on loans, hire purchase (HP) or personal contract purchase (PCP) agreements.
-      </span>
-
-      <form action="vehicles_date" method="post" novalidate>
-
-        <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
-
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="how-contacted-conditional-2" name="attempts-to-settle" type="radio" value="no" data-aria-controls="conditional-how-contacted-conditional-2" {{ checked("attempts-to-settle","no") }}>
-            <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-2">
-              Yes
-            </label>
-          </div>
-          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-how-contacted-conditional-2">
-            <div class="govuk-form-group">
-              <label class="govuk-label" for="contact-by-email">
-      Enter the amount left to pay<!-- on any loans, hire purchase (HP) or personal contract purchase (PCP) agreements --></label>
-              <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
-              <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="costs" name="costs" type="text">
+          <div class="govuk-form-group">
+            <h1 class="govuk-label-wrapper">
+              <label class="govuk-label govuk-label--m" for="cost">
+                What is the estimated value of the vehicle?
+                <div>
+                <span id="postcode-hint" class="govuk-hint">
+                You can use car valuation websites to find this out.
+                </span>
+                </div>
+              </label>
+            </h1>
+            <div class="govuk-input__wrapper">
+              <div class="govuk-input__prefix" aria-hidden="true">£
+              </div>
+              <input class="govuk-input govuk-input--width-5" id="cost" name="cost" type="text" spellcheck="false">
             </div>
           </div>
 
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="how-contacted-conditional-1" name="attempts-to-settle" type="radio" value="yes" data-aria-controls="conditional-how-contacted-conditional-1" {{ checked("attempts-to-settle","yes") }}>
-            <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-1">
-              No
-            </label>
-          </div>
+
+          <div class="govuk-form-group">
+            <h1 class="govuk-label-wrapper">
+              <label class="govuk-label govuk-label--m" for="cost">
+                Are there any payments left on the vehicle?
+                <div>
+                <span id="postcode-hint" class="govuk-hint">
+                Include any outstanding payments on loans, hire purchase (HP) or personal contract purchase (PCP) agreements.
+                </span>
+                </div>
+              </label>
+            </h1>
+
+          <form action="vehicles_date" method="post" novalidate>
+
+            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="how-contacted-conditional-2" name="attempts-to-settle" type="radio" value="no" data-aria-controls="conditional-how-contacted-conditional-2" {{ checked("attempts-to-settle","no") }}>
+                <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-2">
+                  Yes
+                </label>
+              </div>
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-how-contacted-conditional-2">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="contact-by-email">
+                        Enter the amount left to pay
+                      </label>
+                        <div class="govuk-input__wrapper">
+                          <div class="govuk-input__prefix" aria-hidden="true">£
+                          </div>
+                          <input class="govuk-input govuk-input--width-5" id="cost" name="cost" type="text" spellcheck="false">
+                        </div>
+                    </div>
+                  </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="how-contacted-conditional-1" name="attempts-to-settle" type="radio" value="yes" data-aria-controls="conditional-how-contacted-conditional-1" {{ checked("attempts-to-settle","yes") }}>
+                <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-1">
+                  No
+                </label>
+              </div>
+
+            </div>
 
           <div class="govuk-!-padding-bottom-6"></div>
 
@@ -101,12 +121,20 @@ Apply for legal aid - Costs
 
           <div class="govuk-!-padding-bottom-6"></div>
 
-          <h2 class="govuk-heading-m">
-        Is the vehicle in regular use?</h2>
 
-          <span class="govuk-hint">
-            This means the vehicle is used at least once every 2 weeks for things like work, shopping or driving children to school.
-            </span>
+
+          <div class="govuk-form-group">
+            <h1 class="govuk-label-wrapper">
+              <label class="govuk-label govuk-label--m" for="cost">
+                Is the vehicle in regular use?
+                <div>
+                <span id="postcode-hint" class="govuk-hint">
+                This means the vehicle is used at least once every 2 weeks for things like work, shopping or driving children to school.
+                </span>
+                </div>
+              </label>
+            </h1>
+
 
           <div class="govuk-radios govuk-radios-">
             <div class="govuk-radios__item">
@@ -124,17 +152,19 @@ Apply for legal aid - Costs
             </div>
           </div>
 
+        </div>
+
 <div class="govuk-!-padding-bottom-6"></div>
 
-      </div>
-
+      <a href="/savings_investments"
       <button type="submit" class="govuk-button">
         Save and continue
       </button>
+      </a>
 
-   <a role="button" style="margin-left: 15px;" class="govuk-button draft-button">
+      <a role="button" style="margin-left: 15px;" class="govuk-button draft-button">
           Save and come back later
-        </a>
+      </a>
 
     </form>
   </div>
