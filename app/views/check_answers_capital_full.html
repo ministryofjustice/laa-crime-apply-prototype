@@ -24,88 +24,81 @@ Apply for legal aid - Check your answers
 {% block content %}
 <style media="screen">
 .app-check-your-answers__question{
-  /*font-weight: normal;*/
 }
 th:first-child {
   font-weight: bold;
 }
 </style>
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">
-      Check your answers
-    </h1>
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-xl">
+              Check your answers
+            </h1>
 
-  <h2 class="govuk-heading-l">Your client's income</h2>
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-l">Your client's income</h2>
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
 
-      <h2 class="govuk-heading-m">Employment income</h2>
-    </div>
-    <div class="govuk-grid-column-one-third">
-      <p><a class="govuk-link" style="float:right;" href="employment_income">Change</a></p>
-    </div>
-  </div>
+              <h2 class="govuk-heading-m">Employment income</h2>
+            </div>
+            <div class="govuk-grid-column-one-third">
+              <p><a class="govuk-link" style="float:right;" href="employment_income">Change</a></p>
+            </div>
+          </div>
 
-  <table class="govuk-table">
-    <tbody class="govuk-table__body">
-      <tr class="govuk-table__row">
-        <th class="govuk-table__cell govuk-body" scope="row">Do you need to tell us anything else about your client's employment?</th>
-        <td class="govuk-table__cell govuk-table__cell--numeric">Yes</td>
-      </tr>
-      <tr class="govuk-table__row">
-        <th class="govuk-table__cell govuk-body" scope="row">Details</th>
-        <td class="govuk-table__cell govuk-table__cell--numeric">My client gets cash in hand pay and works zero-hours contracts.</td>
-      </tr>
-    </tbody>
-  </table>
-  <br>
+          <table class="govuk-table">
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th class="govuk-table__cell govuk-body" scope="row">Do you need to tell us anything else about your client's employment?</th>
+                <td class="govuk-table__cell govuk-table__cell--numeric">Yes</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th class="govuk-table__cell govuk-body" scope="row">Details</th>
+                <td class="govuk-table__cell govuk-table__cell--numeric">My client gets cash in hand pay and works zero-hours contracts.</td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h2 class="govuk-heading-m">Other income</h2>
-    </div>
-    <div class="govuk-grid-column-one-third">
-      <p><a class="govuk-link" style="float:right;" href="benefits_selected">Change</a></p>
-    </div>
-  </div>
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              <h2 class="govuk-heading-m">Other income</h2>
+            </div>
+            <div class="govuk-grid-column-one-third">
+              <p><a class="govuk-link" style="float:right;" href="benefits_selected">Change</a></p>
+            </div>
+          </div>
 
-  <table class="govuk-table">
-    <tbody class="govuk-table__body">
-      <tr class="govuk-table__row">
-        <th class="govuk-table__cell govuk-body" scope="row">Financial help from family or friends</th>
-        <td class="govuk-table__cell govuk-table__cell--numeric">£1,320</td>
-      </tr>
-      <tr class="govuk-table__row">
-        <th class="govuk-table__cell govuk-body" scope="row">Disregarded benefits</th>
-        <td class="govuk-table__cell govuk-table__cell--numeric">£240</td>
-      </tr>
-      <tr class="govuk-table__row">
-        <th class="govuk-table__cell govuk-body" scope="row">Benefits</th>
-        <td class="govuk-table__cell govuk-table__cell--numeric">£105.25</td>
-      </tr>
-      <tr class="govuk-table__row">
-        <th class="govuk-table__cell govuk-body" scope="row">Maintenance payments from a former partner</th>
-        <td class="govuk-table__cell govuk-table__cell--numeric">None</td>
-      </tr>
-      <tr class="govuk-table__row">
-        <th class="govuk-table__cell govuk-body" scope="row">Income from a property or lodger</th>
-        <td class="govuk-table__cell govuk-table__cell--numeric">None</td>
-      </tr>
-      <tr class="govuk-table__row">
-        <th class="govuk-table__cell govuk-body" scope="row">Pension</th>
-        <td class="govuk-table__cell govuk-table__cell--numeric">None</td>
-      </tr>
-    <!--  <tr class="govuk-table__row">
-        <th class="govuk-table__cell govuk-body" scope="row">Student finance</th>
-        <td class="govuk-table__cell govuk-table__cell--numeric">£442</td>
-      </tr> -->
-    </tbody>
-  </table>
-  <br>
-
-
+          <table class="govuk-table">
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th class="govuk-table__cell govuk-body" scope="row">Financial help from family or friends</th>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£1,320</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th class="govuk-table__cell govuk-body" scope="row">Disregarded benefits</th>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£240</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th class="govuk-table__cell govuk-body" scope="row">Benefits</th>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£105.25</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th class="govuk-table__cell govuk-body" scope="row">Maintenance payments from a former partner</th>
+                <td class="govuk-table__cell govuk-table__cell--numeric">None</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th class="govuk-table__cell govuk-body" scope="row">Income from a property or lodger</th>
+                <td class="govuk-table__cell govuk-table__cell--numeric">None</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th class="govuk-table__cell govuk-body" scope="row">Pension</th>
+                <td class="govuk-table__cell govuk-table__cell--numeric">None</td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
 
           <h2 class="govuk-heading-l">
             Dependants
@@ -129,10 +122,8 @@ th:first-child {
          </div>
         </div>
 
-
         <div class="govuk-grid-row">
          <div class="govuk-grid-column-two-thirds">
-
 
           <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
@@ -142,7 +133,6 @@ th:first-child {
             <p><a class="govuk-link" style="float:right;" href="dependant_add">Change</a></p>
           </div>
           </div>
-
           <dl class="govuk-summary-list">
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
@@ -157,7 +147,6 @@ th:first-child {
                 </a>
               </dd>
             </div>
-
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Date of birth
@@ -210,28 +199,11 @@ th:first-child {
                 </a>
               </dd>
             </div>
-
-          <!--  <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Assets worth more than £8,000
-              </dt>
-              <dd class="govuk-summary-list__value">
-                No{{ data['postcode'] }}
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a href="postcode_finder#postcode">
-                  <span class="govuk-visually-hidden">correspondance address</span>
-                </a>
-              </dd>
-            </div> -->
-
          </div>
         </div>
 
-
         <div class="govuk-grid-row">
          <div class="govuk-grid-column-two-thirds">
-
 
           <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
@@ -241,7 +213,6 @@ th:first-child {
             <p><a class="govuk-link"style="float:right;" href="dependant_add_2">Change</a></p>
           </div>
           </div>
-
           <dl class="govuk-summary-list">
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
@@ -282,19 +253,6 @@ th:first-child {
                 </a>
               </dd>
             </div>
-        <!--  <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                In full-time education or training
-              </dt>
-              <dd class="govuk-summary-list__value">
-                Yes{{ data['email-address'] }}
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a href="client_details#email-address">
-                  <span class="govuk-visually-hidden">email address</span>
-                </a>
-              </dd>
-            </div> -->
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Receives income
@@ -324,12 +282,6 @@ th:first-child {
             </div>
             </dl>
             <br>
-
-
-
-
-
-
 
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-two-thirds">
@@ -548,7 +500,7 @@ th:first-child {
   <dl class="govuk-summary-list">
     <div class="govuk-summary-list__row">
       <dt class="govuk-summary-list__key">
-Money not in a bank account
+        Money not in a bank account
       </dt>
       <dd class="govuk-summary-list__value">
         £745
@@ -614,7 +566,6 @@ Money not in a bank account
     <div class="govuk-summary-list__row">
       <dt class="govuk-summary-list__key">
         Life assurance and endowment policies
-
       </dt>
       <dd class="govuk-summary-list__value">
         £556
@@ -760,58 +711,6 @@ Money not in a bank account
     </div>
     </dl>
 
-
-
-
-  <!-- <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h2 class="govuk-heading-m">Other assets</h2>
-    </div>
-    <div class="govuk-grid-column-one-third">
-      <p><a class="govuk-link" style="float:right;" href="other_capital_select">Change</a></p>
-    </div>
-  </div>
-
-  <table class="govuk-table">
-    <tbody class="govuk-table__body">
-      <tr class="govuk-table__row">
-        <th class="govuk-table__cell govuk-body" scope="row">Valuable items worth more than £500</th>
-        <td class="govuk-table__cell govuk-table__cell--numeric">£756</td>
-      </tr>
-      <tr class="govuk-table__row">
-        <th class="govuk-table__cell govuk-body" scope="row">Second property or holiday home estimated value</th>
-        <td class="govuk-table__cell govuk-table__cell--numeric">£67,535.72</td>
-      </tr>
-      <tr class="govuk-table__row">
-        <th class="govuk-table__cell govuk-body" scope="row">Second property or holiday home outstanding mortgage amount</th>
-        <td class="govuk-table__cell govuk-table__cell--numeric">£745</td>
-      </tr>
-      <tr class="govuk-table__row">
-        <th class="govuk-table__cell govuk-body" scope="row">Second property or holiday home percentage owned</th>
-        <td class="govuk-table__cell govuk-table__cell--numeric">12%</td>
-      </tr>
-      <tr class="govuk-table__row">
-        <th class="govuk-table__cell govuk-body" scope="row">Timeshare</th>
-        <td class="govuk-table__cell govuk-table__cell--numeric">£2,657</td>
-      </tr>
-      <tr class="govuk-table__row">
-        <th class="govuk-table__cell govuk-body" scope="row">Land</th>
-        <td class="govuk-table__cell govuk-table__cell--numeric">£1,345</td>
-      </tr>
-      <tr class="govuk-table__row">
-        <th class="govuk-table__cell govuk-body" scope="row">Money or assets from the estate of a person who has died</th>
-        <td class="govuk-table__cell govuk-table__cell--numeric">£100</td>
-      </tr>
-      <tr class="govuk-table__row">
-        <th class="govuk-table__cell govuk-body" scope="row">Money owed to you, including from a private mortgage</th>
-        <td class="govuk-table__cell govuk-table__cell--numeric">£45,687</td>
-      </tr>
-      <tr class="govuk-table__row">
-        <th class="govuk-table__cell govuk-body" scope="row">Interest in a trust</th>
-        <td class="govuk-table__cell govuk-table__cell--numeric">£1</td>
-      </tr>
-    </tbody>
-  </table> -->
 
   <div class="govuk-!-padding-bottom-3"></div>
 
