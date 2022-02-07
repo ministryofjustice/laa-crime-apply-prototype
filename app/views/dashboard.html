@@ -1,6 +1,4 @@
 {% extends "layout.html" %}
-{% from "govuk/components/phase-banner/macro.njk"  import govukPhaseBanner %}
-{% from "govuk/components/footer/macro.njk" import govukFooter %}
 
 {% block pageTitle %}
 Apply for legal aid - Homepage
@@ -47,57 +45,8 @@ Apply for legal aid - Homepage
           <th class="govuk-table__header govuk-table__header--numeric" scope="col">Status</th>
         </tr>
       </thead>
-      <!-- <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell" scope="row"><a class="govuk-link" href="application_page">John Doe</a></td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">23/10/2018</td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">2018/LAA/4ewrgfdd</td>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag">Application submitted</strong></td>
-        </tr>
-      </tbody> -->
     </table>
 
 </div>
 
 {% endblock %}
-
-{% block footer %}
-    {{ govukFooter({
-      meta: {
-          items: [
-          {
-            href: "https://www.gov.uk/help/cookies",
-            text: "Cookies"
-          },
-          {
-            href: "#",
-            text: "Contact"
-          },
-          {
-            href: "#",
-            text: "Feedback"
-          },
-          {
-            href: "/privacy-policy",
-            text: "Privacy policy"
-          },
-          {
-            href: "#",
-            text: "Accessibility statement"
-          },
-          {
-            href: "#",
-            text: "Terms and conditions"
-          },
-          {
-            href: "https://mojdigital.blog.gov.uk/",
-            text: "MOJ Digital Services"
-          },
-          {
-            href: "/prototype-admin/clear-data",
-            text: "Clear data"
-          }
-          ]
-        }
-      }) }}
-    {% endblock %}

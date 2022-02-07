@@ -1,21 +1,7 @@
 {% extends "layout.html" %}
-{% from "govuk/components/phase-banner/macro.njk"  import govukPhaseBanner %}
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-{% from "govuk/components/footer/macro.njk" import govukFooter %}
 
 {% block pageTitle %}
 Apply for legal aid - Income start page
-{% endblock %}
-
-{% block header %}
-  {% include "includes/cookie-banner.html" %}
-  {# Set serviceName in config.js. #}
-  {{ govukHeader({
-    homepageUrl: "/",
-    serviceName: "Apply for criminal legal aid",
-    serviceUrl: "/",
-    containerClasses: "govuk-width-container"
-  }) }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -255,39 +241,4 @@ Apply for legal aid - Income start page
 
   <p><a href="hmrc_found_data" style="color: #b7b7b7;">If provider says client is not employed but HMRC returns data</a></p>
 
-
-
-  {% endblock %}
-
-  {% block footer %}
-      {{ govukFooter({
-        meta: {
-            items: [
-              {
-                href: "#",
-                text: "Contact"
-              },
-              {
-                href: "#",
-                text: "Feedback"
-              },
-              {
-                href: "https://www.gov.uk/help/cookies",
-                text: "Cookies"
-              },
-              {
-                href: "https://www.gov.uk/government/publications/laa-online-portal-help-and-information",
-                text: "Terms and conditions"
-              },
-              {
-                href: "https://mojdigital.blog.gov.uk/",
-                text: "MOJ Digital Services"
-              },
-              {
-                href: "/PROTOTYPE-admin/clear-data",
-                text: "Clear data"
-              }
-            ]
-          }
-        }) }}
-      {% endblock %}
+{% endblock %}

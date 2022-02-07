@@ -36,7 +36,7 @@
 {% endblock %}
 
 {% block pageTitle %}
-  GOV.UK Prototype Kit
+  Apply for criminal legal aid
 {% endblock %}
 
 {% block header %}
@@ -49,6 +49,15 @@
   }) }}
 {% endblock %}
 
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "PROTOTYPE"
+    },
+    html: 'This is a prototype. Some things may not work as expected.'
+  }) }}
+{% endblock %}
+
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
 
 {% if useAutoStoreData %}
@@ -57,12 +66,28 @@
       meta: {
         items: [
           {
-            href: "https://govuk-prototype-kit.herokuapp.com/",
-            text: "GOV.UK Prototype Kit " + releaseVersion
+            href: "https://www.gov.uk/help/cookies",
+            text: "Cookies"
           },
           {
-            href: "/prototype-admin/clear-data",
-            text: "Clear data"
+            href: "#",
+            text: "Contact"
+          },
+          {
+            href: "#",
+            text: "Feedback"
+          },
+          {
+            href: "/privacy-policy",
+            text: "Privacy policy"
+          },
+          {
+            href: "#",
+            text: "Accessibility statement"
+          },
+          {
+            href: "#",
+            text: "Terms and conditions"
           }
         ],
         visuallyHiddenTitle: "Footer links"
