@@ -1,0 +1,550 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "PROTOTYPE"
+    },
+    html: 'This is a prototype. Some things may not work as expected.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+      href: "types_of_income"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <form action="dependants" method="post" class="form">
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="citizenship-conditional-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                <h1 class="govuk-fieldset__heading">
+                Where do you receive money from?
+                </h1>
+              </legend>
+
+              <span class="govuk-hint">Select all that apply.</span>
+
+              <div class="govuk-!-padding-bottom-2"></div>
+
+              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="income-conditional-2" name="benefits" type="checkbox" value="yes" data-aria-controls="benefits-yes" {{ checked("benefits","yes") }}>
+                    <label class="govuk-label govuk-checkboxes__label" for="income-conditional-2">
+                      Benefits
+                    </label>
+                    <span id="1-item-hint" class="govuk-hint govuk-checkboxes__hint" style="padding-left: 15px">
+                        For example, a non-passporting benefit such as Child Benefit.
+                    </span>
+                  </div>
+                  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="benefits-yes">
+                  <!-- WRAPPER STARTS -->
+                  <div class="govuk-form-group">
+                      <label class="govuk-label" for="antiques-value">
+                        Enter amount
+                      </label>
+                      <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
+                      <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="antiques-value" name="antiques-value" type="text">
+
+                      <div class="govuk-!-padding-bottom-4"></div>
+
+                      <fieldset class="govuk-fieldset">
+                        <label class="govuk-label" for="antiques-value">
+                          Enter frequency
+                        </label>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                              Every week
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+                              Every two weeks
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-3" name="where-do-you-live" type="radio" value="wales">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-3">
+                              Monthly
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-4" name="where-do-you-live" type="radio" value="northern-ireland">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-4">
+                              Annually
+                            </label>
+                          </div>
+                        </div>
+                      </fieldset>
+
+                  </div>
+                  <!-- WRAPPER ENDS -->
+                  </div>
+
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="income-conditional-2" name="benefits" type="checkbox" value="yes" data-aria-controls="financial_help-yes" {{ checked("benefits","yes") }}>
+                    <label class="govuk-label govuk-checkboxes__label" for="income-conditional-2">
+                      Financial help from friends or family
+                    </label>
+                    <span id="1-item-hint" class="govuk-hint govuk-checkboxes__hint" style="padding-left: 15px">
+                        For example, money from a family member for rent or bills.
+                    </span>
+                  </div>
+                  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="financial_help-yes">
+                  <!-- WRAPPER STARTS -->
+                  <div class="govuk-form-group">
+                      <label class="govuk-label" for="antiques-value">
+                        Enter amount
+                      </label>
+                      <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
+                      <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="antiques-value" name="antiques-value" type="text">
+
+                      <div class="govuk-!-padding-bottom-4"></div>
+
+                      <fieldset class="govuk-fieldset">
+                        <label class="govuk-label" for="antiques-value">
+                          Enter frequency
+                        </label>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                              Every week
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+                              Every two weeks
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-3" name="where-do-you-live" type="radio" value="wales">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-3">
+                              Monthly
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-4" name="where-do-you-live" type="radio" value="northern-ireland">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-4">
+                              Annually
+                            </label>
+                          </div>
+                        </div>
+                      </fieldset>
+
+                  </div>
+                  <!-- WRAPPER ENDS -->
+                  </div>
+
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="income-conditional-2" name="benefits" type="checkbox" value="yes" data-aria-controls="maintenance-yes" {{ checked("benefits","yes") }}>
+                    <label class="govuk-label govuk-checkboxes__label" for="income-conditional-2">
+                      Maintenance payments
+                    </label>
+                    <span id="1-item-hint" class="govuk-hint govuk-checkboxes__hint" style="padding-left: 15px">
+                      For example, payments from an ex-partner to you or any children.
+                    </span>
+                  </div>
+                  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="maintenance-yes">
+                  <!-- WRAPPER STARTS -->
+                  <div class="govuk-form-group">
+                      <label class="govuk-label" for="antiques-value">
+                        Enter amount
+                      </label>
+                      <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
+                      <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="antiques-value" name="antiques-value" type="text">
+
+                      <div class="govuk-!-padding-bottom-4"></div>
+
+                      <fieldset class="govuk-fieldset">
+                        <label class="govuk-label" for="antiques-value">
+                          Enter frequency
+                        </label>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                              Every week
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+                              Every two weeks
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-3" name="where-do-you-live" type="radio" value="wales">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-3">
+                              Monthly
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-4" name="where-do-you-live" type="radio" value="northern-ireland">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-4">
+                              Annually
+                            </label>
+                          </div>
+                        </div>
+                      </fieldset>
+
+                  </div>
+                  <!-- WRAPPER ENDS -->
+                  </div>
+
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="income-conditional-2" name="benefits" type="checkbox" value="yes" data-aria-controls="cash-yes" {{ checked("benefits","yes") }}>
+                    <label class="govuk-label govuk-checkboxes__label" for="income-conditional-2">
+                      Cash in hand pay
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="cash-yes">
+                  <!-- WRAPPER STARTS -->
+                  <div class="govuk-form-group">
+                      <label class="govuk-label" for="antiques-value">
+                        Enter amount
+                      </label>
+                      <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
+                      <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="antiques-value" name="antiques-value" type="text">
+
+                      <div class="govuk-!-padding-bottom-4"></div>
+
+                      <fieldset class="govuk-fieldset">
+                        <label class="govuk-label" for="antiques-value">
+                          Enter frequency
+                        </label>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                              Every week
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+                              Every two weeks
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-3" name="where-do-you-live" type="radio" value="wales">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-3">
+                              Monthly
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-4" name="where-do-you-live" type="radio" value="northern-ireland">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-4">
+                              Annually
+                            </label>
+                          </div>
+                        </div>
+                      </fieldset>
+
+                  </div>
+                  <!-- WRAPPER ENDS -->
+                  </div>
+
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="income-conditional-2" name="benefits" type="checkbox" value="yes" data-aria-controls="student-yes" {{ checked("benefits","yes") }}>
+                    <label class="govuk-label govuk-checkboxes__label" for="income-conditional-2">
+                      Student loan or grant
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="student-yes">
+                  <!-- WRAPPER STARTS -->
+                  <div class="govuk-form-group">
+                      <label class="govuk-label" for="antiques-value">
+                        Enter amount
+                      </label>
+                      <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
+                      <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="antiques-value" name="antiques-value" type="text">
+
+                      <div class="govuk-!-padding-bottom-4"></div>
+
+                      <fieldset class="govuk-fieldset">
+                        <label class="govuk-label" for="antiques-value">
+                          Enter frequency
+                        </label>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                              Every week
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+                              Every two weeks
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-3" name="where-do-you-live" type="radio" value="wales">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-3">
+                              Monthly
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-4" name="where-do-you-live" type="radio" value="northern-ireland">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-4">
+                              Annually
+                            </label>
+                          </div>
+                        </div>
+                      </fieldset>
+
+                  </div>
+                  <!-- WRAPPER ENDS -->
+                  </div>
+
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="income-conditional-2" name="benefits" type="checkbox" value="yes" data-aria-controls="pension-yes" {{ checked("benefits","yes") }}>
+                    <label class="govuk-label govuk-checkboxes__label" for="income-conditional-2">
+                      Pension
+                    </label>
+                    <span id="1-item-hint" class="govuk-hint govuk-checkboxes__hint" style="padding-left: 15px">
+                      Include State, workplace and personal pensions.
+                    </span>
+                  </div>
+                  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="pension-yes">
+                  <!-- WRAPPER STARTS -->
+                  <div class="govuk-form-group">
+                      <label class="govuk-label" for="antiques-value">
+                        Enter amount
+                      </label>
+                      <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
+                      <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="antiques-value" name="antiques-value" type="text">
+
+                      <div class="govuk-!-padding-bottom-4"></div>
+
+                      <fieldset class="govuk-fieldset">
+                        <label class="govuk-label" for="antiques-value">
+                          Enter frequency
+                        </label>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                              Every week
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+                              Every two weeks
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-3" name="where-do-you-live" type="radio" value="wales">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-3">
+                              Monthly
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-4" name="where-do-you-live" type="radio" value="northern-ireland">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-4">
+                              Annually
+                            </label>
+                          </div>
+                        </div>
+                      </fieldset>
+
+                  </div>
+                  <!-- WRAPPER ENDS -->
+                  </div>
+
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="income-conditional-2" name="benefits" type="checkbox" value="yes" data-aria-controls="rent-yes" {{ checked("benefits","yes") }}>
+                    <label class="govuk-label govuk-checkboxes__label" for="income-conditional-2">
+                      Rent from anyone living with you or from other properties
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="rent-yes">
+                  <!-- WRAPPER STARTS -->
+                  <div class="govuk-form-group">
+                      <label class="govuk-label" for="antiques-value">
+                        Enter amount
+                      </label>
+                      <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
+                      <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="antiques-value" name="antiques-value" type="text">
+
+                      <div class="govuk-!-padding-bottom-4"></div>
+
+                      <fieldset class="govuk-fieldset">
+                        <label class="govuk-label" for="antiques-value">
+                          Enter frequency
+                        </label>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                              Every week
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+                              Every two weeks
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-3" name="where-do-you-live" type="radio" value="wales">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-3">
+                              Monthly
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-4" name="where-do-you-live" type="radio" value="northern-ireland">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-4">
+                              Annually
+                            </label>
+                          </div>
+                        </div>
+                      </fieldset>
+
+                  </div>
+                  <!-- WRAPPER ENDS -->
+                  </div>
+
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="income-conditional-2" name="benefits" type="checkbox" value="yes" data-aria-controls="tax_credit-yes" {{ checked("benefits","yes") }}>
+                    <label class="govuk-label govuk-checkboxes__label" for="income-conditional-2">
+                      Working and Child Tax Credits
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="tax_credit-yes">
+                  <!-- WRAPPER STARTS -->
+                  <div class="govuk-form-group">
+                      <label class="govuk-label" for="antiques-value">
+                        Enter amount
+                      </label>
+                      <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
+                      <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="antiques-value" name="antiques-value" type="text">
+
+                      <div class="govuk-!-padding-bottom-4"></div>
+
+                      <fieldset class="govuk-fieldset">
+                        <label class="govuk-label" for="antiques-value">
+                          Enter frequency
+                        </label>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                              Every week
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+                              Every two weeks
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-3" name="where-do-you-live" type="radio" value="wales">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-3">
+                              Monthly
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-4" name="where-do-you-live" type="radio" value="northern-ireland">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-4">
+                              Annually
+                            </label>
+                          </div>
+                        </div>
+                      </fieldset>
+
+                  </div>
+                  <!-- WRAPPER ENDS -->
+                  </div>
+
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="income-conditional-2" name="benefits" type="checkbox" value="yes" data-aria-controls="other-yes" {{ checked("benefits","yes") }}>
+                    <label class="govuk-label govuk-checkboxes__label" for="income-conditional-2">
+                      Other sources
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="other-yes">
+                  <!-- WRAPPER STARTS -->
+                  <div class="govuk-form-group">
+                      <label class="govuk-label" for="antiques-value">
+                        Enter amount
+                      </label>
+                      <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
+                      <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="antiques-value" name="antiques-value" type="text">
+
+                      <div class="govuk-!-padding-bottom-4"></div>
+
+                      <fieldset class="govuk-fieldset">
+                        <label class="govuk-label" for="antiques-value">
+                          Enter frequency
+                        </label>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                              Every week
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+                              Every two weeks
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-3" name="where-do-you-live" type="radio" value="wales">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-3">
+                              Monthly
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-4" name="where-do-you-live" type="radio" value="northern-ireland">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-4">
+                              Annually
+                            </label>
+                          </div>
+                        </div>
+                      </fieldset>
+
+                  </div>
+                  <!-- WRAPPER ENDS -->
+                  </div>
+
+
+                <div>
+                <p class="govuk-body">or</p>
+                </div>
+
+               <div class="govuk-checkboxes__item">
+                 <input class="govuk-checkboxes__input" id="citizenship-conditional-7" name="estates" type="checkbox" value="yes">
+                 <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional-7">
+                   None of the above
+                 </label>
+               </div>
+
+              </div>
+            </fieldset>
+          </div>
+
+          <button type="submit" class="govuk-button">
+            Continue
+          </button>
+
+        </form>
+      </div>
+    </div>
+
+{% endblock %}
