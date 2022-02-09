@@ -26,24 +26,79 @@ Apply for legal aid - Confirmation page
     <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-xl">HMRC has no record of your client's employment in the last 3 months</h1>
 
-        <p class="govuk-body-l">You told us your client is employed but HMRC could not confirm this.</p>
+        <p>This could be because your client:</p>
 
-        <p>Enter details of your client's employment in the last 3 months, including:</p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>how much they earned before tax</li>
-          <li>how much National Insurance they paid</li>
-          <li>how much tax they paid</li>
-          <li>any benefits in kind they received</li>
-          </ul>
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>gets cash in hand pay</li>
+                  <li>has zero hours contracts</li>
+                  <li>recently started or ended employment</li>
+                </ul>
 
-        <!--  <p>We also need to know if they get cash in hand pay, have zero-hours contracts, or recently started or ended employment.</p> -->
+          <div class="govuk-!-padding-bottom-4"></div>
 
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                <h1 class="govuk-fieldset__heading">
+                  What is your client's employment status?
+                </h1>
+              </legend>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="client-employment" name="client-employment" type="radio" value="yes" data-aria-controls="anything-yes">
+                  <label class="govuk-label govuk-radios__label" for="client-employment">
+                    Employed
+                  </label>
+                </div>
+                 <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="anything-yes">
+                     <div class="govuk-form-group">
+                       <p>
+                       Enter the amount you receive before tax or any other deduction have bene taken off.
+                       </p>
+                       <!-- <span id="account-number-hint" class="govuk-hint">
+                       You may need to provide supporting evidence to validate the income you declare.
+                       </span> -->
+                       <label class="govuk-label" for="antiques-value">
+                         February 2021
+                       </label>
+                       <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
+                       <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="anything-yes" name="antiques-value" type="text">
+                     </div>
+                     <div class="govuk-form-group">
+                       <label class="govuk-label" for="antiques-value">
+                         January 2021
+                       </label>
+                       <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
+                       <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="anything-yes" name="antiques-value" type="text">
+                     </div>
+                     <div class="govuk-form-group">
+                       <label class="govuk-label" for="antiques-value">
+                         December 2020
+                       </label>
+                       <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
+                       <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="anything-yes" name="antiques-value" type="text">
+                     </div>
+                 </div>
 
-  <h2 class="govuk-heading-m">Enter your client's employment details</h2>
-  <span class="govuk-hint">You'll need to upload supporting evidence later.</span>
+                 <div class="govuk-radios__item">
+                   <input class="govuk-radios__input" id="client-employment" name="client-employment" type="radio" value="yes" data-aria-controls="">
+                   <label class="govuk-label govuk-radios__label" for="client-employment">
+                     Self-employed, business partner, company director or shareholder
+                   </label>
+                 </div>
 
-    <textarea class="govuk-textarea" id="more-detail" name="statement" rows="10
-    " aria-describedby="more-detail-hint">{{ data['statement'] }}</textarea>
+                 <p class="govuk-body">or</p>
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="client-employment-2" name="client-employment-2" type="radio" value="no">
+                  <label class="govuk-label govuk-radios__label" for="client-employment-2">
+                    Not employed
+                  </label>
+                </div>
+              </div>
+
+            </fieldset>
+          </div>
 
   </div>
 </div>
