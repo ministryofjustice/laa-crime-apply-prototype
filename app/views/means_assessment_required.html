@@ -30,33 +30,45 @@ Apply for legal aid - Confirmation page
           <h1 class="govuk-heading-l">DWP records show that your client does not receive a passporting benefit – is this correct?</h1>
         </header>
         <form action="client_details" method="post" class="form">
-        <ul class="how-to-renew" data-id="how-to-renew-uk">
-          <li>
+
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <!-- REMEMBER: data-aria-controls -->
+                  <input class="govuk-radios__input" style="color: #fff" id="marriage-civil-partnership" name="marriage-civil-partnership" type="radio" value="never" data-aria-controls="conditional-yes">
+                  <label style="color: #fff;" class="govuk-label govuk-radios__label" for="marriage-civil-partnership">
+                    Yes
+                  </label>
+                </div>
+                <!-- START: CONDITIONAL REVEAL -->
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-yes"> <!-- id needs to match data-aria-controls -->
+                  <div class="govuk-form-group">
+                    <label style="color: #fff;" class="govuk-label" for="contact-by-email">
+                      We'll check your client's details with HM Revenue and Customs (HMRC). You'll need to review your client's employment details later on.
+                    </label>
+                  </div>
+                </div>
+                <div class="govuk-form-group">
+                <!-- END: CONDITIONAL REVEAL  -->
+              <div class="govuk-radios__item">
+                 <input class="govuk-radios__input" id="changed-name-2" name="check" type="radio" value="no">
+                 <label style="color: #fff;" class="govuk-label govuk-radios__label" for="changed-name-2">
+                   No, my client receives a passporting benefit
+                 </label>
+              </div>
+            </div>
 
 
-            <div class="govuk-radios govuk-radios">
-     <div class="govuk-radios__item">
-       <input class="govuk-radios__input" style="color: #fff" id="changed-name" name="check" type="radio" value="yes">
-       <label style="color: #fff;" class="govuk-label govuk-radios__label" for="changed-name">
-         Yes
-       </label>
-     </div>
-     <div class="govuk-radios__item">
-       <input class="govuk-radios__input" id="changed-name-2" name="check" type="radio" value="no">
-       <label style="color: #fff;" class="govuk-label govuk-radios__label" for="changed-name-2">
-         No, my client receives a passporting benefit
-       </label>
-     </div>
-   </div>
-        </ul>
 
-        <div class="govuk-!-padding-bottom-4"></div>
-        <a href="employment_details" role="button" class="govuk-button white-button right">
+
+
+          <div class="govuk-!-padding-bottom-4"></div>
+
+          <a href="before_means_assessment" role="button" class="govuk-button white-button right">
           Save and continue</a>
 
           <a role="button" style="margin-left: 15px;" class="govuk-button draft-button">
-            Save and come back later
-          </a>
+            Save and come back later</a>
 
           </form>
       </div>
