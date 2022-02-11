@@ -4,28 +4,23 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-xl">What happens next</h2>
+        <form action="/passported" method="post" class="form">
+          <p class="govuk-body">We'll check your client's benefits status with the Department of Work and Pensions (DWP). </p>
+          <br>
 
-    <h2 class="govuk-heading-xl">What happens next</h2>
+          <input type="hidden" name="check_benefits[]" value="completed">
+          <input type="hidden" name="means_assessment[]" value="not_needed">
+          <input type="hidden" name="capital_assessment[]" value="not_needed">
+            <button type="submit" class="govuk-button">
+              Save and continue
+            </button>
+            <a href="/tasklist" role="button" style="margin-left: 15px;" class="govuk-button draft-button">
+                Save and come back later
+            </a>
 
-    <p class="govuk-body">
-      We'll check your client's benefits status with the Department of Work and Pensions (DWP). </p>
-    <br>
-
-      <a class="govuk-button" href="" role="button">
-        Save and continue
-      </a>
-
-      <a href="tasklist" role="button" style="margin-left: 15px;" class="govuk-button draft-button">
-        Save and come back later
-      </a>
-
-      <p>
-      <a href="passported" style="color: #b7b7b7;">Continue to passported journey</a>
-      </p>
-
-      <p>
-      <a href="means_assessment_required" style="color: #b7b7b7;">Continue to non-passported journey</a>
-      </p>
+            <p><a href="/means_assessment_required" style="color: #b7b7b7;">Continue to non-passported journey</a></p>
+        </form>
 
     </div>
   </div>

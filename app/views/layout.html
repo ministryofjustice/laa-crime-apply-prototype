@@ -45,7 +45,17 @@
     homepageUrl: "/",
     serviceName: serviceName,
     serviceUrl: "/",
-    containerClasses: "govuk-width-container"
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "/tasklist",
+        text: "Tasklist"
+      },
+      {
+        href: "/declaration_provider",
+        text: "Start an application"
+      }
+    ]
   }) }}
 {% endblock %}
 
@@ -55,6 +65,11 @@
       text: "PROTOTYPE"
     },
     html: 'This is a prototype. Some things may not work as expected.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:goBack()"
   }) }}
 {% endblock %}
 

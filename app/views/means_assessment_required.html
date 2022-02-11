@@ -10,8 +10,7 @@
         <header>
           <h1 class="govuk-heading-l">DWP records show that your client does not receive a passporting benefit – is this correct?</h1>
         </header>
-        <form action="client_details" method="post" class="form">
-
+        <form action="/before_means_assessment" method="post" class="form">
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios" data-module="govuk-radios">
                 <div class="govuk-radios__item">
@@ -38,18 +37,14 @@
                  </label>
               </div>
             </div>
-
-
-
-
-
           <div class="govuk-!-padding-bottom-4"></div>
 
-          <a href="before_means_assessment" role="button" class="govuk-button white-button right">
-          Save and continue</a>
 
-          <a role="button" style="margin-left: 15px;" class="govuk-button draft-button">
-            Save and come back later</a>
+        <div class="govuk-!-padding-bottom-4"></div>
+        <input type="hidden" name="means_assessment[]" value="started">
+        <button type="submit" class="govuk-button">
+          Save and continue
+        </button>
 
           </form>
       </div>

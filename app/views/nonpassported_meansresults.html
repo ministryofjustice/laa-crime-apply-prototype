@@ -29,7 +29,7 @@
 
 <h1 class="govuk-heading-m">How we calculated your client's financial eligibility</h1>
 
-
+   <form action="/upload" method="post" class="form">
       <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-with-summary-sections">
         <div class="govuk-accordion__section ">
           <div class="govuk-accordion__section-header">
@@ -334,8 +334,13 @@
         </div>
         </div>
 
-      <a href="upload" button type="submit" class="govuk-button">
-        Continue
-      </a>
+
+
+
+        <input type="hidden" name="means_assessment[]" value="completed">
+        <button type="submit" class="govuk-button">
+          Save and continue
+        </button>
+    </form>
 
 {% endblock %}

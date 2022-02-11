@@ -277,15 +277,16 @@ th:first-child {
 <a role="button" href="print_view" target="_blank" style="margin-left:" class="govuk-button draft-button">Print application</a>
 
 <p></p>
-
-<a class="govuk-button" href="confirm_the_following" role="button">
+<form action="/confirm_the_following" method="post" novalidate>
+<input type="hidden" name="review[]" value="completed">
+<button type="submit" class="govuk-button">
   Save and continue
-</a>
+</button>
 
 <a href="tasklist" role="button" style="margin-left: 15px;" class="govuk-button draft-button">
    Save and come back later
  </a>
-
+</form>
 </div>
 </div>
 
