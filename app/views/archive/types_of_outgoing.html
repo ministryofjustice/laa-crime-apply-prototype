@@ -1,23 +1,5 @@
 {% extends "layout.html" %}
 
-{% block pageTitle %}
-Apply for legal aid - Types of outgoing
-{% endblock %}
-
-{% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "prototype"
-    },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-  }) }}
-
-  {{ govukBackLink({
-    text: "Back",
-      href: "outgoings"
-  }) }}
-{% endblock %}
-
 {% block content %}
 
 <div class="govuk-grid-row">
@@ -89,12 +71,6 @@ Apply for legal aid - Types of outgoing
             </fieldset>
           </div>
 
-        <!--  <div class="govuk-inset-text">
-          <p class="govuk-body">
-            Do not select any if you make no regular payments.
-           Your online banking details are not saved.</p>
-        </div> -->
-
           <button type="submit" class="govuk-button">
             Save and continue
           </button>
@@ -102,8 +78,6 @@ Apply for legal aid - Types of outgoing
          <a role="button" style="margin-left: 15px;" class="govuk-button draft-button">
             Save and come back later
           </a>
-
-
 
         </form>
       </div>

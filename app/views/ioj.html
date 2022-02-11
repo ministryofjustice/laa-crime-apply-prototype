@@ -1,23 +1,5 @@
 {% extends "layout.html" %}
 
-{% block pageTitle %}
-Apply for legal aid - Employment status
-{% endblock %}
-
-{% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "prototype"
-    },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-  }) }}
-
-  {{ govukBackLink({
-    text: "Back",
-      href: "postcode_select"
-  }) }}
-{% endblock %}
-
 {% block content %}
 
 <div class="govuk-grid-row">
@@ -242,10 +224,6 @@ Apply for legal aid - Employment status
           </a>
 
         </form>
-
-      <!--  <p class="govuk-body"><a href="use_ccms_employment">If 'self-employed' and/or 'HM Forces' selected</a></p>
-       <p class="govuk-body"><a href="error">API fail</a></p>
-         <p class="govuk-body"><a href="open_banking_consent">not employed</a></p> -->
 
       </div>
     </div>

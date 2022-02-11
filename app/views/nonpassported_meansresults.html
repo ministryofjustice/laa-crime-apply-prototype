@@ -1,24 +1,5 @@
 {% extends "layout.html" %}
 
-{% block pageTitle %}
-Apply for legal aid - Confirmation page
-{% endblock %}
-
-{% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "PROTOTYPE"
-    },
-    html: 'This is a prototype. Some things may not work as expected.'
-  }) }}
-
-{{ govukBackLink({
-  text: "Back",
-  href: "check_answers_capital_full"
-}) }}
-
-{% endblock %}
-
 {% block content %}
 
 
@@ -352,9 +333,6 @@ Apply for legal aid - Confirmation page
           </div>
         </div>
         </div>
-
-
-
 
       <a href="upload" button type="submit" class="govuk-button">
         Continue

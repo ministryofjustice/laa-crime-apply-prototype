@@ -1,23 +1,5 @@
 {% extends "layout.html" %}
 
-{% block pageTitle %}
-Apply for legal aid - Dependants
-{% endblock %}
-
-{% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "PROTOTYPE"
-    },
-    html: 'This is a prototype. Some things may not work as expected.'
-  }) }}
-
-  {{ govukBackLink({
-    text: "Back",
-      href: "benefits_selected"
-  }) }}
-{% endblock %}
-
 {% block content %}
 
 <div class="govuk-grid-row">
