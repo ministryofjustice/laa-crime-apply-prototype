@@ -1,35 +1,5 @@
 {% extends "layout.html" %}
 
-{% block pageTitle %}
-  Apply for legal aid
-{% endblock %}
-
-{% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "prototype"
-    },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-  }) }}
-
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Home",
-        href: "#"
-      },
-      {
-        text: "Section",
-        href: "#"
-      },
-      {
-        text: "Subsection"
-      }
-    ]
-  }) }}
-
-{% endblock %}
-
 {% block content %}
 
 

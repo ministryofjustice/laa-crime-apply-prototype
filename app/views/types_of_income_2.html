@@ -1,19 +1,5 @@
 {% extends "layout.html" %}
 
-{% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "PROTOTYPE"
-    },
-    html: 'This is a prototype. Some things may not work as expected.'
-  }) }}
-
-  {{ govukBackLink({
-    text: "Back",
-      href: "types_of_income"
-  }) }}
-{% endblock %}
-
 {% block content %}
 
 <div class="govuk-grid-row">
