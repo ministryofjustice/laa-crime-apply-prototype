@@ -1,0 +1,122 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">Provide details of the case</h1>
+
+      <form class="form" action="/url/of/next/page" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h1 class="govuk-fieldset__heading">
+                What type of case is it?
+              </h1>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
+                <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                  Summary only
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
+                <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+                  Either way
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="where-do-you-live-3" name="where-do-you-live" type="radio" value="wales">
+                <label class="govuk-label govuk-radios__label" for="where-do-you-live-3">
+                  Indictable
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="where-do-you-live-4" name="where-do-you-live" type="radio" value="northern-ireland">
+                <label class="govuk-label govuk-radios__label" for="where-do-you-live-4">
+                  Trial already in Crown Court
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="where-do-you-live-4" name="where-do-you-live" type="radio" value="northern-ireland">
+                <label class="govuk-label govuk-radios__label" for="where-do-you-live-4">
+                  Commital for sentence
+                </label>
+              </div>
+            </div>
+
+          </fieldset>
+        </div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h1 class="govuk-fieldset__heading">
+                What type of court will be hearing your client's case?
+              </h1>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
+                <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                  Magistrates Court
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
+                <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+                  Crown Court
+                </label>
+              </div>
+          </fieldset>
+        </div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h1 class="govuk-fieldset__heading">
+                Does your client have any co-defendants in this case?
+              </h1>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <!-- REMEMBER: data-aria-controls -->
+                <input class="govuk-radios__input" id="marriage-civil-partnership" name="marriage-civil-partnership" type="radio" value="never" data-aria-controls="conditional-yes">
+                <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership">
+                  Yes
+                </label>
+              </div>
+              <!-- START: CONDITIONAL REVEAL -->
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-yes"> <!-- id needs to match data-aria-controls -->
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="contact-by-email">
+                    Full name
+                  </label>
+                  <input class="govuk-input govuk-!-width-one-third" id="contact-by-email" name="contact-by-email" type="email" spellcheck="false" autocomplete="email">
+                </div>
+              </div>
+              <!-- END: CONDITIONAL REVEAL  -->
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="marriage-civil-partnership-2" name="marriage-civil-partnership" type="radio" value="married">
+                <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership-2">
+                  No
+                </label>
+              </div>
+            </div>
+
+          </fieldset>
+        </div>
+
+        <a href="/offence_class"
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+      </a>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
