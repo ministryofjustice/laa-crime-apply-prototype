@@ -104,13 +104,15 @@
           <input class="govuk-input govuk-input--width-10" id="postcode" name="postcode" type="text" value="{{ data['postcode'] }}">
         </div>
 
-        <a href=/client_details_long_postcode_select#postcode-hint>
         <button type="submit" class="govuk-button">
           Find address
         </button>
-        </a>
 
-        <details class="govuk-details" data-module="govuk-details">
+      </form>
+
+      <form action="case_details" method="post" novalidate>
+
+        <details class="govuk-details">
               <summary class="govuk-details__summary">
                 <span class="govuk-details__summary-text">
                   Enter your client's correspondence address manually
@@ -154,12 +156,12 @@
                   </label>
                   <input class="govuk-input govuk-input--width-10" id="address-postcode" name="address-postcode" type="text">
                 </div>
-
+              </details>
               </form>
 
         <div class="govuk-!-padding-bottom-2"></div>
 
-        <div class="govuk-radios" data-module="govuk-radios">
+        <div class="govuk-form-group" data-module="govuk-radios">
           <label class="govuk-label govuk-label--m" for="national-insurance-number">
             Does your client have a partner?
           </label>
@@ -230,7 +232,6 @@
                 </label>
               </div>
             </div>
-
           </fieldset>
         </div>
 
@@ -243,14 +244,13 @@
                 Is your client on remand?
               </h1>
             </legend>
-            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="marriage-civil-partnership" name="marriage-civil-partnership" type="radio" value="never" data-aria-controls="remand-yes">
                 <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership">
                   Yes
                 </label>
               </div>
-
               <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="remand-yes"> <!-- id needs to match data-aria-controls -->
                 <div class="govuk-form-group">
                   <label class="govuk-label" for="contact-by-email">
@@ -292,39 +292,34 @@
                 </div>
               </div>
               <div class="govuk-form-group">
-
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="marriage-civil-partnership-2" name="marriage-civil-partnership" type="radio" value="married">
                 <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership-2">
                   No
                 </label>
               </div>
+              </div>
             </div>
-
           </fieldset>
         </div>
-
-        </form>
-
         </div>
         </div>
 
-          </form>
+      </form>
 
           <div class="govuk-!-padding-bottom-4"></div>
 
-          <a href="/case_details"
+          <a href="case_details"
            <button type="submit" class="govuk-button">
-            Continue
+            Save and continue
            </button>
           </a>
-
-
-          <a role="button" style="margin-left: 15px;" class="govuk-button draft-button">
+          
+          <a href="tasklist" role="button" style="margin-left: 15px;" class="govuk-button draft-button">
             Save and come back later
           </a>
 
-        </form>
+      </form>
 
       </div>
     </div>
