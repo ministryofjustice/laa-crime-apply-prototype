@@ -1,12 +1,16 @@
 {% extends "layout.html" %}
 
+{% block pageTitle %}
+Apply for legal aid - Client details
+{% endblock %}
+
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">Enter your client's details</h1>
 
-      <form action="client_details_long_postcode_select#email-hint" method="post" novalidate>
+      <form action="/case_details" method="post" novalidate>
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
@@ -95,31 +99,55 @@
         <div class="govuk-!-padding-bottom-2"></div>
 
         <div class="govuk-form-group">
-         <label class="govuk-label govuk-label--m" for="national-insurance-number">
+         <label class="govuk-label govuk-label--m" for="postcode">
            Postcode
          </label>
           <div id="postcode-hint" class="govuk-hint">
             We’ll only use this to send your client correspondence about their legal aid.
           </div>
-          <input class="govuk-input govuk-input--width-10" id="postcode" name="postcode" type="text" value="{{ data['postcode'] }}">
+          <div id="postcode-entry" class="togglePostcode">
+            <div class="govuk-form-group">
+              <input class="govuk-input govuk-input--width-10" id="postcode" name="postcode" type="text" value="{{ data['postcode'] }}">
+            </div>
+            <div type="submit" class="govuk-button" id="find-address">
+              Find address
+            </div>
+          </div>
+          <div id="address-entry" class="govuk-visually-hidden togglePostcode">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-!-font-weight-bold postcode_change" for="change-postcode">{{ data['postcode'] }}
+              </label>
+              <p class="postcode_change">
+                <a class="govuk-link" href="client_details_long#email-hint" aria-label="change postcode">Change</a>
+              </p>
+            </div>
+
+            <div class="govuk-form-group">
+              <p>
+                <label class="govuk-label" for="address-select">
+                Select an address
+                </label>
+                <select class="govuk-select govuk-!-width-three-quarters" id="address-select" name="address-select">
+                  <option>5 addresses found</option>
+                  <option>1 Main Street, London, {{ data['postcode'] }} </option>
+                  <option>2 Main Street, London, {{ data['postcode'] }} </option>
+                  <option>3 Main Street, London, {{ data['postcode'] }} </option>
+                  <option>4 Main Street, London, {{ data['postcode'] }} </option>
+                  <option>5 Main Street, London, {{ data['postcode'] }} </option>
+                </select>
+              </p>
+            </div>
         </div>
 
-        <button type="submit" class="govuk-button">
-          Find address
-        </button>
-
-      </form>
-
-      <form action="case_details" method="post" novalidate>
-
-        <details class="govuk-details">
+        <details class="govuk-details" data-module="govuk-details">
               <summary class="govuk-details__summary">
-                <span class="govuk-details__summary-text">
+                <span class="govuk-details__summary-text togglePostcode" id="address-manual">
                   Enter your client's correspondence address manually
                 </span>
+                <span class="govuk-details__summary-text govuk-visually-hidden togglePostcode" id="address-not-listed">
+                  I can't find the address in the list
+                </span>
               </summary>
-
-                <div class="govuk-!-padding-bottom-2"></div>
 
                 <div class="govuk-form-group">
                   <label class="govuk-label" for="address-line-1">
@@ -156,8 +184,7 @@
                   </label>
                   <input class="govuk-input govuk-input--width-10" id="address-postcode" name="address-postcode" type="text">
                 </div>
-              </details>
-              </form>
+        </details>
 
         <div class="govuk-!-padding-bottom-2"></div>
 
@@ -232,6 +259,7 @@
                 </label>
               </div>
             </div>
+
           </fieldset>
         </div>
 
@@ -244,13 +272,14 @@
                 Is your client on remand?
               </h1>
             </legend>
-              <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="marriage-civil-partnership" name="marriage-civil-partnership" type="radio" value="never" data-aria-controls="remand-yes">
                 <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership">
                   Yes
                 </label>
               </div>
+
               <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="remand-yes"> <!-- id needs to match data-aria-controls -->
                 <div class="govuk-form-group">
                   <label class="govuk-label" for="contact-by-email">
@@ -292,36 +321,35 @@
                 </div>
               </div>
               <div class="govuk-form-group">
+
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="marriage-civil-partnership-2" name="marriage-civil-partnership" type="radio" value="married">
                 <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership-2">
                   No
                 </label>
               </div>
-              </div>
             </div>
+
           </fieldset>
         </div>
-        </div>
-        </div>
 
-      </form>
 
+
+        </div>
+        <div class="govuk-form-group">
           <div class="govuk-!-padding-bottom-4"></div>
 
-          <a href="case_details"
-           <button type="submit" class="govuk-button">
-            Save and continue
-           </button>
-          </a>
-          
-          <a href="tasklist" role="button" style="margin-left: 15px;" class="govuk-button draft-button">
+          <input type="hidden" name="client_details[]" value="completed">
+          <button type="submit" class="govuk-button">
+            Continue
+          </button>
+
+          <a href="/tasklist" role="button" style="margin-left: 15px;" class="govuk-button draft-button">
             Save and come back later
           </a>
-
+        </div>
       </form>
-
-      </div>
     </div>
+  </div>
 
 {% endblock %}

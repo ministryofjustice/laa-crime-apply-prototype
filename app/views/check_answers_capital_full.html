@@ -1,5 +1,9 @@
 {% extends "layout.html" %}
 
+{% block pageTitle %}
+Apply for legal aid - Check your answers
+{% endblock %}
+
 {% block content %}
 
 <style media="screen">
@@ -725,14 +729,16 @@ th:first-child {
 
      <br>
 
+     <form action="/confirm_the_following" method="post" novalidate>
+       <input type="hidden" name="review[]" value="completed">
+       <button type="submit" class="govuk-button">
+         Save and continue
+       </button>
 
-<a href="nonpassported_meansresults" class="govuk-button" href="#" role="button">
-  Save and continue
-</a>
-
-<a role="button" style="margin-left: 15px;" class="govuk-button draft-button">
-   Save and come back later
- </a>
+       <a role="button" style="margin-left: 15px;" class="govuk-button draft-button">
+          Save and come back later
+        </a>
+     </form>
 
 
 </div>

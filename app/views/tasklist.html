@@ -1,5 +1,26 @@
 {% extends "layout.html" %}
 
+{% block header %}
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "/tasklist",
+        text: "Tasklist",
+        active: true
+      },
+      {
+        href: "/declaration_provider",
+        text: "Start an application"
+      }
+    ]
+  }) }}
+{% endblock %}
+
 {% block content %}
 
   <div class="govuk-grid-row">
@@ -9,95 +30,81 @@
       </h1>
 
       <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Application incomplete</h2>
-      <p class="govuk-body govuk-!-margin-bottom-7">You have completed 2 of 10 sections.</p>
-
+      <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{ completed }} of {{ total }} sections.</p>
       <ol class="app-task-list">
         <li>
-          <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">1. </span> Before you apply
-          </h2>
           <ul class="app-task-list__items">
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <a href="#" aria-describedby="eligibility-status">
-                  Check eligibility
-                </a>
-              </span>
-              <strong class="govuk-tag app-task-list__tag" id="eligibility-status">Completed</strong>
-            </li>
-          </ul>
-        </li>
-
-        <li>
-          <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">2. </span> Apply
-          </h2>
-          <ul class="app-task-list__items">
-            <li class="app-task-list__item">
+            <li class="app-task-list__item {{ sections['client_details']['key'] }}">
               <span class="app-task-list__task-name">
                 <a href="/client_details_long" aria-describedby="company-information-status">
                   Client details
                 </a>
               </span>
-              <strong class="govuk-tag app-task-list__tag" id="company-information-status">Completed</strong>
+              <strong class="govuk-tag app-task-list__tag" id="company-information-status">{{ sections['client_details']['label'] }}</strong>
             </li>
-            <li class="app-task-list__item">
+            <li class="app-task-list__item {{ sections['case_details']['key'] }}">
               <span class="app-task-list__task-name">
                 <a href="/case_details" aria-describedby="contact-details-status">
                   Case details
                 </a>
               </span>
-              <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="contact-details-status">In progress</strong>
+              <strong class="govuk-tag govuk-tag app-task-list__tag" id="contact-details-status">{{ sections['case_details']['label'] }}</strong>
             </li>
-            <li class="app-task-list__item">
+            <li class="app-task-list__item {{ sections['offence_details']['key'] }}">
               <span class="app-task-list__task-name">
-                <a href="offence_class" aria-describedby="list-convictions-status">
+                <a href="/offence_class" aria-describedby="list-convictions-status">
                   Offence details
                 </a>
               </span>
-              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-convictions-status">Not started</strong>
+              <strong class="govuk-tag govuk-tag app-task-list__tag" id="list-convictions-status">{{ sections['offence_details']['label'] }}</strong>
             </li>
-            <li class="app-task-list__item">
+            <li class="app-task-list__item  {{ sections['interests_of_justice']['key'] }}">
               <span class="app-task-list__task-name">
-                <a href="/ioj" aria-describedby="list-convictions-status">
+                <a href="/ioj" aria-describedby="list-ioj-status">
                   Interests of Justice
                 </a>
               </span>
-              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-convictions-status">Not started</strong>
+              <strong class="govuk-tag govuk-tag app-task-list__tag" id="list-ioj-status">{{ sections['interests_of_justice']['label'] }}</strong>
             </li>
-            <li class="app-task-list__item">
+            <li class="app-task-list__item {{ sections['check_benefits']['key'] }}">
               <span class="app-task-list__task-name">
-                <a href="benefit_checker" aria-describedby="list-convictions-status">
+                <a href="/benefit_checker" aria-describedby="list-benefits-status">
                   Check benefits status
                 </a>
               </span>
-              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-convictions-status">Not started</strong>
+              <strong class="govuk-tag govuk-tag app-task-list__tag" id="list-benefits-status">{{ sections['check_benefits']['label'] }}</strong>
             </li>
-            <li class="app-task-list__item">
+            <li class="app-task-list__item {{ sections['means_assessment']['key'] }}">
               <span class="app-task-list__task-name">
-                Means assessment
+                <a href="/means_assessment_required" aria-describedby="means-assessment-status">
+                  Means assessment
+                </a>
               </span>
-              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="financial-evidence-status">Cannot start yet</strong>
+              <strong class="govuk-tag govuk-tag app-task-list__tag" id="means-assessment-status">{{ sections['means_assessment']['label'] }}</strong>
             </li>
-            <li class="app-task-list__item">
+            <li class="app-task-list__item {{ sections['capital_assessment']['key'] }}">
               <span class="app-task-list__task-name">
-                Capital assessment
+                <a href="/property" aria-describedby="financial-capital-status">
+                  Capital assessment
+                </a>
               </span>
-              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="financial-evidence-status">Cannot start yet</strong>
+              <strong class="govuk-tag govuk-tag app-task-list__tag" id="financial-capital-status">{{ sections['capital_assessment']['label'] }}</strong>
             </li>
-            <li class="app-task-list__item">
+            <li class="app-task-list__item {{ sections['evidence']['key'] }}">
               <span class="app-task-list__task-name">
-                <a href="/upload" aria-describedby="list-convictions-status">
+                <a href="/upload" aria-describedby="list-evidence-status">
                   Evidence
                 </a>
               </span>
-              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-convictions-status">Not started</strong>
+              <strong class="govuk-tag govuk-tag app-task-list__tag" id="list-evidence-status">{{ sections['evidence']['label'] }}</strong>
             </li>
-            <li class="app-task-list__item">
+            <li class="app-task-list__item {{ sections['review']['key'] }}">
               <span class="app-task-list__task-name">
-                Review and submit
+                <a href="/application_cert_review" aria-describedby="list-review-status">
+                  Review
+                </a>
               </span>
-              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="medical-information-status">Cannot start yet</strong>
+              <strong class="govuk-tag govuk-tag app-task-list__tag" id="review-status">{{ sections['review']['label'] }}</strong>
             </li>
           </ul>
         </li>

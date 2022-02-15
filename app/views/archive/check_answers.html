@@ -239,14 +239,16 @@
       <li>employment details with HM Revenue and Customs (HMRC)</li>
     </ul>
     <br>
-
-      <a class="govuk-button" href="passported" role="button">
+    <form action="/confirm_the_following" method="post" novalidate>
+      <input type="hidden" name="review[completed]" value="true">
+      <button type="submit" class="govuk-button">
         Save and continue
-      </a>
+      </button>
 
       <a role="button" style="margin-left: 15px;" class="govuk-button draft-button">
-        Save and come back later
-      </a>
+         Save and come back later
+       </a>
+    </form>
 
     </div>
   </div>

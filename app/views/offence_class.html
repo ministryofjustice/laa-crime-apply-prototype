@@ -2,13 +2,11 @@
 
 {% block content %}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-
-    <h1 class="govuk-heading-xl">What does your client want legal aid for?</h1>
-
-    <form class="form" action="ioj" method="post">
-
+<div class="govuk-form-group">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h1 class="govuk-heading-xl">What does your client want legal aid for?</h1>
+    </legend>
+    <form class="form" action="/ioj" method="post">
         <div class="govuk-radios" data-module="govuk-radios">
           <div class="govuk-radios__item">
             <input class="govuk-radios__input" id="marriage-civil-partnership" name="marriage-civil-partnership" type="radio" value="never">
@@ -112,19 +110,14 @@
             </label>
           </div>
         </div>
-
-    <button class="govuk-button" data-module="govuk-button">
-      Save and continue
-    </button>
-
-    <a href="tasklist" role="button" style="margin-left: 15px;" class="govuk-button draft-button">
-      Save and come back later
-    </a>
-    
-  </form>
-
-</div>
-
-</div>
+      <input type="hidden" name="offence_details[]" value="completed">
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+      <a href="/tasklist" role="button" style="margin-left: 15px;" class="govuk-button draft-button">
+        Save and come back later
+      </a>
+    </form>
+  </div>
 
 {% endblock %}

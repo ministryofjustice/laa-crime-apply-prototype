@@ -63,3 +63,10 @@
     padding: 60px 60px;
   }
 }
+
+.blocked .app-task-list__task-name a {
+  display: inline-block;
+  pointer-events: none;
+  text-decoration: none;
+  color: #0b0c0c;
+}
