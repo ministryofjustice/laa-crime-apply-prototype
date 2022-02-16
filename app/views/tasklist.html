@@ -77,7 +77,7 @@
             <li class="app-task-list__item {{ sections['means_assessment']['key'] }}">
               <span class="app-task-list__task-name">
                 <a href="/means_assessment_required" aria-describedby="means-assessment-status">
-                  Means assessment
+                  Income assessment
                 </a>
               </span>
               <strong class="govuk-tag govuk-tag app-task-list__tag" id="means-assessment-status">{{ sections['means_assessment']['label'] }}</strong>
@@ -90,10 +90,18 @@
               </span>
               <strong class="govuk-tag govuk-tag app-task-list__tag" id="financial-capital-status">{{ sections['capital_assessment']['label'] }}</strong>
             </li>
+            <li class="app-task-list__item {{ sections['review']['key'] }}">
+              <span class="app-task-list__task-name">
+                <a href="/nonpassported_meansresults" aria-describedby="list-review-status">
+                  Check means assessment results
+                </a>
+              </span>
+              <strong class="govuk-tag govuk-tag app-task-list__tag" id="review-status">{{ sections['review']['label'] }}</strong>
+            </li>
             <li class="app-task-list__item {{ sections['evidence']['key'] }}">
               <span class="app-task-list__task-name">
                 <a href="/upload" aria-describedby="list-evidence-status">
-                  Evidence
+                  Upload supporting evidence
                 </a>
               </span>
               <strong class="govuk-tag govuk-tag app-task-list__tag" id="list-evidence-status">{{ sections['evidence']['label'] }}</strong>
@@ -101,7 +109,15 @@
             <li class="app-task-list__item {{ sections['review']['key'] }}">
               <span class="app-task-list__task-name">
                 <a href="/application_cert_review" aria-describedby="list-review-status">
-                  Review
+                  Review and print your application
+                </a>
+              </span>
+              <strong class="govuk-tag govuk-tag app-task-list__tag" id="review-status">{{ sections['review']['label'] }}</strong>
+            </li>
+            <li class="app-task-list__item {{ sections['confirm']['key'] }}">
+              <span class="app-task-list__task-name">
+                <a href="/confirm_the_following" aria-describedby="list-confirm-status">
+                  Confirm and submit your application
                 </a>
               </span>
               <strong class="govuk-tag govuk-tag app-task-list__tag" id="review-status">{{ sections['review']['label'] }}</strong>
