@@ -37,36 +37,36 @@ Apply for legal aid - Client details
         <div class="govuk-!-padding-bottom-2"></div>
 
         <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="date-of-birth-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
               <h1 class="govuk-fieldset__heading">
                 Date of birth
               </h1>
             </legend>
-            <div id="passport-issued-hint" class="govuk-hint">
+            <div id="date-of-birth-hint" class="govuk-hint">
               For example, 27 3 2007
             </div>
-            <div class="govuk-date-input" id="passport-issued">
+            <div class="govuk-date-input" id="date-of-birth">
               <div class="govuk-date-input__item">
                 <div class="govuk-form-group">
-                  <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                  <label class="govuk-label govuk-date-input__label" for="date-of-birth-day">
                     Day
                   </label>
-                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-of-birth-day" name="date-of-birth-day" type="text" pattern="[0-9]*" inputmode="numeric"></div>
               </div>
               <div class="govuk-date-input__item">
                 <div class="govuk-form-group">
-                  <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                  <label class="govuk-label govuk-date-input__label" for="date-of-birth-month">
                     Month
                   </label>
-                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-of-birth-month" name="date-of-birth-month" type="text" pattern="[0-9]*" inputmode="numeric"></div>
               </div>
               <div class="govuk-date-input__item">
                 <div class="govuk-form-group">
-                  <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                  <label class="govuk-label govuk-date-input__label" for="date-of-birth-year">
                     Year
                   </label>
-                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="date-of-birth-year" name="date-of-birth-year" type="text" pattern="[0-9]*" inputmode="numeric"></div>
               </div>
             </div>
           </fieldset>
@@ -87,7 +87,7 @@ Apply for legal aid - Client details
          <div class="govuk-!-padding-bottom-2"></div>
 
         <div class="govuk-form-group">
-         <label class="govuk-label govuk-label--m" for="national-insurance-number">
+         <label class="govuk-label govuk-label--m" for="email">
            Email address
          </label>
           <div id="email-hint" class="govuk-hint">
@@ -189,15 +189,15 @@ Apply for legal aid - Client details
         <div class="govuk-!-padding-bottom-2"></div>
 
         <div class="govuk-form-group" data-module="govuk-radios">
-          <label class="govuk-label govuk-label--m" for="national-insurance-number">
+          <label class="govuk-label govuk-label--m" for="marriage-civil-partnership">
             Does your client have a partner?
           </label>
-          <div id="partner-hint" class="govuk-hint">
+          <div id="marriage-civil-partnership-hint" class="govuk-hint">
             By partner we mean someone they are married to, in a civil partnership with, cohabit with or otherwise share finances.
           </div>
           <div class="govuk-radios__item">
             <!-- REMEMBER: data-aria-controls -->
-            <input class="govuk-radios__input" id="marriage-civil-partnership" name="marriage-civil-partnership" type="radio" value="never" data-aria-controls="conditional-yes">
+            <input class="govuk-radios__input" id="marriage-civil-partnership-1" name="marriage-civil-partnership" type="radio" value="yes" data-aria-controls="conditional-yes">
             <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership">
               Yes
             </label>
@@ -205,17 +205,17 @@ Apply for legal aid - Client details
           <!-- START: CONDITIONAL REVEAL -->
           <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-yes"> <!-- id needs to match data-aria-controls -->
             <div class="govuk-form-group">
-              <label class="govuk-label" for="contact-by-email">
+              <label class="govuk-label" for="marriage-civil-partnership">
                 Full name
               </label>
-              <textarea class="govuk-input govuk-input--width-20" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint">
+              <textarea class="govuk-input govuk-input--width-20" id="partner-full-name" name="partner-full-name" rows="5" aria-describedby="partner-full-name">
               </textarea>
             </div>
           </div>
           <div class="govuk-form-group">
           <!-- END: CONDITIONAL REVEAL  -->
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="marriage-civil-partnership-2" name="marriage-civil-partnership" type="radio" value="married">
+              <input class="govuk-radios__input" id="marriage-civil-partnership-2" name="marriage-civil-partnership" type="radio" value="no">
               <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership-2">
                 No
               </label>
@@ -235,26 +235,26 @@ Apply for legal aid - Client details
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
                 <!-- REMEMBER: data-aria-controls -->
-                <input class="govuk-radios__input" id="marriage-civil-partnership" name="marriage-civil-partnership" type="radio" value="never" data-aria-controls="other-charges-yes">
-                <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership">
+                <input class="govuk-radios__input" id="criminal-charges-1" name="criminal-charges" type="radio" value="yes" data-aria-controls="criminal-charges-yes">
+                <label class="govuk-label govuk-radios__label" for="criminal-charges">
                   Yes
                 </label>
               </div>
               <!-- START: CONDITIONAL REVEAL -->
-              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="other-charges-yes"> <!-- id needs to match data-aria-controls -->
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="criminal-charges-yes"> <!-- id needs to match data-aria-controls -->
                 <div class="govuk-form-group">
-                  <label class="govuk-label" for="contact-by-email">
+                  <label class="govuk-label" for="criminal-charges">
                     Enter details
                   </label>
-                  <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint">
+                  <textarea class="govuk-textarea" id="criminal-charges-detail" name="criminal-charges-detail" rows="5" aria-describedby="criminal-charges-hint">
                   </textarea>
                 </div>
               </div>
               <div class="govuk-form-group">
               <!-- END: CONDITIONAL REVEAL  -->
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="marriage-civil-partnership-2" name="marriage-civil-partnership" type="radio" value="married">
-                <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership-2">
+                <input class="govuk-radios__input" id="criminal-charges-2" name="criminal-charges" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="criminal-charges">
                   No
                 </label>
               </div>
@@ -274,43 +274,43 @@ Apply for legal aid - Client details
             </legend>
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="marriage-civil-partnership" name="marriage-civil-partnership" type="radio" value="never" data-aria-controls="remand-yes">
-                <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership">
+                <input class="govuk-radios__input" id="remand-1" name="remand" type="radio" value="yes" data-aria-controls="remand-yes">
+                <label class="govuk-label govuk-radios__label" for="remand">
                   Yes
                 </label>
               </div>
 
               <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="remand-yes"> <!-- id needs to match data-aria-controls -->
                 <div class="govuk-form-group">
-                  <label class="govuk-label" for="contact-by-email">
+                  <label class="govuk-label" for="remand">
                     Date your client was remanded
                   </label>
                   <div class="govuk-form-group">
-                    <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
-                      <div id="passport-issued-hint" class="govuk-hint">
+                    <fieldset class="govuk-fieldset" role="group" aria-describedby="remand-hint">
+                      <div id="remand-hint" class="govuk-hint">
                         For example, 27 3 2007
                       </div>
-                      <div class="govuk-date-input" id="passport-issued">
+                      <div class="govuk-date-input" id="reamand-issued">
                         <div class="govuk-date-input__item">
                           <div class="govuk-form-group">
-                            <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                            <label class="govuk-label govuk-date-input__label" for="remand-issued-day">
                               Day
                             </label>
-                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="remand-issued-day" name="remand-issued-day" type="text" pattern="[0-9]*" inputmode="numeric"></div>
                         </div>
                         <div class="govuk-date-input__item">
                           <div class="govuk-form-group">
-                            <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                            <label class="govuk-label govuk-date-input__label" for="remand-issued-month">
                               Month
                             </label>
-                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="remand-issued-month" name="remand-issued-month" type="text" pattern="[0-9]*" inputmode="numeric"></div>
                         </div>
                         <div class="govuk-date-input__item">
                           <div class="govuk-form-group">
-                            <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                            <label class="govuk-label govuk-date-input__label" for="remand-issued-year">
                               Year
                             </label>
-                            <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="remand-issued-year" name="remand-issued-year" type="text" pattern="[0-9]*" inputmode="numeric"></div>
                         </div>
                       </div>
 
@@ -323,8 +323,8 @@ Apply for legal aid - Client details
               <div class="govuk-form-group">
 
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="marriage-civil-partnership-2" name="marriage-civil-partnership" type="radio" value="married">
-                <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership-2">
+                <input class="govuk-radios__input" id="remand-2" name="remand" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="remand">
                   No
                 </label>
               </div>
