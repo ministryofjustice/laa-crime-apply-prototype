@@ -336,19 +336,15 @@ Apply for legal aid - Client details
 
 
         </div>
-        <div class="govuk-form-group">
-          <div class="govuk-!-padding-bottom-4"></div>
-
           <input type="hidden" name="client_details[]" value="completed">
-          <button type="submit" class="govuk-button">
+          <button type="submit" class="govuk-button button-left">
             Save and continue
           </button>
-
-          <a href="/tasklist" role="button" style="margin-left: 15px;" class="govuk-button draft-button">
-            Save and come back later
-          </a>
-        </div>
-      </form>
+    </form>
+    <form class="form inline-form" action="/tasklist" method="post">
+      <input type="hidden" name="client_details[]" value="completed">
+      <button class="govuk-button" data-module="govuk-button">Save and come back later</button>
+    </form>
     </div>
   </div>
 

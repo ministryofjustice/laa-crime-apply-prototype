@@ -40,13 +40,15 @@
             </fieldset>
           </div>
 
-          <button type="submit" class="govuk-button">
-            Save and continue
-          </button>
-
-          <a href="/tasklist" role="button" class="govuk-button draft-button">
-          Save and come back later</a>
-        </form>
+        <input type="hidden" name="capital_assessment[]" value="in_progress">
+        <button type="submit" class="govuk-button button-left">
+          Save and continue
+        </button>
+      </form>
+      <form class="form inline-form" action="/tasklist" method="post">
+        <input type="hidden" name="capital_assessment[]" value="in_progress">
+        <button class="govuk-button" data-module="govuk-button">Save and come back later</button>
+      </form>
       </div>
     </div>
 

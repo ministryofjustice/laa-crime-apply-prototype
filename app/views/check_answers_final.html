@@ -342,17 +342,16 @@ Apply for legal aid - Check your answers - Merits
 
 
      <form action="/confirm_the_following" method="post" novalidate>
-       <input type="hidden" name="review[completed]" value="true">
+       <input type="hidden" name="review[]" value="completed">
        <button type="submit" class="govuk-button">
          Save and continue
        </button>
-
-       <a role="button" style="margin-left: 15px;" class="govuk-button draft-button">
-          Save and come back later
-        </a>
      </form>
-
-    </div>
+       <form class="form inline-form" action="/tasklist" method="post">
+         <input type="hidden" name="review[]" value="completed">
+         <button class="govuk-button" data-module="govuk-button">Save and come back later</button>
+       </form>
+     </div>
   </div>
 
 
