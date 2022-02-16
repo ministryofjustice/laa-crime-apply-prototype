@@ -92,6 +92,14 @@
             </li>
             <li class="app-task-list__item {{ sections['review']['key'] }}">
               <span class="app-task-list__task-name">
+                <a href="/check_answers_capital_full" aria-describedby="list-review-status">
+                  Check your answers
+                </a>
+              </span>
+              <strong class="govuk-tag govuk-tag app-task-list__tag" id="review-status">{{ sections['review']['label'] }}</strong>
+            </li>
+            <li class="app-task-list__item {{ sections['review']['key'] }}">
+              <span class="app-task-list__task-name">
                 <a href="/nonpassported_meansresults" aria-describedby="list-review-status">
                   Check means assessment results
                 </a>
