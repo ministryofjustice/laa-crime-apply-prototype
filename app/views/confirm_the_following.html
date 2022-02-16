@@ -38,7 +38,7 @@
  </ul>
  </div>
 
-
+<form action="/equality_intro" method="post" class="form">
  <div class="govuk-form-group">
 
 <!-- <p class="govuk-body">You confirm that:</p> -->
@@ -57,15 +57,14 @@
 <p></p>
      </div>
  </div>
-
-
-<a class="govuk-button" href="equality_intro" role="button">
-Submit application
-</a>
-
-<a href="tasklist" role="button" style="margin-left: 15px;" class="govuk-button draft-button">
-Save and come back later
-</a>
+  <input type="hidden" name="confirm[]" value="completed">
+    <button type="submit" class="govuk-button">
+      Submit application
+    </button>
+    <a href="/tasklist" role="button" style="margin-left: 15px;" class="govuk-button draft-button">
+        Save and come back later
+    </a>
+</form>
 
 </div>
 </div>
