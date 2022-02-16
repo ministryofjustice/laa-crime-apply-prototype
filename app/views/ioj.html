@@ -213,13 +213,14 @@
 
 
         <input type="hidden" name="interests_of_justice[]" value="completed">
-        <button type="submit" class="govuk-button">
+        <button type="submit" class="govuk-button button-left">
           Save and continue
         </button>
-        <a href="/tasklist" role="button" style="margin-left: 15px;" class="govuk-button draft-button">
-          Save and come back later
-        </a>
-    </form>
+      </form>
+      <form class="form inline-form" action="/tasklist" method="post">
+        <input type="hidden" name="interests_of_justice[]" value="completed">
+        <button class="govuk-button" data-module="govuk-button">Save and come back later</button>
+      </form>
   </div>
 </div>
 

@@ -737,11 +737,15 @@ th:first-child {
 
        <a href="/tasklist" role="button" class="govuk-button draft-button">
        Save and come back later</a>
-       
+
      </form>
+     <form class="form inline-form" action="/tasklist" method="post">
+       <input type="hidden" name="review[]" value="completed">
+       <button class="govuk-button" data-module="govuk-button">Save and come back later</button>
+     </form>
+   </div>
 
 
-</div>
 </div>
 
 {% endblock %}
