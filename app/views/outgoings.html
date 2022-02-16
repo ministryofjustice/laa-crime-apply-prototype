@@ -7,192 +7,293 @@
         <form action="/property" method="post" class="form">
 
           <div class="govuk-form-group">
-            <fieldset class="govuk-fieldset" aria-describedby="citizenship-conditional-hint">
+            <fieldset class="govuk-fieldset" aria-describedby="outgoings">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
                 <h1 class="govuk-fieldset__heading">
                   Which regular payments does your client make?
                 </h1>
               </legend>
 
-              <span id="changed-name-hint" class="govuk-hint">Select all that apply.</span>
+              <span id="outgoings-hint" class="govuk-hint">Select all that apply.</span>
 
               <div class="govuk-!-padding-bottom-4"></div>
 
               <div class="govuk-checkboxes" data-module="govuk-checkboxes">
 
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="citizenship-conditional-1" name="antiques" type="checkbox" value="yes" data-aria-controls="conditional-citizenship-conditional-1" {{ checked("antiques","yes") }}>
-                  <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional-1">
+                  <input class="govuk-checkboxes__input" id="outgoings-1" name="outgoings-1" type="checkbox" value="housing" data-aria-controls="conditional-1" {{ checked("housing","yes") }}>
+                  <label class="govuk-label govuk-checkboxes__label" for="outgoings-1">
                     Housing payments
                   </label>
-                  <span id="nationality-1-item-hint" class="govuk-hint govuk-checkboxes__hint" style="padding-left: 15px">
+                  <span id="outgoings-1--hint" class="govuk-hint govuk-checkboxes__hint" style="padding-left: 15px">
                     For example, rent, mortgage or board and lodging.
                   </span>
                 </div>
-                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-citizenship-conditional-1">
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-1">
+
+                  <!-- WRAPPER STARTS -->
                   <div class="govuk-form-group">
-                    <span id="account-number-hint" class="govuk-hint">
-                    Enter the total cash amount you paid each month, or enter 0 if you paid none.
-                    </span>
-                    <label class="govuk-label" for="antiques-value">
-                      February 2021
-                    </label>
-                    <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
-                    <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="antiques-value" name="antiques-value" type="text">
+                      <label class="govuk-label" for="outgoings-1">
+                        Enter amount
+                      </label>
+                      <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
+                      <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="outgoings-1-value" name="outgoings-1-value" type="text">
+
+                      <div class="govuk-!-padding-bottom-4"></div>
+
+                      <fieldset class="govuk-fieldset">
+                        <label class="govuk-label" for="outgoings-1">
+                          Enter frequency
+                        </label>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="outgoings-1-every-week" name="every-week" type="radio" value="every-week">
+                            <label class="govuk-label govuk-radios__label" for="outgoings-1">
+                              Every week
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="outgoings-1-every-two-weeks" name="every-two-weeks" type="radio" value="every-two-weeks">
+                            <label class="govuk-label govuk-radios__label" for="outgoings-1">
+                              Every two weeks
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="outgoings-1-monthly" name="monthly" type="radio" value="monthly">
+                            <label class="govuk-label govuk-radios__label" for="outgoings-1">
+                              Monthly
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="outgoings-1-annually" name="annually" type="radio" value="annually">
+                            <label class="govuk-label govuk-radios__label" for="outgoings-1">
+                              Annually
+                            </label>
+                          </div>
+                        </div>
+                      </fieldset>
+
                   </div>
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="antiques-value">
-                      January 2021
-                    </label>
-                    <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
-                    <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="antiques-value" name="antiques-value" type="text">
-                  </div>
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="antiques-value">
-                      December 2020
-                    </label>
-                    <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
-                    <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="antiques-value" name="antiques-value" type="text">
-                  </div>
+                  <!-- WRAPPER ENDS -->
                   </div>
 
                   <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="citizenship-conditional-0" name="antiques" type="checkbox" value="yes" data-aria-controls="conditional-citizenship-conditional-0" {{ checked("antiques","yes") }}>
-                    <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional-1">
+                    <input class="govuk-checkboxes__input" id="outgoings-2" name="outgoings-2" type="checkbox" value="council_tax" data-aria-controls="conditional-2" {{ checked("council_tax","yes") }}>
+                    <label class="govuk-label govuk-checkboxes__label" for="outgoings-2">
                       Council Tax
                     </label>
                   </div>
-                  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-citizenship-conditional-0">
+                  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-2">
+                    <!-- WRAPPER STARTS -->
                     <div class="govuk-form-group">
-                      <span id="account-number-hint" class="govuk-hint">
-                      Enter the total cash amount you paid each month, or enter 0 if you paid none.
-                      </span>
-                      <label class="govuk-label" for="antiques-value">
-                        February 2021
-                      </label>
-                      <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
-                      <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="antiques-value" name="antiques-value" type="text">
+                        <label class="govuk-label" for="outgoings-2">
+                          Enter amount
+                        </label>
+                        <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
+                        <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="outgoings-2-value" name="outgoings-2-value" type="text">
+
+                        <div class="govuk-!-padding-bottom-4"></div>
+
+                        <fieldset class="govuk-fieldset">
+                          <label class="govuk-label" for="outgoings-2">
+                            Enter frequency
+                          </label>
+                          <div class="govuk-radios" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                              <input class="govuk-radios__input" id="outgoings-2-every-week" name="every-week" type="radio" value="every-week">
+                              <label class="govuk-label govuk-radios__label" for="outgoings-2">
+                                Every week
+                              </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                              <input class="govuk-radios__input" id="outgoings-2-every-two-weeks" name="every-two-weeks" type="radio" value="every-two-weeks">
+                              <label class="govuk-label govuk-radios__label" for="outgoings-2">
+                                Every two weeks
+                              </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                              <input class="govuk-radios__input" id="outgoings-2-monthly" name="monthly" type="radio" value="monthly">
+                              <label class="govuk-label govuk-radios__label" for="outgoings-2">
+                                Monthly
+                              </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                              <input class="govuk-radios__input" id="outgoings-2-annually" name="annually" type="radio" value="annually">
+                              <label class="govuk-label govuk-radios__label" for="outgoings-2">
+                                Annually
+                              </label>
+                            </div>
+                          </div>
+                        </fieldset>
+
                     </div>
-                    <div class="govuk-form-group">
-                      <label class="govuk-label" for="antiques-value">
-                        January 2021
-                      </label>
-                      <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
-                      <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="antiques-value" name="antiques-value" type="text">
-                    </div>
-                    <div class="govuk-form-group">
-                      <label class="govuk-label" for="antiques-value">
-                        December 2020
-                      </label>
-                      <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
-                      <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="antiques-value" name="antiques-value" type="text">
-                    </div>
+                    <!-- WRAPPER ENDS -->
                     </div>
 
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="citizenship-conditional-2" name="antiques" type="checkbox" value="yes" data-aria-controls="conditional-citizenship-conditional-2" {{ checked("antiques","yes") }}>
-                  <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional-2">
+                  <input class="govuk-checkboxes__input" id="outgoings-3" name="outgoings-3" type="checkbox" value="chilcare" data-aria-controls="conditional-3" {{ checked("childcare","yes") }}>
+                  <label class="govuk-label govuk-checkboxes__label" for="outgoings-3">
                     Childcare payments
                   </label>
                 </div>
-                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-citizenship-conditional-2">
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-3">
+                  <!-- WRAPPER STARTS -->
                   <div class="govuk-form-group">
-                    <span id="account-number-hint" class="govuk-hint">
-                    Enter the total cash amount you paid each month, or enter 0 if you paid none.
-                    </span>
-                    <label class="govuk-label" for="antiques-value">
-                    February 2021
-                    </label>
-                    <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
-                    <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="antiques-value" name="antiques-value" type="text">
+                      <label class="govuk-label" for="outgoings-3">
+                        Enter amount
+                      </label>
+                      <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
+                      <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="outgoings-3-value" name="outgoings-3-value" type="text">
+
+                      <div class="govuk-!-padding-bottom-4"></div>
+
+                      <fieldset class="govuk-fieldset">
+                        <label class="govuk-label" for="outgoings-2">
+                          Enter frequency
+                        </label>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="outgoings-3-every-week" name="every-week" type="radio" value="every-week">
+                            <label class="govuk-label govuk-radios__label" for="outgoings-3">
+                              Every week
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="outgoings-3-every-two-weeks" name="every-two-weeks" type="radio" value="every-two-weeks">
+                            <label class="govuk-label govuk-radios__label" for="outgoings-3">
+                              Every two weeks
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="outgoings-3-monthly" name="monthly" type="radio" value="monthly">
+                            <label class="govuk-label govuk-radios__label" for="outgoings-3">
+                              Monthly
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="outgoings-3-annually" name="annually" type="radio" value="annually">
+                            <label class="govuk-label govuk-radios__label" for="outgoings-3">
+                              Annually
+                            </label>
+                          </div>
+                        </div>
+                      </fieldset>
+
                   </div>
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="antiques-value">
-                    January 2021
-                    </label>
-                    <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
-                    <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="antiques-value" name="antiques-value" type="text">
-                  </div>
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="antiques-value">
-                    December 2020
-                    </label>
-                    <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
-                    <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="antiques-value" name="antiques-value" type="text">
-                  </div>
+                  <!-- WRAPPER ENDS -->
                 </div>
 
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="citizenship-conditional-3" name="antiques" type="checkbox" value="yes" data-aria-controls="conditional-citizenship-conditional-3" {{ checked("antiques","yes") }}>
-                  <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional-3">
+                  <input class="govuk-checkboxes__input" id="outgoings-4" name="outgoings-4" type="checkbox" value="maintenance" data-aria-controls="conditional-4" {{ checked("maintenance","yes") }}>
+                  <label class="govuk-label govuk-checkboxes__label" for="outgoings-3">
                     Maintenance payments
                   </label>
                 </div>
-                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-citizenship-conditional-3">
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-4">
+                  <!-- WRAPPER STARTS -->
                   <div class="govuk-form-group">
-                    <span id="account-number-hint" class="govuk-hint">
-                    Enter the total cash amount you paid each month, or enter 0 if you paid none.
-                    </span>
-                    <label class="govuk-label" for="antiques-value">
-                    February 2021
-                    </label>
-                    <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
-                    <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="antiques-value" name="antiques-value" type="text">
+                      <label class="govuk-label" for="outgoings-4">
+                        Enter amount
+                      </label>
+                      <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
+                      <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="outgoings-4-value" name="outgoings-4-value" type="text">
+
+                      <div class="govuk-!-padding-bottom-4"></div>
+
+                      <fieldset class="govuk-fieldset">
+                        <label class="govuk-label" for="outgoings-4">
+                          Enter frequency
+                        </label>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="outgoings-4-every-week" name="every-week" type="radio" value="every-week">
+                            <label class="govuk-label govuk-radios__label" for="outgoings-4">
+                              Every week
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="outgoings-4-every-two-weeks" name="every-two-weeks" type="radio" value="every-two-weeks">
+                            <label class="govuk-label govuk-radios__label" for="outgoings-4">
+                              Every two weeks
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="outgoings-4-monthly" name="monthly" type="radio" value="monthly">
+                            <label class="govuk-label govuk-radios__label" for="outgoings-4">
+                              Monthly
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="outgoings-4-annually" name="annually" type="radio" value="annually">
+                            <label class="govuk-label govuk-radios__label" for="outgoings-4">
+                              Annually
+                            </label>
+                          </div>
+                        </div>
+                      </fieldset>
+
                   </div>
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="antiques-value">
-                    January 2021
-                    </label>
-                    <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
-                    <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="antiques-value" name="antiques-value" type="text">
-                  </div>
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="antiques-value">
-                    December 2020
-                    </label>
-                    <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
-                    <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="antiques-value" name="antiques-value" type="text">
-                  </div>
+                  <!-- WRAPPER ENDS -->
                 </div>
 
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="citizenship-conditional-4" name="antiques" type="checkbox" value="yes" data-aria-controls="conditional-citizenship-conditional-4" {{ checked("antiques","yes") }}>
-                  <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional-4">
+                  <input class="govuk-checkboxes__input" id="outgoings-5" name="outgoings-5" type="checkbox" value="legal_aid_payments" data-aria-controls="conditional-5" {{ checked("legal_aid_payments","yes") }}>
+                  <label class="govuk-label govuk-checkboxes__label" for="outgoings-5">
                     Payments towards legal aid in a criminal or civil case
                   </label>
                 </div>
-                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-citizenship-conditional-4">
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-5">
+                  <!-- WRAPPER STARTS -->
                   <div class="govuk-form-group">
-                    <span id="account-number-hint" class="govuk-hint">
-                    Enter the total cash amount you paid each month, or enter 0 if you paid none.
-                    </span>
-                    <label class="govuk-label" for="antiques-value">
-                    February 2021
-                    </label>
-                    <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
-                    <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="antiques-value" name="antiques-value" type="text">
+                      <label class="govuk-label" for="outgoings-5">
+                        Enter amount
+                      </label>
+                      <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
+                      <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="outgoings-5-value" name="outgoings-5-value" type="text">
+
+                      <div class="govuk-!-padding-bottom-4"></div>
+
+                      <fieldset class="govuk-fieldset">
+                        <label class="govuk-label" for="outgoings-5">
+                          Enter frequency
+                        </label>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="outgoings-5-every-week" name="every-week" type="radio" value="every-week">
+                            <label class="govuk-label govuk-radios__label" for="outgoings-5">
+                              Every week
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="outgoings-5-every-two-weeks" name="every-two-weeks" type="radio" value="every-two-weeks">
+                            <label class="govuk-label govuk-radios__label" for="outgoings-5">
+                              Every two weeks
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="outgoings-5-monthly" name="monthly" type="radio" value="monthly">
+                            <label class="govuk-label govuk-radios__label" for="outgoings-5">
+                              Monthly
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="outgoings-5-annually" name="annually" type="radio" value="annually">
+                            <label class="govuk-label govuk-radios__label" for="outgoings-5">
+                              Annually
+                            </label>
+                          </div>
+                        </div>
+                      </fieldset>
+
                   </div>
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="antiques-value">
-                    January 2021
-                    </label>
-                    <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
-                    <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="antiques-value" name="antiques-value" type="text">
-                  </div>
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="antiques-value">
-                    December 2020
-                    </label>
-                    <span class="govuk-body govuk-!-font-weight-bold govuk-currency-input__inner">£</span>
-                    <input class="govuk-input govuk-!-width-one-third govuk-currency-input__input" id="antiques-value" name="antiques-value" type="text">
-                  </div>
+                  <!-- WRAPPER ENDS -->
                 </div>
 
                <p class="govuk-body">or</p>
 
                <div class="govuk-checkboxes__item">
-                 <input class="govuk-checkboxes__input" id="citizenship-conditional-7" name="estates" type="checkbox" value="yes">
-                 <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional-7">
+                 <input class="govuk-checkboxes__input" id="outgoings-6" name="outgoings-6" type="checkbox" value="none">
+                 <label class="govuk-label govuk-checkboxes__label" for="outgoings-6">
                   None of the above
                  </label>
                </div>
