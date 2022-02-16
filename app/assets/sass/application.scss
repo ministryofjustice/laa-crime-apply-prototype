@@ -15,5 +15,8 @@ $govuk-assets-path: '/govuk/assets/';
 @import "patterns/task-list";
 @import "patterns/related-items";
 
+// MOJ Frontend component styles
+@import "node_modules/@ministryofjustice/frontend/moj/all";
+
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 @import "main";
