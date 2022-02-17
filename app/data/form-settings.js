@@ -7,13 +7,17 @@ module.exports = {
     'check_benefits',
     'means_assessment',
     'capital_assessment',
+    'check_means',
     'evidence',
-    'review'
+    'review',
+    'confirm'
   ],
   dependencies: {
     means_assessment: ['check_benefits'],
     capital_assessment: ['check_benefits', 'case_details'],
-    review: ['client_details','case_details','offence_details','interests_of_justice','check_benefits','means_assessment','capital_assessment']
+    check_means: ['means_assessment'],
+    review: ['client_details','case_details','offence_details','interests_of_justice','check_benefits','means_assessment','capital_assessment'],
+    confirm: ['review']
   },
   statuses: {
     blocked: 'Cannot yet start',

@@ -53,15 +53,16 @@
                 </div>
               </div>
           <input type="hidden" name="evidence[]" value="completed">
-          <button type="submit" class="govuk-button">
+          <button type="submit" class="govuk-button button-left">
             Save and continue
           </button>
 
+        </form>
 
-          <a href="/dashboard" role="button" style="margin-left: 15px;" class="govuk-button draft-button">
-            Save and come back later
-          </a>
-
+        <form class="form inline-form" action="/tasklist" method="post">
+          <input type="hidden" name="evidence[]" value="completed">
+          <button class="govuk-button" data-module="govuk-button">Save and come back later
+          </button>
         </form>
       </div>
     </div>
