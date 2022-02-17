@@ -18,32 +18,32 @@
             </legend>
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="type-of-case" name="type-of-case" type="radio" value="summary_only">
-                <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                <input class="govuk-radios__input" id="type-of-case-1" name="type-of-case" type="radio" value="summary_only">
+                <label class="govuk-label govuk-radios__label" for="type-of-case-1">
                   Summary only
                 </label>
               </div>
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="type-of-case-2" name="type-of-case" type="radio" value="either_way">
-                <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+                <label class="govuk-label govuk-radios__label" for="type-of-case-2">
                   Either way
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="where-do-you-live-3" name="where-do-you-live" type="radio" value="wales">
-                <label class="govuk-label govuk-radios__label" for="where-do-you-live-3">
+                <input class="govuk-radios__input" id="type-of-case-3" name="type-of-case" type="radio" value="indictable">
+                <label class="govuk-label govuk-radios__label" for="type-of-case-3">
                   Indictable
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="where-do-you-live-4" name="where-do-you-live" type="radio" value="northern-ireland">
-                <label class="govuk-label govuk-radios__label" for="where-do-you-live-4">
+                <input class="govuk-radios__input" id="type-of-case-4" name="type-of-case" type="radio" value="trial">
+                <label class="govuk-label govuk-radios__label" for="type-of-case-4">
                   Trial already in Crown Court
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="where-do-you-live-4" name="where-do-you-live" type="radio" value="northern-ireland">
-                <label class="govuk-label govuk-radios__label" for="where-do-you-live-4">
+                <input class="govuk-radios__input" id="type-of-case-5" name="type-of-case" type="radio" value="commital">
+                <label class="govuk-label govuk-radios__label" for="type-of-case-5">
                   Commital for sentence
                 </label>
               </div>
@@ -61,14 +61,14 @@
             </legend>
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
-                <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                <input class="govuk-radios__input" id="type-of-court-1" name="type-of-court" type="radio" value="magistrates">
+                <label class="govuk-label govuk-radios__label" for="type-of-court-1">
                   Magistrates Court
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
-                <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+                <input class="govuk-radios__input" id="type-of-court-2" name="type-of-court" type="radio" value="crown">
+                <label class="govuk-label govuk-radios__label" for="type-of-court-2">
                   Crown Court
                 </label>
               </div>
@@ -85,24 +85,24 @@
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
                 <!-- REMEMBER: data-aria-controls -->
-                <input class="govuk-radios__input" id="marriage-civil-partnership" name="marriage-civil-partnership" type="radio" value="never" data-aria-controls="conditional-yes">
-                <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership">
+                <input class="govuk-radios__input" id="co_defendants-1" name="co_defendants" type="radio" value="yes" data-aria-controls="conditional-yes">
+                <label class="govuk-label govuk-radios__label" for="co_defendants-1">
                   Yes
                 </label>
               </div>
               <!-- START: CONDITIONAL REVEAL -->
               <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-yes"> <!-- id needs to match data-aria-controls -->
                 <div class="govuk-form-group">
-                  <label class="govuk-label" for="contact-by-email">
+                  <label class="govuk-label" for="co_defendants-1">
                     Full name
                   </label>
-                  <input class="govuk-input govuk-!-width-one-third" id="contact-by-email" name="contact-by-email" type="email" spellcheck="false" autocomplete="email">
+                  <input class="govuk-input govuk-!-width-one-third" id="co_defendants-name" name="co_defendants-name" type="name" spellcheck="false">
                 </div>
               </div>
               <!-- END: CONDITIONAL REVEAL  -->
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="marriage-civil-partnership-2" name="marriage-civil-partnership" type="radio" value="married">
-                <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership-2">
+                <input class="govuk-radios__input" id="co_defendants-2" name="co_defendants" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="co_defendants-2">
                   No
                 </label>
               </div>

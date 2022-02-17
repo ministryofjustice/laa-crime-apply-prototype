@@ -7,62 +7,62 @@
         <form action="other_capital" method="post" class="form">
 
           <div class="govuk-form-group">
-            <fieldset class="govuk-fieldset" aria-describedby="citizenship-conditional-hint">
+            <fieldset class="govuk-fieldset" aria-describedby="savings-investments">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
                 <h1 class="govuk-fieldset__heading">
                 Which of the following savings or investments does your client have?
                 </h1>
               </legend>
 
-              <span id="changed-name-hint" class="govuk-hint">Select all that apply.</span>
+              <span id="savings-investments-hint" class="govuk-hint">Select all that apply.</span>
 
               <div class="govuk-!-padding-bottom-4"></div>
 
               <div class="govuk-checkboxes" data-module="govuk-checkboxes">
 
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="citizenship-conditional-1" name="antiques" type="checkbox" value="yes" data-aria-controls="conditional-citizenship-conditional-1" {{ checked("antiques","yes") }}>
-                  <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional-1">
+                  <input class="govuk-checkboxes__input" id="savings-investments-1" name="savings-investments-1" type="checkbox" value="money_not_in_bank" data-aria-controls="conditional-1" {{ checked("money_not_in_bank","yes") }}>
+                  <label class="govuk-label govuk-checkboxes__label" for="savings-investments-1">
                     Money not in a bank account
                   </label>
-               <span id="nationality-1-item-hint" class="govuk-hint govuk-checkboxes__hint" style="padding-left: 15px">
+               <span id="savings-investments-1-hint" class="govuk-hint govuk-checkboxes__hint" style="padding-left: 15px">
                       For example, cash kept at home.
                   </span>
                 </div>
-                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-citizenship-conditional-1">
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-1">
                   <div class="govuk-form-group">
-                    <label class="govuk-label" for="antiques-value">
+                    <label class="govuk-label" for="savings-investments-1">
                       Enter the total amount
                     </label>
                     <!-- WRAPPER STARTS -->
                     <div class="govuk-input__wrapper">
                       <div class="govuk-input__prefix" aria-hidden="true">£
                       </div>
-                      <input class="govuk-input govuk-input--width-5" id="cost" name="cost" type="text" spellcheck="false">
+                      <input class="govuk-input govuk-input--width-5" id="savings-investments-1-cost" name="cost" type="text" spellcheck="false">
                     </div>
                     <!-- WRAPPER ENDS -->
                   </div>
                   </div>
 
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="citizenship-conditional-2" name="antiques" type="checkbox" value="yes" data-aria-controls="conditional-citizenship-conditional-2" {{ checked("antiques","yes") }}>
-                  <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional-2">
+                  <input class="govuk-checkboxes__input" id="savings-investments-2" name="savings-investments-2" type="checkbox" value="other_bank_account" data-aria-controls="conditional-2" {{ checked("other_bank_account","yes") }}>
+                  <label class="govuk-label govuk-checkboxes__label" for="savings-investments-2">
                     Access to someone else's bank account
                   </label>
-                  <span id="nationality-1-item-hint" class="govuk-hint govuk-checkboxes__hint" style="padding-left: 15px">
+                  <span id="savings-investments-2-hint" class="govuk-hint govuk-checkboxes__hint" style="padding-left: 15px">
                       For example, your client is the signatory on a child's account.
                   </span>
                 </div>
-                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-citizenship-conditional-2">
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-2">
                   <div class="govuk-form-group">
-                    <label class="govuk-label" for="antiques-value">
+                    <label class="govuk-label" for="savings-investments-2">
                       Enter the estimated total in all accounts
                     </label>
                     <!-- WRAPPER STARTS -->
                     <div class="govuk-input__wrapper">
                       <div class="govuk-input__prefix" aria-hidden="true">£
                       </div>
-                      <input class="govuk-input govuk-input--width-5" id="cost" name="cost" type="text" spellcheck="false">
+                      <input class="govuk-input govuk-input--width-5" id="savings-investments-2-cost" name="savings-investments-2-cost" type="text" spellcheck="false">
                     </div>
                     <!-- WRAPPER ENDS -->
                   </div>
@@ -70,101 +70,101 @@
 
 
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="citizenship-conditional-3" name="classic-car" type="checkbox" value="yes" data-aria-controls="conditional-citizenship-conditional-3" {{ checked("classic-car","yes") }}>
-                  <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional-3">
+                  <input class="govuk-checkboxes__input" id="savings-investments-3" name="savings-investments-3" type="checkbox" value="isa" data-aria-controls="conditional-3" {{ checked("isa","yes") }}>
+                  <label class="govuk-label govuk-checkboxes__label" for="savings-investments-3">
                      ISAs, National Savings Certificates and Premium Bonds
                   </label>
-                  <span id="nationality-1-item-hint" class="govuk-hint govuk-checkboxes__hint" style="padding-left: 15px">
+                  <span id="savings-investments-3-hint" class="govuk-hint govuk-checkboxes__hint" style="padding-left: 15px">
                          For example, Premium Bonds or Savings Certificates.
                      </span>
                 </div>
-                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-citizenship-conditional-3">
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-3">
                   <div class="govuk-form-group">
-                    <label class="govuk-label" for="car-value">
+                    <label class="govuk-label" for="savings-investments-3">
                       Enter the total value of all owned
                     </label>
                     <!-- WRAPPER STARTS -->
                     <div class="govuk-input__wrapper">
                       <div class="govuk-input__prefix" aria-hidden="true">£
                       </div>
-                      <input class="govuk-input govuk-input--width-5" id="cost" name="cost" type="text" spellcheck="false">
+                      <input class="govuk-input govuk-input--width-5" id="savings-investments-3-cost" name="savings-investments-3-cost" type="text" spellcheck="false">
                     </div>
                     <!-- WRAPPER ENDS -->
                   </div>
 
                 </div>
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="citizenship-conditional-4" name="premium-bonds" type="checkbox" value="yes" data-aria-controls="conditional-citizenship-conditional-4" {{ checked("premium-bonds","yes") }}>
-                  <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional-4">
+                  <input class="govuk-checkboxes__input" id="savings-investments-4" name="savings-investments-4" type="checkbox" value="shares" data-aria-controls="conditional-4" {{ checked("shares","yes") }}>
+                  <label class="govuk-label govuk-checkboxes__label" for="savings-investments-4">
                     Shares in a public limited company (PLC)
                   </label>
                 </div>
-                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-citizenship-conditional-4">
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-4">
                   <div class="govuk-form-group">
-                    <label class="govuk-label" for="bonds-value">
+                    <label class="govuk-label" for="savings-investments-4">
                       Enter the total value of all owned
                     </label>
                     <!-- WRAPPER STARTS -->
                     <div class="govuk-input__wrapper">
                       <div class="govuk-input__prefix" aria-hidden="true">£
                       </div>
-                      <input class="govuk-input govuk-input--width-5" id="cost" name="cost" type="text" spellcheck="false">
+                      <input class="govuk-input govuk-input--width-5" id="savings-investments-4-cost" name="savings-investments-4-cost" type="text" spellcheck="false">
                     </div>
                     <!-- WRAPPER ENDS -->
                   </div>
                 </div>
 
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="citizenship-conditional-6" name="policies" type="checkbox" value="yes" data-aria-controls="conditional-citizenship-conditional-6" {{ checked("policies","yes") }}>
-                  <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional-6">
+                  <input class="govuk-checkboxes__input" id="savings-investments-5" name="savings-investments-5" type="checkbox" value="bonds" data-aria-controls="conditional-5" {{ checked("bonds","yes") }}>
+                  <label class="govuk-label govuk-checkboxes__label" for="savings-investments-5">
                   PEPs, unit trusts, capital bonds and government stocks
                   </label>
                 </div>
-                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-citizenship-conditional-6">
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-5">
                   <div class="govuk-form-group">
-                    <label class="govuk-label" for="policies-value">
+                    <label class="govuk-label" for="savings-investments-5">
                       Enter the total value
                     </label>
                     <!-- WRAPPER STARTS -->
                     <div class="govuk-input__wrapper">
                       <div class="govuk-input__prefix" aria-hidden="true">£
                       </div>
-                      <input class="govuk-input govuk-input--width-5" id="cost" name="cost" type="text" spellcheck="false">
+                      <input class="govuk-input govuk-input--width-5" id="savings-investments-5-cost" name="savings-investments-5-cost" type="text" spellcheck="false">
                     </div>
                     <!-- WRAPPER ENDS -->
                   </div>
                 </div>
 
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="citizenship-conditional-8" name="estates" type="checkbox" value="yes" data-aria-controls="conditional-citizenship-conditional-8" {{ checked("estates","yes") }}>
-                  <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional-8">
-                    Life assurance or endowment policies
+                  <input class="govuk-checkboxes__input" id="savings-investments-6" name="savings-investments-6" type="checkbox" value="policies" data-aria-controls="conditional-6" {{ checked("isa","yes") }}>
+                  <label class="govuk-label govuk-checkboxes__label" for="savings-investments-6">
+                     Life assurance or endowment policies
                   </label>
-                  <span id="nationality-1-item-hint" class="govuk-hint govuk-checkboxes__hint" style="padding-left: 15px">
-                      Do not include policies that only pay out on death.
+                  <span id="savings-investments-6-hint" class="govuk-hint govuk-checkboxes__hint" style="padding-left: 15px">
+                         Do not include policies that only pay out on death.
                   </span>
                 </div>
-                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-citizenship-conditional-8">
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-6">
                   <div class="govuk-form-group">
-                    <label class="govuk-label" for="estates-value">
+                    <label class="govuk-label" for="savings-investments-6">
                       Enter the total value of all owned
                     </label>
                     <!-- WRAPPER STARTS -->
                     <div class="govuk-input__wrapper">
                       <div class="govuk-input__prefix" aria-hidden="true">£
                       </div>
-                      <input class="govuk-input govuk-input--width-5" id="cost" name="cost" type="text" spellcheck="false">
+                      <input class="govuk-input govuk-input--width-5" id="savings-investments-6-cost" name="savings-investments-6-cost" type="text" spellcheck="false">
                     </div>
+                  </div>
                     <!-- WRAPPER ENDS -->
                   </div>
-                </div>
 
                <p class="govuk-body">or</p>
 
 
                <div class="govuk-checkboxes__item">
-                 <input class="govuk-checkboxes__input" id="citizenship-conditional-7" name="estates" type="checkbox" value="yes">
-                 <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional-7">
+                 <input class="govuk-checkboxes__input" id="savings-investments-7" name="savings-investments-7" type="checkbox" value="none">
+                 <label class="govuk-label govuk-checkboxes__label" for="savings-investments-7">
                    None of these
                  </label>
                </div>

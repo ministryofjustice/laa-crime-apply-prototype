@@ -20,15 +20,15 @@
                 <fieldset class="govuk-fieldset">
                   <div class="govuk-radios" data-module="govuk-radios">
                     <div class="govuk-radios__item">
-                      <input class="govuk-radios__input" id="marriage-civil-partnership" name="marriage-civil-partnership" type="radio" value="never" data-aria-controls="remand-yes">
+                      <input class="govuk-radios__input" id="dependants-1" name="dependants" type="radio" value="yes" data-aria-controls="dependants-yes">
                       <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership">
                         Yes
                       </label>
                     </div>
 
-                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="remand-yes"> <!-- id needs to match data-aria-controls -->
+                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="dependants-yes"> <!-- id needs to match data-aria-controls -->
                       <div class="govuk-form-group">
-                        <label class="govuk-label" for="contact-by-email">
+                        <label class="govuk-label" for="dependants-1">
                           Their date of birth
                         </label>
                         <div class="govuk-form-group">
@@ -36,27 +36,27 @@
                             <div id="passport-issued-hint" class="govuk-hint">
                               For example, 27 3 2007
                             </div>
-                            <div class="govuk-date-input" id="passport-issued">
+                            <div class="govuk-date-input" id="dependant-date-of-birth">
                               <div class="govuk-date-input__item">
                                 <div class="govuk-form-group">
-                                  <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                                  <label class="govuk-label govuk-date-input__label" for="dependant-day">
                                     Day
                                   </label>
-                                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dependant-day" name="dependant-day" type="text" pattern="[0-9]*" inputmode="numeric"></div>
                               </div>
                               <div class="govuk-date-input__item">
                                 <div class="govuk-form-group">
-                                  <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                                  <label class="govuk-label govuk-date-input__label" for="dependant-month">
                                     Month
                                   </label>
-                                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dependant-month" name="dependant-month" type="text" pattern="[0-9]*" inputmode="numeric"></div>
                               </div>
                               <div class="govuk-date-input__item">
                                 <div class="govuk-form-group">
-                                  <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                                  <label class="govuk-label govuk-date-input__label" for="dependant-year">
                                     Year
                                   </label>
-                                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="dependant-year" name="dependant-year" type="text" pattern="[0-9]*" inputmode="numeric"></div>
                               </div>
                             </div>
 
@@ -69,8 +69,8 @@
                     <div class="govuk-form-group">
 
                     <div class="govuk-radios__item">
-                      <input class="govuk-radios__input" id="marriage-civil-partnership-2" name="marriage-civil-partnership" type="radio" value="married">
-                      <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership-2">
+                      <input class="govuk-radios__input" id="dependants-2" name="dependants-2" type="radio" value="no">
+                      <label class="govuk-label govuk-radios__label" for="dependants-2">
                         No
                       </label>
                     </div>
