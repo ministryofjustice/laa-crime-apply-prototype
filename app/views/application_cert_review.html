@@ -24,17 +24,16 @@ th:first-child {
         Review and print your application
       </h1>
 
-      <p><strong>Client:</strong> Sam Doe
-        <br><strong>LAA reference:</strong> L-23A-56D
-        <br><strong>CCMS reference:</strong> 123456789012
-      </p>
-
   <br>
 
-      <div>
-         <h2 class="govuk-heading-m">
-           Client details
-         </h2>
+         <div class="govuk-grid-row">
+           <div class="govuk-grid-column-two-thirds">
+             <h2 class="govuk-heading-m">Client details</h2>
+           </div>
+           <div class="govuk-grid-column-one-third">
+             <p><a class="govuk-link" style="float:right;" href="proceedings">Change</a></p>
+           </div>
+         </div>
 
          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
               <div class="govuk-summary-list__row">
@@ -44,11 +43,11 @@ th:first-child {
              <dd class="govuk-summary-list__value">
                Sam
              </dd>
-             <dd class="govuk-summary-list__actions">
+             <!-- <dd class="govuk-summary-list__actions">
                   <a class="govuk-link" href="client_details">
                  Change <span class="govuk-visually-hidden">first name</span>
                </a>
-             </dd>
+             </dd> -->
            </div>
            <div class="govuk-summary-list__row">
              <dt class="govuk-summary-list__key">
@@ -57,11 +56,11 @@ th:first-child {
              <dd class="govuk-summary-list__value">
                Doe
              </dd>
-             <dd class="govuk-summary-list__actions">
+             <!-- <dd class="govuk-summary-list__actions">
                   <a class="govuk-link" href="client_details">
                  Change <span class="govuk-visually-hidden">last name</span>
                </a>
-             </dd>
+             </dd> -->
            </div>
            <div class="govuk-summary-list__row">
              <dt class="govuk-summary-list__key">
@@ -70,11 +69,11 @@ th:first-child {
              <dd class="govuk-summary-list__value">
                1 January 1980
              </dd>
-             <dd class="govuk-summary-list__actions">
+             <!-- <dd class="govuk-summary-list__actions">
                   <a class="govuk-link" href="client_details">
                  Change <span class="govuk-visually-hidden">dob</span>
                </a>
-             </dd>
+             </dd> -->
            </div>
            <div class="govuk-summary-list__row">
              <dt class="govuk-summary-list__key">
@@ -83,11 +82,11 @@ th:first-child {
              <dd class="govuk-summary-list__value">
                QQ123456C
              </dd>
-             <dd class="govuk-summary-list__actions">
+             <!-- <dd class="govuk-summary-list__actions">
                   <a class="govuk-link" href="client_details">
                  Change <span class="govuk-visually-hidden">national insurance number</span>
                </a>
-             </dd>
+             </dd> -->
            </div>
            <div class="govuk-summary-list__row">
              <dt class="govuk-summary-list__key">
@@ -96,38 +95,90 @@ th:first-child {
              <dd class="govuk-summary-list__value">
                1 Main Street<br/>London<br/>SE15 5NP
              </dd>
-             <dd class="govuk-summary-list__actions">
+             <!-- <dd class="govuk-summary-list__actions">
                   <a class="govuk-link" href="postcode_finder">
                  Change <span class="govuk-visually-hidden">correspondance address</span>
                </a>
-             </dd>
+             </dd> -->
            </div>
            <div class="govuk-summary-list__row">
              <dt class="govuk-summary-list__key">
-               Employment status
+               Passporting benefit
              </dt>
              <dd class="govuk-summary-list__value">
-               Employed
+               Yes
              </dd>
-             <dd class="govuk-summary-list__actions">
-                  <a class="govuk-link" href="employment_status">
+             <!-- <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="postcode_finder">
                  Change <span class="govuk-visually-hidden">correspondance address</span>
                </a>
-             </dd>
+             </dd> -->
            </div>
            <div class="govuk-summary-list__row">
              <dt class="govuk-summary-list__key">
-               Marital status
+               Partner
              </dt>
              <dd class="govuk-summary-list__value">
-               Single
+               Yes
              </dd>
-             <dd class="govuk-summary-list__actions">
+             <!-- <dd class="govuk-summary-list__actions">
                   <a class="govuk-link" href="employment_status">
                  Change <span class="govuk-visually-hidden">correspondance address</span>
                </a>
+             </dd> -->
+           </div>
+           <div class="govuk-summary-list__row">
+             <dt class="govuk-summary-list__key">
+               Partner's first name
+             </dt>
+             <dd class="govuk-summary-list__value">
+               Joanne
              </dd>
-         </div>
+             <!-- <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="postcode_finder">
+                 Change <span class="govuk-visually-hidden">correspondance address</span>
+               </a>
+             </dd> -->
+           </div>
+           <div class="govuk-summary-list__row">
+             <dt class="govuk-summary-list__key">
+               Partner's last name
+             </dt>
+             <dd class="govuk-summary-list__value">
+               Doe
+             </dd>
+             <!-- <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="client_details">
+                 Change <span class="govuk-visually-hidden">last name</span>
+               </a>
+             </dd> -->
+           </div>
+           <div class="govuk-summary-list__row">
+             <dt class="govuk-summary-list__key">
+               On remand
+             </dt>
+             <dd class="govuk-summary-list__value">
+               Yes
+             </dd>
+             <!-- <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="client_details">
+                 Change <span class="govuk-visually-hidden">last name</span>
+               </a>
+             </dd> -->
+           </div>
+           <div class="govuk-summary-list__row">
+             <dt class="govuk-summary-list__key">
+               Date of remand
+             </dt>
+             <dd class="govuk-summary-list__value">
+               12 Feb 2022
+             </dd>
+             <!-- <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="client_details">
+                 Change <span class="govuk-visually-hidden">last name</span>
+               </a>
+             </dd> -->
+           </div>
           </dl>
 
 
@@ -149,6 +200,34 @@ th:first-child {
         <dd class="govuk-summary-list__value">
           Indictable
         </dd>
+        <!-- <dd class="govuk-summary-list__actions"> -->
+        <!--  <a href="proceedings">
+            Change <span class="govuk-visually-hidden">proceeding</span>
+          </a> -->
+        <!-- </dd> -->
+      </div>
+      <!-- <div class="govuk-summary-list__row"> -->
+        <!-- <dt class="govuk-summary-list__key">
+          Court hearing the case
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Southwark Crown Court
+        </dd> -->
+        <!-- <dd class="govuk-summary-list__actions"> -->
+        <!--  <a href="proceedings">
+            Change <span class="govuk-visually-hidden">proceeding</span>
+          </a> -->
+        <!-- </dd> -->
+      <!-- </div> -->
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Offence
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Wounding or grievous bodily harm with intent to cause grievous bodily harm
+          <p> </p>
+          <p>Class A</p>
+        </dd>
         <dd class="govuk-summary-list__actions">
         <!--  <a href="proceedings">
             Change <span class="govuk-visually-hidden">proceeding</span>
@@ -157,23 +236,10 @@ th:first-child {
       </div>
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Court type
+          Co-defendant 1
         </dt>
         <dd class="govuk-summary-list__value">
-          Crown Court
-        </dd>
-        <dd class="govuk-summary-list__actions">
-        <!--  <a href="proceedings">
-            Change <span class="govuk-visually-hidden">proceeding</span>
-          </a> -->
-        </dd>
-      </div>
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Co-defendant
-        </dt>
-        <dd class="govuk-summary-list__value">
-          No
+          Paul Smith
         </dd>
         <dd class="govuk-summary-list__actions">
         <!--  <a href="proceedings">
@@ -184,76 +250,159 @@ th:first-child {
    </dl>
   <br>
 
-  <h2 class="govuk-heading-m">
-    Offence details
-  </h2>
 
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-m">Interests of Justice</h2>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <p><a class="govuk-link" style="float:right;" href="proceedings">Change</a></p>
+    </div>
+  </div>
   <dl class="govuk-summary-list">
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
-      Offence class
+      Criteria
     </dt>
     <dd class="govuk-summary-list__value">
-      Class A
+      Loss of liberty
     </dd>
-    <dd class="govuk-summary-list__actions">
+    <!-- <dd class="govuk-summary-list__actions">
       <a href="laspo">
         Change <span class="govuk-visually-hidden">proceeding</span>
       </a>
-    </dd>
+    </dd> -->
   </div>
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
-      Other criminal cases or charges
+      Justification
     </dt>
     <dd class="govuk-summary-list__value">
-      No
+      Facing prison time
     </dd>
-    <dd class="govuk-summary-list__actions">
+    <!-- <dd class="govuk-summary-list__actions">
       <a href="laspo">
         Change <span class="govuk-visually-hidden">proceeding</span>
       </a>
-    </dd>
+    </dd> -->
   </div>
   </dl>
+
   <br>
 
-  <h2 class="govuk-heading-m">
-    Interest of justice
-  </h2>
-
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-m">Income assessment</h2>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <p><a class="govuk-link" style="float:right;" href="proceedings">Change</a></p>
+    </div>
+  </div>
   <dl class="govuk-summary-list">
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
-      Remand
+      Employment status
     </dt>
     <dd class="govuk-summary-list__value">
-      No
+      Unemployed
     </dd>
-    <dd class="govuk-summary-list__actions">
+    <!-- <dd class="govuk-summary-list__actions">
       <a href="laspo">
         Change <span class="govuk-visually-hidden">proceeding</span>
       </a>
-    </dd>
+    </dd> -->
   </div>
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
-      Liberty at risk
+      Employment income
+    </dt>
+    <dd class="govuk-summary-list__value">
+      £0
+    </dd>
+    <!-- <dd class="govuk-summary-list__actions">
+      <a href="laspo">
+        Change <span class="govuk-visually-hidden">proceeding</span>
+      </a>
+    </dd> -->
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Financial help from friends or family
+    </dt>
+    <dd class="govuk-summary-list__value">
+      £50<br/>Every month
+    </dd>
+    <!-- <dd class="govuk-summary-list__actions">
+      <a href="laspo">
+        Change <span class="govuk-visually-hidden">proceeding</span>
+      </a>
+    </dd> -->
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Cash in hand pay
+    </dt>
+    <dd class="govuk-summary-list__value">
+      £100<br/>Every week
+    </dd>
+    <!-- <dd class="govuk-summary-list__actions">
+      <a href="laspo">
+        Change <span class="govuk-visually-hidden">proceeding</span>
+      </a>
+    </dd> -->
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Children
     </dt>
     <dd class="govuk-summary-list__value">
       Yes
     </dd>
-    <dd class="govuk-summary-list__actions">
+    <!-- <dd class="govuk-summary-list__actions">
       <a href="laspo">
         Change <span class="govuk-visually-hidden">proceeding</span>
       </a>
-    </dd>
+    </dd> -->
   </div>
-  </dl>
-
-  <br>
-
-
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Child 1
+    </dt>
+    <dd class="govuk-summary-list__value">
+      12 years old
+    </dd>
+    <!-- <dd class="govuk-summary-list__actions">
+      <a href="laspo">
+        Change <span class="govuk-visually-hidden">proceeding</span>
+      </a>
+    </dd> -->
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Housing payments
+    </dt>
+    <dd class="govuk-summary-list__value">
+      £500<br/>Every month
+    </dd>
+    <!-- <dd class="govuk-summary-list__actions">
+      <a href="laspo">
+        Change <span class="govuk-visually-hidden">proceeding</span>
+      </a>
+    </dd> -->
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Council tax
+    </dt>
+    <dd class="govuk-summary-list__value">
+      £42<br/>Every month
+    </dd>
+    <!-- <dd class="govuk-summary-list__actions">
+      <a href="laspo">
+        Change <span class="govuk-visually-hidden">proceeding</span>
+      </a>
+    </dd> -->
+  </div>
 
       </div>
 
