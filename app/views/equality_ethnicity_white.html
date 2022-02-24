@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<span class="govuk-caption-xl">Equality questions</span>
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        Which of the following best describes your White background?
+      </h1>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="ethnicity-detail" name="ethnicity-detail" type="radio" value="british">
+        <label class="govuk-label govuk-radios__label" for="ethnicity-detail">
+          English, Welsh, Scottish, Northern Irish or British
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="ethnicity-detail-2" name="ethnicity-detail" type="radio" value="irish">
+        <label class="govuk-label govuk-radios__label" for="ethnicity-detail-2">
+          Irish
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="ethnicity-detail-3" name="ethnicity-detail" type="radio" value="gypsy-traveller">
+        <label class="govuk-label govuk-radios__label" for="ethnicity-detail-3">
+          Gypsy or Irish Traveller
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="ethnicity-detail-4" name="ethnicity-detail" type="radio" value="other" data-aria-controls="conditional-ethnicity-detail-4">
+        <label class="govuk-label govuk-radios__label" for="ethnicity-detail-4">
+          Any other White background
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-ethnicity-detail-4">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="other-description">
+            How would you describe your background? (optional)
+          </label>
+          <input class="govuk-input govuk-!-width-one-half" id="other-description" name="other-description" type="text">
+        </div>
+
+      </div>
+      <div class="govuk-radios__divider">or</div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="ethnicity-detail-6" name="ethnicity-detail" type="radio" value="skip">
+        <label class="govuk-label govuk-radios__label" for="ethnicity-detail-6">
+          Prefer not to say
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+<a href="/application_submitted"
+<button class="govuk-button" data-module="govuk-button">
+Save and continue
+</button>
+</a>
+
+<a href="/dashboard" role="button" class="govuk-button govuk-button--secondary" style="background-color:#dee0e2; color:#0b0c0c; margin-left:10px">
+  Back to your applications
+</a>
+
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<span class="govuk-caption-xl">Equality questions</span>
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        Which of the following best describes your Asian or Asian British background?
+      </h1>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="ethnicity-detail" name="ethnicity-detail" type="radio" value="indian">
+        <label class="govuk-label govuk-radios__label" for="ethnicity-detail">
+          Indian
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="ethnicity-detail-2" name="ethnicity-detail" type="radio" value="pakistani">
+        <label class="govuk-label govuk-radios__label" for="ethnicity-detail-2">
+          Pakistani
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="ethnicity-detail-3" name="ethnicity-detail" type="radio" value="bangladeshi">
+        <label class="govuk-label govuk-radios__label" for="ethnicity-detail-3">
+          Bangladeshi
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="ethnicity-detail-4" name="ethnicity-detail" type="radio" value="chinese">
+        <label class="govuk-label govuk-radios__label" for="ethnicity-detail-4">
+          Chinese
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="ethnicity-detail-5" name="ethnicity-detail" type="radio" value="other" data-aria-controls="conditional-ethnicity-detail-5">
+        <label class="govuk-label govuk-radios__label" for="ethnicity-detail-5">
+          Any other Asian background
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-ethnicity-detail-5">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="other-description">
+            How would you describe your background? (optional)
+          </label>
+          <input class="govuk-input govuk-!-width-one-half" id="other-description" name="other-description" type="text">
+        </div>
+
+      </div>
+      <div class="govuk-radios__divider">or</div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="ethnicity-detail-7" name="ethnicity-detail" type="radio" value="skip">
+        <label class="govuk-label govuk-radios__label" for="ethnicity-detail-7">
+          Prefer not to say
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+<a href="/application_submitted"
+<button class="govuk-button" data-module="govuk-button">
+Save and continue
+</button>
+</a>
+
+<a href="/dashboard" role="button" class="govuk-button govuk-button--secondary" style="background-color:#dee0e2; color:#0b0c0c; margin-left:10px">
+  Back to your applications
+</a>
+
+{% endblock %}

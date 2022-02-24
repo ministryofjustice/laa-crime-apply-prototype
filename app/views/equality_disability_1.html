@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<span class="govuk-caption-xl">Equality questions</span>
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        Does your client have any physical or mental health conditions or illness lasting or expected to last 12 months or more?
+      </h1>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="disability" name="disability" type="radio" value="yes">
+        <label class="govuk-label govuk-radios__label" for="disability">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="disability-2" name="disability" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="disability-2">
+          No
+        </label>
+      </div>
+      <div class="govuk-radios__divider">or</div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="disability-4" name="disability" type="radio" value="skip">
+        <label class="govuk-label govuk-radios__label" for="disability-4">
+          Prefer not to say
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+<a href="/equality_disability_2"
+<button class="govuk-button" data-module="govuk-button">
+Save and continue
+</button>
+</a>
+
+<a href="/dashboard" role="button" class="govuk-button govuk-button--secondary" style="background-color:#dee0e2; color:#0b0c0c; margin-left:10px">
+  Back to your applications
+</a>
+
+{% endblock %}
