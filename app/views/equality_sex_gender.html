@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<span class="govuk-caption-xl">Equality questions</span>
+<h1 class="govuk-heading-l">Sex and gender identity</h1>
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      What is your client's sex?
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sex" name="sex" type="radio" value="female">
+        <label class="govuk-label govuk-radios__label" for="sex">
+          Female
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sex-2" name="sex" type="radio" value="male">
+        <label class="govuk-label govuk-radios__label" for="sex-2">
+          Male
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sex-3" name="sex" type="radio" value="skip">
+        <label class="govuk-label govuk-radios__label" for="sex-3">
+          Prefer not to say
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      Is the gender your client identify with the same as their sex registered at birth?
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="gender-identity" name="gender-identity" type="radio" value="yes">
+        <label class="govuk-label govuk-radios__label" for="gender-identity">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="gender-identity-2" name="gender-identity" type="radio" value="no" data-aria-controls="conditional-gender-identity-2">
+        <label class="govuk-label govuk-radios__label" for="gender-identity-2">
+          No
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-gender-identity-2">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="gender-description">
+            What is your client's gender identity? (optional)
+          </label>
+          <input class="govuk-input govuk-!-width-one-half" id="gender-description" name="gender-description" type="text">
+        </div>
+
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="gender-identity-3" name="gender-identity" type="radio" value="skip">
+        <label class="govuk-label govuk-radios__label" for="gender-identity-3">
+          Prefer not to say
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+<a href="/equality_disability_1"
+<button class="govuk-button" data-module="govuk-button">
+Save and continue
+</button>
+</a>
+
+<a href="/dashboard" role="button" class="govuk-button govuk-button--secondary" style="background-color:#dee0e2; color:#0b0c0c; margin-left:10px">
+  Back to your applications
+</a>
+
+{% endblock %}
