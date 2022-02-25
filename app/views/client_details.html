@@ -1,0 +1,205 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Apply for legal aid - Client details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Enter your client's details</h1>
+
+      <form action="/case_details" method="post" novalidate>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m"> Full name
+            </legend>
+
+            <div class="govuk-form-group">
+                <label class="govuk-label" for="firstname">
+                First name
+                </label>
+              <input class="govuk-input govuk-!-width-three-quarters" id="firstname" name="firstname" type="text" value="{{ data['firstname'] }}">
+            </div>
+
+            <div class="govuk-form-group">
+                <label class="govuk-label" for="lastname">
+                Last name
+                </label>
+              <input class="govuk-input govuk-!-width-three-quarters" id="lastname" name="lastname" type="text" value="{{ data['lastname'] }}">
+            </div>
+
+          </fieldset>
+        </div>
+
+        <div class="govuk-!-padding-bottom-2"></div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="date-of-birth-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h1 class="govuk-fieldset__heading">
+                Date of birth
+              </h1>
+            </legend>
+            <div id="date-of-birth-hint" class="govuk-hint">
+              For example, 27 3 2007
+            </div>
+            <div class="govuk-date-input" id="date-of-birth">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="date-of-birth-day">
+                    Day
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-of-birth-day" name="date-of-birth-day" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="date-of-birth-month">
+                    Month
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-of-birth-month" name="date-of-birth-month" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="date-of-birth-year">
+                    Year
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="date-of-birth-year" name="date-of-birth-year" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="govuk-!-padding-bottom-2"></div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--m" for="national-insurance-number">
+            National Insurance number
+          </label>
+          <div id="national-insurance-number-hint" class="govuk-hint">
+            It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
+          </div>
+          <div>
+          <input class="govuk-input govuk-input--width-10" id="national-insurance-number" name="national-insurance-number" type="text" spellcheck="false" aria-describedby="national-insurance-number-hint">
+          </input>
+          <div class="govuk-!-padding-bottom-2"></div>
+          <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                My client doesn't have a National Insurance number or I can't find it
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+               We need to know your client's National Insurance number so we can check if they receive a passporting benefit from the Department of Work and Pensions (DWP). If you cannot provide your client's National Insurance number, you’ll have to <a href="client_details_long"> enter your client's details manually</a>.
+            </div>
+          </details>
+          </div>
+        </div>
+
+        <!-- <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--m" for="applied-before">
+            Has your client applied for criminal legal aid before?
+          </label>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="applied-before-1" name="applied-before" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="applied-before">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="applied-before-2" name="applied-before" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="applied-before">
+                  No
+                </label>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h1 class="govuk-fieldset__heading">
+                Is your client on remand?
+              </h1>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="remand-1" name="remand" type="radio" value="yes" data-aria-controls="remand-yes">
+                <label class="govuk-label govuk-radios__label" for="remand">
+                  Yes
+                </label>
+              </div>
+
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="remand-yes"> <!-- id needs to match data-aria-controls -->
+                <!-- <div class="govuk-form-group">
+                  <label class="govuk-label" for="remand">
+                    Date your client was remanded
+                  </label>
+                  <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" role="group" aria-describedby="remand-hint">
+                      <div id="remand-hint" class="govuk-hint">
+                        For example, 27 3 2007
+                      </div>
+                      <div class="govuk-date-input" id="reamand-issued">
+                        <div class="govuk-date-input__item">
+                          <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="remand-issued-day">
+                              Day
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="remand-issued-day" name="remand-issued-day" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                        </div>
+                        <div class="govuk-date-input__item">
+                          <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="remand-issued-month">
+                              Month
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="remand-issued-month" name="remand-issued-month" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                        </div>
+                        <div class="govuk-date-input__item">
+                          <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="remand-issued-year">
+                              Year
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="remand-issued-year" name="remand-issued-year" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                        </div>
+                      </div>
+
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+              <div class="govuk-form-group">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="remand-2" name="remand" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="remand">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div> -->
+
+
+            <div class="govuk-!-padding-bottom-4"></div>
+
+          <input type="hidden" name="client_details[]" value="completed">
+          <button type="submit" class="govuk-button button-left">
+            Save and continue
+          </button>
+    </form>
+
+    <form class="form inline-form" action="/tasklist" method="post">
+      <input type="hidden" name="client_details[]" value="completed">
+      <button class="govuk-button" data-module="govuk-button">Save and come back later</button>
+    </form>
+
+    </div>
+
+  </div>
+
+{% endblock %}
