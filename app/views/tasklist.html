@@ -1,38 +1,21 @@
 {% extends "layout.html" %}
 
-{% block header %}
-  {# Set serviceName in config.js. #}
-  {{ govukHeader({
-    homepageUrl: "/",
-    serviceName: serviceName,
-    serviceUrl: "/",
-    containerClasses: "govuk-width-container",
-    navigation: [
-      {
-        href: "/tasklist",
-        text: "Tasklist",
-        active: true
-      },
-      {
-        href: "/start_page",
-        text: "Start an application"
-      }
-    ]
-  }) }}
-{% endblock %}
-
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
-        Make an application
+        Make a new application
       </h1>
 
       <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Application incomplete</h2>
       <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{ completed }} of {{ total }} sections.</p>
+
       <ol class="app-task-list">
         <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">1. </span> About your client
+          </h2>
           <ul class="app-task-list__items">
             <li class="app-task-list__item {{ sections['client_details']['key'] }}">
               <span class="app-task-list__task-name">
@@ -42,6 +25,14 @@
               </span>
               <strong class="govuk-tag app-task-list__tag" id="company-information-status">{{ sections['client_details']['label'] }}</strong>
             </li>
+
+        <div class="govuk-!-padding-bottom-4"></div>
+
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">2. </span> About the case
+          </h2>
+          <ul class="app-task-list__items">
             <li class="app-task-list__item {{ sections['case_details']['key'] }}">
               <span class="app-task-list__task-name">
                 <a href="/case_details" aria-describedby="contact-details-status">
@@ -66,10 +57,18 @@
               </span>
               <strong class="govuk-tag govuk-tag app-task-list__tag" id="list-ioj-status">{{ sections['interests_of_justice']['label'] }}</strong>
             </li>
+
+            <div class="govuk-!-padding-bottom-4"></div>
+
+            <li>
+              <h2 class="app-task-list__section">
+                <span class="app-task-list__section-number">3. </span> Means assessment
+              </h2>
+              <ul class="app-task-list__items">
             <li class="app-task-list__item {{ sections['check_benefits']['key'] }}">
               <span class="app-task-list__task-name">
                 <a href="/benefit_checker" aria-describedby="list-benefits-status">
-                  Check benefits status
+                  Check your client's benefits status
                 </a>
               </span>
               <strong class="govuk-tag govuk-tag app-task-list__tag" id="list-benefits-status">{{ sections['check_benefits']['label'] }}</strong>
@@ -92,20 +91,44 @@
             </li>
             <li class="app-task-list__item {{ sections['check_means']['key'] }}">
               <span class="app-task-list__task-name">
-                <a href="/nonpassported_meansresults" aria-describedby="list-check-means-status">
-                  Check means assessment results
+                <a href="/check_answers_capital_full" aria-describedby="list-check-means-status">
+                  Check your answers
                 </a>
               </span>
               <strong class="govuk-tag govuk-tag app-task-list__tag" id="list-check-means-status">{{ sections['check_means']['label'] }}</strong>
             </li>
+            <li class="app-task-list__item {{ sections['check_means']['key'] }}">
+              <span class="app-task-list__task-name">
+                <a href="/nonpassported_meansresults" aria-describedby="list-check-means-status">
+                  Check means assessment result
+                </a>
+              </span>
+              <strong class="govuk-tag govuk-tag app-task-list__tag" id="list-check-means-status">{{ sections['check_means']['label'] }}</strong>
+            </li>
+
+            <div class="govuk-!-padding-bottom-4"></div>
+
+            <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">4. </span> Supporting evidence
+            </h2>
+            <ul class="app-task-list__items">
             <li class="app-task-list__item {{ sections['evidence']['key'] }}">
               <span class="app-task-list__task-name">
                 <a href="/upload" aria-describedby="list-evidence-status">
-                  Upload supporting evidence
+                  Upload evidence
                 </a>
               </span>
               <strong class="govuk-tag govuk-tag app-task-list__tag" id="list-evidence-status">{{ sections['evidence']['label'] }}</strong>
             </li>
+
+            <div class="govuk-!-padding-bottom-4"></div>
+
+            <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">5. </span> Review and confirm
+            </h2>
+            <ul class="app-task-list__items">
             <li class="app-task-list__item {{ sections['review']['key'] }}">
               <span class="app-task-list__task-name">
                 <a href="/application_cert_review" aria-describedby="list-review-status">
