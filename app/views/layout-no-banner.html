@@ -63,20 +63,6 @@
   }) }}
 {% endblock %}
 
-{% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "PROTOTYPE"
-    },
-    html: 'This is a prototype. Some things may not work as expected.'
-  }) }}
-
-  {{ govukBackLink({
-    text: "Back",
-    href: "javascript:goBack()"
-  }) }}
-{% endblock %}
-
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
 
 {% if useAutoStoreData %}
