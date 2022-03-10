@@ -10,101 +10,177 @@ Apply for legal aid - Client details
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">Confirm your client's details</h1>
 
-      <form action="/case_details" method="post" novalidate>
+      <form action="/benefit_checker" method="post" novalidate>
 
         <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m"> Full name
-            </legend>
 
-            <div class="govuk-form-group">
-                <label class="govuk-label" for="firstname">
-                First name
-                </label>
-              <input class="govuk-input govuk-!-width-three-quarters" id="firstname" name="firstname" type="text" value="{{ data['firstname'] }}">
-            </div>
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
 
-            <div class="govuk-form-group">
-                <label class="govuk-label" for="lastname">
-                Last name
-                </label>
-              <input class="govuk-input govuk-!-width-three-quarters" id="lastname" name="lastname" type="text" value="{{ data['lastname'] }}">
-            </div>
-
-          </fieldset>
-        </div>
-
-        <div class="govuk-!-padding-bottom-2"></div>
-
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset" role="group" aria-describedby="date-of-birth-hint">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              <h1 class="govuk-fieldset__heading">
-                Date of birth
-              </h1>
-            </legend>
-            <div id="date-of-birth-hint" class="govuk-hint">
-              For example, 27 3 2007
-            </div>
-            <div class="govuk-date-input" id="date-of-birth">
-              <div class="govuk-date-input__item">
-                <div class="govuk-form-group">
-                  <label class="govuk-label govuk-date-input__label" for="date-of-birth-day">
-                    Day
-                  </label>
-                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-of-birth-day" name="date-of-birth-day" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+              <h2 class="govuk-heading-m">Personal details</h2>
               </div>
-              <div class="govuk-date-input__item">
-                <div class="govuk-form-group">
-                  <label class="govuk-label govuk-date-input__label" for="date-of-birth-month">
-                    Month
-                  </label>
-                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-of-birth-month" name="date-of-birth-month" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+              <div class="govuk-grid-column-one-third">
+              <p><a class="govuk-link" style="float:right;" href="client_details_long">Change</a></p>
               </div>
-              <div class="govuk-date-input__item">
-                <div class="govuk-form-group">
-                  <label class="govuk-label govuk-date-input__label" for="date-of-birth-year">
-                    Year
-                  </label>
-                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="date-of-birth-year" name="date-of-birth-year" type="text" pattern="[0-9]*" inputmode="numeric"></div>
               </div>
-            </div>
-          </fieldset>
-        </div>
+                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Name
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      Jon Philips
+                    </dd>
+                  </div>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Date of birth
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      12 March 1979
+                    </dd>
+                  </div>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      National Insurance number
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      QQ123456C
+                    </dd>
+                  </div>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Correspondance address
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      72 Guild Street
+                      <br>London
+                      <br>SE23 6FH
+                    </dd>
+                  </div>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Partner
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      No
+                    </dd>
+                  </div>
+                </dl>
 
-        <div class="govuk-!-padding-bottom-2"></div>
 
-        <div class="govuk-form-group">
-          <label class="govuk-label govuk-label--m" for="national-insurance-number">
-            National Insurance number
-          </label>
-          <div id="national-insurance-number-hint" class="govuk-hint">
-            It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
-          </div>
-          <input class="govuk-input govuk-input--width-10" id="national-insurance-number" name="national-insurance-number" type="text" spellcheck="false" aria-describedby="national-insurance-number-hint">
-        </div>
+                <!-- <div class="govuk-grid-row">
+                  <div class="govuk-grid-column-two-thirds">
 
-        <!-- <div class="govuk-form-group">
-          <label class="govuk-label govuk-label--m" for="applied-before">
-            Has your client applied for criminal legal aid before?
-          </label>
-          <div class="govuk-radios" data-module="govuk-radios">
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="applied-before-1" name="applied-before" type="radio" value="yes">
-              <label class="govuk-label govuk-radios__label" for="applied-before">
-                Yes
-              </label>
-            </div>
-            <div class="govuk-radios" data-module="govuk-radios">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="applied-before-2" name="applied-before" type="radio" value="no">
-                <label class="govuk-label govuk-radios__label" for="applied-before">
-                  No
-                </label>
-              </div>
-            </div>
-          </div>
-        </div> -->
+                    <h2 class="govuk-heading-m">Partner details</h2>
+                    </div>
+                    <div class="govuk-grid-column-one-third">
+                    <p><a class="govuk-link" style="float:right;" href="client_details_long">Change</a></p>
+                    </div>
+                    </div>
+
+                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Name
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      Sarah Philips
+                    </dd>
+                  </div>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Date of birth
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      5 January 1978
+                    </dd>
+                  </div>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      National Insurance number
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      QQ123456C
+                    </dd>
+                  </div>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Correspondance address
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      72 Guild Street
+                      <br>London
+                      <br>SE23 6FH
+                    </dd>
+                  </div>
+                </dl> -->
+
+                <div class="govuk-grid-row">
+                  <div class="govuk-grid-column-two-thirds">
+
+                    <h2 class="govuk-heading-m">Additional details</h2>
+                    </div>
+                    <div class="govuk-grid-column-one-third">
+                    <p><a class="govuk-link" style="float:right;" href="client_details_long">Change</a></p>
+                    </div>
+                    </div>
+
+                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Paying towards legal aid
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      Yes
+                    </dd>
+                    <!-- <dd class="govuk-summary-list__actions">
+                      <a href="#">
+                        Change
+                        <span class="govuk-visually-hidden"> previous application number</span>
+                      </a>
+                    </dd> -->
+                  </div>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Case reference number
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      L-123-ABC
+                    </dd>
+                    <!-- <dd class="govuk-summary-list__actions">
+                      <a href="#">
+                        Change
+                      </a>
+                    </dd> -->
+                  </div>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      On remand
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      Yes
+                    </dd>
+                    <!-- <dd class="govuk-summary-list__actions">
+                      <a href="#">
+                        Change
+                      </a>
+                    </dd> -->
+                  </div>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Date remanded
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      12 Janurary 2022
+                    </dd>
+                    <!-- <dd class="govuk-summary-list__actions">
+                      <a href="#">
+                        Change
+                      </a>
+                    </dd> -->
+                  </div>
+                </dl>
 
             <div class="govuk-!-padding-bottom-4"></div>
 
