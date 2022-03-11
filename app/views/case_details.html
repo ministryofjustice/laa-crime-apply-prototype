@@ -5,9 +5,9 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl">Provide details of the case</h1>
+      <h1 class="govuk-heading-xl">Enter the case details</h1>
 
-      <form class="form" action="/offence_class" method="post">
+      <form class="form" action="/case_details_confirm" method="post">
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
@@ -52,7 +52,7 @@
           </fieldset>
         </div>
 
-        <div class="govuk-form-group">
+        <!-- <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
               <h1 class="govuk-fieldset__heading">
@@ -73,7 +73,7 @@
                 </label>
               </div>
           </fieldset>
-        </div>
+        </div> -->
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
@@ -92,13 +92,25 @@
               </div>
               <!-- START: CONDITIONAL REVEAL -->
               <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-yes"> <!-- id needs to match data-aria-controls -->
+                <p class="govuk-heading-s">Co-defendant 1</p>
                 <div class="govuk-form-group">
-                  <label class="govuk-label" for="co_defendants-1">
-                    Full name
-                  </label>
-                  <input class="govuk-input govuk-!-width-one-third" id="co_defendants-name" name="co_defendants-name" type="name" spellcheck="false">
+                    <label class="govuk-label" for="firstname">
+                    First name
+                    </label>
+                  <input class="govuk-input govuk-!-width-three-quarters" id="firstname" name="firstname" type="text" value="{{ data['firstname'] }}">
                 </div>
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="lastname">
+                    Last name
+                    </label>
+                  <input class="govuk-input govuk-!-width-three-quarters" id="lastname" name="lastname" type="text" value="{{ data['lastname'] }}">
+                </div>
+                <div class="govuk-!-padding-bottom-2"></div>
+                <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                  Add another defendant
+                </button>
               </div>
+              <div class="govuk-form-group">
               <!-- END: CONDITIONAL REVEAL  -->
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="co_defendants-2" name="co_defendants" type="radio" value="no">
@@ -111,7 +123,34 @@
           </fieldset>
         </div>
 
+        <label class="govuk-heading-m" for="search">Search for offence name</label>
+            <div id="search-field" class="govuk-form-group">
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-two-thirds">
+                <input class="govuk-input" autocomplete="off" id="search" name="search" type="text" data-list="#proceedings-list">
+              </div>
+              <div class="govuk-grid-column-one-third clear-search">
+                <p><a class="govuk-link" href="case_details#search">Clear search</a></p>
+              </div>
+            </div>
+            </div>
+            <details class="govuk-details" data-module="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  I can't find the right offence
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+                 <div class="govuk-form-group">
+                   <label class="govuk-label" for="width-10">
+                     Enter the offence name
+                   </label>
+                   <input class="govuk-input govuk-input--width-10" id="width-10" name="width-10" type="text">
+                 </div>
+              </div>
+            </details>
         <input type="hidden" name="case_details[]" value="completed">
+
         <button class="govuk-button button-left" data-module="govuk-button">Save and continue</button>
       </form>
       <form class="form inline-form" action="/tasklist" method="post">
