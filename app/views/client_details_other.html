@@ -1,0 +1,162 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Apply for legal aid - Client details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Enter additional details about your client</h1>
+
+      <div class="govuk-inset-text">
+        We are asking for additional details because you did not provide your client's National Insurance number.
+      </div>
+
+      <div class="govuk-!-padding-bottom-2"></div>
+
+      <form action="/client_details_confirm" method="post" novalidate>
+
+        <div class="govuk-form-group" data-module="govuk-radios">
+          <label class="govuk-label govuk-label--m" for="national-insurance">
+            Is your client paying towards legal aid for another case?
+          </label>
+          <div class="govuk-radios__item">
+            <!-- REMEMBER: data-aria-controls -->
+            <input class="govuk-radios__input" id="contribution-1" name="contribution" type="radio" value="yes" data-aria-controls="conditional-criminal-yes">
+            <label class="govuk-label govuk-radios__label" for="contribution-1">
+              Yes, for a criminal case
+            </label>
+          </div>
+          <!-- START: CONDITIONAL REVEAL -->
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-criminal-yes"> <!-- id needs to match data-aria-controls -->
+            <div class="govuk-form-group">
+                <label class="govuk-label" for="contribution-criminal-number">
+                Case reference number
+                </label>
+                <div id="contribution-criminal-hint" class="govuk-hint">
+                  For example, '6945352'.
+                </div>
+              <input class="govuk-input govuk-!-width-three-quarters" id="national-insurance-number-1" name="national-insurance-number" type="text">
+            </div>
+          </div>
+          <div class="govuk-form-group">
+          <!-- END: CONDITIONAL REVEAL  -->
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="contribution-2" name="contribution" type="radio" value="yes" data-aria-controls="conditional-civil-yes">
+              <label class="govuk-label govuk-radios__label" for="contribution-2">
+                Yes, for a civil case
+              </label>
+            </div>
+            <!-- START: CONDITIONAL REVEAL -->
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-civil-yes"> <!-- id needs to match data-aria-controls -->
+              <div class="govuk-form-group">
+                  <label class="govuk-label" for="contribution-civil-number">
+                  Case reference number
+                  </label>
+                  <div id="contribution-civil-hint" class="govuk-hint">
+                    For example, 'L 456 DEF'.
+                  </div>
+                <input class="govuk-input govuk-!-width-three-quarters" id="national-insurance-number-1" name="national-insurance-number" type="text">
+              </div>
+            </div>
+            <div class="govuk-form-group">
+            <!-- END: CONDITIONAL REVEAL  -->
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="contribution-3" name="contribution" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="contribution-3">
+                No
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="govuk-!-padding-bottom-2"></div>
+
+        <div class="govuk-!-padding-bottom-2"></div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h1 class="govuk-fieldset__heading">
+                Is your client on remand?
+              </h1>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="remand-1" name="remand" type="radio" value="yes" data-aria-controls="remand-yes">
+                <label class="govuk-label govuk-radios__label" for="remand">
+                  Yes
+                </label>
+              </div>
+
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="remand-yes"> <!-- id needs to match data-aria-controls -->
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="remand">
+                    Date your client was remanded
+                  </label>
+                  <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" role="group" aria-describedby="remand-hint">
+                      <div id="remand-hint" class="govuk-hint">
+                        For example, 27 3 2007
+                      </div>
+                      <div class="govuk-date-input" id="reamand-issued">
+                        <div class="govuk-date-input__item">
+                          <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="remand-issued-day">
+                              Day
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="remand-issued-day" name="remand-issued-day" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                        </div>
+                        <div class="govuk-date-input__item">
+                          <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="remand-issued-month">
+                              Month
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="remand-issued-month" name="remand-issued-month" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                        </div>
+                        <div class="govuk-date-input__item">
+                          <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="remand-issued-year">
+                              Year
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="remand-issued-year" name="remand-issued-year" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                        </div>
+                      </div>
+
+                    </fieldset>
+                  </div>
+
+
+                </div>
+              </div>
+              <div class="govuk-form-group">
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="remand-2" name="remand" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="remand">
+                  No
+                </label>
+              </div>
+            </div>
+
+          </fieldset>
+        </div>
+
+
+
+        </div>
+          <input type="hidden" name="client_details[]" value="completed">
+          <button type="submit" class="govuk-button button-left">
+            Save and continue
+          </button>
+    </form>
+    <form class="form inline-form" action="/tasklist" method="post">
+      <input type="hidden" name="client_details[]" value="completed">
+      <button class="govuk-button" data-module="govuk-button">Save and come back later</button>
+    </form>
+    </div>
+  </div>
+
+{% endblock %}
