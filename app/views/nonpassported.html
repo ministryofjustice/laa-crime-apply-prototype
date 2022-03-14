@@ -10,12 +10,12 @@
         <header>
           <h1 class="govuk-heading-l">DWP records show that your client does not receive a passporting benefit – is this correct?</h1>
         </header>
-        <form action="/before_means_assessment" method="post" class="form">
+        <form action="/case_details_urn" method="post" class="form">
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios" data-module="govuk-radios">
                 <div class="govuk-radios__item">
                   <!-- REMEMBER: data-aria-controls -->
-                  <input class="govuk-radios__input" style="color: #fff" id="not-passported-1" name="not-passported-1" type="radio" value="yes" data-aria-controls="conditional-yes">
+                  <input class="govuk-radios__input" style="color: #fff" id="not-passported-1" name="not-passported" type="radio" value="yes" data-aria-controls="conditional-yes">
                   <label style="color: #fff;" class="govuk-label govuk-radios__label" for="not-passported-1">
                     Yes
                   </label>
@@ -31,7 +31,7 @@
                 <div class="govuk-form-group">
                 <!-- END: CONDITIONAL REVEAL  -->
               <div class="govuk-radios__item">
-                 <input class="govuk-radios__input" id="not-passported-2" name="not-passported-2" type="radio" value="no">
+                 <input class="govuk-radios__input" id="not-passported-2" name="not-passported" type="radio" value="no">
                  <label style="color: #fff;" class="govuk-label govuk-radios__label" for="not-passported-2">
                    No, my client receives a passporting benefit
                  </label>
@@ -55,6 +55,8 @@
       </div>
     </div>
   </div>
+
+  <p><a href="/benefit_checker_confirm" style="color: #fff;">Client receives a passporting benefit</a></p>
 
 
 {% endblock %}
