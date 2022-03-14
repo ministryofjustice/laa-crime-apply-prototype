@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">Is your's client gross annual income lower than £12,475?</h1>
+
+      <div class="govuk-inset-text">
+          You need to consider the money they received before tax or any other deduction have bene taken off.
+      </div>
+
+      <form class="form" action="/case_details_confirm" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="type-of-case-1" name="type-of-case" type="radio" value="summary_only">
+                <label class="govuk-label govuk-radios__label" for="type-of-case-1">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="type-of-case-2" name="type-of-case" type="radio" value="either_way">
+                <label class="govuk-label govuk-radios__label" for="type-of-case-2">
+                  No
+                </label>
+              </div>
+            </div>
+
+          </fieldset>
+        </div>
+
+
+
+        <button class="govuk-button button-left" data-module="govuk-button">Save and continue</button>
+      </form>
+      <form class="form inline-form" action="/tasklist" method="post">
+        <input type="hidden" name="case_details[]" value="completed">
+        <button class="govuk-button" data-module="govuk-button">Save and come back later</button>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
