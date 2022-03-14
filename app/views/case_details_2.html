@@ -1,0 +1,177 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Important
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <p class="govuk-notification-banner__heading">
+            A record of this case has not been created by the court yet. You can enter the case details now or come back later.
+          </p>
+        </div>
+      </div>
+
+      <h1 class="govuk-heading-xl">Enter the case details</h1>
+
+      <form class="form" action="/case_details_confirm" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h1 class="govuk-fieldset__heading">
+                What type of case is it?
+              </h1>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="type-of-case-1" name="type-of-case" type="radio" value="summary_only">
+                <label class="govuk-label govuk-radios__label" for="type-of-case-1">
+                  Summary only
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="type-of-case-2" name="type-of-case" type="radio" value="either_way">
+                <label class="govuk-label govuk-radios__label" for="type-of-case-2">
+                  Either way
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="type-of-case-3" name="type-of-case" type="radio" value="indictable">
+                <label class="govuk-label govuk-radios__label" for="type-of-case-3">
+                  Indictable
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="type-of-case-4" name="type-of-case" type="radio" value="trial">
+                <label class="govuk-label govuk-radios__label" for="type-of-case-4">
+                  Trial already in Crown Court
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="type-of-case-5" name="type-of-case" type="radio" value="commital">
+                <label class="govuk-label govuk-radios__label" for="type-of-case-5">
+                  Commital for sentence
+                </label>
+              </div>
+            </div>
+
+          </fieldset>
+        </div>
+
+        <!-- <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h1 class="govuk-fieldset__heading">
+                What type of court will be hearing your client's case?
+              </h1>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="type-of-court-1" name="type-of-court" type="radio" value="magistrates">
+                <label class="govuk-label govuk-radios__label" for="type-of-court-1">
+                  Magistrates Court
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="type-of-court-2" name="type-of-court" type="radio" value="crown">
+                <label class="govuk-label govuk-radios__label" for="type-of-court-2">
+                  Crown Court
+                </label>
+              </div>
+          </fieldset>
+        </div> -->
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h1 class="govuk-fieldset__heading">
+                Does your client have any co-defendants in this case?
+              </h1>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <!-- REMEMBER: data-aria-controls -->
+                <input class="govuk-radios__input" id="co_defendants-1" name="co_defendants" type="radio" value="yes" data-aria-controls="conditional-yes">
+                <label class="govuk-label govuk-radios__label" for="co_defendants-1">
+                  Yes
+                </label>
+              </div>
+              <!-- START: CONDITIONAL REVEAL -->
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-yes"> <!-- id needs to match data-aria-controls -->
+                <p class="govuk-heading-s">Co-defendant 1</p>
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="firstname">
+                    First name
+                    </label>
+                  <input class="govuk-input govuk-!-width-three-quarters" id="firstname" name="firstname" type="text" value="{{ data['firstname'] }}">
+                </div>
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="lastname">
+                    Last name
+                    </label>
+                  <input class="govuk-input govuk-!-width-three-quarters" id="lastname" name="lastname" type="text" value="{{ data['lastname'] }}">
+                </div>
+                <div class="govuk-!-padding-bottom-2"></div>
+                <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                  Add another defendant
+                </button>
+              </div>
+              <div class="govuk-form-group">
+              <!-- END: CONDITIONAL REVEAL  -->
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="co_defendants-2" name="co_defendants" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="co_defendants-2">
+                  No
+                </label>
+              </div>
+            </div>
+
+          </fieldset>
+        </div>
+
+        <label class="govuk-heading-m" for="search">Search for offence name</label>
+            <div id="search-field" class="govuk-form-group">
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-two-thirds">
+                <input class="govuk-input" autocomplete="off" id="search" name="search" type="text" data-list="#proceedings-list">
+              </div>
+              <div class="govuk-grid-column-one-third clear-search">
+                <p><a class="govuk-link" href="case_details#search">Clear search</a></p>
+              </div>
+            </div>
+            </div>
+            <details class="govuk-details" data-module="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  I can't find the right offence
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+                 <div class="govuk-form-group">
+                   <label class="govuk-label" for="width-10">
+                     Enter the offence name
+                   </label>
+                   <input class="govuk-input govuk-input--width-10" id="width-10" name="width-10" type="text">
+                 </div>
+              </div>
+            </details>
+        <input type="hidden" name="case_details[]" value="completed">
+
+        <button class="govuk-button button-left" data-module="govuk-button">Save and continue</button>
+      </form>
+      <form class="form inline-form" action="/tasklist" method="post">
+        <input type="hidden" name="case_details[]" value="completed">
+        <button class="govuk-button" data-module="govuk-button">Save and come back later</button>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
