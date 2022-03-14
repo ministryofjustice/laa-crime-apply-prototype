@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">Enter the case details</h1>
+
+      <form class="form" action="/case_details" method="post">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h1 class="govuk-fieldset__heading">
+                Unique reference number (URN)
+              </h1>
+            </legend>
+            <div class="govuk-form-group">
+              <input class="govuk-input govuk-input--width-10" id="urn" name="urn" type="number">
+            </div>
+        </div>
+            <details class="govuk-details" data-module="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  I can't get the case URN
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+                We need to know the case URN to get the case details from the HM Courts & Tribunals (HMCTS).<br>
+                 <div class="govuk-!-padding-bottom-4"></div>
+                 If you cannot provide the case URN, you’ll have to <a href="case_details">enter the case details manually</a>.
+              </div>
+            </details>
+          </fieldset>
+
+          <input type="hidden" name="case_details[]" value="completed">
+          <button class="govuk-button button-left" data-module="govuk-button">Search</button>
+        </form>
+        <form class="form inline-form" action="/tasklist" method="post">
+          <input type="hidden" name="case_details[]" value="completed">
+          <button class="govuk-button" data-module="govuk-button">Save and come back later</button>
+        </form>
+
+      </div>
+    </div>
+
+
+{% endblock %}

@@ -10,7 +10,7 @@ Apply for legal aid - Client details
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">Confirm your client's details</h1>
 
-      <form action="/benefit_checker" method="post" novalidate>
+      <form action="/passported" method="post" novalidate>
 
         <div class="govuk-form-group">
 
@@ -182,6 +182,9 @@ Apply for legal aid - Client details
                   </div>
                 </dl>
 
+            <h2 class="govuk-heading-m">What happens next</h2>
+            <p class="govuk-body">We'll check your client's benefits status with the Department of Work and Pensions (DWP). </p>
+
             <div class="govuk-!-padding-bottom-4"></div>
 
           <input type="hidden" name="client_details[]" value="completed">
@@ -196,6 +199,8 @@ Apply for legal aid - Client details
     </form>
 
     </div>
+
+    <p><a href="/means_assessment_required" style="color: #b7b7b7;">Continue to non-passported journey</a></p>
 
   </div>
 
