@@ -4,28 +4,46 @@
 
 <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <form action="vehicles_details" method="post" class="form">
+        <form action="savings_investments" method="post" class="form">
 
-          <div class="govuk-form-group">
-            <fieldset class="govuk-fieldset">
-              <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-                <h1 class="govuk-fieldset__heading">
-                  Does your client own a vehicle?
-                </h1>
-                <span class="govuk-hint">
-                  This includes car, vans or motorcycles.
-                </span>
-              </legend>
-              <div class="govuk-radios govuk-radios">
+              <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                    <h1 class="govuk-fieldset__heading">
+                      Does your client own a vehicle?
+                    </h1>
+                    <span class="govuk-hint">
+                      This includes car, vans or motorcycles.
+                    </span>
+                  </legend>
+                  <div class="govuk-radios" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                      <!-- REMEMBER: data-aria-controls -->
+                      <input class="govuk-radios__input" id="vehicle-1" name="vehicle" type="radio" value="yes" data-aria-controls="conditional-yes">
+                      <label class="govuk-label govuk-radios__label" for="vehicle-yes">
+                        Yes
+                      </label>
+                    </div>
+                    <!-- START: CONDITIONAL REVEAL -->
+                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-yes"> <!-- id needs to match data-aria-controls -->
+                      <p class="govuk-heading-s">Vehicle 1</p>
+                      <div class="govuk-form-group">
+                          <label class="govuk-label" for="firstname">
+                          Registration number
+                          </label>
+                        <input class="govuk-input govuk-!-width-three-quarters" id="firstname" name="firstname" type="text" value="{{ data['vehicle'] }}">
+                      </div>
+                      <div class="govuk-!-padding-bottom-2"></div>
+                      <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                        Add another vehicle
+                      </button>
+                    </div>
+                    <div class="govuk-form-group">
+                    <!-- END: CONDITIONAL REVEAL  -->
+
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="property-1" name="property" type="radio" value="yes" {{ checked("property","yes") }}>
-                  <label class="govuk-label govuk-radios__label" for="capital-1">
-                    Yes
-                  </label>
-                </div>
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="property-3" name="property" type="radio" value="no" {{ checked("property","no") }}>
-                  <label class="govuk-label govuk-radios__label" for="property-3">
+                  <input class="govuk-radios__input" id="vehicle-no" name="vehicle" type="radio" value="no" {{ checked("vehicle","no") }}>
+                  <label class="govuk-label govuk-radios__label" for="vehicle-no">
                     No
                   </label>
                 </div>

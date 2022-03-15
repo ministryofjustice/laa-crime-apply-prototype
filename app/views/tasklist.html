@@ -35,20 +35,20 @@
           <ul class="app-task-list__items">
             <li class="app-task-list__item {{ sections['case_details']['key'] }}">
               <span class="app-task-list__task-name">
-                <a href="/case_details" aria-describedby="contact-details-status">
+                <a href="/case_details_urn" aria-describedby="contact-details-status">
                   Case details
                 </a>
               </span>
               <strong class="govuk-tag govuk-tag app-task-list__tag" id="contact-details-status">{{ sections['case_details']['label'] }}</strong>
             </li>
-            <li class="app-task-list__item {{ sections['offence_details']['key'] }}">
+            <!-- <li class="app-task-list__item {{ sections['offence_details']['key'] }}">
               <span class="app-task-list__task-name">
                 <a href="/offence_class" aria-describedby="list-convictions-status">
                   Offence details
                 </a>
               </span>
               <strong class="govuk-tag govuk-tag app-task-list__tag" id="list-convictions-status">{{ sections['offence_details']['label'] }}</strong>
-            </li>
+            </li> -->
             <li class="app-task-list__item  {{ sections['interests_of_justice']['key'] }}">
               <span class="app-task-list__task-name">
                 <a href="/ioj" aria-describedby="list-ioj-status">
@@ -67,7 +67,7 @@
               <ul class="app-task-list__items">
             <li class="app-task-list__item {{ sections['check_benefits']['key'] }}">
               <span class="app-task-list__task-name">
-                <a href="/benefit_checker" aria-describedby="list-benefits-status">
+                <a href="/dwp_passported" aria-describedby="list-benefits-status">
                   Check your client's benefits status
                 </a>
               </span>
@@ -75,7 +75,7 @@
             </li>
             <li class="app-task-list__item {{ sections['means_assessment']['key'] }}">
               <span class="app-task-list__task-name">
-                <a href="/means_assessment_required" aria-describedby="means-assessment-status">
+                <a href="/income_threshold" aria-describedby="means-assessment-status">
                   Income assessment
                 </a>
               </span>
@@ -91,7 +91,7 @@
             </li>
             <li class="app-task-list__item {{ sections['check_means']['key'] }}">
               <span class="app-task-list__task-name">
-                <a href="/check_answers_capital_full" aria-describedby="list-check-means-status">
+                <a href="/means_assessment_check_answers" aria-describedby="list-check-means-status">
                   Check your answers
                 </a>
               </span>
@@ -99,7 +99,7 @@
             </li>
             <li class="app-task-list__item {{ sections['check_means']['key'] }}">
               <span class="app-task-list__task-name">
-                <a href="/nonpassported_meansresults" aria-describedby="list-check-means-status">
+                <a href="/means_assessment_results" aria-describedby="list-check-means-status">
                   Check means assessment result
                 </a>
               </span>

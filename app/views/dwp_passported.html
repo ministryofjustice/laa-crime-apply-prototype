@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="flash-card">
+  <header>
+    <h1 class="govuk-heading-l">DWP records show that your client receives a passporting benefit</h1>
+  </header>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <form class="form" action="/case_details_urn" method="post">
+      <p>
+        <button class="govuk-button" data-module="govuk-button">
+          Save and continue
+        </button>
+        <a href="/tasklist" role="button" class="govuk-button draft-button">
+        Save and come back later</a>
+      </p>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
