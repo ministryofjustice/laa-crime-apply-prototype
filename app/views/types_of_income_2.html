@@ -26,7 +26,7 @@
                       Benefits
                     </label>
                     <span id="income-sources-1-hint" class="govuk-hint govuk-checkboxes__hint" style="padding-left: 15px">
-                        For example, a non-passporting benefit such as Child Benefit.
+                        For example, Child Benefit or tax credits.
                     </span>
                   </div>
                   <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="benefits-yes">
@@ -55,6 +55,12 @@
                             <input class="govuk-radios__input" id="income-sources-1-every-two-weeks" name="every-two-weeks" type="radio" value="every-two-weeks">
                             <label class="govuk-label govuk-radios__label" for="income-sources-1">
                               Every two weeks
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="income-sources-1-every-four-weeks" name="every-four-weeks" type="radio" value="every-four-weeks">
+                            <label class="govuk-label govuk-radios__label" for="income-sources-1">
+                              Every four weeks
                             </label>
                           </div>
                           <div class="govuk-radios__item">
@@ -114,6 +120,12 @@
                             </label>
                           </div>
                           <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="income-sources-2-every-four-weeks" name="every-four-weeks" type="radio" value="every-four-weeks">
+                            <label class="govuk-label govuk-radios__label" for="income-sources-2">
+                              Every four weeks
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="income-sources-2-monthly" name="monthly" type="radio" value="monthly">
                             <label class="govuk-label govuk-radios__label" for="income-sources-2">
                               Monthly
@@ -138,7 +150,7 @@
                       Maintenance payments
                     </label>
                     <span id="income-sources-3-hint" class="govuk-hint govuk-checkboxes__hint" style="padding-left: 15px">
-                      For example, payments from an ex-partner to you or any children.
+                      For example, payments from an ex-partner or children.
                     </span>
                   </div>
                   <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="maintenance-yes">
@@ -170,6 +182,12 @@
                             </label>
                           </div>
                           <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="income-sources-3-every-four-weeks" name="every-four-weeks" type="radio" value="every-four-weeks">
+                            <label class="govuk-label govuk-radios__label" for="income-sources-3">
+                              Every four weeks
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="income-sources-3-monthly" name="monthly" type="radio" value="monthly">
                             <label class="govuk-label govuk-radios__label" for="income-sources-3">
                               Monthly
@@ -193,6 +211,9 @@
                     <label class="govuk-label govuk-checkboxes__label" for="income-sources-4">
                       Cash in hand pay
                     </label>
+                    <span id="income-sources-2-hint" class="govuk-hint govuk-checkboxes__hint" style="padding-left: 15px">
+                        For example, money from work.
+                    </span>
                   </div>
                   <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="cash-yes">
                   <!-- WRAPPER STARTS -->
@@ -220,6 +241,12 @@
                             <input class="govuk-radios__input" id="income-sources-4-every-two-weeks" name="every-two-weeks" type="radio" value="every-two-weeks">
                             <label class="govuk-label govuk-radios__label" for="income-sources-4">
                               Every two weeks
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="income-sources-4-every-four-weeks" name="every-four-weeks" type="radio" value="every-four-weeks">
+                            <label class="govuk-label govuk-radios__label" for="income-sources-4">
+                              Every four weeks
                             </label>
                           </div>
                           <div class="govuk-radios__item">
@@ -273,6 +300,12 @@
                             <input class="govuk-radios__input" id="income-sources-5-every-two-weeks" name="every-two-weeks" type="radio" value="every-two-weeks">
                             <label class="govuk-label govuk-radios__label" for="income-sources-5">
                               Every two weeks
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="income-sources-5-every-four-weeks" name="every-four-weeks" type="radio" value="every-four-weeks">
+                            <label class="govuk-label govuk-radios__label" for="income-sources-5">
+                              Every four weeks
                             </label>
                           </div>
                           <div class="govuk-radios__item">
@@ -332,6 +365,12 @@
                             </label>
                           </div>
                           <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="income-sources-6-every-four-weeks" name="every-four-weeks" type="radio" value="every-four-weeks">
+                            <label class="govuk-label govuk-radios__label" for="income-sources-6">
+                              Every four weeks
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="income-sources-6-monthly" name="monthly" type="radio" value="monthly">
                             <label class="govuk-label govuk-radios__label" for="income-sources-6">
                               Monthly
@@ -353,8 +392,11 @@
                   <div class="govuk-checkboxes__item">
                     <input class="govuk-checkboxes__input" id="income-sources-7" name="rent" type="checkbox" value="yes" data-aria-controls="rent-yes" {{ checked("rent","yes") }}>
                     <label class="govuk-label govuk-checkboxes__label" for="income-sources-7">
-                      Rent from anyone living with you or from other properties
+                      Rent
                     </label>
+                    <span id="income-sources-6-hint" class="govuk-hint govuk-checkboxes__hint" style="padding-left: 15px">
+                      Include rent from anyone living with your client or from other properties.
+                    </span>
                   </div>
                   <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="rent-yes">
                   <!-- WRAPPER STARTS -->
@@ -385,6 +427,12 @@
                             </label>
                           </div>
                           <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="income-sources-7-every-four-weeks" name="every-four-weeks" type="radio" value="every-four-weeks">
+                            <label class="govuk-label govuk-radios__label" for="income-sources-7">
+                              Every four weeks
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="income-sources-7-monthly" name="monthly" type="radio" value="monthly">
                             <label class="govuk-label govuk-radios__label" for="income-sources-7">
                               Monthly
@@ -403,15 +451,15 @@
                   <!-- WRAPPER ENDS -->
                   </div>
 
-                  <div class="govuk-checkboxes__item">
+                  <!-- <div class="govuk-checkboxes__item">
                     <input class="govuk-checkboxes__input" id="income-sources-8" name="tax_credits" type="checkbox" value="tax_credits" data-aria-controls="tax_credits-yes" {{ checked("tax_credits","yes") }}>
                     <label class="govuk-label govuk-checkboxes__label" for="income-sources-8">
                       Working and Child Tax Credits
                     </label>
                   </div>
-                  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="tax_credits-yes">
+                  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="tax_credits-yes"> -->
                   <!-- WRAPPER STARTS -->
-                  <div class="govuk-form-group">
+                  <!-- <div class="govuk-form-group">
                       <label class="govuk-label" for="income-sources-8">
                         Enter amount
                       </label>
@@ -438,6 +486,12 @@
                             </label>
                           </div>
                           <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="income-sources-8-every-four-weeks" name="every-four-weeks" type="radio" value="every-four-weeks">
+                            <label class="govuk-label govuk-radios__label" for="income-sources-8">
+                              Every four weeks
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="income-sources-8-monthly" name="monthly" type="radio" value="monthly">
                             <label class="govuk-label govuk-radios__label" for="income-sources-8">
                               Monthly
@@ -452,7 +506,7 @@
                         </div>
                       </fieldset>
 
-                  </div>
+                  </div> -->
                   <!-- WRAPPER ENDS -->
                   </div>
 
@@ -491,6 +545,12 @@
                             </label>
                           </div>
                           <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="income-sources-9-every-four-weeks" name="every-four-weeks" type="radio" value="every-four-weeks">
+                            <label class="govuk-label govuk-radios__label" for="income-sources-9">
+                              Every four weeks
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="income-sources-9-monthly" name="monthly" type="radio" value="monthly">
                             <label class="govuk-label govuk-radios__label" for="income-sources-9">
                               Monthly
@@ -509,7 +569,6 @@
                   <!-- WRAPPER ENDS -->
                   </div>
 
-
                 <div>
                 <p class="govuk-body">or</p>
                 </div>
@@ -523,7 +582,7 @@
 
               </div>
             </fieldset>
-          </div>
+
 
           <button type="submit" class="govuk-button">
             Save and continue
@@ -532,8 +591,10 @@
           <a href="/tasklist" role="button" class="govuk-button draft-button">
           Save and come back later</a>
 
+          </div>
         </form>
       </div>
     </div>
+
 
 {% endblock %}

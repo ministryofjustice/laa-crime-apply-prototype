@@ -61,51 +61,59 @@ th:first-child {
           <table class="govuk-table">
             <tbody class="govuk-table__body">
               <tr class="govuk-table__row">
-                <th class="govuk-table__cell govuk-body" scope="row">Financial help from family or friends</th>
-                <td class="govuk-table__cell govuk-table__cell--numeric">£1,320<br/>Monthly</td>
-              </tr>
-              <tr class="govuk-table__row">
-                <th class="govuk-table__cell govuk-body" scope="row">Disregarded benefits</th>
-                <td class="govuk-table__cell govuk-table__cell--numeric">£240<br/>Monthly</td>
-              </tr>
-              <tr class="govuk-table__row">
                 <th class="govuk-table__cell govuk-body" scope="row">Benefits</th>
                 <td class="govuk-table__cell govuk-table__cell--numeric">£105.25<br/>Monthly</td>
               </tr>
               <tr class="govuk-table__row">
-                <th class="govuk-table__cell govuk-body" scope="row">Maintenance payments from a former partner</th>
+                <th class="govuk-table__cell govuk-body" scope="row">Financial help from family or friends</th>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£1,320<br/>Monthly</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th class="govuk-table__cell govuk-body" scope="row">Maintenance payments</th>
                 <td class="govuk-table__cell govuk-table__cell--numeric">None</td>
               </tr>
               <tr class="govuk-table__row">
-                <th class="govuk-table__cell govuk-body" scope="row">Income from a property or lodger</th>
+                <th class="govuk-table__cell govuk-body" scope="row">Cash in hand payments</th>
+                <td class="govuk-table__cell govuk-table__cell--numeric">None</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th class="govuk-table__cell govuk-body" scope="row">Student loan or grant</th>
+                <td class="govuk-table__cell govuk-table__cell--numeric">None</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th class="govuk-table__cell govuk-body" scope="row">Rent</th>
                 <td class="govuk-table__cell govuk-table__cell--numeric">None</td>
               </tr>
               <tr class="govuk-table__row">
                 <th class="govuk-table__cell govuk-body" scope="row">Pension</th>
                 <td class="govuk-table__cell govuk-table__cell--numeric">None</td>
               </tr>
+              <tr class="govuk-table__row">
+                <th class="govuk-table__cell govuk-body" scope="row">Other sources</th>
+                <td class="govuk-table__cell govuk-table__cell--numeric">None</td>
+              </tr>
             </tbody>
           </table>
           <br>
 
-          <h2 class="govuk-heading-l">
-            Children
-          </h2>
 
-          <dl class="govuk-summary-list">
-            <div class="govuk-summary-list__row">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              <h2 class="govuk-heading-m">Dependants</h2>
+            </div>
+            <div class="govuk-grid-column-one-third">
+              <p><a class="govuk-link" style="float:right;" href="benefits_selected">Change</a></p>
+            </div>
+          </div>
+          <!-- <dl class="govuk-summary-list"> -->
+            <!-- <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Children who dependent on your client for financial support
               </dt>
               <dd class="govuk-summary-list__value">
                 Yes
               </dd>
-              <dd class="govuk-summary-list__actions">
-                <a href="dependants">
-                  Change <span class="govuk-visually-hidden">first name</span>
-                </a>
-              </dd>
-            </div>
+            </div> -->
 
          </div>
         </div>
@@ -114,11 +122,8 @@ th:first-child {
          <div class="govuk-grid-column-two-thirds">
 
           <div class="govuk-grid-row">
-            <div class="govuk-grid-column-two-thirds">
-          <h2 class="govuk-heading-m">Child 1</h2>
-          </div>
           <div class="govuk-grid-column-one-third">
-            <p><a class="govuk-link" style="float:right;" href="dependant_add">Change</a></p>
+           <p class="govuk-heading-s">Child 1</p>
           </div>
           </div>
           <dl class="govuk-summary-list">
@@ -154,14 +159,8 @@ th:first-child {
         <div class="govuk-grid-row">
          <div class="govuk-grid-column-two-thirds">
 
-          <div class="govuk-grid-row">
-            <div class="govuk-grid-column-two-thirds">
-          <h2 class="govuk-heading-m">Child 2</h2>
-          </div>
-          <div class="govuk-grid-column-one-third">
-            <p><a class="govuk-link"style="float:right;" href="dependant_add_2">Change</a></p>
-          </div>
-          </div>
+           <p class="govuk-heading-s">Child 2</p>
+
           <dl class="govuk-summary-list">
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
@@ -287,9 +286,14 @@ th:first-child {
             </div>
           </dl>
 
-          <h2 class="govuk-heading-m">
-          Vehicles
-          </h2>
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              <h2 class="govuk-heading-m">Vehicles</h2>
+            </div>
+            <div class="govuk-grid-column-one-third">
+              <p><a class="govuk-link" style="float:right;" href="benefits_selected">Change</a></p>
+            </div>
+          </div>
 
           <dl class="govuk-summary-list govuk-!-margin-bottom-9">
                     <div class="govuk-summary-list__row">
@@ -310,7 +314,7 @@ th:first-child {
                     </div>
                   </dl>
 
-                  <div class="govuk-grid-row">
+                  <!-- <div class="govuk-grid-row">
                     <div class="govuk-grid-column-two-thirds">
                       <h2 class="govuk-heading-m">Bank accounts</h2>
                     </div>
@@ -330,7 +334,7 @@ th:first-child {
                         <td class="govuk-table__cell govuk-table__cell--numeric">£550</td>
                       </tr>
                     </tbody>
-                  </table>
+                  </table> -->
 
                   <div class="govuk-!-padding-bottom-3"></div>
 
@@ -346,6 +350,19 @@ th:first-child {
   </div>
 
   <dl class="govuk-summary-list">
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Money in a bank account
+      </dt>
+      <dd class="govuk-summary-list__value">
+        £100
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a href="client_details#firstname">
+          <span class="govuk-visually-hidden">first name</span>
+        </a>
+      </dd>
+    </div>
     <div class="govuk-summary-list__row">
       <dt class="govuk-summary-list__key">
         Money not in a bank account
@@ -560,51 +577,44 @@ th:first-child {
     </dl>
 
 
-  <div class="govuk-!-padding-bottom-3"></div>
+      <div class="govuk-!-padding-bottom-3"></div>
 
-  <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <h2 class="govuk-heading-m">Restrictions on your client's assets</h2>
-  </div>
-  </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-m">Restrictions on your client's assets</h2>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <p><a class="govuk-link" style="float:right;" href="savings_investments_select">Change</a></p>
+        </div>
+      </div>
 
-  <dl class="govuk-summary-list govuk-!-margin-bottom-0">
-  <div class="govuk-summary-list__row govuk-summary-list--no-border normal-word-break" id="app-check-your-answers__restrictions">
-   <dt class="govuk-summary-list__key govuk-!-width-one-half">
-    Restraint or freezing order 
-   </dt>
-   <dd class="govuk-summary-list__value">
-     Yes
-   </dd>
-     <dd class="govuk-summary-list__actions">
-         <a class="govuk-link change-link" href="capital_restrictions_select">
-           Change<span class="govuk-visually-hidden"> Restrictions on your client's assets</span></a>
-         </dd>
-       </div>
-     </dl>
+      <dl class="govuk-summary-list govuk-!-margin-bottom-0">
+      <div class="govuk-summary-list__row govuk-summary-list--no-border normal-word-break" id="app-check-your-answers__restrictions">
+       <dt class="govuk-summary-list__key govuk-!-width-one-half">
+        Restraint or freezing order 
+       </dt>
+       <dd class="govuk-summary-list__value">
+         No
+       </dd>
+      </div>
+      </dl>
 
-     <div class="govuk-!-padding-bottom-6"></div>
-
-     <br>
+     <div class="govuk-!-padding-bottom-8"></div>
 
      <h2 class="govuk-heading-m">What happens next</h2>
 
      <p>We'll use your answers to check your client's financial eligibility for legal aid.</p>
 
-     <br>
-
-     <form action="/nonpassported_meansresults" method="post" novalidate>
+     <form action="/means_assessment_results" method="post" novalidate>
        <input type="hidden" name="review[]" value="completed">
        <button type="submit" class="govuk-button">
          Save and continue
        </button>
+       
+       <a href="/tasklist" role="button" class="govuk-button draft-button">
+       Save and come back later</a>
      </form>
 
-     <form class="form inline-form" action="/tasklist" method="post">
-       <input type="hidden" name="review[]" value="completed">
-       <button class="govuk-button" data-module="govuk-button">Save and come back later
-       </button>
-     </form>
 
    </div>
 </div>

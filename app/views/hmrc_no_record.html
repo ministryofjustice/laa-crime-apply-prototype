@@ -8,32 +8,32 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
         <header>
-          <h1 class="govuk-heading-l">DWP records show that your client does not receive a passporting benefit – is this correct?</h1>
+          <h1 class="govuk-heading-l">HMRC records show that your client is not employed – is that correct?</h1>
         </header>
-        <form action="/before_means_assessment" method="post" class="form">
+        <form action="" method="post" class="form">
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios" data-module="govuk-radios">
                 <div class="govuk-radios__item">
                   <!-- REMEMBER: data-aria-controls -->
-                  <input class="govuk-radios__input" style="color: #fff" id="not-passported-1" name="not-passported-1" type="radio" value="yes" data-aria-controls="conditional-yes">
+                  <input class="govuk-radios__input" style="color: #fff" id="not-passported-1" name="not-passported" type="radio" value="yes" data-aria-controls="conditional-yes">
                   <label style="color: #fff;" class="govuk-label govuk-radios__label" for="not-passported-1">
                     Yes
                   </label>
                 </div>
                 <!-- START: CONDITIONAL REVEAL -->
-                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-yes"> <!-- id needs to match data-aria-controls -->
+                <!-- <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-yes">
                   <div class="govuk-form-group">
                     <label style="color: #fff;" class="govuk-label" for="not-passported-1">
                       We'll check your client's details with HM Revenue and Customs (HMRC). You'll need to review your client's employment details later on.
                     </label>
                   </div>
                 </div>
-                <div class="govuk-form-group">
+                <div class="govuk-form-group"> -->
                 <!-- END: CONDITIONAL REVEAL  -->
               <div class="govuk-radios__item">
-                 <input class="govuk-radios__input" id="not-passported-2" name="not-passported-2" type="radio" value="no">
+                 <input class="govuk-radios__input" id="not-passported-2" name="not-passported" type="radio" value="no">
                  <label style="color: #fff;" class="govuk-label govuk-radios__label" for="not-passported-2">
-                   No, my client receives a passporting benefit
+                   No, my client is employed
                  </label>
               </div>
             </div>
@@ -55,6 +55,8 @@
       </div>
     </div>
   </div>
+
+  <p><a href="" style="color: #fff;">Continue to employed but with no HMRC record</a></p>
 
 
 {% endblock %}
