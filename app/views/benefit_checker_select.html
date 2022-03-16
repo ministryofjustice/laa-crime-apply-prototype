@@ -4,7 +4,7 @@
 
 <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <form action="benefit_checker_evidence" method="post" class="form">
+        <form action="/benefit_checker_select" method="post" class="form">
 
           <div class="govuk-form-group">
             <fieldset class="govuk-fieldset" aria-describedby="benefit-conditional-hint">
@@ -16,59 +16,56 @@
 
             <div class="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="passporting-benefit-1" name="passporting-benefit" type="radio" value="uc">
+                <input class="govuk-radios__input" id="passporting-benefit-1" name="means_assessment[benefits_status][client_benefits][0]" type="radio" value="uc">
                 <label class="govuk-label govuk-radios__label" for="passporting-benefit-1">
                   Universal Credit
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="passporting-benefit-2" name="passporting-benefit" type="radio" value="pension-credit">
+                <input class="govuk-radios__input" id="passporting-benefit-2" name="means_assessment[benefits_status][client_benefits][0]" type="radio" value="pension_credit">
                 <label class="govuk-label govuk-radios__label" for="passporting-benefit-2">
                   Guarantee Credit element of Pension Credit
                 </label>
               </div>
-     <div class="govuk-radios__item">
-       <input class="govuk-radios__input" id="passporting-benefit-3" name="passporting-benefit" type="radio" value="jsa">
-       <label class="govuk-label govuk-radios__label" for="passporting-benefit-3">
-         Income-based Jobseeker’s Allowance (JSA)
-       </label>
-     </div>
-     <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="passporting-benefit-4" name="passporting-benefit" type="radio" value="esa">
-        <label class="govuk-label govuk-radios__label" for="passporting-benefit-4">
-          Income-related Employment and Support Allowance (ESA)
-        </label>
-      </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="passporting-benefit-5" name="passporting-benefit" type="radio" value="income-support">
-        <label class="govuk-label govuk-radios__label" for="passporting-benefit-5">
-          Income Support
-        </label>
-      </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="passporting-benefit-3" name="means_assessment[benefits_status][client_benefits][0]" type="radio" value="jsa">
+                <label class="govuk-label govuk-radios__label" for="passporting-benefit-3">
+                  Income-based Jobseeker’s Allowance (JSA)
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                 <input class="govuk-radios__input" id="passporting-benefit-4" name="means_assessment[benefits_status][client_benefits][0]" type="radio" value="esa">
+                 <label class="govuk-label govuk-radios__label" for="passporting-benefit-4">
+                   Income-related Employment and Support Allowance (ESA)
+                 </label>
+               </div>
+               <div class="govuk-radios__item">
+                 <input class="govuk-radios__input" id="passporting-benefit-5" name="means_assessment[benefits_status][client_benefits][0]" type="radio" value="income_support">
+                 <label class="govuk-label govuk-radios__label" for="passporting-benefit-5">
+                   Income Support
+                 </label>
+               </div>
 
-      <p class="govuk-body">or</p>
+               <p class="govuk-body">or</p>
 
+               <div class="govuk-radios__item">
+                 <input class="govuk-radios__input" id="passporting-benefit-6" name="passporting-benefit" type="radio" value="none">
+                 <label class="govuk-label govuk-radios__label" for="passporting-benefit-6">
+                   None of these
+                 </label>
+               </div>
 
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="passporting-benefit-6" name="passporting-benefit" type="radio" value="none">
-        <label class="govuk-label govuk-radios__label" for="passporting-benefit-6">
-          None of these
-        </label>
-      </div>
-
-   </div>
+            </div>
 
             </fieldset>
           </div>
 
-          <button type="submit" class="govuk-button">
+          <button type="submit" class="govuk-button button-left">
             Save and continue
           </button>
-
-       <a href="tasklist" role="button" style="margin-left: 15px;" class="govuk-button draft-button">
-            Save and come back later
-          </a>
-
+        </form>
+        <form class="form inline-form" action="/tasklist" method="post">
+          <button class="govuk-button" data-module="govuk-button">Save and come back later</button>
         </form>
       </div>
     </div>

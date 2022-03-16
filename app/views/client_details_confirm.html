@@ -153,14 +153,14 @@ Apply for legal aid - Client details
 
             <div class="govuk-!-padding-bottom-4"></div>
 
-          <input type="hidden" name="checkpoints[client_details]" value="completed">
+          <input type="hidden" name="[client_details][checkpoint]" value="completed">
           <button type="submit" class="govuk-button button-left">
             Save and continue
           </button>
     </form>
 
     <form class="form inline-form" action="/tasklist" method="post">
-      <input type="hidden" name="checkpoints[client_details]" value="completed">
+      <input type="hidden" name="[client_details][checkpoint]" value="completed">
       <button class="govuk-button" data-module="govuk-button">Save and come back later</button>
     </form>
 

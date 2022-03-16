@@ -32,6 +32,37 @@ router.get('/start_page', function (req, res) {
   res.render('start_page');
 });
 
+router.post('/dwp_nonpassported', function (req, res) {
+  let isDwpCorrect = req.session.data['not-passported'];
+
+  if (isDwpCorrect == "no") {
+    res.redirect('/benefit_checker_confirm');
+  } else {
+    res.redirect('/case_details_urn');
+  }
+});
+
+router.post('/benefit_checker_confirm', function (req, res) {
+  let clientDetailsCorrect = req.session.data['client-details-correct'];
+
+  if (clientDetailsCorrect == "no") {
+    res.redirect('/client_details_long');
+  } else {
+    res.redirect('/benefit_checker_select');
+  }
+});
+
+router.post('/benefit_checker_select', function (req, res) {
+  let benefits = req.session.data['passporting-benefit'];
+  if (benefits == "none") {
+    req.session.data['means_assessment']['benefits_status']['passported'] = false;
+    res.redirect('/case_details_urn');
+  } else {
+    req.session.data['means_assessment']['benefits_status']['passported'] = true;
+    res.redirect('/benefit_checker_evidence');
+  }
+});
+
 const parseApiResponse = (response) => {
   if (response.Item) {
     return response.Item.data
