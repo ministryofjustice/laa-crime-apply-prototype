@@ -29,7 +29,7 @@ Apply for legal aid - Client details
                       Name
                     </dt>
                     <dd class="govuk-summary-list__value">
-                      Jon Philips
+                      {{ data['client_details']['client']['first_name'] }} {{ data['client_details']['client']['last_name'] }}
                     </dd>
                   </div>
                   <div class="govuk-summary-list__row">
@@ -45,7 +45,13 @@ Apply for legal aid - Client details
                       National Insurance number
                     </dt>
                     <dd class="govuk-summary-list__value">
-                      QQ123456C
+                      {% if data['client_details']['client']['national_insurance_number'] %}
+                        {{ data['client_details']['client']['national_insurance_number'] }}
+                      {% elif data['no-national-insurance'] == 'yes-no-number' %}
+                        Yes, but they can't find it
+                      {% elif data['no-national-insurance'] == 'no' %}
+                        No
+                      {% endif %}
                     </dd>
                   </div>
                   <div class="govuk-summary-list__row">
@@ -53,9 +59,16 @@ Apply for legal aid - Client details
                       Correspondance address
                     </dt>
                     <dd class="govuk-summary-list__value">
-                      72 Guild Street
-                      <br>London
-                      <br>SE23 6FH
+                      {% if data['client_details']['client']['address']['address_line_one'] %}
+                        {{ data['client_details']['client']['address']['address_line_one'] }}
+                        {{ data['client_details']['client']['address']['address_line_two'] }}
+                        <br>{{ data['client_details']['client']['address']['city'] }}
+                        <br>{{ data['client_details']['client']['address']['postcode'] }}
+                      {% elif data['address-select'] %}
+                        {{ data['address-select'] }} Main Street
+                        <br>London
+                        <br>{{ data['client_details']['client']['address']['postcode'] }}
+                      {% endif %}
                     </dd>
                   </div>
                   <div class="govuk-summary-list__row">
@@ -63,58 +76,14 @@ Apply for legal aid - Client details
                       Partner
                     </dt>
                     <dd class="govuk-summary-list__value">
-                      No
+                      {% if data['marriage-civil-partnership'] == "yes" %}
+                        Yes
+                      {% else %}
+                        No
+                      {% endif %}
                     </dd>
                   </div>
                 </dl>
-
-
-                <!-- <div class="govuk-grid-row">
-                  <div class="govuk-grid-column-two-thirds">
-
-                    <h2 class="govuk-heading-m">Partner details</h2>
-                    </div>
-                    <div class="govuk-grid-column-one-third">
-                    <p><a class="govuk-link" style="float:right;" href="client_details_long">Change</a></p>
-                    </div>
-                    </div>
-
-                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-                  <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                      Name
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                      Sarah Philips
-                    </dd>
-                  </div>
-                  <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                      Date of birth
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                      5 January 1978
-                    </dd>
-                  </div>
-                  <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                      National Insurance number
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                      QQ123456C
-                    </dd>
-                  </div>
-                  <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                      Correspondance address
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                      72 Guild Street
-                      <br>London
-                      <br>SE23 6FH
-                    </dd>
-                  </div>
-                </dl> -->
 
                 <div class="govuk-grid-row">
                   <div class="govuk-grid-column-two-thirds">
@@ -122,7 +91,7 @@ Apply for legal aid - Client details
                     <h2 class="govuk-heading-m">Additional details</h2>
                     </div>
                     <div class="govuk-grid-column-one-third">
-                    <p><a class="govuk-link" style="float:right;" href="client_details_long">Change</a></p>
+                    <p><a class="govuk-link" style="float:right;" href="/client_details_other">Change</a></p>
                     </div>
                     </div>
 
@@ -132,54 +101,51 @@ Apply for legal aid - Client details
                       Paying towards legal aid
                     </dt>
                     <dd class="govuk-summary-list__value">
-                      Yes
+                      {% if data['laa-case'] == "criminal" %}
+                        Yes
+                      {% elif data['laa-case'] == "civil" %}
+                        Yes
+                      {% else %}
+                        No
+                      {% endif %}
                     </dd>
-                    <!-- <dd class="govuk-summary-list__actions">
-                      <a href="#">
-                        Change
-                        <span class="govuk-visually-hidden"> previous application number</span>
-                      </a>
-                    </dd> -->
                   </div>
-                  <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                      Case reference number
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                      L-123-ABC
-                    </dd>
-                    <!-- <dd class="govuk-summary-list__actions">
-                      <a href="#">
-                        Change
-                      </a>
-                    </dd> -->
-                  </div>
+                  {% if data['laa-case-criminal-number'] or data['laa-case-civil-number'] %}
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Case reference number
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        {% if data['laa-case-criminal-number'] %}
+                          {{ data['laa-case-criminal-number'] }}
+                        {% elif data['laa-case-civil-number'] %}
+                          {{ data['laa-case-civil-number'] }}
+                        {% endif %}
+                      </dd>
+                    </div>
+                  {% endif %}
                   <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
                       On remand
                     </dt>
                     <dd class="govuk-summary-list__value">
-                      Yes
+                      {% if data['laa-client_details']['on_remand'] == 'true' %}
+                        Yes
+                      {% else %}
+                        No
+                      {% endif %}
                     </dd>
-                    <!-- <dd class="govuk-summary-list__actions">
-                      <a href="#">
-                        Change
-                      </a>
-                    </dd> -->
                   </div>
-                  <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                      Date remanded
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                      12 Janurary 2022
-                    </dd>
-                    <!-- <dd class="govuk-summary-list__actions">
-                      <a href="#">
-                        Change
-                      </a>
-                    </dd> -->
-                  </div>
+                  {% if data['laa-client_details']['on_remand'] == 'true' %}
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Date remanded
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        12 Janurary 2022
+                      </dd>
+                    </div>
+                  {% endif %}
                 </dl>
 
             <h2 class="govuk-heading-m">What happens next</h2>
@@ -187,14 +153,14 @@ Apply for legal aid - Client details
 
             <div class="govuk-!-padding-bottom-4"></div>
 
-          <input type="hidden" name="client_details[]" value="completed">
+          <input type="hidden" name="checkpoints[client_details]" value="completed">
           <button type="submit" class="govuk-button button-left">
             Save and continue
           </button>
     </form>
 
     <form class="form inline-form" action="/tasklist" method="post">
-      <input type="hidden" name="client_details[]" value="completed">
+      <input type="hidden" name="checkpoints[client_details]" value="completed">
       <button class="govuk-button" data-module="govuk-button">Save and come back later</button>
     </form>
 
