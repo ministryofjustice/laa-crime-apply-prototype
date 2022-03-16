@@ -6,10 +6,8 @@ class SectionStatus {
   constructor(section, data) {
     this.data = data || {};
     this.section = section;
-    this.checkpoints = this.data.checkpoints || {};
-    this.checkpoint = this.checkpoints[section];;
-    this.getValues = (data) => data[this.section] || {};
     this.values = this.getValues(this.data);
+    this.checkpoint = this.values.checkpoint;
     this.status = this.getStatus();
   }
 
@@ -29,13 +27,6 @@ class SectionStatus {
     if (!_.isEmpty(this.values)) {
       return true;
     }
-
-    // check values 2 levels deep
-    _.each(this.values, value => {
-      if (!_.isEmpty(this.getValues(value))) {
-        return true;
-      }
-    });
 
     return false;
   }
@@ -65,6 +56,25 @@ class SectionStatus {
     }
 
     return false;
+  }
+
+  getValues() {
+    let values = this.data[this.section];
+    if (values) {
+      return values;
+    }
+
+    // check values 2 levels deep
+    let match;
+    _.each(this.data, property => {
+      match = property[this.section];
+    });
+
+    if (match) {
+      return match;
+    }
+
+    return {};
   }
 
 }
