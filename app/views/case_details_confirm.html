@@ -10,17 +10,9 @@ Apply for legal aid - Client details
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">Confirm the case details</h1>
 
-      <form action="/ioj" method="post" novalidate>
-
+      <form action="/case_details_confirm" method="post" novalidate>
         <div class="govuk-form-group">
-
           <div class="govuk-grid-row">
-              <!-- <div class="govuk-grid-column-two-thirds">
-              <h2 class="govuk-heading-m">Personal details</h2>
-              </div>
-              <div class="govuk-grid-column-one-third">
-              <p><a class="govuk-link" style="float:right;" href="client_details_long">Change</a></p>
-              </div> -->
               </div>
                 <dl class="govuk-summary-list govuk-!-margin-bottom-6">
                   <div class="govuk-summary-list__row">
@@ -59,33 +51,31 @@ Apply for legal aid - Client details
                     </dd>
                   </div>
                 </dl>
-                                    <div class="govuk-radios__item">
-                                      <input class="govuk-radios__input" id="case_details_confirm-1" name="case_details_confirm" type="radio" value="correct">
-                                      <label class="govuk-label govuk-radios__label" for="case_details_confirm-1">
-                                        These details are correct
-                                      </label>
-                                    </div>
-                                    <div class="govuk-radios__item">
-                                      <input class="govuk-radios__input" id="case_details_confirm-2" name="case_details_confirm" type="radio" value="change">
-                                      <label class="govuk-label govuk-radios__label" for="case_details_confirm-2">
-                                        I need to change these details
-                                      </label>
-                                    </div>
-                                    </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="case_details_confirm-1" name="case_details_confirm" type="radio" value="correct">
+                  <label class="govuk-label govuk-radios__label" for="case_details_confirm-1">
+                    These details are correct
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="case_details_confirm-2" name="case_details_confirm" type="radio" value="change">
+                  <label class="govuk-label govuk-radios__label" for="case_details_confirm-2">
+                    I need to change these details
+                  </label>
+                </div>
+                </div>
 
-            <!-- <h2 class="govuk-heading-m">What happens next</h2>
-            <p class="govuk-body">We'll check your client's benefits status with the Department of Work and Pensions (DWP). </p> -->
 
-            <div class="govuk-!-padding-bottom-6"></div>
-
-          <input type="hidden" name="case_details[]" value="completed">
+          <div class="govuk-!-padding-bottom-6"></div>
+          <input type="hidden" name="[case_details][checkpoint]" value="completed">
           <button type="submit" class="govuk-button button-left">
             Save and continue
           </button>
     </form>
 
+
     <form class="form inline-form" action="/tasklist" method="post">
-      <input type="hidden" name="case_details[]" value="completed">
+      <input type="hidden" name="[case_details][checkpoint]" value="completed">
       <button class="govuk-button" data-module="govuk-button">Save and come back later</button>
     </form>
 
