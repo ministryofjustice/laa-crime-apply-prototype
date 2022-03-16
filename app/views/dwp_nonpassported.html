@@ -10,7 +10,7 @@
         <header>
           <h1 class="govuk-heading-l">DWP records show that your client does not receive a passporting benefit – is this correct?</h1>
         </header>
-        <form action="/case_details_urn" method="post" class="form">
+        <form action="/dwp_nonpassported" method="post" class="form">
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios" data-module="govuk-radios">
                 <div class="govuk-radios__item">
@@ -41,22 +41,19 @@
 
 
         <div class="govuk-!-padding-bottom-4"></div>
-        <input type="hidden" name="benefits_status[]" value="completed">
-        <input type="hidden" name="means_assessment[]" value="in_progress">
+        <input type="hidden" name="means_assessment[benefits_status][passported]" value="false">
+        <input type="hidden" name="[benefits_status][checkpoint]" value="completed">
         <button type="submit" class="govuk-button button-left">
           Save and continue
         </button>
       </form>
       <form class="form inline-form" action="/tasklist" method="post">
-        <input type="hidden" name="benefits_status[]" value="completed">
-        <input type="hidden" name="means_assessment[]" value="in_progress">
+        <input type="hidden" name="means_assessment[benefits_status][passported]" value="false">
         <button class="govuk-button" data-module="govuk-button">Save and come back later</button>
       </form>
       </div>
     </div>
   </div>
-
-  <p><a href="/benefit_checker_confirm" style="color: #fff;">Client receives a passporting benefit</a></p>
 
 
 {% endblock %}

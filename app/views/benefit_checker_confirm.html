@@ -3,70 +3,64 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <form action="benefit_checker_select" method="post" class="form">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/benefit_checker_confirm" method="post" class="form">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="how-contacted-conditional-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            <h1 class="govuk-fieldset__heading">
+           Check your client's details
+            </h1>
+          </legend>
 
+          <table class="govuk-table">
+            <thead class="govuk-table__head">
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Name</th>
+                <td class="govuk-table__cell">{{ data['client_details']['client']['first_name'] }} {{ data['client_details']['client']['last_name'] }}</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Date of birth</th>
+                <td class="govuk-table__cell">12 March 1979</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">National Insurance number</th>
+                <td class="govuk-table__cell">{{ data['client_details']['client']['national_insurance_number'] }}</td>
+              </tr>
+            </tbody>
+          </table>
 
-                <div class="govuk-form-group">
-      <fieldset class="govuk-fieldset" aria-describedby="how-contacted-conditional-hint">
-        <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-          <h1 class="govuk-fieldset__heading">
-         Check your client's details
-          </h1>
-        </legend>
+          <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="client-details-correct-1" name="client-details-correct" type="radio" value="yes" {{ checked("client-details-correct","yes") }}>
+                <label class="govuk-label govuk-radios__label" for="client-details-correct-1">
+                  These details are correct
+                </label>
+            </div>
 
-
-<table class="govuk-table">
-  <thead class="govuk-table__head">
-  </thead>
-  <tbody class="govuk-table__body">
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Name</th>
-      <td class="govuk-table__cell">John Doe</td>
-    </tr>
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Date of birth</th>
-      <td class="govuk-table__cell">1 January 1980</td>
-    </tr>
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">National Insurance number</th>
-      <td class="govuk-table__cell">QQ 12 34 56 C</td>
-    </tr>
-  </tbody>
-</table>
-
-        <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="onlinebank-1" name="check" type="radio" value="yes" {{ checked("online-banking","yes") }}>
-                  <label class="govuk-label govuk-radios__label" for="onlinebank-1">
-                    These details are correct
-                  </label></div>
-
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="onlinebank-2" name="check" type="radio" value="no" data-aria-controls="conditional-how-contacted-conditional-2" {{ checked("online-banking","no") }}>
-            <label class="govuk-label govuk-radios__label" for="onlinebank-2">
-              I need to change these details
-            </label> </div>
-
-          </div>
-          </fieldset>
-        </div>
-
-    </div>
-
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="client-details-correct-2" name="client-details-correct" type="radio" value="no" {{ checked("client-details-correct","no") }}>
+              <label class="govuk-label govuk-radios__label" for="client-details-correct-2">
+                I need to change these details
+              </label>
+            </div>
 
           </div>
-
-          <button type="submit" class="govuk-button">
-            Save and continue
-          </button>
-
-          <a href="tasklist" role="button" style="margin-left: 15px;" class="govuk-button draft-button">
-            Save and come back later
-          </a>
-
-
-      </div>
+        </fieldset>
     </div>
+    <div class="govuk-form-group">
+
+      <button type="submit" class="govuk-button">
+        Save and continue
+      </button>
+
+      <a href="tasklist" role="button" style="margin-left: 15px;" class="govuk-button draft-button">
+        Save and come back later
+      </a>
+    </div>
+  </form
+</div>
 
 {% endblock %}

@@ -10,12 +10,17 @@
     <div class="govuk-grid-column-full">
       <form class="form" action="/case_details_urn" method="post">
       <p>
-        <button class="govuk-button" data-module="govuk-button">
+        <input type="hidden" name="means_assessment[benefits_status][passported]" value="true">
+        <input type="hidden" name="[benefits_status][checkpoint]" value="completed">
+        <button class="govuk-button button-left" data-module="govuk-button">
           Save and continue
         </button>
-        <a href="/tasklist" role="button" class="govuk-button draft-button">
-        Save and come back later</a>
       </p>
+      </form>
+      <form class="form inline-form" action="/tasklist" method="post">
+        <input type="hidden" name="means_assessment[benefits_status][passported]" value="true">
+        <input type="hidden" name="[benefits_status][checkpoint]" value="completed">
+        <button class="govuk-button" data-module="govuk-button">Save and come back later</button>
       </form>
 
     </div>
