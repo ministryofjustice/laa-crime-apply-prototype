@@ -25,14 +25,11 @@
                   <label class="govuk-label govuk-checkboxes__label" for="savings-investments-0">
                     Money in a bank account
                   </label>
-                <span id="savings-investments-1-hint" class="govuk-hint govuk-checkboxes__hint" style="padding-left: 15px">
-                      For example, money left after your client pay their bills.
-                  </span>
                 </div>
                 <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-0">
                   <div class="govuk-form-group">
                     <label class="govuk-label" for="savings-investments-0">
-                      Enter the total amount
+                      Enter the total amount in all accounts
                     </label>
                     <!-- WRAPPER STARTS -->
                     <div class="govuk-input__wrapper">
@@ -47,10 +44,10 @@
                 <div class="govuk-checkboxes__item">
                   <input class="govuk-checkboxes__input" id="savings-investments-1" name="savings-investments-1" type="checkbox" value="money_not_in_bank" data-aria-controls="conditional-1" {{ checked("money_not_in_bank","yes") }}>
                   <label class="govuk-label govuk-checkboxes__label" for="savings-investments-1">
-                    Money not in a bank account
+                    Cash
                   </label>
                <span id="savings-investments-1-hint" class="govuk-hint govuk-checkboxes__hint" style="padding-left: 15px">
-                      For example, cash kept at home.
+                    For example, bank notes and coins kept at home.
                   </span>
                 </div>
                 <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-1">
