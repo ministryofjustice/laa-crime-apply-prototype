@@ -63,6 +63,19 @@ router.post('/benefit_checker_select', function (req, res) {
   }
 });
 
+router.post('/case_details_urn', function (req, res) {
+  res.redirect('/case_details_confirm');
+});
+
+router.post('/case_details_confirm', function (req, res) {
+  let confirm = req.session.data['case_details_confirm'];
+  if (confirm == "change") {
+    res.redirect('/case_details');
+  } else {
+    res.redirect('/ioj');
+  }
+});
+
 const parseApiResponse = (response) => {
   if (response.Item) {
     return response.Item.data
