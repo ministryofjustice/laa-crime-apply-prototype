@@ -5,17 +5,12 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl">Is your's client gross annual income below £12,475?</h1>
-
-      <div class="govuk-inset-text">
-          You need to consider the money they received before tax or any other deductions have been taken off.
-      </div>
+      <h1 class="govuk-heading-xl">Is your client's annual income less than £12,475 before tax and other deductions?</h1>
 
       <form class="form" action="/hmrc_record" method="post">
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
-
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="type-of-case-1" name="means_assessment[benefits_status][below_income_threshold]" type="radio" value="yes" {{ checked("['means_assessment']['benefits_status']['above_income_threshold']", "yes") }}>
@@ -30,7 +25,6 @@
                 </label>
               </div>
             </div>
-
           </fieldset>
         </div>
         <input type="hidden" name="[income][checkpoint]" value="completed">

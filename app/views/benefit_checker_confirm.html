@@ -32,18 +32,19 @@
             </tbody>
           </table>
 
+          <h2 class="govuk-heading-m">Are these details correct?</h2>
           <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="client-details-correct-1" name="client-details-correct" type="radio" value="yes" {{ checked("client-details-correct","yes") }}>
                 <label class="govuk-label govuk-radios__label" for="client-details-correct-1">
-                  These details are correct
+                  Yes
                 </label>
             </div>
 
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="client-details-correct-2" name="client-details-correct" type="radio" value="no" {{ checked("client-details-correct","no") }}>
               <label class="govuk-label govuk-radios__label" for="client-details-correct-2">
-                I need to change these details
+                No, I need to change these details
               </label>
             </div>
 
