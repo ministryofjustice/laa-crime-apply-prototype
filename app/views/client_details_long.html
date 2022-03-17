@@ -196,6 +196,61 @@ Apply for legal aid - Client details
         <div class="govuk-!-padding-bottom-2"></div>
 
         <div class="govuk-form-group" data-module="govuk-radios">
+          <label class="govuk-label govuk-label--m" for="laa-case">
+            Is your client paying towards legal aid for another case?
+          </label>
+          <div class="govuk-radios__item">
+            <!-- REMEMBER: data-aria-controls -->
+            <input class="govuk-radios__input" id="laa-case-1" name="laa-case" type="radio" value="criminal" data-aria-controls="laa-case-criminal-yes" {{ checked("laa-case", "criminal") }}>
+            <label class="govuk-label govuk-radios__label" for="laa-case-1">
+              Yes, for a criminal case
+            </label>
+          </div>
+          <!-- START: CONDITIONAL REVEAL -->
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="laa-case-criminal-yes"> <!-- id needs to match data-aria-controls -->
+            <div class="govuk-form-group">
+                <label class="govuk-label" for="laa-case-criminal-number">
+                Case reference number
+                </label>
+                <div id="laa-case-criminal-hint" class="govuk-hint">
+                  For example, '6945352'.
+                </div>
+              <input class="govuk-input govuk-!-width-three-quarters" id="laa-case-criminal-number-1" name="laa-case-criminal-number" value="{{ data['laa-case-criminal-number'] }}" type="text">
+            </div>
+          </div>
+          <div class="govuk-form-group">
+          <!-- END: CONDITIONAL REVEAL  -->
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="laa-case-2" name="laa-case" type="radio" value="civil" data-aria-controls="laa-case-civil-yes" {{ checked("laa-case", "civil") }}>
+              <label class="govuk-label govuk-radios__label" for="laa-case-2">
+                Yes, for a civil case
+              </label>
+            </div>
+            <!-- START: CONDITIONAL REVEAL -->
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="laa-case-civil-yes"> <!-- id needs to match data-aria-controls -->
+              <div class="govuk-form-group">
+                  <label class="govuk-label" for="laa-case-civil-number">
+                  Case reference number
+                  </label>
+                  <div id="laa-case-civil-hint" class="govuk-hint">
+                    For example, 'L 456 DEF'.
+                  </div>
+                <input class="govuk-input govuk-!-width-three-quarters" id="laa-case-civil-number-1" name="laa-case-civil-number" value="{{ data['laa-case-civil-number'] }}" type="text">
+              </div>
+            </div>
+            <div class="govuk-form-group">
+            <!-- END: CONDITIONAL REVEAL  -->
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="laa-case-3" name="laa-case" type="radio" value="no" {{ checked("laa-case", "no") }}>
+              <label class="govuk-label govuk-radios__label" for="laa-case-3">
+                No
+              </label>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div class="govuk-form-group" data-module="govuk-radios">
           <label class="govuk-label govuk-label--m" for="marriage-civil-partnership">
             Does your client have a partner?
           </label>
@@ -222,7 +277,7 @@ Apply for legal aid - Client details
                 <label class="govuk-label" for="partner_lastname">
                 Last name
                 </label>
-              <input class="govuk-input govuk-!-width-three-quarters" id="partner_lastname" name="client_details[partner][last_name]" value="{{ data['client_details']['partner']['last_name'] }}"">
+              <input class="govuk-input govuk-!-width-three-quarters" id="partner_lastname" name="client_details[partner][last_name]" value="{{ data['client_details']['partner']['last_name'] }}">
             </div>
           </div>
           <div class="govuk-form-group">
