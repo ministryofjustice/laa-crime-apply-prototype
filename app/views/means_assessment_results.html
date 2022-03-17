@@ -334,23 +334,14 @@
         </div>
         </div>
 
-
-
-
-        <input type="hidden" name="means_assessment[]" value="completed">
-        <input type="hidden" name="check_means[]" value="completed">
-        <button type="submit" class="govuk-button button-left">
-          Save and continue
-        </button>
-
-    </form>
-
-    <form class="form inline-form" action="/tasklist" method="post">
-      <input type="hidden" name="means_assessment[]" value="completed">
-      <input type="hidden" name="check_means[]" value="completed">
-      <button class="govuk-button" data-module="govuk-button">Save and come back later
-      </button>
-    </form>
+        <form action="/means_assessment_results" method="post" novalidate>
+          <input type="hidden" name="[check_means_result][checkpoint]" value="completed">
+          <button class="govuk-button button-left" data-module="govuk-button">Save and continue</button>
+        </form>
+        <form class="form inline-form" action="/tasklist" method="post">
+          <input type="hidden" name="[check_means_result][checkpoint]" value="completed">
+          <button class="govuk-button" data-module="govuk-button">Save and come back later</button>
+        </form>
 </div>
 
 {% endblock %}

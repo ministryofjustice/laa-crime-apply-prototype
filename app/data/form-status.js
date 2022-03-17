@@ -6,7 +6,7 @@ class SectionStatus {
   constructor(section, data) {
     this.data = data || {};
     this.section = section;
-    this.values = this.getValues(this.data);
+    this.values = this.getValues();
     this.checkpoint = this.values.checkpoint;
     this.status = this.getStatus();
   }
@@ -65,13 +65,10 @@ class SectionStatus {
     }
 
     // check values 2 levels deep
-    let match;
-    _.each(this.data, property => {
-      match = property[this.section];
-    });
+    let match = _.find(this.data, this.section);
 
     if (match) {
-      return match;
+      return match[this.section];
     }
 
     return {};

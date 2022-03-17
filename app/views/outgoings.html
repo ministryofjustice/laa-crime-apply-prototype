@@ -4,7 +4,7 @@
 
 <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <form action="/means_assessment_results" method="post" class="form">
+        <form action="/property" method="post" class="form">
 
           <div class="govuk-form-group">
             <fieldset class="govuk-fieldset" aria-describedby="outgoings">
@@ -336,13 +336,13 @@
           </div>
 
           <div class="govuk-!-padding-bottom-4"></div>
-          <input type="hidden" name="means_assessment[]" value="completed">
+          <input type="hidden" name="[capital][checkpoint]" value="completed">
           <button type="submit" class="govuk-button button-left">
             Save and continue
           </button>
         </form>
         <form class="form inline-form" action="/tasklist" method="post">
-          <input type="hidden" name="means_assessment[]" value="completed">
+          <input type="hidden" name="[capital][checkpoint]" value="completed">
           <button class="govuk-button" data-module="govuk-button">Save and come back later</button>
         </form>
       </div>

@@ -3,6 +3,7 @@ const router = express.Router()
 const _ = require('lodash')
 const statusCheck = require('./data/form-status')
 const fetch = require('./data/fetch')
+const hmrc_record = require('./data/hmrc-record')
 const applicationsApiUrl = "https://n7ykjge71d.execute-api.eu-west-2.amazonaws.com/alpha/applications";
 
 router.get('/tasklist/:id', async (req, res, next) => {
@@ -83,7 +84,14 @@ router.post('/ioj', function (req, res, next) {
   if (origin == 'ioj') {
     delete req.session.data['origin'];
     let passported = isPassported(req);
+
     if (JSON.parse(passported)) {
+      req.session.data.income = { 'checkpoint': 'completed' };
+
+      if (!isCrownCourt(req)) {
+        skipMeans(req);
+      }
+
       res.redirect('/application_cert_review');
     } else {
       res.redirect('/tasklist');
@@ -93,9 +101,63 @@ router.post('/ioj', function (req, res, next) {
   }
 });
 
+router.post('/hmrc_record', function (req, res, next) {
+  let below_threshold = isBelowIncomeThreshold(req);
+  if (below_threshold) {
+    req.session.data['income']['checkpoint'] = 'completed';
+
+    if (!isCrownCourt(req)) {
+      skipMeans(req);
+      res.redirect('/application_cert_review');
+    } else {
+      res.redirect('/outgoings');
+    }
+
+  } else {
+    return next();
+  }
+});
+
+router.post('/property', function (req, res, next) {
+  if (!isCrownCourt(req)) {
+    req.session.data['capital']['checkpoint'] = 'completed';
+    res.redirect('/means_assessment_check_answers');
+  } else {
+    return next();
+  }
+});
+
+router.get('/hmrc_record', function (req, res) {
+  req.session.data['means_assessment']['income'] = hmrc_record;
+  res.render('hmrc_record');
+});
+
 const isPassported = (req) => {
   try {
     return req.session.data['means_assessment']['benefits_status']['passported'];
+  } catch (err) {
+    return false;
+  }
+}
+
+const isCrownCourt = (req) => {
+  try {
+    return req.session.data['case_details']['court_type'] == 'crown';
+  } catch (err) {
+    return false;
+  }
+}
+
+const skipMeans = (req) => {
+  req.session.data.capital = { 'checkpoint': 'completed' };
+  req.session.data.check_means_answers = { 'checkpoint': 'completed' };
+  req.session.data.check_means_result = { 'checkpoint': 'completed' };
+  return;
+}
+
+const isBelowIncomeThreshold = (req) => {
+  try {
+    return req.session.data['means_assessment']['benefits_status']['below_income_threshold'] == 'yes';
   } catch (err) {
     return false;
   }

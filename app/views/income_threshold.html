@@ -11,20 +11,20 @@
           You need to consider the money they received before tax or any other deductions have been taken off.
       </div>
 
-      <form class="form" action="/means_assessment_results" method="post">
+      <form class="form" action="/hmrc_record" method="post">
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
 
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="type-of-case-1" name="type-of-case" type="radio" value="summary_only">
+                <input class="govuk-radios__input" id="type-of-case-1" name="means_assessment[benefits_status][below_income_threshold]" type="radio" value="yes" {{ checked("['means_assessment']['benefits_status']['above_income_threshold']", "yes") }}>
                 <label class="govuk-label govuk-radios__label" for="type-of-case-1">
                   Yes
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="type-of-case-2" name="type-of-case" type="radio" value="either_way">
+                <input class="govuk-radios__input" id="type-of-case-2" name="means_assessment[benefits_status][below_income_threshold]" type="radio" value="no" {{ checked("['means_assessment']['benefits_status']['above_income_threshold']", "no") }}>
                 <label class="govuk-label govuk-radios__label" for="type-of-case-2">
                   No
                 </label>
@@ -33,11 +33,11 @@
 
           </fieldset>
         </div>
-
+        <input type="hidden" name="[income][checkpoint]" value="completed">
         <button class="govuk-button button-left" data-module="govuk-button">Save and continue</button>
       </form>
       <form class="form inline-form" action="/tasklist" method="post">
-        <input type="hidden" name="case_details[]" value="completed">
+        <input type="hidden" name="[income][checkpoint]" value="completed">
         <button class="govuk-button" data-module="govuk-button">Save and come back later</button>
       </form>
 
