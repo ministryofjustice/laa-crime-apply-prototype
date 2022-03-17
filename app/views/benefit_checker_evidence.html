@@ -23,7 +23,10 @@
                     Guarantee Credit element of Pension Credit?
                   {% endif %}
                 </h1>
-                <span class="govuk-hint">For example, a letter from the DWP.</span>
+                <div class="govuk-!-padding-bottom-2"></div>
+                <div class="govuk-hint">
+                    For example, a letter from the DWP, a bank statement from the last 3 months showing benefits paid in, or any other relevant documents.
+                </div>
               </legend>
 
               <div class="govuk-radios">
@@ -32,6 +35,9 @@
                   <input class="govuk-radios__input" id="benefit-evidence-1" name="benefit_evidence" type="radio" value="yes">
                   <label class="govuk-label govuk-radios__label" for="benefit-evidence-1">
                     Yes
+                    <div class="govuk-hint">
+                      Do not include personal or financial information, like your National Insurance number or credit card details.
+                    </div>
                   </label>
                 </div>
 
@@ -39,11 +45,12 @@
                   <input class="govuk-radios__input" id="benefit-evidence-2" name="benefit_evidence" type="radio" value="no">
                   <label class="govuk-label govuk-radios__label" for="benefit-evidence-2">
                     No
+                    <div class="govuk-hint">
+                      You'll need to tell us about your client's income if you do not have evidence that they receive a passporting benefit.
+                    </div>
                   </label>
                 </div>
-                <div class="govuk-details__text">
-                 <p>If you don't have evidence that your client receives a passporting benefit, you'll be asked questions about their means.</p>
-              </div>
+
               </div>
 
 
