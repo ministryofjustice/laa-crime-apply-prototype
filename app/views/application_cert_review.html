@@ -316,17 +316,19 @@ th:first-child {
 <a role="button" href="print_view" target="_blank" style="margin-left:" class="govuk-button draft-button">Print application</a>
 
 <p></p>
-<form action="/confirm_the_following" method="post" novalidate>
-<input type="hidden" name="review[]" value="completed">
-<button type="submit" class="govuk-button">
-  Save and continue
-</button>
+  <form action="/confirm_the_following" method="post" novalidate>
+    <input type="hidden" name="[review][checkpoint]" value="completed">
+    <button type="submit" class="govuk-button button-left">
+      Save and continue
+    </button>
+  </form>
 
-<a href="tasklist" role="button" style="margin-left: 15px;" class="govuk-button draft-button">
-   Save and come back later
- </a>
-</form>
-</div>
+  <form class="form inline-form" action="/tasklist" method="post">
+    <input type="hidden" name="[review][checkpoint]" value="completed">
+    <button class="govuk-button" data-module="govuk-button">Save and come back later
+    </button>
+  </form>
+  </div>
 </div>
 
 <p><a href="/dwp_nonpassported" style="color: #b7b7b7;">Non-passported journey</a></p>
