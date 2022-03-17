@@ -43,6 +43,15 @@ router.post('/dwp_nonpassported', function (req, res) {
   }
 });
 
+router.post('/dwp_passported', function (req, res, next) {
+  let use_non_passported = req.session.data['goto-non-passported'];
+  if (use_non_passported == 'yes') {
+    res.redirect('/dwp_nonpassported');
+  } else {
+    return next();
+  }
+});
+
 router.post('/benefit_checker_confirm', function (req, res) {
   let clientDetailsCorrect = req.session.data['client-details-correct'];
 
