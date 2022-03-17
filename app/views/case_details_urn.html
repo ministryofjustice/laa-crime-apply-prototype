@@ -7,7 +7,7 @@
 
       <h1 class="govuk-heading-xl">Enter the case details</h1>
 
-      <form class="form" action="/case_details_urn" method="post">
+      <form class="form" action="/case_details_confirm" method="post">
           <fieldset class="govuk-fieldset">
             <div class="govuk-form-group">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
@@ -39,6 +39,7 @@
            <input type="hidden" name="[case_details][offence_class]" value="h">
            <input type="hidden" name="[case_details][co_defendant_names][0]" value="Alex Welsh">
            <input type="hidden" name="[case_details][co_defendant_names][0]" value="Joe Taylor">
+           <input type="hidden" name="[origin]" value="case_details_urn">
            <button class="govuk-button button-left" data-module="govuk-button">Search</button>
         </form>
         <form class="form inline-form" action="/tasklist" method="post">
