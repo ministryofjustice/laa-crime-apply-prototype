@@ -76,6 +76,29 @@ router.post('/case_details_confirm', function (req, res) {
   }
 });
 
+router.post('/ioj', function (req, res, next) {
+  let origin = req.session.data['origin'];
+  if (origin == 'ioj') {
+    delete req.session.data['origin'];
+    let passported = isPassported(req);
+    if (JSON.parse(passported)) {
+      res.redirect('/application_cert_review');
+    } else {
+      res.redirect('/tasklist');
+    }
+  } else {
+    return next();
+  }
+});
+
+const isPassported = (req) => {
+  try {
+    return req.session.data['means_assessment']['benefits_status']['passported'];
+  } catch (err) {
+    return false;
+  }
+}
+
 const parseApiResponse = (response) => {
   if (response.Item) {
     return response.Item.data
