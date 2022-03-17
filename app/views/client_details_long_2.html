@@ -311,9 +311,19 @@ Apply for legal aid - Client details
         <p class="govuk-body">We'll check your client's benefits status with the Department of Work and Pensions (DWP). </p>
 
         </div>
-          <button type="submit" class="govuk-button button-left">
-            Save and continue
-          </button>
+        <div class="govuk-form-group">
+          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="goto-non-passported" name="goto-non-passported" type="checkbox" value="yes">
+              <label class="govuk-label govuk-checkboxes__label greyed-out" for="goto-non-passported">
+                Continue to non-passported journey
+              </label>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="govuk-button button-left">
+          Save and continue
+        </button>
     </form>
     <form class="form inline-form" action="/tasklist" method="post">
       <button class="govuk-button" data-module="govuk-button">Save and come back later</button>
@@ -322,7 +332,5 @@ Apply for legal aid - Client details
   </div>
 
   <p><a href="/client_details_long" style="color: #b7b7b7;">Alternative design</a></p>
-  <p><a href="/dwp_nonpassported" style="color: #b7b7b7;">Continue to non-passported journey</a></p>
-
 
 {% endblock %}
