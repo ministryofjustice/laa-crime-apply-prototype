@@ -273,7 +273,7 @@ Apply for legal aid - Client details
           </div>
           <div class="govuk-radios__item">
             <!-- REMEMBER: data-aria-controls -->
-            <input class="govuk-radios__input" id="marriage-civil-partnership-1" name="marriage-civil-partnership" type="radio" value="yes" data-aria-controls="conditional-2-yes" {{ checked("['marriage-civil-partnership']", "yes") }}>
+            <input class="govuk-radios__input" id="marriage-civil-partnership-1" name="marriage-civil-partnership" type="radio" value="yes" data-aria-controls="conditional-2-yes" {% if data['client_details']['partner']['first_name'] %}checked{% endif %}>
             <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership">
               Yes
             </label>

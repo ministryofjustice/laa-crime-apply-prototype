@@ -1,9 +1,10 @@
-const express = require('express')
-const router = express.Router()
-const _ = require('lodash')
-const statusCheck = require('./data/form-status')
-const fetch = require('./data/fetch')
-const hmrc_record = require('./data/hmrc-record')
+const express = require('express');
+const router = express.Router();
+const _ = require('lodash');
+const statusCheck = require('./data/form-status');
+const fetch = require('./data/fetch');
+const hmrc_record = require('./data/hmrc-record');
+const passporting = require('./data/passporting');
 const applicationsApiUrl = "https://n7ykjge71d.execute-api.eu-west-2.amazonaws.com/alpha/applications";
 
 router.get('/tasklist/:id', async (req, res, next) => {
@@ -52,6 +53,17 @@ router.post('/dwp_passported', function (req, res, next) {
   }
 });
 
+router.get('/sign_in', function (req, res) {
+   let injected_id = req.query && req.query.id;
+   delete req.session.data;
+   res.render('sign_in', { injected_id });
+});
+
+router.get('/laa_portal', function (req, res) {
+   let injected_id = req.query && req.query.id;
+   res.render('laa_portal', { injected_id });
+});
+
 router.post('/benefit_checker_confirm', function (req, res) {
   let clientDetailsCorrect = req.session.data['client-details-correct'];
 
@@ -92,12 +104,12 @@ router.post('/ioj', function (req, res, next) {
   let origin = req.session.data['origin'];
   if (origin == 'ioj') {
     delete req.session.data['origin'];
-    let passported = isPassported(req);
+    let passported = passporting.isPassported(req.session.data);
 
-    if (JSON.parse(passported)) {
+    if (passported) {
       req.session.data.income = { 'checkpoint': 'completed' };
 
-      if (!isCrownCourt(req)) {
+      if (!passporting.isCrownCourt(req.session.data)) {
         skipMeans(req);
       }
 
@@ -111,11 +123,11 @@ router.post('/ioj', function (req, res, next) {
 });
 
 router.post('/hmrc_record', function (req, res, next) {
-  let below_threshold = isBelowIncomeThreshold(req);
+  let below_threshold = passporting.isBelowIncomeThreshold(req.session.data);
   if (below_threshold) {
     req.session.data['income']['checkpoint'] = 'completed';
 
-    if (!isCrownCourt(req)) {
+    if (!passporting.isCrownCourt(req.session.data)) {
       skipMeans(req);
       res.redirect('/application_cert_review');
     } else {
@@ -128,7 +140,7 @@ router.post('/hmrc_record', function (req, res, next) {
 });
 
 router.post('/property', function (req, res, next) {
-  if (!isCrownCourt(req)) {
+  if (!passporting.isCrownCourt(req.session.data)) {
     req.session.data['capital']['checkpoint'] = 'completed';
     res.redirect('/means_assessment_check_answers');
   } else {
@@ -141,42 +153,18 @@ router.get('/hmrc_record', function (req, res) {
   res.render('hmrc_record');
 });
 
-const isPassported = (req) => {
-  try {
-    return req.session.data['means_assessment']['benefits_status']['passported'];
-  } catch (err) {
-    return false;
-  }
-}
-
-const isCrownCourt = (req) => {
-  try {
-    return req.session.data['case_details']['court_type'] == 'crown';
-  } catch (err) {
-    return false;
-  }
-}
-
 const skipMeans = (req) => {
   req.session.data.capital = { 'checkpoint': 'completed' };
   req.session.data.check_means_answers = { 'checkpoint': 'completed' };
   req.session.data.check_means_result = { 'checkpoint': 'completed' };
   return;
-}
-
-const isBelowIncomeThreshold = (req) => {
-  try {
-    return req.session.data['means_assessment']['benefits_status']['below_income_threshold'] == 'yes';
-  } catch (err) {
-    return false;
-  }
-}
+};
 
 const parseApiResponse = (response) => {
   if (response.Item) {
     return response.Item.data
   }
   return;
-}
+};
 
-module.exports = router
+module.exports = router;
