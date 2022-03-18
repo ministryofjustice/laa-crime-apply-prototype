@@ -12,8 +12,7 @@
 <p class="govuk-body">If you experience any problems using the Online Portal, or would like to view guidance documents for the Online Portal applications, please click on the help link on this page.</p>
 
  <h1 class="govuk-heading-m">Online Applications:</h1>
-
-<p class="govuk-body"><a href="start_page">Apply for criminal legal aid</a><br>
+<p class="govuk-body"><a href="{% if injected_id %}/tasklist/{{ injected_id }}{% else %}/start_page{% endif %}">Apply for criminal legal aid</a><br>
 Complete and submit applications for criminal legal aid</p>
 
 <p class="govuk-body"><a href="#">CCLF (Crown Court Litigator Fees)</a><br>

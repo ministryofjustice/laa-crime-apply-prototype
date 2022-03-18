@@ -1,6 +1,7 @@
 const _ = require('lodash');
 const settings = require('./form-settings');
 const validators = require('./validators');
+const passporting = require('./passporting');
 
 class SectionStatus {
   constructor(section, data) {
@@ -87,7 +88,6 @@ const checkDependencies = (sections) => {
   });
 };
 
-
 const isBlocked = (dependencies, sections) => {
   return _.find(dependencies, (key) => {
     let status = sections[key] || {};
@@ -99,14 +99,28 @@ const isBlocked = (dependencies, sections) => {
   });
 }
 
-module.exports = (data) => {
-  let progressCheck = _.mapValues(_.keyBy(settings.sections), (section) => {
-    return new SectionStatus(section, data).status;
+const checkPassporting = (data, sections) => {
+  _.each(sections, (status, id) => {
+    if (passporting.passport(id, data)) {
+      sections[id] = 'completed';
+    }
   });
 
-  let dependencyCheck = checkDependencies(progressCheck);
+  return sections;
+}
 
-  let statuses = _.mapValues(dependencyCheck, status => {
+const progressCheck = (data) => {
+  return _.mapValues(_.keyBy(settings.sections), (section) => {
+    return new SectionStatus(section, data).status;
+  });
+}
+
+module.exports = (data) => {
+  let sections = progressCheck(data);
+  sections = checkDependencies(sections);
+  sections = checkPassporting(data, sections);
+
+  let statuses = _.mapValues(sections, status => {
     return {
       label: settings.statuses[status],
       key: status
