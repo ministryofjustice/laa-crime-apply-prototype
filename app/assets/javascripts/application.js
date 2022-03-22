@@ -7,6 +7,7 @@ if (window.console && window.console.info) {
 
 $(document).ready(function () {
   window.GOVUKFrontend.initAll()
+  MOJFrontend.initAll();
 
   // postcode lookup
   $('#find-address, .postcode_change a').click(function() {
@@ -19,8 +20,15 @@ $(document).ready(function () {
   $('.not_started, .blocked').find('.govuk-tag').addClass("govuk-tag--grey");
   $('.in_progress').find('.govuk-tag').addClass("govuk-tag--blue");
 
+  $('#clear-search').on('click', function (e) {
+    e.preventDefault()
+    $('.search-field').val("");
+    $('.search-field').focus();
+  });
+
   // file uploads
-  if(typeof MOJFrontend.MultiFileUpload !== 'undefined') {
+  var fileUpload = $('.moj-multi-file-upload');
+  if(fileUpload && typeof MOJFrontend.MultiFileUpload !== 'undefined') {
     new MOJFrontend.MultiFileUpload({
       container: $('.moj-multi-file-upload'),
       uploadUrl: '/ajax-upload-url',
