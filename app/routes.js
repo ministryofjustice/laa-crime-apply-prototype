@@ -6,6 +6,7 @@ const fetch = require('./data/fetch');
 const hmrc_record = require('./data/hmrc-record');
 const passporting = require('./data/passporting');
 const applicationsApiUrl = "https://n7ykjge71d.execute-api.eu-west-2.amazonaws.com/alpha/applications";
+const offencesList = require('./data/offence_list');
 
 router.get('/tasklist/:id', async (req, res, next) => {
   try {
@@ -89,6 +90,7 @@ router.post('/case_details_confirm', function (req, res, next) {
   let origin = req.session.data['origin'];
   if (origin == 'case_details_urn') {
     delete req.session.data['origin'];
+    req.session.data['case_details_type'] = 'urn';
     return next();
   }
 
@@ -118,6 +120,14 @@ router.post('/ioj', function (req, res, next) {
       res.redirect('/tasklist');
     }
   } else {
+    req.session.data['case_details_type'] = 'manual';
+    let offenceId = req.session.data['offence'];
+    if (offenceId) {
+      req.session.data['case_details']['offence'] = offencesList[offenceId].B;
+      req.session.data['case_details']['offence_class'] = offencesList[offenceId].D;
+      req.session.data['offence_search'] = offencesList[offenceId].B;
+    }
+
     return next();
   }
 });
@@ -151,6 +161,11 @@ router.post('/property', function (req, res, next) {
 router.get('/hmrc_record', function (req, res) {
   req.session.data['means_assessment']['income'] = hmrc_record;
   res.render('hmrc_record');
+});
+
+router.get('/case_details', function (req, res) {
+  let banner = req.query && req.query.banner;
+  res.render('case_details', { offences: offencesList, banner });
 });
 
 const skipMeans = (req) => {

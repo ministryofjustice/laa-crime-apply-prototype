@@ -1,9 +1,35 @@
 {% extends "layout.html" %}
 
+
+{% block pageScripts %}
+  <script src="/public/javascripts/jquery.hideseek.min.js"></script>
+  <script>
+    $('#offence_search').hideseek({
+        min_chars: 3,
+        nodata: "No results found.",
+        hidden_mode: true
+    });
+  </script>
+{% endblock %}
+
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+     {% if banner %}
+      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Important
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <p class="govuk-notification-banner__heading">
+            A record of this case has not been created by the court yet. You can enter the case details now or come back later.
+          </p>
+        </div>
+      </div>
+      {% endif %}
 
       <h1 class="govuk-heading-xl">Enter the case details</h1>
 
@@ -70,6 +96,7 @@
               <!-- START: CONDITIONAL REVEAL -->
               <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-yes"> <!-- id needs to match data-aria-controls -->
               <div data-module="moj-add-another">
+              {% if not data['case_details']['co_defendant_names'] %}
                 <fieldset class="govuk-fieldset moj-add-another__item">
                 <p class="govuk-heading-s">Co-defendant</p>
                 <div class="govuk-form-group">
@@ -85,6 +112,26 @@
                   <input class="govuk-input govuk-!-width-three-quarters" id="case_details[co_defendant_names][0][last_name]" name="case_details[co_defendant_names][0][last_name]" type="text" data-name="case_details[co_defendant_names][%index%][last_name]" data-id="case_details[co_defendant_names][%index%][last_name]" value="{{ data['case_details']['co_defendant_names'][0]['last_name'] }}">
                 </div>
                 </fieldset>
+              {% else %}
+                {% for co_defendant in data['case_details']['co_defendant_names'] -%}
+                  <fieldset class="govuk-fieldset moj-add-another__item">
+                  <p class="govuk-heading-s">Co-defendant</p>
+                  <div class="govuk-form-group">
+                      <label class="govuk-label" for="case_details[co_defendant_names][{{loop.index}}][first_name]">
+                      First name
+                      </label>
+                    <input class="govuk-input govuk-!-width-three-quarters" id="case_details[co_defendant_names][{{loop.index}}][first_name]" name="case_details[co_defendant_names][{{loop.index}}][first_name]" type="text" data-name="case_details[co_defendant_names][%index%][first_name]" data-id="case_details[co_defendant_names][%index%][first_name]" value="{{ co_defendant.first_name }}">
+                  </div>
+                  <div class="govuk-form-group">
+                      <label class="govuk-label" for="case_details[co_defendant_names][{{loop.index}}][last_name]">
+                      Last name
+                      </label>
+                    <input class="govuk-input govuk-!-width-three-quarters" id="case_details[co_defendant_names][{{loop.index}}][last_name]" name="case_details[co_defendant_names][{{loop.index}}][last_name]" type="text" data-name="case_details[co_defendant_names][%index%][last_name]" data-id="case_details[co_defendant_names][%index%][last_name]" value="{{ co_defendant.last_name }}">
+                  </div>
+                  </fieldset>
+                  <button type="button" class="govuk-button govuk-button--secondary moj-add-another__remove-button">Remove</button>
+                {%- endfor %}
+              {% endif %}
                 <div class="govuk-!-padding-bottom-2"></div>
                 <div class="moj-button-action">
                   <button class="govuk-button govuk-button--secondary moj-add-another__add-button" data-module="govuk-button">
@@ -110,12 +157,38 @@
             <div id="search-field" class="govuk-form-group">
             <div class="govuk-grid-row">
               <div class="govuk-grid-column-two-thirds">
-                <input class="govuk-input" autocomplete="off" id="offence_search" name="offence_search" type="text" data-list="#proceedings-list" value="{{ data['offence_search'] }}">
+                <input class="govuk-input search-field" autocomplete="off" id="offence_search" name="offence_search" type="text" data-list="#offences-list" value="{{ data['offence_search'] }}">
               </div>
               <div class="govuk-grid-column-one-third clear-search">
-                <p><a class="govuk-link" href="case_details#search">Clear search</a></p>
+                <p><a class="govuk-link" id="clear-search" href="case_details#offence_search">Clear search</a></p>
               </div>
             </div>
+
+
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-two-thirds">
+                <div id="proceedings-list" class="govuk-grid-column-full ">
+                  <div class="govuk-radios govuk-radios--inline">
+                      <ul id="offences-list" style="text">
+                        {% for offence in offences -%}
+                          <li>
+                            <div class="govuk-grid-row offences-list" id="offence-item-{{loop.index}}" >
+                                <div class="govuk-radios govuk-radios">
+                                  <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="offence-value-{{loop.index}}" name="offence" type="radio" value="{{loop.index - 1}}">
+                                    <label class="govuk-label govuk-radios__label"><strong>{{ offence.B }}</strong><br>Class: {{offence.D}}</label>
+                                  </div>
+                                </div>
+                            </div>
+                          </li>
+                        {%- endfor %}
+                      </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
             </div>
             <details class="govuk-details" data-module="govuk-details">
               <summary class="govuk-details__summary">

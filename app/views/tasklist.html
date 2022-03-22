@@ -35,20 +35,12 @@
           <ul class="app-task-list__items">
             <li class="app-task-list__item {{ sections['case_details']['key'] }}">
               <span class="app-task-list__task-name">
-                <a href="/case_details_urn" aria-describedby="contact-details-status">
+                <a href="{% if data['case_details_type'] == 'manual' %}/case_details{% else %}/case_details_urn{% endif %}" aria-describedby="contact-details-status">
                   Case details
                 </a>
               </span>
               <strong class="govuk-tag govuk-tag app-task-list__tag" id="contact-details-status">{{ sections['case_details']['label'] }}</strong>
             </li>
-            <!-- <li class="app-task-list__item {{ sections['offence_details']['key'] }}">
-              <span class="app-task-list__task-name">
-                <a href="/offence_class" aria-describedby="list-convictions-status">
-                  Offence details
-                </a>
-              </span>
-              <strong class="govuk-tag govuk-tag app-task-list__tag" id="list-convictions-status">{{ sections['offence_details']['label'] }}</strong>
-            </li> -->
             <li class="app-task-list__item  {{ sections['interests_of_justice']['key'] }}">
               <span class="app-task-list__task-name">
                 <a href="/ioj" aria-describedby="list-ioj-status">
