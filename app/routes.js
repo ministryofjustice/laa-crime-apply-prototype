@@ -3,10 +3,13 @@ const router = express.Router();
 const _ = require('lodash');
 const statusCheck = require('./data/form-status');
 const fetch = require('./data/fetch');
+const post = require('./data/post');
+const validators = require('./data/validators');
 const hmrc_record = require('./data/hmrc-record');
 const passporting = require('./data/passporting');
 const applicationsApiUrl = "https://n7ykjge71d.execute-api.eu-west-2.amazonaws.com/alpha/applications";
 const offencesList = require('./data/offence_list');
+const schemaUrl = require('./data/form-settings').schemas.applications;
 
 router.get('/tasklist/:id', async (req, res, next) => {
   try {
@@ -21,7 +24,7 @@ router.get('/tasklist/:id', async (req, res, next) => {
       }
     }
 
-    let status = statusCheck(req.session.data);
+    let status = statusCheck(req.session.data, validators);
     req.session.data.dob = setDateElements(req);
     res.render('tasklist', status);
   } catch (err) {
@@ -30,7 +33,7 @@ router.get('/tasklist/:id', async (req, res, next) => {
 });
 
 router.get('/tasklist', function (req, res) {
-  res.render('tasklist', statusCheck(req.session.data));
+  res.render('tasklist', statusCheck(req.session.data, validators));
 });
 
 router.get('/start_page', function (req, res) {
@@ -171,6 +174,30 @@ router.get('/case_details', function (req, res) {
   res.render('case_details', { offences: offencesList, banner });
 });
 
+router.post('/confirm_the_following', async function (req, res, next) {
+  if (!req.session.data.declaration) {
+    return next();
+  }
+
+  delete req.session.data.declaration;
+
+  try {
+    let application = await preprocessApplication(req);
+    let validator = validators['applications'];
+    if (!validator(application)) {
+      throw 'Application failed validation';
+    }
+
+    let url = applicationsApiUrl + '/submit';
+    let submit = await post(url, JSON.stringify(application));
+    res.redirect('/equality_intro');
+  } catch (err) {
+    console.log(err);
+    return next(err);
+  }
+});
+
+
 const skipMeans = (req) => {
   req.session.data.capital = { 'checkpoint': 'completed' };
   req.session.data.check_means_answers = { 'checkpoint': 'completed' };
@@ -212,5 +239,19 @@ const setDateElements = (req) => {
     return;
   }
 };
+
+const preprocessApplication = async (req) => {
+  let schema = await fetch(schemaUrl);
+  let schemaSections = _.keys(schema.properties);
+  let application = _.pick(req.session.data, schemaSections);
+
+  // set date of birth
+  let dob = req.session.data.dob;
+  if (dob) {
+    application.client_details.client.date_of_birth = constructDate(dob.day, dob.month, dob.year);
+  }
+
+  return application;
+}
 
 module.exports = router;

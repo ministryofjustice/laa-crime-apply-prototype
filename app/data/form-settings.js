@@ -21,6 +21,7 @@ module.exports = {
     confirm: ['review']
   },
   schemas: {
+    'applications': 'https://raw.githubusercontent.com/ministryofjustice/laa-schemas/main/prototyping/criminal-legal-aid/schemas/laa_application.json',
     'client_details': 'https://raw.githubusercontent.com/ministryofjustice/laa-schemas/main/prototyping/criminal-legal-aid/schemas/client_details.json',
     'case_details': 'https://raw.githubusercontent.com/ministryofjustice/laa-schemas/main/prototyping/criminal-legal-aid/schemas/case_details.json',
     'interests_of_justice': 'https://raw.githubusercontent.com/ministryofjustice/laa-schemas/main/prototyping/criminal-legal-aid/schemas/interests_of_justice.json',

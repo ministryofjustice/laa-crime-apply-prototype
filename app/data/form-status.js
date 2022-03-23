@@ -1,12 +1,12 @@
 const _ = require('lodash');
 const settings = require('./form-settings');
-const validators = require('./validators');
 const passporting = require('./passporting');
 
 class SectionStatus {
-  constructor(section, data) {
+  constructor(section, data, validator) {
     this.data = data || {};
     this.section = section;
+    this.validator = validator;
     this.values = this.getValues();
     this.checkpoint = this.values.checkpoint;
     this.status = this.getStatus();
@@ -47,12 +47,11 @@ class SectionStatus {
   }
 
   isValid() {
-    let validator = validators[this.section];
-    if (!validator) {
+    if (!this.validator) {
       return false;
     }
 
-    if (validator(this.values)) {
+    if (this.validator(this.values)) {
       return true;
     }
 
@@ -109,14 +108,15 @@ const checkPassporting = (data, sections) => {
   return sections;
 }
 
-const progressCheck = (data) => {
+const progressCheck = (data, validators) => {
   return _.mapValues(_.keyBy(settings.sections), (section) => {
-    return new SectionStatus(section, data).status;
+    let validator = validators[section];
+    return new SectionStatus(section, data, validator).status;
   });
 }
 
-module.exports = (data) => {
-  let sections = progressCheck(data);
+module.exports = (data, validators) => {
+  let sections = progressCheck(data, validators);
   sections = checkDependencies(sections);
   sections = checkPassporting(data, sections);
 
