@@ -20,7 +20,10 @@ router.get('/tasklist/:id', async (req, res, next) => {
         req.session.data = _.assign(data, req.session.data);
       }
     }
-    res.render('tasklist', statusCheck(req.session.data));
+
+    let status = statusCheck(req.session.data);
+    req.session.data.dob = setDateElements(req);
+    res.render('tasklist', status);
   } catch (err) {
     return next(err);
   }
@@ -180,6 +183,34 @@ const parseApiResponse = (response) => {
     return response.Item.data
   }
   return;
+};
+
+const constructDate = (day, month, year) => year + '-' + month + '-' + day;
+const deconstructDate = (date) => {
+  date = new Date(date);
+  return {
+    year: date.getFullYear(),
+    month: date.getMonth() + 1,
+    day: date.getDate(),
+  }
+};
+const formatDate = (date) => {
+  date = new Date(date);
+  return date.toDateString();
+}
+
+const setDateElements = (req) => {
+  try {
+    let dob = req.session.data['client_details']['client']['date_of_birth'];
+    if (dob) {
+      let date = deconstructDate(dob);
+      return date;
+    } else {
+      return req.session.data.dob;
+    }
+  } catch (err) {
+    return;
+  }
 };
 
 module.exports = router;
