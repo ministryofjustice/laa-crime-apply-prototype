@@ -38,6 +38,7 @@ router.get('/tasklist', function (req, res) {
 });
 
 router.get('/dashboard', async (req, res, next) => {
+  delete req.session.data;
   try {
     let response = await fetch(applicationsApiUrl);
     let data = response.Items || [];
