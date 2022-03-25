@@ -93,7 +93,7 @@ router.get('/dwp_passported', function (req, res) {
 
 router.get('/dwp_nonpassported', function (req, res) {
   _.set(req.session.data, 'means_assessment.benefits_status.passported', false);
-  res.render('dwp_passported');
+  res.render('dwp_nonpassported');
 });
 
 router.get('/sign_in', function (req, res) {
