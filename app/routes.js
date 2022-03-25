@@ -9,7 +9,6 @@ const hmrc_record = require('./data/hmrc-record');
 const passporting = require('./data/passporting');
 const applicationsApiUrl = "https://n7ykjge71d.execute-api.eu-west-2.amazonaws.com/alpha/applications";
 const offencesList = require('./data/offence_list');
-const deleteRequest = require('./data/delete');
 const https = require('https');
 const utils = require('./utils');
 
