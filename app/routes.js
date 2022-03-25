@@ -250,18 +250,28 @@ router.post('/confirm_the_following', async (req, res, next) => {
 router.get('/delete/:id', async (req, res, next) => {
   try {
     let id = req.params && req.params.id;
-    if (id) {
-      let dataUrl = applicationsApiUrl + '/' + id;
-      const options = { method: 'DELETE' };
-      const req = https.request(dataUrl, options, (response) => {
-        console.log('Status Code:', response.statusCode);
-        res.redirect('/dashboard');
-      }).on("error", (err) => {
-        console.log("Error: ", err.message);
-        throw err;
-      });
+    let protectedApps = [
+      '79fec2f7-2790-42a9-b092-b1308afa4a6c',
+      'cc9faf9c-4a65-4383-8ec1-b08f6c65ac0c',
+      '4ccd3e44-b534-48d9-8cee-8a4eada06a93'
+    ];
 
-      req.end();
+    if (protectedApps.includes(id)) {
+      res.redirect('/dashboard');
+    } else {
+      if (id) {
+        let dataUrl = applicationsApiUrl + '/' + id;
+        const options = { method: 'DELETE' };
+        const req = https.request(dataUrl, options, (response) => {
+          console.log('Status Code:', response.statusCode);
+          res.redirect('/dashboard');
+        }).on("error", (err) => {
+          console.log("Error: ", err.message);
+          throw err;
+        });
+
+        req.end();
+      }
     }
   } catch (err) {
     console.log(err);
