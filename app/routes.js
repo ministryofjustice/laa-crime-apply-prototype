@@ -9,7 +9,9 @@ const hmrc_record = require('./data/hmrc-record');
 const passporting = require('./data/passporting');
 const applicationsApiUrl = "https://n7ykjge71d.execute-api.eu-west-2.amazonaws.com/alpha/applications";
 const offencesList = require('./data/offence_list');
-const schemaUrl = require('./data/form-settings').schemas.applications;
+const deleteRequest = require('./data/delete');
+const https = require('https');
+const utils = require('./utils');
 
 router.get('/tasklist/:id', async (req, res, next) => {
   try {
@@ -17,7 +19,7 @@ router.get('/tasklist/:id', async (req, res, next) => {
     if (id) {
       let dataUrl = applicationsApiUrl + '/' + id;
       let response = await fetch(dataUrl);
-      let data = parseApiResponse(response);
+      let data = utils.parseItemResponse(response);
 
       if (data) {
         req.session.data = _.assign(data, req.session.data);
@@ -25,7 +27,7 @@ router.get('/tasklist/:id', async (req, res, next) => {
     }
 
     let status = statusCheck(req.session.data, validators);
-    req.session.data.dob = setDateElements(req);
+    req.session.data.dob = utils.setDateElements(req);
     res.render('tasklist', status);
   } catch (err) {
     return next(err);
@@ -34,6 +36,30 @@ router.get('/tasklist/:id', async (req, res, next) => {
 
 router.get('/tasklist', function (req, res) {
   res.render('tasklist', statusCheck(req.session.data, validators));
+});
+
+router.get('/dashboard', async (req, res, next) => {
+  try {
+    let response = await fetch(applicationsApiUrl);
+    let data = response.Items || [];
+    let applications = _.map(data, item => {
+      return {
+        name: item.data.client_details.client.first_name + ' ' + item.data.client_details.client.last_name,
+        date: utils.formatDate(item.date),
+        reference: 'LAA-' + item.id.substring(1, 7),
+        status: item.status,
+        id: item.id,
+        timestamp: item.date || 0
+      };
+    });
+
+    applications.sort(({timestamp:a}, {timestamp:b}) => b-a);
+    applications = applications.slice(0, 20);
+
+    res.render('dashboard', { applications });
+  } catch (err) {
+    return next(err);
+  }
 });
 
 router.get('/start_page', function (req, res) {
@@ -58,6 +84,16 @@ router.post('/dwp_passported', function (req, res, next) {
   } else {
     return next();
   }
+});
+
+router.get('/dwp_passported', function (req, res) {
+  _.set(req.session.data, 'means_assessment.benefits_status.passported', true);
+  res.render('dwp_passported');
+});
+
+router.get('/dwp_nonpassported', function (req, res) {
+  _.set(req.session.data, 'means_assessment.benefits_status.passported', false);
+  res.render('dwp_passported');
 });
 
 router.get('/sign_in', function (req, res) {
@@ -118,7 +154,7 @@ router.post('/ioj', function (req, res, next) {
       req.session.data.income = { 'checkpoint': 'completed' };
 
       if (!passporting.isCrownCourt(req.session.data)) {
-        skipMeans(req);
+        utils.skipMeans(req);
       }
 
       res.redirect('/application_cert_review');
@@ -134,6 +170,15 @@ router.post('/ioj', function (req, res, next) {
       req.session.data['offence_search'] = offencesList[offenceId].B;
     }
 
+    let case_type = req.session.data['case_details']['case_type'];
+    if (case_type.includes('trial') || case_type.includes('indictable')) {
+      req.session.data['case_details']['court_type'] = 'crown';
+    } else {
+      req.session.data['case_details']['court_type'] = 'magistrates';
+    }
+
+    utils.setNamesAsDefendants(req);
+
     return next();
   }
 });
@@ -144,7 +189,7 @@ router.post('/hmrc_record', function (req, res, next) {
     req.session.data['income']['checkpoint'] = 'completed';
 
     if (!passporting.isCrownCourt(req.session.data)) {
-      skipMeans(req);
+      utils.skipMeans(req);
       res.redirect('/application_cert_review');
     } else {
       res.redirect('/outgoings');
@@ -171,10 +216,15 @@ router.get('/hmrc_record', function (req, res) {
 
 router.get('/case_details', function (req, res) {
   let banner = req.query && req.query.banner;
-  res.render('case_details', { offences: offencesList, banner });
+  let case_details = req.session.data.case_details || {};
+  let names = _.map(case_details.co_defendant_names, name => {
+    return name.split(" ");
+  });
+
+  res.render('case_details', { offences: offencesList, banner, names });
 });
 
-router.post('/confirm_the_following', async function (req, res, next) {
+router.post('/confirm_the_following', async (req, res, next) => {
   if (!req.session.data.declaration) {
     return next();
   }
@@ -182,9 +232,10 @@ router.post('/confirm_the_following', async function (req, res, next) {
   delete req.session.data.declaration;
 
   try {
-    let application = await preprocessApplication(req);
+    let application = await utils.preprocessApplication(req);
     let validator = validators['applications'];
     if (!validator(application)) {
+      console.log(validator.errors);
       throw 'Application failed validation';
     }
 
@@ -197,61 +248,26 @@ router.post('/confirm_the_following', async function (req, res, next) {
   }
 });
 
-
-const skipMeans = (req) => {
-  req.session.data.capital = { 'checkpoint': 'completed' };
-  req.session.data.check_means_answers = { 'checkpoint': 'completed' };
-  req.session.data.check_means_result = { 'checkpoint': 'completed' };
-  return;
-};
-
-const parseApiResponse = (response) => {
-  if (response.Item) {
-    return response.Item.data
-  }
-  return;
-};
-
-const constructDate = (day, month, year) => year + '-' + month + '-' + day;
-const deconstructDate = (date) => {
-  date = new Date(date);
-  return {
-    year: date.getFullYear(),
-    month: date.getMonth() + 1,
-    day: date.getDate(),
-  }
-};
-const formatDate = (date) => {
-  date = new Date(date);
-  return date.toDateString();
-}
-
-const setDateElements = (req) => {
+router.get('/delete/:id', async (req, res, next) => {
   try {
-    let dob = req.session.data['client_details']['client']['date_of_birth'];
-    if (dob) {
-      let date = deconstructDate(dob);
-      return date;
-    } else {
-      return req.session.data.dob;
+    let id = req.params && req.params.id;
+    if (id) {
+      let dataUrl = applicationsApiUrl + '/' + id;
+      const options = { method: 'DELETE' };
+      const req = https.request(dataUrl, options, (response) => {
+        console.log('Status Code:', response.statusCode);
+        res.redirect('/dashboard');
+      }).on("error", (err) => {
+        console.log("Error: ", err.message);
+        throw err;
+      });
+
+      req.end();
     }
   } catch (err) {
-    return;
+    console.log(err);
+    return next(err);
   }
-};
-
-const preprocessApplication = async (req) => {
-  let schema = await fetch(schemaUrl);
-  let schemaSections = _.keys(schema.properties);
-  let application = _.pick(req.session.data, schemaSections);
-
-  // set date of birth
-  let dob = req.session.data.dob;
-  if (dob) {
-    application.client_details.client.date_of_birth = constructDate(dob.day, dob.month, dob.year);
-  }
-
-  return application;
-}
+});
 
 module.exports = router;
