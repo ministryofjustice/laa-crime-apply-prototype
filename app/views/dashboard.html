@@ -109,125 +109,51 @@ table .govuk-tag {
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h3 class="govuk-heading-m">Current applications &nbsp;
-      <button class="govuk-button govuk-button--secondary govuk-!-margin-bottom-1" data-module="govuk-button">
-        Search applications
-      </button>
-    </h3>
+    <h3 class="govuk-heading-m">Current applications</h3>
   </div>
 
   <!-- <div class="govuk-!-padding-top-3"></div> -->
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
       <table class="govuk-table">
-
-
-
         <thead class="govuk-table__head">
-                <tr class="govuk-table__row">
-                  <th class="govuk-table__header th_bespoke_hover col_bespoke" scope="col"><span class="th_bespoke">Name</span>
-                  </th>
-                  <th class="govuk-table__header th_bespoke_hover col_bespoke" scope="col"><span class="th_bespoke">Start date</span></th>
-                  <th class="govuk-table__header th_bespoke_hover" style="width:auto" scope="col"><span class="th_bespoke">LAA reference</span></th>
-                  <th class="govuk-table__header th_bespoke_hover col_bespoke govuk-table__cell--numeric"  scope="col" style="padding-right:10px !important; text-align:right !important"><span  class="th_bespoke">Status</span></th>
-                  <th class="govuk-table__header th_bespoke_hover col_bespoke govuk-table__cell--numeric"  scope="col" style="padding-right:10px !important; text-align:right !important"><span  class="th_bespoke">Action</span></th>
-
-                </tr>
-              </thead>
+          <tr class="govuk-table__row">
+            <th class="govuk-table__header th_bespoke_hover col_bespoke" scope="col"><span class="th_bespoke">Name</span></th>
+            <th class="govuk-table__header th_bespoke_hover col_bespoke" scope="col"><span class="th_bespoke">Start date</span></th>
+            <th class="govuk-table__header th_bespoke_hover" style="width:auto" scope="col"><span class="th_bespoke">LAA reference</span></th>
+            <th class="govuk-table__header th_bespoke_hover col_bespoke govuk-table__cell--numeric"  scope="col" style="padding-right:10px !important; text-align:right !important"><span  class="th_bespoke">Status</span></th>
+            <th class="govuk-table__header th_bespoke_hover col_bespoke govuk-table__cell--numeric"  scope="col" style="padding-right:10px !important; text-align:right !important"><span  class="th_bespoke">Action</span></th>
+          </tr>
+        </thead>
 
         <tbody class="govuk-table__body">
-
+          {% for application in applications -%}
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell"><a href="">Ben Freeman</a></td>
-            <td class="govuk-table__cell">04 Jan 2022</td>
-            <td class="govuk-table__cell">L-123-ABC</td>
+            <td class="govuk-table__cell"><a href="/tasklist/{{ application.id }}">{{ application.name }}</a></td>
+            <td class="govuk-table__cell">{{ application.date }}</td>
+            <td class="govuk-table__cell">{{ application.reference }}</td>
             <!-- <td class="govuk-table__cell">Substantive</td> -->
-            <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="moj-badge moj-badge--green">
-              Submitted
-            </strong></td>
+            {% if application.status == 'completed' %}
+              <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="moj-badge moj-badge--green">
+                Submitted
+              </strong></td>
+            {% elif application.status == 'updated' %}
+              <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="moj-badge moj-badge--red">
+                Amended
+              </strong></td>
+            {% else %}
+              <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="moj-badge moj-badge--blue">
+                In progress
+              </strong></td>
+            {% endif %}
             <td class="govuk-table__cell">
-              <a href=delete class="govuk-button govuk-button--secondary">
-              Delete</a>
+              <a href="/delete/{{ application.id }}" class="govuk-button govuk-button--secondary">Delete</a>
             </td>
           </tr>
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell"><a href="">Jon Bloggs</a></td>
-            <td class="govuk-table__cell">12 Jan 2022</td>
-            <td class="govuk-table__cell">L-123-ABC</td>
-            <!-- <td class="govuk-table__cell">Substantive</td> -->
-            <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="moj-badge moj-badge--blue">
-              In progress
-            </strong></td>
-            <td class="govuk-table__cell">
-              <a href=delete class="govuk-button govuk-button--secondary">
-              Delete</a>
-            </td>
-          </tr>
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell"><a href="">Martin Smith</a></td>
-            <td class="govuk-table__cell">21 Feb 2022</td>
-            <td class="govuk-table__cell">L-123-ABC</td>
-            <!-- <td class="govuk-table__cell">Substantive</td> -->
-            <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="moj-badge moj-badge--blue">
-              In progress
-            </strong></td>
-            <td class="govuk-table__cell">
-              <a href=delete class="govuk-button govuk-button--secondary">
-              Delete</a>
-            </td>
-          </tr>
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell"><a href="">Mary Smith</a></td>
-            <td class="govuk-table__cell">08 Feb 2022</td>
-            <td class="govuk-table__cell">L-123-ABC</td>
-            <!-- <td class="govuk-table__cell">Substantive</td> -->
-            <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="moj-badge moj-badge--blue">
-              In progress
-            </strong></td>
-            <td class="govuk-table__cell">
-              <a href=delete class="govuk-button govuk-button--secondary">
-              Delete</a>
-            </td>
-          </tr>
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell"><a href="">Peter Williams</a></td>
-            <td class="govuk-table__cell">27 Jan 2022</td>
-            <td class="govuk-table__cell">L-123-ABC</td>
-            <!-- <td class="govuk-table__cell">Emergency<br><span class="govuk-body-s">Substantive due on 12 December 2019</span></td> -->
-            <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="moj-badge moj-badge--green">
-              Submitted
-            </strong></td>
-            <td class="govuk-table__cell">
-              <a href=delete class="govuk-button govuk-button--secondary">
-              Delete</a>
-            </td>
-          </tr>
-
-    </tbody>
-  </table>
-</div>
-</div>
-
-<nav class="moj-pagination" id="pagination-label">
-
-  <p class="govuk-visually-hidden" aria-labelledby="pagination-label">Pagination navigation</p>
-
-  <ul class="moj-pagination__list">
-    <li class="moj-pagination__item  moj-pagination__item--prev">
-      <a class="moj-pagination__link" href="">Previous<span class="govuk-visually-hidden"> set of pages</span></a>
-    </li>
-
-    <li class="moj-pagination__item"><a class="moj-pagination__link" href="/page=1">1</a></li>
-
-    <li class="moj-pagination__item moj-pagination__item--active">2</li>
-
-    <li class="moj-pagination__item"><a class="moj-pagination__link" href="/page=3">3</a></li>
-
-    <li class="moj-pagination__item  moj-pagination__item--next">
-      <a class="moj-pagination__link" href="">Next<span class="govuk-visually-hidden"> set of pages</span></a>
-    </li>
-  </ul>
-  <p class="moj-pagination__results">Showing <b>10</b> to <b>20</b> of <b>30</b> results</p>
-</nav>
+         {%- endfor %}
+       </tbody>
+     </table>
+   </div>
+  </div>
 
 {% endblock %}

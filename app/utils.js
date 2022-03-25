@@ -1,0 +1,86 @@
+const _ = require('lodash');
+const fetch = require('./data/fetch');
+const schemaUrl = require('./data/form-settings').schemas.applications;
+
+const utils = {
+  skipMeans: (req) => {
+   req.session.data.capital = { 'checkpoint': 'completed' };
+   req.session.data.check_means_answers = { 'checkpoint': 'completed' };
+   req.session.data.check_means_result = { 'checkpoint': 'completed' };
+   return;
+  },
+  parseItemResponse: (response) => {
+    if (response.Item) {
+      return response.Item.data
+    }
+    return;
+  },
+  constructDate: (day, month, year) => year + '-' + month + '-' + day,
+  deconstructDate: (date) => {
+    date = new Date(date);
+    return {
+      year: date.getFullYear(),
+      month: date.getMonth() + 1,
+      day: date.getDate(),
+    }
+  },
+  formatDate: (date) => {
+    if (!date) {
+      return 'n/a';
+    }
+
+    const month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    date = new Date(date);
+    return date.getDate() + ' ' + month[date.getMonth()] + ' ' + date.getFullYear();
+  },
+  setDateElements: (req) => {
+    try {
+      let dob = req.session.data['client_details']['client']['date_of_birth'];
+      if (dob) {
+        let date = utils.deconstructDate(dob);
+        return date;
+      } else {
+        return req.session.data.dob;
+      }
+    } catch (err) {
+      return;
+    }
+  },
+  preprocessApplication: async (req) => {
+    let schema = await fetch(schemaUrl);
+    let schemaSections = _.keys(schema.properties);
+    let application = _.pick(req.session.data, schemaSections);
+
+    // set date of birth
+    let dob = req.session.data.dob;
+    if (dob) {
+      application.client_details.client.date_of_birth = utils.constructDate(dob.day, dob.month, dob.year);
+    }
+
+    return application;
+  },
+  setNamesAsDefendants: (req) => {
+    let names = _.map(req.session.data.new_names, (person) => {
+      if (_.isEmpty(person.first_name)) {
+        return false;
+      }
+
+      return person.first_name + ' ' + person.last_name;
+    });
+
+    if (names) {
+      _.set(req.session.data, 'case_details.co_defendant_names', _.compact(names));
+    }
+
+    delete req.session.data.new_names;
+
+    return names;
+  },
+  statusLabels: {
+    started: 'In progress',
+    completed: 'Submitted',
+    updated: 'Amended'
+  }
+};
+
+module.exports = utils;
