@@ -224,6 +224,11 @@ router.get('/case_details', function (req, res) {
   res.render('case_details', { offences: offencesList, banner, names });
 });
 
+router.get('/application_cert_review', function (req, res) {
+  let date = utils.constructDate(req.session.data.dob);
+  res.render('application_cert_review', { date_of_birth: utils.formatDate(date) });
+});
+
 router.post('/confirm_the_following', async (req, res, next) => {
   if (!req.session.data.declaration) {
     return next();
