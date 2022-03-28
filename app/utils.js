@@ -15,7 +15,13 @@ const utils = {
     }
     return;
   },
-  constructDate: (day, month, year) => year + '-' + month + '-' + day,
+  constructDate: (date) => {
+    if (!date) {
+      return;
+    }
+
+    return date.year + '-' + date.month + '-' + date.day;
+  },
   deconstructDate: (date) => {
     date = new Date(date);
     return {
@@ -49,15 +55,14 @@ const utils = {
   preprocessApplication: async (req) => {
     let schema = await fetch(schemaUrl);
     let schemaSections = _.keys(schema.properties);
-    let application = _.pick(req.session.data, schemaSections);
-
-    // set date of birth
+    setDateOfBirth(req);
+    return _.pick(req.session.data, schemaSections);
+  },
+  setDateOfBirth: (req) => {
     let dob = req.session.data.dob;
     if (dob) {
-      application.client_details.client.date_of_birth = utils.constructDate(dob.day, dob.month, dob.year);
+      _.set(req.session.data, 'client_details.client.date_of_birth', utils.constructDate(dob));
     }
-
-    return application;
   },
   setNamesAsDefendants: (req) => {
     let names = _.map(req.session.data.new_names, (person) => {
