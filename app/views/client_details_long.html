@@ -104,7 +104,10 @@ Apply for legal aid - Client details
 
         <div class="govuk-form-group">
         {% if not data['client_details']['client']['address']['address_line_one'] %}
-           <label class="govuk-label govuk-label--m" for="postcode">
+            <label class="govuk-label govuk-label--m">
+              Correspondence address
+            </label>
+           <label class="govuk-label" for="postcode">
              Postcode
            </label>
             <div id="postcode-hint" class="govuk-hint">
