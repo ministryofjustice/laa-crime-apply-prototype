@@ -39,81 +39,6 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
               <h1 class="govuk-fieldset__heading">
-                When was your client charged?
-              </h1>
-            </legend>
-              <div>
-              <label class="govuk-label" for="offence">
-                Attempted murder
-              </label>
-              <div class="govuk-form-group">
-                  <div id="offence-issued-hint" class="govuk-hint">
-                    For example, 27 3 2007
-                  </div>
-                    <div class="govuk-date-input__item">
-                      <div class="govuk-form-group">
-                        <label class="govuk-label govuk-date-input__label" for="dependant-day">
-                          Day
-                        </label>
-                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dependant-day" name="dependant-day" type="text" pattern="[0-9]*" inputmode="numeric"></div>
-                    </div>
-                    <div class="govuk-date-input__item">
-                      <div class="govuk-form-group">
-                        <label class="govuk-label govuk-date-input__label" for="dependant-month">
-                          Month
-                        </label>
-                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dependant-month" name="dependant-month" type="text" pattern="[0-9]*" inputmode="numeric"></div>
-                    </div>
-                    <div class="govuk-date-input__item">
-                      <div class="govuk-form-group">
-                        <label class="govuk-label govuk-date-input__label" for="dependant-year">
-                          Year
-                        </label>
-                        <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="dependant-year" name="dependant-year" type="text" pattern="[0-9]*" inputmode="numeric"></div>
-                    </div>
-                  </div>
-                    <div class="govuk-!-padding-bottom-2"></div>
-
-                    <div>
-                    <label class="govuk-label" for="offence">
-                      Conspiracy to commit murder
-                    </label>
-                    <div class="govuk-form-group">
-                        <div id="offence-issued-hint" class="govuk-hint">
-                          For example, 27 3 2007
-                        </div>
-                          <div class="govuk-date-input__item">
-                            <div class="govuk-form-group">
-                              <label class="govuk-label govuk-date-input__label" for="dependant-day">
-                                Day
-                              </label>
-                              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dependant-day" name="dependant-day" type="text" pattern="[0-9]*" inputmode="numeric"></div>
-                          </div>
-                          <div class="govuk-date-input__item">
-                            <div class="govuk-form-group">
-                              <label class="govuk-label govuk-date-input__label" for="dependant-month">
-                                Month
-                              </label>
-                              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dependant-month" name="dependant-month" type="text" pattern="[0-9]*" inputmode="numeric"></div>
-                          </div>
-                          <div class="govuk-date-input__item">
-                            <div class="govuk-form-group">
-                              <label class="govuk-label govuk-date-input__label" for="dependant-year">
-                                Year
-                              </label>
-                              <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="dependant-year" name="dependant-year" type="text" pattern="[0-9]*" inputmode="numeric"></div>
-                          </div>
-                          <div class="govuk-!-padding-bottom-2"></div>
-                          <p><a href="">Same day as previous offence</a></p>
-                        </div>
-                      </div>
-                </fieldset>
-              </div>
-
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              <h1 class="govuk-fieldset__heading">
                 What type of case is it?
               </h1>
             </legend>
@@ -228,7 +153,7 @@
           </fieldset>
         </div>
 
-        <!-- <label class="govuk-heading-m" for="search">Search for offence name</label>
+        <label class="govuk-heading-m" for="search">Search for offence name</label>
             <div id="search-field" class="govuk-form-group">
             <div class="govuk-grid-row">
               <div class="govuk-grid-column-two-thirds">
@@ -279,7 +204,7 @@
                    <input class="govuk-input govuk-input--width-10" id="offence_name" name="offence_name" type="text" value="{{ data['offence_name'] }}">
                  </div>
               </div>
-            </details> -->
+            </details>
         <input type="hidden" name="[case_details][checkpoint]" value="completed">
         <button class="govuk-button button-left" data-module="govuk-button">Save and continue</button>
       </form>
