@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="flash-card">
+  <header>
+    <h1 class="govuk-heading-l">Based on the offence details you have provided, you do not need to justify why your client should get legal aid</h1>
+    <h2 class="govuk-label">We still need to review the application before we can decide if they're eligible</h2>
+  </header>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <form class="form" action="/tasklist" method="post">
+      <p>
+        <input type="hidden" name="[benefits_status][checkpoint]" value="completed">
+        <button class="govuk-button button-left" data-module="govuk-button">
+          Save and continue
+        </button>
+      </p>
+      </form>
+      <form class="form inline-form" action="/tasklist" method="post">
+        <input type="hidden" name="[benefits_status][checkpoint]" value="completed">
+        <button class="govuk-button" data-module="govuk-button">Save and come back later</button>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
