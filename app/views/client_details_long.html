@@ -83,11 +83,21 @@ Apply for legal aid - Client details
           <div id="national-insurance-number-hint" class="govuk-hint">
             It’s on their National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
           </div>
+          <!-- <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text">
+            <span class="govuk-warning-text__assistive">Warning</span>
+            If you cannot provide your client's National Insurance number, you’ll have to answer additional questions and might need to submit additional evidence.
+          </strong>
+          </div> -->
+          <div class="govuk-inset-text">
+            If you cannot provide your client's National Insurance number, you’ll have to answer additional questions and might need to submit additional evidence.
+          </div>
           <div>
           <input class="govuk-input govuk-input--width-10" id="national-insurance-number" name="client_details[client][national_insurance_number]" value="{{ data['client_details']['client']['national_insurance_number'] }}" type="text" spellcheck="false" aria-describedby="national-insurance-number-hint">
           </input>
           <div class="govuk-!-padding-bottom-2"></div>
-          <details class="govuk-details" data-module="govuk-details">
+          <!-- <details class="govuk-details" data-module="govuk-details">
             <summary class="govuk-details__summary">
               <span class="govuk-details__summary-text">
                 My client doesn't have a National Insurance number or I can't find it
@@ -98,7 +108,7 @@ Apply for legal aid - Client details
                <div class="govuk-!-padding-bottom-4"></div>
                If you cannot provide your client's National Insurance number, you’ll have to answer additional questions and might need to submit additional evidence.
             </div>
-          </details>
+          </details> -->
           </div>
         </div>
 
