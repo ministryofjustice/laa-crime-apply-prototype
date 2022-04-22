@@ -1,0 +1,218 @@
+{% extends "layout.html" %}
+
+
+{% block pageScripts %}
+  <script src="/public/javascripts/jquery.hideseek.min.js"></script>
+  <script>
+    $('#offence_search').hideseek({
+        min_chars: 3,
+        nodata: "No results found.",
+        hidden_mode: true
+    });
+  </script>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+     {% if banner %}
+      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Important
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <p class="govuk-notification-banner__heading">
+            A record of this case has not been created by the court yet. You can enter the case details now or come back later.
+          </p>
+        </div>
+      </div>
+      {% endif %}
+
+      <h1 class="govuk-heading-xl">What has your client been charged with?</h1>
+
+      <form class="form" action="/case_details" method="post">
+
+        <label class="govuk-heading-m" for="search">Search for offence name
+          <div id="offence-hint" class="govuk-hint">
+            Select all the apply.
+          </div>
+        </label>
+
+            <div id="search-field" class="govuk-form-group">
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-two-thirds">
+                <input class="govuk-input search-field" autocomplete="off" id="offence_search" name="offence_search" type="text" data-list="#offences-list" value="{{ data['offence_search'] }}">
+              </div>
+              <div class="govuk-grid-column-one-third clear-search">
+                <p><a class="govuk-link" id="clear-search" href="case_details#offence_search">Clear search</a></p>
+              </div>
+            </div>
+
+
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-two-thirds">
+                <div id="proceedings-list" class="govuk-grid-column-full ">
+                  <div class="govuk-radios govuk-radios--inline">
+                      <ul id="offences-list" style="text">
+                        {% for offence in offences -%}
+                          <li>
+                            <div class="govuk-grid-row offences-list" id="offence-item-{{loop.index}}" >
+                                <div class="govuk-radios govuk-radios">
+                                  <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="offence-value-{{loop.index}}" name="offence" type="radio" value="{{loop.index - 1}}">
+                                    <label class="govuk-label govuk-radios__label"><strong>{{ offence.B }}</strong><br>Class: {{offence.D}}</label>
+                                  </div>
+                                </div>
+                            </div>
+                          </li>
+                        {%- endfor %}
+                      </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            </div>
+            <details class="govuk-details" data-module="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  I cannot find the right offence
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+                 <div class="govuk-form-group">
+                   <label class="govuk-label" for="width-10">
+                     Enter the offence name
+                   </label>
+                   <input class="govuk-input govuk-input--width-20" id="offence_name" name="offence_name" type="text" value="{{ data['offence_name'] }}">
+                 </div>
+              </div>
+              <div class="govuk-details__text">
+                 <div class="govuk-form-group">
+                   <label class="govuk-label" for="width-10">
+                     Enter the offence class
+                   </label>
+                       <div class="govuk-radios" data-module="govuk-radios">
+                         <div class="govuk-radios__item">
+                           <input class="govuk-radios__input" id="offence_class" name="offence_class" type="radio" value="offence_class_B" aria-describedby="class-A-hint">
+                           <label class="govuk-label govuk-radios__label" for="offence_class">
+                             Class A
+                           </label>
+                           <div id="class-A-hint" class="govuk-hint govuk-radios__hint">
+                             Homicide and related grave offences
+                           </div>
+                         </div>
+                         <div class="govuk-radios__item">
+                           <input class="govuk-radios__input" id="offence_class" name="offence_class" type="radio" value="offence_class_B" aria-describedby="class-B-hint">
+                           <label class="govuk-label govuk-radios__label" for="offence_class">
+                             Class B
+                           </label>
+                           <div id="class-B-hint" class="govuk-hint govuk-radios__hint">
+                             Offences involving serious violence or damage, and serious drugs offences
+                           </div>
+                         </div>
+                         <div class="govuk-radios__item">
+                           <input class="govuk-radios__input" id="offence_class" name="offence_class" type="radio" value="offence_class_C" aria-describedby="class-C-hint">
+                           <label class="govuk-label govuk-radios__label" for="offence_class">
+                             Class C
+                           </label>
+                           <div id="class-C-hint" class="govuk-hint govuk-radios__hint">
+                             Lesser offences involving violence or damage, and less serious drugs offences
+                           </div>
+                         </div>
+                         <div class="govuk-radios__item">
+                           <input class="govuk-radios__input" id="offence_class" name="offence_class" type="radio" value="offence_class_D" aria-describedby="class-D-hint">
+                           <label class="govuk-label govuk-radios__label" for="offence_class">
+                             Class D
+                           </label>
+                           <div id="class-D-hint" class="govuk-hint govuk-radios__hint">
+                             Sexual offences and offences against children
+                           </div>
+                         </div>
+                         <div class="govuk-radios__item">
+                           <input class="govuk-radios__input" id="offence_class" name="offence_class" type="radio" value="offence_class_E" aria-describedby="class-E-hint">
+                           <label class="govuk-label govuk-radios__label" for="offence_class">
+                             Class E
+                           </label>
+                           <div id="class-E-hint" class="govuk-hint govuk-radios__hint">
+                             Burglary etc
+                           </div>
+                         </div>
+                         <div class="govuk-radios__item">
+                           <input class="govuk-radios__input" id="offence_class" name="offence_class" type="radio" value="offence_class_F" aria-describedby="class-F-hint">
+                           <label class="govuk-label govuk-radios__label" for="offence_class">
+                             Class F
+                           </label>
+                           <div id="class-F-hint" class="govuk-hint govuk-radios__hint">
+                             Other offences of dishonesty (specified offences and offences where the value is £30,000 or less)
+                           </div>
+                         </div>
+                         <div class="govuk-radios__item">
+                           <input class="govuk-radios__input" id="offence_class" name="offence_class" type="radio" value="offence_class_G" aria-describedby="class-G-hint">
+                           <label class="govuk-label govuk-radios__label" for="offence_class">
+                             Class G
+                           </label>
+                           <div id="class-G-hint" class="govuk-hint govuk-radios__hint">
+                             Other offences of dishonesty (specified offences and offences where the value involved exceeds £30,000 but does not exceed £100,000)
+                           </div>
+                         </div>
+                         <div class="govuk-radios__item">
+                           <input class="govuk-radios__input" id="offence_class" name="offence_class" type="radio" value="offence_class_H" aria-describedby="class-H-hint">
+                           <label class="govuk-label govuk-radios__label" for="offence_class">
+                             Class H
+                           </label>
+                           <div id="class-H-hint" class="govuk-hint govuk-radios__hint">
+                             Miscellaneous other offences
+                           </div>
+                         </div>
+                         <div class="govuk-radios__item">
+                           <input class="govuk-radios__input" id="offence_class" name="offence_class" type="radio" value="offence_class_I" aria-describedby="class-I-hint">
+                           <label class="govuk-label govuk-radios__label" for="offence_class">
+                             Class I
+                           </label>
+                           <div id="class-I-hint" class="govuk-hint govuk-radios__hint">
+                             Offences against public justice and similar offences
+                           </div>
+                         </div>
+                         <div class="govuk-radios__item">
+                           <input class="govuk-radios__input" id="offence_class" name="offence_class" type="radio" value="offence_class_J" aria-describedby="class-J-hint">
+                           <label class="govuk-label govuk-radios__label" for="offence_class">
+                             Class J
+                           </label>
+                           <div id="class-J-hint" class="govuk-hint govuk-radios__hint">
+                             Serious sexual offences
+                           </div>
+                         </div>
+                         <div class="govuk-radios__item">
+                           <input class="govuk-radios__input" id="offence_class" name="offence_class" type="radio" value="offence_class_J" aria-describedby="class-J-hint">
+                           <label class="govuk-label govuk-radios__label" for="offence_class">
+                             Class K
+                           </label>
+                           <div id="class-J-hint" class="govuk-hint govuk-radios__hint">
+                             Other offences of dishonesty (high value: if the value involved exceeds £100,000)
+                           </div>
+                         </div>
+                         <div class="govuk-!-padding-bottom-4"></div>
+                         <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                           Add another offence
+                         </button>
+                       </div>
+
+                     </fieldset>
+                   </div>
+                 </div>
+            </details>
+        <button class="govuk-button button-left" data-module="govuk-button">Save and continue</button>
+      </form>
+      <form class="form inline-form" action="/tasklist" method="post">
+        <button class="govuk-button" data-module="govuk-button">Save and come back later</button>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

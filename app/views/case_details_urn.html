@@ -17,23 +17,18 @@
                 <div class="govuk-hint">
                   For example, ‘12 AB 3456789’.
                 </div>
+                <div class="govuk-inset-text">
+                  This should reduce the amount of information you need to enter about the case.
+                </div>
               </legend>
               <div class="govuk-form-group">
                 <input class="govuk-input govuk-input--width-10" id="urn" name="case_details[URN]" value="{{ data['case_details']['URN'] }}">
               </div>
+              <div class="govuk-!-padding-bottom-2"></div>
+              <p><a href="/case_details">Enter the case details manually</a></p>
+
             </div>
-            <details class="govuk-details" data-module="govuk-details">
-              <summary class="govuk-details__summary">
-                <span class="govuk-details__summary-text">
-                  I cannot get the case URN
-                </span>
-              </summary>
-              <div class="govuk-details__text">
-                We need to know the case URN to get the case details from the HM Courts & Tribunals (HMCTS).<br>
-                 <div class="govuk-!-padding-bottom-4"></div>
-                 If you cannot provide the case URN, you’ll have to <a href="/case_details">enter the case details manually</a>.
-              </div>
-            </details>
+
            </fieldset>
            <input type="hidden" name="[case_details][case_type]" value="summary_only">
            <input type="hidden" name="[case_details][court_type]" value="magistrates">

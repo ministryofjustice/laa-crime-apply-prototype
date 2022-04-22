@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="flash-card">
+  <header>
+    <h1 class="govuk-heading-l">Use eForms for this application</h1>
+</header>
+<div class="govuk-body" style="color:white">
+    You cannot use this service if your client:
+    <ul class="govuk-list--bullet">
+      <li>has a partner</li>
+      <li>does not have a National Insurance number</li>
+      <li>does not receive a passporting benefit based on DWP records, including Universal Credits</li>
+      <li>is employed, including self-employed, business partner, company director or shareholder</li>
+    </ul>
+
+    <form action="laa_portal">
+      <button class="govuk-button govuk-button--secondary" data-module="govuk-button">Apply in eForms</button>
+    </form>
+
+
+    <a href="application-details" class="govuk-link--inverse">Back to application</a>
+
+</div>
+
+{% endblock %}
