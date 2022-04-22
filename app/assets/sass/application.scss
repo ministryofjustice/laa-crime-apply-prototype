@@ -21,7 +21,7 @@ $govuk-assets-path: '/govuk/assets/';
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 @import "main";
 
-.govuk-grid-column-one-third {
+.right-sidebar-menu {
     position: -webkit-sticky;
     position: sticky;
     top: 1%;
