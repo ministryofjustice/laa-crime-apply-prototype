@@ -145,11 +145,31 @@
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="type-of-case-5" name="case_details[case_type]" type="radio" value="commital" {{ checked("['case_details']['case_type']", "commital") }}>
                 <label class="govuk-label govuk-radios__label" for="type-of-case-5">
-                  Commital for sentence
+                  Committal for sentence
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="type-of-case-6" name="case_details[case_type]" type="radio" value="appeal" {{ checked("['case_details']['case_type']", "appeal") }} data-aria-controls="conditional-yes">
+                <label class="govuk-label govuk-radios__label" for="type-of-case-6">
+                  Appeal to Crown Court
+                </label>
+              </div>
+              <!-- START: CONDITIONAL REVEAL -->
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-yes"> <!-- id needs to match data-aria-controls -->
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="national-insurance-1">
+                    Previous MAAT ID
+                    </label>
+                  <input class="govuk-input govuk-!-width-three-quarters" id="maat_id" name="client_details[client][maat_id]" value="{{ data['client_details']['client']['maat_id'] }}" type="text">
+                </div>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="type-of-case-7" name="case_details[case_type]" type="radio" value="appeal-with-changes" {{ checked("['case_details']['case_type']", "appeal") }}>
+                <label class="govuk-label govuk-radios__label" for="type-of-case-7">
+                  Appeal to Crown Court with changes in financial circumstances
                 </label>
               </div>
             </div>
-
           </fieldset>
         </div>
 
