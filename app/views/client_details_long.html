@@ -103,6 +103,20 @@ Apply for legal aid - Client details
         </div>
 
         <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--m" for="phone">
+            UK telephone number
+          </label>
+          <div id="phone-hint" class="govuk-hint">
+            We'll use this to chase your client if they don't pay towards their legal aid.
+          </div>
+          <div>
+          <input class="govuk-input govuk-input--width-10" id="phone" name="client_details[client][phone]" value="{{ data['client_details']['client']['phone'] }}" type="text" spellcheck="false" aria-describedby="phone-hint">
+          </input>
+        </div>
+      </div>
+          <div class="govuk-!-padding-bottom-2"></div>
+
+        <div class="govuk-form-group">
         {% if not data['client_details']['client']['address']['address_line_one'] %}
             <label class="govuk-label govuk-label--m">
               Correspondence address
