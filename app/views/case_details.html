@@ -283,58 +283,6 @@
           </fieldset>
         </div>
 
-        <!-- <label class="govuk-heading-m" for="search">Search for offence name</label>
-            <div id="search-field" class="govuk-form-group">
-            <div class="govuk-grid-row">
-              <div class="govuk-grid-column-two-thirds">
-                <input class="govuk-input search-field" autocomplete="off" id="offence_search" name="offence_search" type="text" data-list="#offences-list" value="{{ data['offence_search'] }}">
-              </div>
-              <div class="govuk-grid-column-one-third clear-search">
-                <p><a class="govuk-link" id="clear-search" href="case_details#offence_search">Clear search</a></p>
-              </div>
-            </div>
-
-
-            <div class="govuk-grid-row">
-              <div class="govuk-grid-column-two-thirds">
-                <div id="proceedings-list" class="govuk-grid-column-full ">
-                  <div class="govuk-radios govuk-radios--inline">
-                      <ul id="offences-list" style="text">
-                        {% for offence in offences -%}
-                          <li>
-                            <div class="govuk-grid-row offences-list" id="offence-item-{{loop.index}}" >
-                                <div class="govuk-radios govuk-radios">
-                                  <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="offence-value-{{loop.index}}" name="offence" type="radio" value="{{loop.index - 1}}">
-                                    <label class="govuk-label govuk-radios__label"><strong>{{ offence.B }}</strong><br>Class: {{offence.D}}</label>
-                                  </div>
-                                </div>
-                            </div>
-                          </li>
-                        {%- endfor %}
-                      </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-            </div>
-            <details class="govuk-details" data-module="govuk-details">
-              <summary class="govuk-details__summary">
-                <span class="govuk-details__summary-text">
-                  I cannot find the right offence
-                </span>
-              </summary>
-              <div class="govuk-details__text">
-                 <div class="govuk-form-group">
-                   <label class="govuk-label" for="width-10">
-                     Enter the offence name
-                   </label>
-                   <input class="govuk-input govuk-input--width-10" id="offence_name" name="offence_name" type="text" value="{{ data['offence_name'] }}">
-                 </div>
-              </div>
-            </details> -->
         <input type="hidden" name="[case_details][checkpoint]" value="completed">
         <button class="govuk-button button-left" data-module="govuk-button">Save and continue</button>
       </form>
