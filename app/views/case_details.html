@@ -183,13 +183,13 @@
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
                 <!-- REMEMBER: data-aria-controls -->
-                <input class="govuk-radios__input" id="co_defendants-1" name="co_defendants" type="radio" value="yes" data-aria-controls="conditional-yes" {{ checked("['co_defendants']", "yes") }}>
+                <input class="govuk-radios__input" id="co_defendants-1" name="co_defendants" type="radio" value="yes" data-aria-controls="co-defendant-yes" {{ checked("['co_defendants']", "yes") }}>
                 <label class="govuk-label govuk-radios__label" for="co_defendants-1">
                   Yes
                 </label>
               </div>
               <!-- START: CONDITIONAL REVEAL -->
-              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-yes"> <!-- id needs to match data-aria-controls -->
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="co-defendant-yes"> <!-- id needs to match data-aria-controls -->
               <div data-module="moj-add-another">
               {% if not names or names | length < 1 %}
                 <fieldset class="govuk-fieldset moj-add-another__item">
