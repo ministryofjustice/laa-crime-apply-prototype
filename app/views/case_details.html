@@ -258,6 +258,23 @@
                       </label>
                     <input class="govuk-input govuk-!-width-three-quarters" id="names[{{loop.index - 1}}][last_name]" name="new_names[{{loop.index - 1}}][last_name]" type="text" data-name="new_names[%index%][last_name]" data-id="names[%index%][last_name]" value="{{ co_defendant[1] }}">
                   </div>
+                  <div class="govuk-form-group">
+                      <label class="govuk-label" for="conflict">
+                      Conflict of interest
+                      </label>
+                      <div class="govuk-radios__item">
+                              <input class="govuk-radios__input" id="conflict-yes" name="conflict" type="radio" value="yes">
+                              <label class="govuk-label govuk-radios__label" for="conflict-yes">
+                                Yes
+                              </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                              <input class="govuk-radios__input" id="conflict-no" name="conflict" type="radio" value="no">
+                              <label class="govuk-label govuk-radios__label" for="conflict-no">
+                                No
+                              </label>
+                            </div>
+                  </div>
                   </fieldset>
                   <button type="button" class="govuk-button govuk-button--secondary moj-add-another__remove-button">Remove</button>
                 {%- endfor %}
