@@ -167,12 +167,32 @@ router.post('/ioj', function (req, res, next) {
     }
   } else {
     req.session.data['case_details_type'] = 'manual';
-    let offenceId = req.session.data['offence'];
-    if (offenceId) {
-      req.session.data['case_details']['offence'] = offencesList[offenceId].B;
-      req.session.data['case_details']['offence_class'] = offencesList[offenceId].D;
-      req.session.data['offence_search'] = offencesList[offenceId].B;
-    }
+    let offenceIds = req.session.data['offence'] || [];
+    let offences = []
+    let offenceSearches = []
+
+    offenceIds.forEach((offenceId, index) => {
+      let year = req.session.data['offence-year'][index]
+      let month = req.session.data['offence-month'][index]
+      let day = req.session.data['offence-day'][index]
+      if (offenceId) {
+        offences.push(
+          {
+            offence: offencesList[offenceId].B,
+            offence_class: offencesList[offenceId].D,
+            offence_date: `${year}-${month}-${day}`
+          })
+
+        offenceSearches.push(
+          offencesList[offenceId].B
+        )
+      }
+    })
+    req.session.data['case_details']['offences'] = offences;
+    req.session.data['offence_search'] = offenceSearches;
+
+
+    console.log(req.session.data['case_details']['offences'])
 
     let case_type = req.session.data['case_details']['case_type'];
     if (case_type.includes('trial') || case_type.includes('indictable')) {
@@ -224,8 +244,8 @@ router.get('/case_details', function (req, res) {
   let names = _.map(case_details.co_defendant_names, name => {
     return name.split(" ");
   });
-  let selectedOffences = req.session.data.offence || []
-  let filteredOffences = _.compact(selectedOffences.filter(item => item != "_unchecked"))
+  let selectedOffences = req.session.data.offence || [];
+  let filteredOffences = _.compact(selectedOffences.filter(item => item != "_unchecked"));
 
   res.render('case_details', { offencesList: offencesList, filteredOffences: filteredOffences, banner, names });
 });

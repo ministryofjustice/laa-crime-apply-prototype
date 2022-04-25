@@ -72,11 +72,11 @@
                         </label>
                         <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="offence-{{ loop.index }}-year" name="offence-year" type="text" pattern="[0-9]*" inputmode="numeric"></div>
                     </div>
+                    {% if loop.index != 1 %}
+                      <div class="govuk-!-padding-bottom-2"></div>
+                      <p><a href="">Same day as previous offence</a></p>
+                    {% endif %}
                   </div>
-                  <div class="govuk-!-padding-bottom-2"></div>
-                  {% if not loop.index != 1 %}
-                    <p><a href="">Same day as previous offence</a></p>
-                  {% endif %}
                 {%- endfor %}
               </div>
             </fieldset>
