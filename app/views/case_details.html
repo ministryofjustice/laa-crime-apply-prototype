@@ -43,72 +43,44 @@
               </h1>
             </legend>
               <div>
-              <label class="govuk-label" for="offence">
-                Attempted murder
-              </label>
-              <div class="govuk-form-group">
-                  <div id="offence-issued-hint" class="govuk-hint">
-                    For example, 27 3 2007
-                  </div>
+                {% for offence in filteredOffences -%}
+                  <label class="govuk-label" for="offence[{{loop.index - 1}}]">
+                    {{ offencesList[offence].B }}
+                  </label>
+                  <div class="govuk-form-group">
+                    <div id="offence-issued-hint" class="govuk-hint">
+                      For example, 27 3 2007
+                    </div>
                     <div class="govuk-date-input__item">
                       <div class="govuk-form-group">
                         <label class="govuk-label govuk-date-input__label" for="offence-day">
                           Day
                         </label>
-                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="offence-day" name="offence-day" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="offence-{{ loop.index }}-day" name="offence-day" type="text" pattern="[0-9]*" inputmode="numeric"></div>
                     </div>
                     <div class="govuk-date-input__item">
                       <div class="govuk-form-group">
                         <label class="govuk-label govuk-date-input__label" for="offence-month">
                           Month
                         </label>
-                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="offence-month" name="offence-month" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="offence-{{ loop.index }}-month" name="offence-month" type="text" pattern="[0-9]*" inputmode="numeric"></div>
                     </div>
                     <div class="govuk-date-input__item">
                       <div class="govuk-form-group">
                         <label class="govuk-label govuk-date-input__label" for="offence-year">
                           Year
                         </label>
-                        <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="offence-year" name="offence-year" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                        <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="offence-{{ loop.index }}-year" name="offence-year" type="text" pattern="[0-9]*" inputmode="numeric"></div>
                     </div>
                   </div>
-                    <div class="govuk-!-padding-bottom-2"></div>
-
-                    <div>
-                    <label class="govuk-label" for="offence">
-                      Conspiracy to commit murder
-                    </label>
-                    <div class="govuk-form-group">
-                        <div id="offence-issued-hint" class="govuk-hint">
-                          For example, 27 3 2007
-                        </div>
-                          <div class="govuk-date-input__item">
-                            <div class="govuk-form-group">
-                              <label class="govuk-label govuk-date-input__label" for="offence-day">
-                                Day
-                              </label>
-                              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="offence-2-day" name="offence-day" type="text" pattern="[0-9]*" inputmode="numeric"></div>
-                          </div>
-                          <div class="govuk-date-input__item">
-                            <div class="govuk-form-group">
-                              <label class="govuk-label govuk-date-input__label" for="offence-month">
-                                Month
-                              </label>
-                              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="offence-2-month" name="offence-month" type="text" pattern="[0-9]*" inputmode="numeric"></div>
-                          </div>
-                          <div class="govuk-date-input__item">
-                            <div class="govuk-form-group">
-                              <label class="govuk-label govuk-date-input__label" for="offence-year">
-                                Year
-                              </label>
-                              <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="offence-2-year" name="offence-year" type="text" pattern="[0-9]*" inputmode="numeric"></div>
-                          </div>
-                          <div class="govuk-!-padding-bottom-2"></div>
-                          <p><a href="">Same day as previous offence</a></p>
-                        </div>
-                      </div>
-                </fieldset>
+                  <div class="govuk-!-padding-bottom-2"></div>
+                  {% if not loop.index != 1 %}
+                    <p><a href="">Same day as previous offence</a></p>
+                  {% endif %}
+                {%- endfor %}
               </div>
+            </fieldset>
+          </div>
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">

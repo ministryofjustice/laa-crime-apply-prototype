@@ -224,8 +224,10 @@ router.get('/case_details', function (req, res) {
   let names = _.map(case_details.co_defendant_names, name => {
     return name.split(" ");
   });
+  let selectedOffences = req.session.data.offence || []
+  let filteredOffences = _.compact(selectedOffences.filter(item => item != "_unchecked"))
 
-  res.render('case_details', { offences: offencesList, banner, names });
+  res.render('case_details', { offencesList: offencesList, filteredOffences: filteredOffences, banner, names });
 });
 
 router.get('/case_details_offence', function (req, res) {
