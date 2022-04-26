@@ -43,11 +43,10 @@
               </h1>
             </legend>
               <div>
-                {% for offence in filteredOffences -%}
+                {% for offenceId in offenceIds -%}
                   <label class="govuk-label" for="offence[{{loop.index - 1}}]">
-                    {{ offencesList[offence].B }}
+                    {{ offencesList[offenceId].B }}
                   </label>
-                  <!-- <input type="hidden" id="offence-{{ loop.index }}" name="offence[{{loop.index - 1}}]"" value="{{ offencesList[offence].B }}"> -->
                   <div class="govuk-form-group">
                     <div id="offence-issued-hint" class="govuk-hint">
                       For example, 27 3 2007

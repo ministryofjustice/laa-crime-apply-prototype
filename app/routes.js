@@ -166,11 +166,9 @@ router.post('/ioj', function (req, res, next) {
       res.redirect('/tasklist');
     }
   } else {
-    console.log(req.session.data)
     req.session.data['case_details_type'] = 'manual';
     let offences = []
-    let selectedOffences = req.session.data.offence || [];
-    let offenceIds = _.compact(selectedOffences.filter(item => item != "_unchecked"));
+    offenceIds = utils.filterOffenceIds(req.session.data.offence)
 
     offenceIds.forEach((offenceId, index) => {
       let year = req.session.data['offence-year'][index]
@@ -237,10 +235,9 @@ router.get('/case_details', function (req, res) {
   let names = _.map(case_details.co_defendant_names, name => {
     return name.split(" ");
   });
-  let selectedOffences = req.session.data.offence || [];
-  let filteredOffences = _.compact(selectedOffences.filter(item => item != "_unchecked"));
-
-  res.render('case_details', { offencesList: offencesList, filteredOffences: filteredOffences, banner, names });
+  offenceIds = utils.filterOffenceIds(req.session.data.offence)
+  
+  res.render('case_details', { offencesList: offencesList, offenceIds: offenceIds, banner, names });
 });
 
 router.get('/case_details_offence', function (req, res) {
