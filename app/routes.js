@@ -12,6 +12,14 @@ const offencesList = require('./data/offence_list');
 const https = require('https');
 const utils = require('./utils');
 
+router.use((req, res, next) => {
+  let mvpFlag = req.query && req.query.mvp;
+  if (mvpFlag) {
+    req.session.mvp = mvpFlag == 'true';
+  }
+  next();
+});
+
 router.get('/tasklist/:id', async (req, res, next) => {
   try {
     let id = req.params && req.params.id;
@@ -68,6 +76,8 @@ router.get('/start_page', function (req, res) {
 });
 
 router.post('/dwp_nonpassported', function (req, res) {
+  let mvp = req.session.mvp;
+
   let isDwpCorrect = req.session.data['not-passported'];
 
   if (isDwpCorrect == "no") {
@@ -78,8 +88,8 @@ router.post('/dwp_nonpassported', function (req, res) {
 });
 
 router.post('/dwp_passported', function (req, res, next) {
-  let use_non_passported = req.session.data['goto-non-passported'];
-  if (use_non_passported == 'yes') {
+  let nonPassported = req.session.data['goto-non-passported'];
+  if (nonPassported == 'yes') {
     res.redirect('/dwp_nonpassported');
   } else {
     return next();
@@ -88,12 +98,33 @@ router.post('/dwp_passported', function (req, res, next) {
 
 router.get('/dwp_passported', function (req, res) {
   _.set(req.session.data, 'means_assessment.benefits_status.passported', true);
-  res.render('dwp_passported');
+
+  let mvp = req.session.mvp;
+  let outOfScope = false;
+  if (mvp) {
+    let nino = _.get(req.session.data, 'client_details.client.national_insurance_number');
+    let partner = _.get(req.session.data, 'client_details.partner.first_name');
+    let hasPartner = !_.isEmpty(partner);
+    if (_.isEmpty(nino) || hasPartner) {
+      outOfScope = true;
+    }
+  }
+
+  if (outOfScope) {
+    res.redirect('/eforms_redirect');
+  } else {
+    res.render('dwp_passported');
+  }
 });
 
 router.get('/dwp_nonpassported', function (req, res) {
-  _.set(req.session.data, 'means_assessment.benefits_status.passported', false);
-  res.render('dwp_nonpassported');
+  let mvp = req.session.mvp;
+  if (mvp) {
+    res.redirect('/eforms_redirect');
+  } else {
+    _.set(req.session.data, 'means_assessment.benefits_status.passported', false);
+    res.render('dwp_nonpassported');
+  }
 });
 
 router.get('/sign_in', function (req, res) {
