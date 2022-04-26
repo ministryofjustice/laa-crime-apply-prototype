@@ -150,18 +150,24 @@
             <strong>Reference number</strong>
             <p class="govuk-body-s"> L-A1B-C2D </p>
           </h2>
-          <h2 class="govuk-body-s" id="subsection-title">
-            <strong>First name</strong>
-            <p class="govuk-body-s"> Mary </p>
-          </h2>
+          {% if sidemenu.first_name %}
+            <h2 class="govuk-body-s" id="subsection-title">
+              <strong>First name</strong>
+              <p class="govuk-body-s"> {{ sidemenu.first_name }} </p>
+            </h2>
+          {% endif %}
+          {% if sidemenu.last_name %}
           <h2 class="govuk-body-s" id="subsection-title">
             <strong>Last name</strong>
-            <p class="govuk-body-s"> Smith </p>
+            <p class="govuk-body-s"> {{ sidemenu.last_name }} </p>
           </h2>
+          {% endif %}
+          {% if sidemenu.dob %}
           <h2 class="govuk-body-s" id="subsection-title">
             <strong>Date of birth</strong>
-            <p class="govuk-body-s"> 24 Mar 2022 </p>
+            <p class="govuk-body-s"> {{ sidemenu.dob }} </p>
           </h2>
+          {% endif %}
         </aside>
       </div>
     </div>

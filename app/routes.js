@@ -26,7 +26,8 @@ router.get('/tasklist/:id', async (req, res, next) => {
     }
 
     let status = statusCheck(req.session.data, validators);
-    req.session.data.dob = utils.setDateElements(req);
+    status.sidemenu = utils.sidemenu(req);
+
     res.render('tasklist', status);
   } catch (err) {
     return next(err);
@@ -34,7 +35,10 @@ router.get('/tasklist/:id', async (req, res, next) => {
 });
 
 router.get('/tasklist', function (req, res) {
-  res.render('tasklist', statusCheck(req.session.data, validators));
+  let status = statusCheck(req.session.data, validators);
+  status.sidemenu = utils.sidemenu(req);
+
+  res.render('tasklist', status);
 });
 
 router.get('/dashboard', async (req, res, next) => {

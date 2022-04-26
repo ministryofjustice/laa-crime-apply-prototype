@@ -85,6 +85,15 @@ const utils = {
     started: 'In progress',
     completed: 'Submitted',
     updated: 'Amended'
+  },
+  sidemenu: (req) => {
+    req.session.data.dob = req.session.data.dob || utils.setDateElements(req);
+    let dob = utils.constructDate(req.session.data.dob);
+    return {
+      dob: dob && utils.formatDate(dob),
+      first_name: _.get(req.session.data, 'client_details.client.first_name'),
+      last_name: _.get(req.session.data, 'client_details.client.last_name')
+    };
   }
 };
 
