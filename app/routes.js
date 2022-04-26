@@ -13,7 +13,7 @@ const https = require('https');
 const utils = require('./utils');
 
 router.use((req, res, next) => {
-  let mvpFlag = req.query && req.query.mvp;
+  let mvpFlag = req.query?.mvp;
   if (mvpFlag) {
     req.session.mvp = mvpFlag == 'true';
   }
