@@ -94,6 +94,10 @@ const utils = {
       first_name: _.get(req.session.data, 'client_details.client.first_name'),
       last_name: _.get(req.session.data, 'client_details.client.last_name')
     };
+  },
+  filterOffenceIds: (offenceIdList) => {
+    let offenceIds = _.compact(offenceIdList?.filter(item => item != "_unchecked"));
+    return offenceIds
   }
 };
 

@@ -198,12 +198,23 @@ router.post('/ioj', function (req, res, next) {
     }
   } else {
     req.session.data['case_details_type'] = 'manual';
-    let offenceId = req.session.data['offence'];
-    if (offenceId) {
-      req.session.data['case_details']['offence'] = offencesList[offenceId].B;
-      req.session.data['case_details']['offence_class'] = offencesList[offenceId].D;
-      req.session.data['offence_search'] = offencesList[offenceId].B;
-    }
+    let offences = []
+    offenceIds = utils.filterOffenceIds(req.session.data.offence)
+
+    offenceIds.forEach((offenceId, index) => {
+      let year = req.session.data['offence-year'][index]
+      let month = req.session.data['offence-month'][index]
+      let day = req.session.data['offence-day'][index]
+      if (offenceId) {
+        offences.push(
+          {
+            offence: offencesList[offenceId].B,
+            offence_class: offencesList[offenceId].D,
+            offence_date: `${year}-${month}-${day}`
+          })
+      }
+    })
+    req.session.data['case_details']['offences'] = offences;
 
     let case_type = req.session.data['case_details']['case_type'];
     if (case_type.includes('trial') || case_type.includes('indictable')) {
@@ -255,8 +266,9 @@ router.get('/case_details', function (req, res) {
   let names = _.map(case_details.co_defendant_names, name => {
     return name.split(" ");
   });
-
-  res.render('case_details', { offences: offencesList, banner, names });
+  offenceIds = utils.filterOffenceIds(req.session.data.offence)
+  
+  res.render('case_details', { offencesList: offencesList, offenceIds: offenceIds, banner, names });
 });
 
 router.get('/case_details_offence', function (req, res) {
