@@ -166,10 +166,11 @@ router.post('/ioj', function (req, res, next) {
       res.redirect('/tasklist');
     }
   } else {
+    console.log(req.session.data)
     req.session.data['case_details_type'] = 'manual';
-    let offenceIds = req.session.data['offence'] || [];
     let offences = []
-    let offenceSearches = []
+    let selectedOffences = req.session.data.offence || [];
+    let offenceIds = _.compact(selectedOffences.filter(item => item != "_unchecked"));
 
     offenceIds.forEach((offenceId, index) => {
       let year = req.session.data['offence-year'][index]
@@ -182,17 +183,9 @@ router.post('/ioj', function (req, res, next) {
             offence_class: offencesList[offenceId].D,
             offence_date: `${year}-${month}-${day}`
           })
-
-        offenceSearches.push(
-          offencesList[offenceId].B
-        )
       }
     })
     req.session.data['case_details']['offences'] = offences;
-    req.session.data['offence_search'] = offenceSearches;
-
-
-    console.log(req.session.data['case_details']['offences'])
 
     let case_type = req.session.data['case_details']['case_type'];
     if (case_type.includes('trial') || case_type.includes('indictable')) {

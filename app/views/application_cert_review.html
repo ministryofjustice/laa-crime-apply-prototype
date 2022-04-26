@@ -163,12 +163,16 @@ th:first-child {
       </div>
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Offence
+          {% if data['case_details']['offence'].length > 1 %}
+            Offences
+          {% else %}
+            Offence
+          {% endif %}
         </dt>
 
         <dd class="govuk-summary-list__value">
           {% if data['case_details']['offence'] %}
-            <p>{{ data['case_details']['offence'] }}</p>
+            <p>{{ data['case_details']['offence'][1] }}</p>
           {% endif %}
           {% if data['case_details']['offence_class'] %}
             <p>Class {{ data['case_details']['offence_class'] | capitalize }}</p>
