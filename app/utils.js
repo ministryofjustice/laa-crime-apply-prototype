@@ -86,11 +86,20 @@ const utils = {
     completed: 'Submitted',
     updated: 'Amended'
   },
+  getFormattedDob: (req) => {
+    let dob = req.session.data.dob || {};
+    if (dob.day && dob.month && dob.year) {
+      dob = utils.constructDate(req.session.data.dob);
+      return utils.formatDate(dob);
+    } else {
+      return false;
+    }
+  },
   sidemenu: (req) => {
     req.session.data.dob = req.session.data.dob || utils.setDateElements(req);
-    let dob = utils.constructDate(req.session.data.dob);
+    let dob = utils.getFormattedDob(req);
     return {
-      dob: dob && utils.formatDate(dob),
+      dob,
       first_name: _.get(req.session.data, 'client_details.client.first_name'),
       last_name: _.get(req.session.data, 'client_details.client.last_name')
     };
