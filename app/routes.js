@@ -87,7 +87,7 @@ router.post('/dwp_nonpassported', function (req, res) {
   if (isDwpCorrect == "no") {
     res.redirect('/benefit_checker_confirm');
   } else {
-    res.redirect('/case_details_urn');
+    res.redirect('/tasklist');
   }
 });
 
