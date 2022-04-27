@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-  {% if sections['interests_of_justice']['key'] == "completed" %}
+  {% if date_stamp %}
     <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
       <div class="govuk-notification-banner__header">
         <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
