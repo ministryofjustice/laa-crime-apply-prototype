@@ -3,18 +3,6 @@ const fetch = require('./data/fetch');
 const schemaUrl = require('./data/form-settings').schemas.applications;
 
 const utils = {
-  skipMeans: (req) => {
-   req.session.data.capital = { 'checkpoint': 'completed' };
-   req.session.data.check_means_answers = { 'checkpoint': 'completed' };
-   req.session.data.check_means_result = { 'checkpoint': 'completed' };
-   return;
-  },
-  parseItemResponse: (response) => {
-    if (response.Item) {
-      return response.Item.data
-    }
-    return;
-  },
   constructDate: (date) => {
     if (!date) {
       return;
@@ -30,6 +18,10 @@ const utils = {
       day: date.getDate(),
     }
   },
+  filterOffenceIds: (offenceIdList) => {
+    let offenceIds = _.compact(offenceIdList?.filter(item => item != "_unchecked"));
+    return offenceIds
+  },
   formatDate: (date) => {
     if (!date) {
       return 'n/a';
@@ -38,6 +30,27 @@ const utils = {
     const month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
     date = new Date(date);
     return date.getDate() + ' ' + month[date.getMonth()] + ' ' + date.getFullYear();
+  },
+  getFormattedDob: (req) => {
+    let dob = req.session.data.dob || {};
+    if (dob.day && dob.month && dob.year) {
+      dob = utils.constructDate(req.session.data.dob);
+      return utils.formatDate(dob);
+    } else {
+      return false;
+    }
+  },
+  parseItemResponse: (response) => {
+    if (response.Item) {
+      return response.Item.data
+    }
+    return;
+  },
+  preprocessApplication: async (req) => {
+    let schema = await fetch(schemaUrl);
+    let schemaSections = _.keys(schema.properties);
+    setDateOfBirth(req);
+    return _.pick(req.session.data, schemaSections);
   },
   setDateElements: (req) => {
     try {
@@ -51,12 +64,6 @@ const utils = {
     } catch (err) {
       return;
     }
-  },
-  preprocessApplication: async (req) => {
-    let schema = await fetch(schemaUrl);
-    let schemaSections = _.keys(schema.properties);
-    setDateOfBirth(req);
-    return _.pick(req.session.data, schemaSections);
   },
   setDateOfBirth: (req) => {
     let dob = req.session.data.dob;
@@ -86,15 +93,6 @@ const utils = {
     completed: 'Submitted',
     updated: 'Amended'
   },
-  getFormattedDob: (req) => {
-    let dob = req.session.data.dob || {};
-    if (dob.day && dob.month && dob.year) {
-      dob = utils.constructDate(req.session.data.dob);
-      return utils.formatDate(dob);
-    } else {
-      return false;
-    }
-  },
   sidemenu: (req) => {
     req.session.data.dob = req.session.data.dob || utils.setDateElements(req);
     let dob = utils.getFormattedDob(req);
@@ -104,10 +102,12 @@ const utils = {
       last_name: _.get(req.session.data, 'client_details.client.last_name')
     };
   },
-  filterOffenceIds: (offenceIdList) => {
-    let offenceIds = _.compact(offenceIdList?.filter(item => item != "_unchecked"));
-    return offenceIds
-  }
+  skipMeans: (req) => {
+   req.session.data.capital = { 'checkpoint': 'completed' };
+   req.session.data.check_means_answers = { 'checkpoint': 'completed' };
+   req.session.data.check_means_result = { 'checkpoint': 'completed' };
+   return;
+  },
 };
 
 module.exports = utils;
