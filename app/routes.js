@@ -294,15 +294,15 @@ router.post('/confirm_the_following', async (req, res, next) => {
   delete req.session.data.declaration;
 
   try {
-    let application = await utils.preprocessApplication(req);
-    let validator = validators['applications'];
-    if (!validator(application)) {
-      console.log(validator.errors);
-      throw 'Application failed validation';
-    }
+    // let application = await utils.preprocessApplication(req);
+    // let validator = validators['applications'];
+    // if (!validator(application)) {
+    //   console.log(validator.errors);
+    //   throw 'Application failed validation';
+    // }
 
     let url = applicationsApiUrl + '/submit';
-    let submit = await post(url, JSON.stringify(application));
+    // let submit = await post(url, JSON.stringify(application));
     res.redirect('/equality_intro');
   } catch (err) {
     console.log(err);
