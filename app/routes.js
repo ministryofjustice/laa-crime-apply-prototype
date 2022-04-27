@@ -46,6 +46,10 @@ router.get('/tasklist', function (req, res) {
   let status = statusCheck(req.session.data, validators);
   status.sidemenu = utils.sidemenu(req);
 
+  let iojStatus = _.get(status.sections, 'interests_of_justice.key');
+  let passported = passporting.isPassported(req.session.data);
+  status.date_stamp = (iojStatus == 'completed' && !passported) ? true : false;
+
   res.render('tasklist', status);
 });
 
@@ -267,7 +271,7 @@ router.get('/case_details', function (req, res) {
     return name.split(" ");
   });
   offenceIds = utils.filterOffenceIds(req.session.data.offence)
-  
+
   res.render('case_details', { offencesList: offencesList, offenceIds: offenceIds, banner, names });
 });
 
@@ -277,8 +281,9 @@ router.get('/case_details_offence', function (req, res) {
 });
 
 router.get('/application_cert_review', function (req, res) {
+  let passported = passporting.isPassported(req.session.data);
   let date = utils.constructDate(req.session.data.dob);
-  res.render('application_cert_review', { date_of_birth: utils.formatDate(date) });
+  res.render('application_cert_review', { date_of_birth: utils.formatDate(date), date_stamp: passported });
 });
 
 router.post('/confirm_the_following', async (req, res, next) => {
