@@ -49,7 +49,7 @@ const utils = {
   preprocessApplication: async (req) => {
     let schema = await fetch(schemaUrl);
     let schemaSections = _.keys(schema.properties);
-    setDateOfBirth(req);
+    utils.setDateOfBirth(req);
     return _.pick(req.session.data, schemaSections);
   },
   setDateElements: (req) => {
