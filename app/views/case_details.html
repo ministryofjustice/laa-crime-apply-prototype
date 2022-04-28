@@ -1,40 +1,26 @@
 {% extends "layout.html" %}
 
-
-{% block pageScripts %}
-  <script src="/public/javascripts/jquery.hideseek.min.js"></script>
-  <script>
-    $('#offence_search').hideseek({
-        min_chars: 3,
-        nodata: "No results found.",
-        hidden_mode: true
-    });
-  </script>
-{% endblock %}
-
 {% block content %}
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-     {% if banner %}
-      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-        <div class="govuk-notification-banner__header">
-          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-            Important
-          </h2>
+      {% if banner %}
+        <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+              Important
+            </h2>
+          </div>
+          <div class="govuk-notification-banner__content">
+            <p class="govuk-notification-banner__heading">
+              A record of this case has not been created by the court yet. You can enter the case details now or come back later.
+            </p>
+          </div>
         </div>
-        <div class="govuk-notification-banner__content">
-          <p class="govuk-notification-banner__heading">
-            A record of this case has not been created by the court yet. You can enter the case details now or come back later.
-          </p>
-        </div>
-      </div>
       {% endif %}
 
       <h1 class="govuk-heading-xl">Enter the case details</h1>
 
       <form class="form" action="/ioj" method="post">
-
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
@@ -42,45 +28,48 @@
                 When was your client charged?
               </h1>
             </legend>
-              <div>
-                {% for offenceId in offenceIds -%}
-                  <label class="govuk-label" for="offence[{{loop.index - 1}}]">
-                    {{ offencesList[offenceId].B }}
-                  </label>
-                  <div class="govuk-form-group">
-                    <div id="offence-issued-hint" class="govuk-hint">
-                      For example, 27 3 2007
-                    </div>
-                    <div class="govuk-date-input__item">
-                      <div class="govuk-form-group">
-                        <label class="govuk-label govuk-date-input__label" for="offence-day">
-                          Day
-                        </label>
-                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="offence-{{ loop.index }}-day" name="offence-day[{{ loop.index-1 }}]" type="text" pattern="[0-9]*" inputmode="numeric"></div>
-                    </div>
-                    <div class="govuk-date-input__item">
-                      <div class="govuk-form-group">
-                        <label class="govuk-label govuk-date-input__label" for="offence-month">
-                          Month
-                        </label>
-                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="offence-{{ loop.index }}-month" name="offence-month[{{ loop.index-1 }}]" type="text" pattern="[0-9]*" inputmode="numeric"></div>
-                    </div>
-                    <div class="govuk-date-input__item">
-                      <div class="govuk-form-group">
-                        <label class="govuk-label govuk-date-input__label" for="offence-year">
-                          Year
-                        </label>
-                        <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="offence-{{ loop.index }}-year" name="offence-year[{{ loop.index-1 }}]" type="text" pattern="[0-9]*" inputmode="numeric"></div>
-                    </div>
-                    {% if loop.index != 1 %}
-                      <div class="govuk-!-padding-bottom-2"></div>
-                      <p><a href="">Same day as previous offence</a></p>
-                    {% endif %}
+            <div>
+              {% for offenceId in offenceIds -%}
+                <label class="govuk-label" for="offence[{{loop.index - 1}}]">
+                  {{ offencesList[offenceId].B }}
+                </label>
+                <div class="govuk-form-group">
+                  <div id="offence-issued-hint" class="govuk-hint">
+                    For example, 27 3 2007
                   </div>
-                {%- endfor %}
-              </div>
-            </fieldset>
-          </div>
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="offence-day">
+                        Day
+                      </label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="offence-{{ loop.index }}-day" name="offence-day[{{ loop.index-1 }}]" type="text" pattern="[0-9]*" inputmode="numeric">
+                    </div>
+                  </div>
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="offence-month">
+                        Month
+                      </label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="offence-{{ loop.index }}-month" name="offence-month[{{ loop.index-1 }}]" type="text" pattern="[0-9]*" inputmode="numeric">
+                    </div>
+                  </div>
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="offence-year">
+                        Year
+                      </label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="offence-{{ loop.index }}-year" name="offence-year[{{ loop.index-1 }}]" type="text" pattern="[0-9]*" inputmode="numeric">
+                    </div>
+                  </div>
+                  {% if loop.index != 1 %}
+                    <div class="govuk-!-padding-bottom-2"></div>
+                    <p><a href="">Same day as previous offence</a></p>
+                  {% endif %}
+                </div>
+              {%- endfor %}
+            </div>
+          </fieldset>
+        </div>
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
@@ -129,9 +118,9 @@
               <!-- START: CONDITIONAL REVEAL -->
               <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-yes"> <!-- id needs to match data-aria-controls -->
                 <div class="govuk-form-group">
-                    <label class="govuk-label" for="national-insurance-1">
+                  <label class="govuk-label" for="national-insurance-1">
                     Previous MAAT ID
-                    </label>
+                  </label>
                   <input class="govuk-input govuk-!-width-three-quarters" id="maat_id" name="client_details[client][maat_id]" value="{{ data['client_details']['client']['maat_id'] }}" type="text">
                 </div>
               </div>
@@ -152,33 +141,37 @@
                 When is the next hearing?
               </h1>
             </legend>
-              <div class="govuk-form-group">
-                  <div id="next-hearing-hint" class="govuk-hint">
-                    For example, 27 3 2007
-                  </div>
-                    <div class="govuk-date-input__item">
-                      <div class="govuk-form-group">
-                        <label class="govuk-label govuk-date-input__label" for="next-hearing-day">
-                          Day
-                        </label>
-                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="next-hearing-day" name="next-hearing-day" type="text" pattern="[0-9]*" inputmode="numeric"></div>
-                    </div>
-                    <div class="govuk-date-input__item">
-                      <div class="govuk-form-group">
-                        <label class="govuk-label govuk-date-input__label" for="next-hearing-month">
-                          Month
-                        </label>
-                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="next-hearing-month" name="next-hearing-month" type="text" pattern="[0-9]*" inputmode="numeric"></div>
-                    </div>
-                    <div class="govuk-date-input__item">
-                      <div class="govuk-form-group">
-                        <label class="govuk-label govuk-date-input__label" for="next-hearing-year">
-                          Year
-                        </label>
-                        <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="next-hearing-year" name="next-hearing-year" type="text" pattern="[0-9]*" inputmode="numeric"></div>
-                    </div>
-                  </div>
+            <div class="govuk-form-group">
+              <div id="next-hearing-hint" class="govuk-hint">
+                For example, 27 3 2007
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="next-hearing-day">
+                    Day
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="next-hearing-day" name="next-hearing-day" type="text" pattern="[0-9]*" inputmode="numeric">
                 </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="next-hearing-month">
+                    Month
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="next-hearing-month" name="next-hearing-month" type="text" pattern="[0-9]*" inputmode="numeric">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="next-hearing-year">
+                    Year
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="next-hearing-year" name="next-hearing-year" type="text" pattern="[0-9]*" inputmode="numeric">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
@@ -197,60 +190,61 @@
               </div>
               <!-- START: CONDITIONAL REVEAL -->
               <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="co-defendant-yes"> <!-- id needs to match data-aria-controls -->
-              <div data-module="moj-add-another">
-              {% if not names or names | length < 1 %}
-                <fieldset class="govuk-fieldset moj-add-another__item">
-                <p class="govuk-heading-s">Co-defendant</p>
-                <div class="govuk-form-group">
-                    <label class="govuk-label" for="names[0][first_name]">
-                    First name
-                    </label>
-                  <input class="govuk-input govuk-!-width-three-quarters" id="names[0][first_name]" name="new_names[0][first_name]" type="text" data-name="new_names[%index%][first_name]" data-id="names[%index%][first_name]">
+                <div data-module="moj-add-another">
+                  {% if not names or names | length < 1 %}
+                    <fieldset class="govuk-fieldset moj-add-another__item">
+                      <p class="govuk-heading-s">Co-defendant</p>
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="names[0][first_name]">
+                          First name
+                        </label>
+                        <input class="govuk-input govuk-!-width-three-quarters" id="names[0][first_name]" name="new_names[0][first_name]" type="text" data-name="new_names[%index%][first_name]" data-id="names[%index%][first_name]">
+                      </div>
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="names[0][last_name]">
+                          Last name
+                        </label>
+                        <input class="govuk-input govuk-!-width-three-quarters" id="names[0][last_name]" name="new_names[0][last_name]" type="text" data-name="new_names[%index%][last_name]" data-id="names[%index%][last_name]">
+                      </div>
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="conflict">
+                          Conflict of interest
+                        </label>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="conflict-yes" name="conflict" type="radio" value="yes">
+                          <label class="govuk-label govuk-radios__label" for="conflict-yes">
+                            Yes
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="conflict-no" name="conflict" type="radio" value="no">
+                          <label class="govuk-label govuk-radios__label" for="conflict-no">
+                            No
+                          </label>
+                        </div>
+                      </div>
+                    </fieldset>
+                  {% else %}
+                    {% for co_defendant in names -%}
+                      <fieldset class="govuk-fieldset moj-add-another__item">
+                        <p class="govuk-heading-s">Co-defendant</p>
+                        <div class="govuk-form-group">
+                          <label class="govuk-label" for="names[{{loop.index - 1}}][first_name]">
+                            First name
+                          </label>
+                          <input class="govuk-input govuk-!-width-three-quarters" id="names[{{loop.index - 1}}][first_name]" name="new_names[{{loop.index - 1}}][first_name]" type="text" data-name="new_names[%index%][first_name]" data-id="names[%index%][first_name]" value="{{ co_defendant[0] }}">
+                        </div>
+                        <div class="govuk-form-group">
+                          <label class="govuk-label" for="names[{{loop.index}}][last_name]">
+                            Last name
+                          </label>
+                          <input class="govuk-input govuk-!-width-three-quarters" id="names[{{loop.index - 1}}][last_name]" name="new_names[{{loop.index - 1}}][last_name]" type="text" data-name="new_names[%index%][last_name]" data-id="names[%index%][last_name]" value="{{ co_defendant[1] }}">
+                        </div>
+                      </fieldset>
+                      <button type="button" class="govuk-button govuk-button--secondary moj-add-another__remove-button">Remove</button>
+                    {%- endfor %}
+                  {% endif %}
                 </div>
-                <div class="govuk-form-group">
-                    <label class="govuk-label" for="names[0][last_name]">
-                    Last name
-                    </label>
-                  <input class="govuk-input govuk-!-width-three-quarters" id="names[0][last_name]" name="new_names[0][last_name]" type="text" data-name="new_names[%index%][last_name]" data-id="names[%index%][last_name]">
-                </div>
-                <div class="govuk-form-group">
-                    <label class="govuk-label" for="conflict">
-                    Conflict of interest
-                    </label>
-                    <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="conflict-yes" name="conflict" type="radio" value="yes">
-                            <label class="govuk-label govuk-radios__label" for="conflict-yes">
-                              Yes
-                            </label>
-                          </div>
-                          <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="conflict-no" name="conflict" type="radio" value="no">
-                            <label class="govuk-label govuk-radios__label" for="conflict-no">
-                              No
-                            </label>
-                          </div>
-                </div>
-                </fieldset>
-              {% else %}
-                {% for co_defendant in names -%}
-                  <fieldset class="govuk-fieldset moj-add-another__item">
-                  <p class="govuk-heading-s">Co-defendant</p>
-                  <div class="govuk-form-group">
-                      <label class="govuk-label" for="names[{{loop.index - 1}}][first_name]">
-                      First name
-                      </label>
-                    <input class="govuk-input govuk-!-width-three-quarters" id="names[{{loop.index - 1}}][first_name]" name="new_names[{{loop.index - 1}}][first_name]" type="text" data-name="new_names[%index%][first_name]" data-id="names[%index%][first_name]" value="{{ co_defendant[0] }}">
-                  </div>
-                  <div class="govuk-form-group">
-                      <label class="govuk-label" for="names[{{loop.index}}][last_name]">
-                      Last name
-                      </label>
-                    <input class="govuk-input govuk-!-width-three-quarters" id="names[{{loop.index - 1}}][last_name]" name="new_names[{{loop.index - 1}}][last_name]" type="text" data-name="new_names[%index%][last_name]" data-id="names[%index%][last_name]" value="{{ co_defendant[1] }}">
-                  </div>
-                  </fieldset>
-                  <button type="button" class="govuk-button govuk-button--secondary moj-add-another__remove-button">Remove</button>
-                {%- endfor %}
-              {% endif %}
                 <div class="govuk-!-padding-bottom-2"></div>
                 <div class="moj-button-action">
                   <button class="govuk-button govuk-button--secondary moj-add-another__add-button" data-module="govuk-button">
@@ -258,8 +252,8 @@
                   </button>
                 </div>
               </div>
-              </div>
-              <div class="govuk-form-group">
+            </div>
+            <div class="govuk-form-group">
               <!-- END: CONDITIONAL REVEAL  -->
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="co_defendants-2" name="co_defendants" type="radio" value="no"  {{ checked("['co_defendants']", "no") }}>
@@ -268,21 +262,17 @@
                 </label>
               </div>
             </div>
-
           </fieldset>
         </div>
-
         <input type="hidden" name="[case_details][checkpoint]" value="completed">
         <button class="govuk-button button-left" data-module="govuk-button">Save and continue</button>
       </form>
+      
       <form class="form inline-form" action="/tasklist" method="post">
         <input type="hidden" name="[case_details][checkpoint]" value="completed">
         <button class="govuk-button" data-module="govuk-button">Save and come back later</button>
       </form>
-
     </div>
   </div>
-
   <p><a href="/ioj_passported" style="color: #b7b7b7;">If user enters a slipstreamed offence</a></p>
-
 {% endblock %}
