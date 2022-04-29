@@ -1,300 +1,302 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Apply for legal aid - Client details
+  Apply for legal aid - Client details
 {% endblock %}
 
 {% block content %}
+  <div class="govuk-width-container">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Enter your client's details</h1>
 
-<div class="govuk-width-container">
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">Enter your client's details</h1>
-
-      <form action="/dwp_passported" method="post" novalidate>
-
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m"> Full name
-            </legend>
-
-            <div class="govuk-form-group">
-                <label class="govuk-label" for="first_name">
-                First name
-                </label>
-              <input class="govuk-input govuk-!-width-three-quarters" id="first_name" name="client_details[client][first_name]" type="text" value="{{ data['client_details']['client']['first_name'] }}">
-            </div>
-
-            <div class="govuk-form-group">
-                <label class="govuk-label" for="last_name">
-                Last name
-                </label>
-              <input class="govuk-input govuk-!-width-three-quarters" id="last_name" name="client_details[client][last_name]" type="text" value="{{ data['client_details']['client']['last_name'] }}">
-            </div>
-
-          </fieldset>
-        </div>
-
-        <div class="govuk-!-padding-bottom-2"></div>
-
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset" role="group" aria-describedby="date-of-birth-hint">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              <h1 class="govuk-fieldset__heading">
-                Date of birth
-              </h1>
-            </legend>
-            <div id="date-of-birth-hint" class="govuk-hint">
-              For example, 27 3 2007
-            </div>
-            <div class="govuk-date-input" id="date-of-birth">
-              <div class="govuk-date-input__item">
-                <div class="govuk-form-group">
-                  <label class="govuk-label govuk-date-input__label" for="date-of-birth-day">
-                    Day
-                  </label>
-                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-of-birth-day" name="dob[day]" value="{{ data['dob']['day'] }}"></div>
-              </div>
-              <div class="govuk-date-input__item">
-                <div class="govuk-form-group">
-                  <label class="govuk-label govuk-date-input__label" for="date-of-birth-month">
-                    Month
-                  </label>
-                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-of-birth-month" name="dob[month]" value="{{ data['dob']['month'] }}"></div>
-              </div>
-              <div class="govuk-date-input__item">
-                <div class="govuk-form-group">
-                  <label class="govuk-label govuk-date-input__label" for="date-of-birth-year">
-                    Year
-                  </label>
-                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="date-of-birth-year" name="dob[year]" value="{{ data['dob']['year'] }}"></div>
-              </div>
-            </div>
-          </fieldset>
-        </div>
-
-        <div class="govuk-!-padding-bottom-2"></div>
-        <div class="govuk-form-group">
-          {% if mvp == true %}
-            <label class="govuk-label govuk-label--m" for="national-insurance-number">
-              National Insurance number
-            </label>
-          {% else %}
-            <label class="govuk-label govuk-label--m" for="national-insurance-number">
-              National Insurance number (optional)
-            </label>
-          {% endif %}
-          <div id="national-insurance-number-hint" class="govuk-hint">
-            It’s on their National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
-          </div>
-          <!-- <div class="govuk-warning-text">
-          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-          <strong class="govuk-warning-text__text">
-            <span class="govuk-warning-text__assistive">Warning</span>
-            If you cannot provide your client's National Insurance number, you’ll have to answer additional questions and might need to submit additional evidence.
-          </strong>
-          </div> -->
-          <div class="govuk-inset-text">
-            If you cannot provide your client's National Insurance number, you’ll have to answer additional questions and might need to submit additional evidence.
-          </div>
-          <div>
-          <input class="govuk-input govuk-input--width-10" id="national-insurance-number" name="client_details[client][national_insurance_number]" value="{{ data['client_details']['client']['national_insurance_number'] }}" type="text" spellcheck="false" aria-describedby="national-insurance-number-hint">
-          </input>
-          <div class="govuk-!-padding-bottom-2"></div>
-          <!-- <details class="govuk-details" data-module="govuk-details">
-            <summary class="govuk-details__summary">
-              <span class="govuk-details__summary-text">
-                My client doesn't have a National Insurance number or I can't find it
-              </span>
-            </summary>
-            <div class="govuk-details__text">
-               We need to know your client's National Insurance number so we can check if they receive a passporting benefit from the Department of Work and Pensions (DWP). We also use it to check their employment income with Her Majesty's Revenue and Customs (HMRC). <br>
-               <div class="govuk-!-padding-bottom-4"></div>
-               If you cannot provide your client's National Insurance number, you’ll have to answer additional questions and might need to submit additional evidence.
-            </div>
-          </details> -->
-          </div>
-        </div>
-
-        <div class="govuk-form-group">
-          <label class="govuk-label govuk-label--m" for="phone">
-            UK telephone number
-          </label>
-          <div id="phone-hint" class="govuk-hint">
-            We'll use this to chase your client if they don't pay towards their legal aid.
-          </div>
-          <div>
-          <input class="govuk-input govuk-input--width-10" id="phone" name="client_details[client][phone]" value="{{ data['client_details']['client']['phone'] }}" type="text" spellcheck="false" aria-describedby="phone-hint">
-          </input>
-        </div>
-      </div>
-          <div class="govuk-!-padding-bottom-2"></div>
-
-        <div class="govuk-form-group">
-        {% if not data['client_details']['client']['address']['address_line_one'] %}
-            <label class="govuk-label govuk-label--m">
-              Correspondence address
-            </label>
-           <label class="govuk-label" for="postcode">
-             Postcode
-           </label>
-            <div id="postcode-hint" class="govuk-hint">
-              We’ll only use this to send your client correspondence about their legal aid.
-            </div>
-            <div id="postcode-entry" class="togglePostcode">
-              <div class="govuk-form-group">
-                <input class="govuk-input govuk-input--width-10" id="postcode" name="postcode" type="text" value="{{ data['postcode'] }}">
-              </div>
-              <div type="submit" class="govuk-button" id="find-address">
-                Find address
-              </div>
-            </div>
-            <div id="address-entry" class="govuk-visually-hidden togglePostcode">
-              <div class="govuk-form-group">
-                <label class="govuk-label govuk-!-font-weight-bold postcode_change" for="change-postcode">{{ data['postcode'] }}
-                </label>
-                <p class="postcode_change">
-                  <a class="govuk-link" href="client_details_long#email-hint" aria-label="change postcode">Change</a>
-                </p>
-              </div>
-
-              <div class="govuk-form-group">
-                <p>
-                  <label class="govuk-label" for="address-select">
-                  Select an address
-                  </label>
-                  <select class="govuk-select govuk-!-width-three-quarters" id="address-select" name="address-select">
-                    <option>5 addresses found</option>
-                    <option value="1">1 Main Street, London{% if data['postcode'] %}, {{ data['postcode'] }}{% endif %}</option>
-                    <option value="2">2 Main Street, London{% if data['postcode'] %}, {{ data['postcode'] }}{% endif %}</option>
-                    <option value="3">3 Main Street, London{% if data['postcode'] %}, {{ data['postcode'] }}{% endif %}</option>
-                    <option value="4">4 Main Street, London{% if data['postcode'] %}, {{ data['postcode'] }}{% endif %}</option>
-                    <option value="5">5 Main Street, London{% if data['postcode'] %}, {{ data['postcode'] }}{% endif %}</option>
-                  </select>
-                </p>
-              </div>
-          </div>
-        <details class="govuk-details" data-module="govuk-details">
-              <summary class="govuk-details__summary">
-                <span class="govuk-details__summary-text togglePostcode" id="address-manual">
-                  Enter your client's correspondence address manually
-                </span>
-                <span class="govuk-details__summary-text govuk-visually-hidden togglePostcode" id="address-not-listed">
-                  I can't find the address in the list
-                </span>
-              </summary>
-          {% else %}
-            <label class="govuk-label govuk-label--m" for="address">
-              Address
-            </label>
-          {% endif %}
-                <div class="govuk-form-group">
-                  <label class="govuk-label" for="address-line-1">
-                    Building and street
-                    <span class="govuk-visually-hidden">line 1 of 2</span>
-                  </label>
-                  <input class="govuk-input" id="address-line-1" name="client_details[client][address][address_line_one]" value="{{ data['client_details']['client']['address']['address_line_one'] }}" type="text">
-                </div>
-
-                <div class="govuk-form-group">
-                  <label class="govuk-label" for="address-line-2">
-                    <span class="govuk-visually-hidden">Building and street line 2 of 2</span>
-                  </label>
-                  <input class="govuk-input" id="address-line-2" name="client_details[client][address][address_line_two]" value="{{ data['client_details']['client']['address']['address_line_two'] }}" type="text">
-                </div>
-
-                <div class="govuk-form-group">
-                  <label class="govuk-label" for="address-town">
-                    Town or city
-                  </label>
-                  <input class="govuk-input govuk-!-width-two-thirds" id="address-town" name="client_details[client][address][city]" value="{{ data['client_details']['client']['address']['city'] }}" type="text">
-                </div>
-
-                <div class="govuk-form-group">
-                  <label class="govuk-label" for="address-county">
-                    County
-                  </label>
-                  <input class="govuk-input govuk-!-width-two-thirds" id="address-county" name="client_details[client][address][county]" value="{{ data['client_details']['client']['address']['county'] }}" type="text">
-                </div>
-
-                <div class="govuk-form-group">
-                  <label class="govuk-label" for="address-postcode">
-                    Postcode
-                  </label>
-                  <input class="govuk-input govuk-input--width-10" id="address-postcode" name="client_details[client][address][postcode]" value="{{ data['client_details']['client']['address']['postcode'] }}" type="text">
-                </div>
-        {% if not data['client_details']['client']['address']['address_line_one'] %}
-          </details>
-        {% endif %}
-        <div class="govuk-!-padding-bottom-2"></div>
-
-        <div class="govuk-form-group" data-module="govuk-radios">
-          <label class="govuk-label govuk-label--m" for="marriage-civil-partnership">
-            Does your client have a partner?
-          </label>
-          <div id="marriage-civil-partnership-hint" class="govuk-hint">
-            By partner we mean someone they are married to, in a civil partnership with, cohabit with or otherwise share finances.
-          </div>
-          <div class="govuk-radios__item">
-            <!-- REMEMBER: data-aria-controls -->
-            <input class="govuk-radios__input" id="marriage-civil-partnership-1" name="marriage-civil-partnership" type="radio" value="yes" data-aria-controls="conditional-yes" {% if data['client_details']['partner']['first_name'] %}checked{% endif %}>
-            <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership">
-              Yes
-            </label>
-          </div>
-          <!-- START: CONDITIONAL REVEAL -->
-          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-yes"> <!-- id needs to match data-aria-controls -->
-            <div class="govuk-form-group">
-                <label class="govuk-label" for="partner_firstname">
-                First name
-                </label>
-              <input class="govuk-input govuk-!-width-three-quarters" id="partner_firstname" name="client_details[partner][first_name]" value="{{ data['client_details']['partner']['first_name'] }}" type="text">
-            </div>
-
-            <div class="govuk-form-group">
-                <label class="govuk-label" for="partner_lastname">
-                Last name
-                </label>
-              <input class="govuk-input govuk-!-width-three-quarters" id="partner_lastname" name="client_details[partner][last_name]" value="{{ data['client_details']['partner']['last_name'] }}">
-            </div>
-          </div>
+        <form action="/dwp_passported" method="post" novalidate>
           <div class="govuk-form-group">
-          <!-- END: CONDITIONAL REVEAL  -->
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="marriage-civil-partnership-2" name="marriage-civil-partnership" type="radio" value="no" {{ checked("['marriage-civil-partnership']", "no") }}>
-              <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership-2">
-                No
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m"> Full name
+              </legend>
+              <div class="govuk-form-group">
+                  <label class="govuk-label" for="first_name">
+                  First name
+                  </label>
+                <input class="govuk-input govuk-!-width-three-quarters" id="first_name" name="client_details[client][first_name]" type="text" value="{{ data['client_details']['client']['first_name'] }}">
+              </div>
+              <div class="govuk-form-group">
+                  <label class="govuk-label" for="last_name">
+                  Last name
+                  </label>
+                <input class="govuk-input govuk-!-width-three-quarters" id="last_name" name="client_details[client][last_name]" type="text" value="{{ data['client_details']['client']['last_name'] }}">
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="govuk-!-padding-bottom-2"></div>
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="date-of-birth-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                <h1 class="govuk-fieldset__heading">
+                  Date of birth
+                </h1>
+              </legend>
+              <div id="date-of-birth-hint" class="govuk-hint">
+                For example, 27 3 2007
+              </div>
+              <div class="govuk-date-input" id="date-of-birth">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="date-of-birth-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-of-birth-day" name="dob[day]" value="{{ data['dob']['day'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="date-of-birth-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-of-birth-month" name="dob[month]" value="{{ data['dob']['month'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="date-of-birth-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="date-of-birth-year" name="dob[year]" value="{{ data['dob']['year'] }}">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="govuk-!-padding-bottom-2"></div>
+
+          <div class="govuk-form-group">
+            {% if mvp == true %}
+              <label class="govuk-label govuk-label--m" for="national-insurance-number">
+                National Insurance number
               </label>
+            {% else %}
+              <label class="govuk-label govuk-label--m" for="national-insurance-number">
+                National Insurance number (optional)
+              </label>
+            {% endif %}
+            <div id="national-insurance-number-hint" class="govuk-hint">
+              It’s on their National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
+            </div>
+            <!-- <div class="govuk-warning-text">
+              <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+              <strong class="govuk-warning-text__text">
+                <span class="govuk-warning-text__assistive">Warning</span>
+                  If you cannot provide your client's National Insurance number, you’ll have to answer additional questions and might need to submit additional evidence.
+              </strong>
+            </div> -->
+            <div class="govuk-inset-text">
+              If you cannot provide your client's National Insurance number, you’ll have to answer additional questions and might need to submit additional evidence.
+            </div>
+            <div>
+              <input class="govuk-input govuk-input--width-10" id="national-insurance-number" name="client_details[client][national_insurance_number]" value="{{ data['client_details']['client']['national_insurance_number'] }}" type="text" spellcheck="false" aria-describedby="national-insurance-number-hint">
+            
+              <div class="govuk-!-padding-bottom-2"></div>
+              <!-- <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    My client doesn't have a National Insurance number or I can't find it
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+                  We need to know your client's National Insurance number so we can check if they receive a passporting benefit from the Department of Work and Pensions (DWP). We also use it to check their employment income with Her Majesty's Revenue and Customs (HMRC). <br>
+                  <div class="govuk-!-padding-bottom-4"></div>
+                  If you cannot provide your client's National Insurance number, you’ll have to answer additional questions and might need to submit additional evidence.
+                </div>
+              </details> -->
             </div>
           </div>
-        </div>
 
-        <div class="govuk-!-padding-bottom-2"></div>
-
-        <h2 class="govuk-heading-m">What happens next</h2>
-        <p class="govuk-body">We'll check your client's benefits status with the Department of Work and Pensions (DWP). </p>
-
-        </div>
-        <div class="govuk-form-group">
-          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-            <div class="govuk-checkboxes__item">
-              <input class="govuk-checkboxes__input" id="goto-non-passported" name="goto-non-passported" type="checkbox" value="yes">
-              <label class="govuk-label govuk-checkboxes__label greyed-out" for="goto-non-passported">
-                Continue to non-passported journey
-              </label>
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-label--m" for="phone">
+              UK telephone number
+            </label>
+            <div id="phone-hint" class="govuk-hint">
+              We'll use this to chase your client if they don't pay towards their legal aid.
+            </div>
+            <div>
+              <input class="govuk-input govuk-input--width-10" id="phone" name="client_details[client][phone]" value="{{ data['client_details']['client']['phone'] }}" type="text" spellcheck="false" aria-describedby="phone-hint">
             </div>
           </div>
-        </div>
-        <button type="submit" class="govuk-button button-left">
-          Save and continue
-        </button>
-    </form>
-    <form class="form inline-form" action="/tasklist" method="post">
-      <button class="govuk-button" data-module="govuk-button">Save and come back later</button>
-    </form>
+
+          <div class="govuk-!-padding-bottom-2"></div>
+
+          <div class="govuk-form-group">
+            {% if not data['client_details']['client']['address']['address_line_one'] %}
+              <label class="govuk-label govuk-label--m">
+                Correspondence address
+              </label>
+              <label class="govuk-label" for="postcode">
+                Postcode
+              </label>
+              <div id="postcode-hint" class="govuk-hint">
+                We’ll only use this to send your client correspondence about their legal aid.
+              </div>
+              <div id="postcode-entry" class="togglePostcode">
+                <div class="govuk-form-group">
+                  <input class="govuk-input govuk-input--width-10" id="postcode" name="postcode" type="text" value="{{ data['postcode'] }}">
+                </div>
+                <div type="submit" class="govuk-button" id="find-address">
+                  Find address
+                </div>
+              </div>
+              <div id="address-entry" class="govuk-visually-hidden togglePostcode">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-!-font-weight-bold postcode_change" for="change-postcode">
+                    {{ data['postcode'] }}
+                  </label>
+                  <p class="postcode_change">
+                    <a class="govuk-link" href="client_details_long#toggle-postcode" aria-label="change postcode">Change</a>
+                  </p>
+                </div>
+
+                <div class="govuk-form-group">
+                  <p>
+                    <label class="govuk-label" for="address-select">
+                      Select an address
+                    </label>
+                    <select class="govuk-select govuk-!-width-three-quarters" id="address-select" name="address-select">
+                      <option disabled selected>5 addresses found</option>
+                      <option value="1">1 Main Street, London{% if data['postcode'] %}, {{ data['postcode'] }}{% endif %}</option>
+                      <option value="2">2 Main Street, London{% if data['postcode'] %}, {{ data['postcode'] }}{% endif %}</option>
+                      <option value="3">3 Main Street, London{% if data['postcode'] %}, {{ data['postcode'] }}{% endif %}</option>
+                      <option value="4">4 Main Street, London{% if data['postcode'] %}, {{ data['postcode'] }}{% endif %}</option>
+                      <option value="5">5 Main Street, London{% if data['postcode'] %}, {{ data['postcode'] }}{% endif %}</option>
+                    </select>
+                  </p>
+                </div>
+              </div>
+
+              <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text togglePostcode" id="address-manual">
+                    Enter your client's correspondence address manually
+                  </span>
+                  <span class="govuk-details__summary-text govuk-visually-hidden togglePostcode" id="address-not-listed">
+                    I can't find the address in the list
+                  </span>
+                </summary>
+            {% else %}
+              <label class="govuk-label govuk-label--m" for="address">
+                Address
+              </label>
+            {% endif %}
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="address-line-1">
+                Building and street
+                <span class="govuk-visually-hidden">line 1 of 2</span>
+              </label>
+              <input class="govuk-input" id="address-line-1" name="client_details[client][address][address_line_one]" value="{{ data['client_details']['client']['address']['address_line_one'] }}" type="text">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="address-line-2">
+                <span class="govuk-visually-hidden">Building and street line 2 of 2</span>
+              </label>
+              <input class="govuk-input" id="address-line-2" name="client_details[client][address][address_line_two]" value="{{ data['client_details']['client']['address']['address_line_two'] }}" type="text">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="address-town">
+                Town or city
+              </label>
+              <input class="govuk-input govuk-!-width-two-thirds" id="address-town" name="client_details[client][address][city]" value="{{ data['client_details']['client']['address']['city'] }}" type="text">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="address-county">
+                County
+              </label>
+              <input class="govuk-input govuk-!-width-two-thirds" id="address-county" name="client_details[client][address][county]" value="{{ data['client_details']['client']['address']['county'] }}" type="text">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="address-postcode">
+                Postcode
+              </label>
+              <input class="govuk-input govuk-input--width-10" id="address-postcode" name="client_details[client][address][postcode]" value="{{ data['client_details']['client']['address']['postcode'] }}" type="text">
+            </div>
+
+            {% if not data['client_details']['client']['address']['address_line_one'] %}
+              </details>
+            {% endif %}
+            
+            <div class="govuk-!-padding-bottom-2"></div>
+
+            <div class="govuk-form-group" data-module="govuk-radios">
+              <label class="govuk-label govuk-label--m" for="marriage-civil-partnership">
+                Does your client have a partner?
+              </label>
+              <div id="marriage-civil-partnership-hint" class="govuk-hint">
+                By partner we mean someone they are married to, in a civil partnership with, cohabit with or otherwise share finances.
+              </div>
+              <div class="govuk-radios__item">
+                <!-- REMEMBER: data-aria-controls -->
+                <input class="govuk-radios__input" id="marriage-civil-partnership-1" name="marriage-civil-partnership" type="radio" value="yes" data-aria-controls="conditional-yes" {% if data['client_details']['partner']['first_name'] %}checked{% endif %}>
+                <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership">
+                  Yes
+                </label>
+              </div>
+              <!-- START: CONDITIONAL REVEAL -->
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-yes"> <!-- id needs to match data-aria-controls -->
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="partner_firstname">
+                      First name
+                    </label>
+                  <input class="govuk-input govuk-!-width-three-quarters" id="partner_firstname" name="client_details[partner][first_name]" value="{{ data['client_details']['partner']['first_name'] }}" type="text">
+                </div>
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="partner_lastname">
+                      Last name
+                    </label>
+                  <input class="govuk-input govuk-!-width-three-quarters" id="partner_lastname" name="client_details[partner][last_name]" value="{{ data['client_details']['partner']['last_name'] }}">
+                </div>
+              </div>
+              
+              <div class="govuk-form-group">
+              <!-- END: CONDITIONAL REVEAL  -->
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="marriage-civil-partnership-2" name="marriage-civil-partnership" type="radio" value="no" {{ checked("['marriage-civil-partnership']", "no") }}>
+                  <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership-2">
+                    No
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="govuk-!-padding-bottom-2"></div>
+
+            <h2 class="govuk-heading-m">What happens next</h2>
+            <p class="govuk-body">We'll check your client's benefits status with the Department of Work and Pensions (DWP). </p>
+          </div>
+
+          <div class="govuk-form-group">
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="goto-non-passported" name="goto-non-passported" type="checkbox" value="yes">
+                <label class="govuk-label govuk-checkboxes__label greyed-out" for="goto-non-passported">
+                  Continue to non-passported journey
+                </label>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="govuk-button button-left">
+            Save and continue
+          </button>
+        </form>
+        <form class="form inline-form" action="/tasklist" method="post">
+          <button class="govuk-button" data-module="govuk-button">Save and come back later</button>
+        </form>
+      </div>
     </div>
   </div>
-
-</div>
 {% endblock %}
