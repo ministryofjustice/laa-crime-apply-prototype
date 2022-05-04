@@ -167,6 +167,12 @@ router.post('/benefit_checker_select', function (req, res) {
   }
 });
 
+router.get('/client_details_long', function (req, res) {
+  let mvp = req.session.mvp;
+
+  res.render('client_details_long', { mvp: mvp });
+});
+
 router.post('/case_details_confirm', function (req, res, next) {
   let origin = req.session.data['origin'];
   if (origin == 'case_details_urn') {
