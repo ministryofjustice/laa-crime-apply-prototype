@@ -34,7 +34,7 @@
     <form class="form" action="/case_details" method="post">
       <label class="govuk-heading-m" for="search">Search for offence name
         <div id="offence-hint" class="govuk-hint">
-          Select all the apply.
+          Select all that apply.
         </div>
       </label>
 
@@ -57,7 +57,7 @@
                         <div class="govuk-grid-row offences-list" id="offence-item-{{loop.index}}" >
                           <div class="govuk-checkboxes govuk-checkboxes">
                             <div class="govuk-checkboxes__item">
-                              <input class="govuk-checkboxes__input" id="offence-value-{{loop.index}}" name="offence" type="checkbox" value="{{loop.index - 1}}">
+                              <input class="govuk-checkboxes__input" id="offence-value-{{loop.index}}" name="offence" offencename="{{ offence.B }}" offenceclass="{{ offence.D }}" type="checkbox" value="{{loop.index - 1}}">
                               <label class="govuk-label govuk-checkboxes__label"><strong>{{ offence.B }}</strong><br>Class: {{offence.D}}</label>
                             </div>
                           </div>
@@ -202,24 +202,15 @@
 
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds-from-desktop">
-          <h1 class="govuk-heading-m">You have added 2 offences</h1>
+          <h1 class="govuk-heading-m">You have added 0 offences</h1>
           <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-            <div class="govuk-summary-list__row">
+            <div class="govuk-summary-list__row" id="govuk-summary-list__row-0" style="display: none;"> 
               <dd class="govuk-summary-list__value">
-                Attempted murder<br>
-                <p class="govuk-hint">Class A</p>
+                <p class="offence-name" style="margin: 0;">test</p>
+                <p class="govuk-hint"></p>
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="#">Remove</a>
-              </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dd class="govuk-summary-list__value">
-                Conspiracy to commit murder<br>
-                <p class="govuk-hint">Class B</p>
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="#">Remove</a>
+                <a class="govuk-link" id="remove-offence-link" href="#">Remove</a>
               </dd>
             </div>
           </dl>
