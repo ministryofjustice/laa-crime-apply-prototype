@@ -3,20 +3,6 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      {% if banner %}
-        <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-          <div class="govuk-notification-banner__header">
-            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-              Important
-            </h2>
-          </div>
-          <div class="govuk-notification-banner__content">
-            <p class="govuk-notification-banner__heading">
-              A record of this case has not been created by the court yet. You can enter the case details now or come back later.
-            </p>
-          </div>
-        </div>
-      {% endif %}
 
       <h1 class="govuk-heading-xl">Enter the case details</h1>
 
@@ -267,7 +253,7 @@
         <input type="hidden" name="[case_details][checkpoint]" value="completed">
         <button class="govuk-button button-left" data-module="govuk-button">Save and continue</button>
       </form>
-      
+
       <form class="form inline-form" action="/tasklist" method="post">
         <input type="hidden" name="[case_details][checkpoint]" value="completed">
         <button class="govuk-button" data-module="govuk-button">Save and come back later</button>
