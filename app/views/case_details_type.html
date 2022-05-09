@@ -55,25 +55,34 @@
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="type-of-case-6" name="case_details[case_type]" type="radio" value="appeal" {{ checked("['case_details']['case_type']", "appeal") }} data-aria-controls="conditional-yes">
+                <input class="govuk-radios__input" id="type-of-case-6" name="case_details[case_type]" type="radio" value="appeal" {{ checked("['case_details']['case_type']", "appeal") }} data-aria-controls="conditional-appeal-yes">
                 <label class="govuk-label govuk-radios__label" for="type-of-case-6">
                   Appeal to Crown Court
                 </label>
               </div>
               <!-- START: CONDITIONAL REVEAL -->
-              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-yes"> <!-- id needs to match data-aria-controls -->
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-appeal-yes"> <!-- id needs to match data-aria-controls -->
                 <div class="govuk-form-group">
-                  <label class="govuk-label" for="national-insurance-1">
-                    Previous MAAT ID
+                  <label class="govuk-label" for="previous-maat">
+                    Previous MAAT ID (optional)
                   </label>
                   <input class="govuk-input govuk-!-width-three-quarters" id="maat_id" name="client_details[client][maat_id]" value="{{ data['client_details']['client']['maat_id'] }}" type="text">
                 </div>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="type-of-case-7" name="case_details[case_type]" type="radio" value="appeal-with-changes" {{ checked("['case_details']['case_type']", "appeal") }}>
+                <input class="govuk-radios__input" id="type-of-case-7" name="case_details[case_type]" type="radio" value="appeal-with-changes" {{ checked("['case_details']['case_type']", "appeal") }} data-aria-controls="conditional-appeal-changes-yes">
                 <label class="govuk-label govuk-radios__label" for="type-of-case-7">
                   Appeal to Crown Court with changes in financial circumstances
                 </label>
+              </div>
+              <!-- START: CONDITIONAL REVEAL -->
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-appeal-changes-yes"> <!-- id needs to match data-aria-controls -->
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="changes">
+                    Enter the details of what has changed
+                  </label>
+                  <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+                </div>
               </div>
             </div>
           </fieldset>
