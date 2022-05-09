@@ -6,7 +6,8 @@
     $('#offence_search').hideseek({
         min_chars: 3,
         nodata: "No results found.",
-        hidden_mode: true
+        hidden_mode: true,
+        highlight: true
     });
   </script>
 {% endblock %}
@@ -57,7 +58,7 @@
                         <div class="govuk-grid-row offences-list" id="offence-item-{{loop.index}}" >
                           <div class="govuk-checkboxes govuk-checkboxes">
                             <div class="govuk-checkboxes__item">
-                              <input class="govuk-checkboxes__input" id="offence-value-{{loop.index}}" name="offence" offencename="{{ offence.B }}" offenceclass="{{ offence.D }}" type="checkbox" value="{{loop.index - 1}}">
+                              <input class="govuk-checkboxes__input" id="offence-value-{{loop.index}}" name="offence" data-offencename="{{ offence.B }}" data-offenceclass="{{ offence.D }}" type="checkbox" value="{{loop.index - 1}}">
                               <label class="govuk-label govuk-checkboxes__label"><strong>{{ offence.B }}</strong><br>Class: {{offence.D}}</label>
                             </div>
                           </div>
@@ -200,13 +201,13 @@
 
       <div class="govuk-!-padding-bottom-6"></div>
 
-      <div class="govuk-grid-row">
+      <div class="govuk-grid-row" id="offence-summary-container" style="display: none;">
         <div class="govuk-grid-column-two-thirds-from-desktop">
-          <h1 class="govuk-heading-m">You have added 0 offences</h1>
+          <h1 class="govuk-heading-m" id="offence-summary-heading">You have added 0 offences</h1>
           <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row" id="govuk-summary-list__row-0" style="display: none;"> 
               <dd class="govuk-summary-list__value">
-                <p class="offence-name" style="margin: 0;">test</p>
+                <p class="offence-name" style="margin: 0;"></p>
                 <p class="govuk-hint"></p>
               </dd>
               <dd class="govuk-summary-list__actions">

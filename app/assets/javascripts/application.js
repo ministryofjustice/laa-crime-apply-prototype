@@ -24,18 +24,24 @@ $(document).ready(function () {
     e.preventDefault()
     $('.search-field').val("");
     $('.search-field').focus();
+    $('#proceedings-list').css({ display: "none" });
   });
 
+  $('.search-field').on('input', function (e) {
+    $('#proceedings-list').removeAttr('style');
+  });
+  
   $('.govuk-checkboxes__input').on('click', function (e) {
-    let offenceName = e.currentTarget.attributes.offencename.value
-    let offenceClass = e.currentTarget.attributes.offenceclass.value
+    let offenceName = e.currentTarget.dataset.offencename
+    let offenceClass = e.currentTarget.dataset.offenceclass
 
     setOffencesAddedHeading()
      
     if(this.checked) {
+      $('#offence-summary-container').removeAttr('style')
       var $div = $('div[id^="govuk-summary-list__row"]:last');
       var nextRowNumber = parseInt($div.prop("id").match(/\d+/g), 10 ) + 1;
-      var $nextRow = $div.clone().prop('id', `govuk-summary-list__row-${nextRowNumber}`).removeAttr('style')                        
+      var $nextRow = $div.clone().prop('id', `govuk-summary-list__row-${nextRowNumber}`).removeAttr('style')
       $div.after($nextRow);
       $(`#govuk-summary-list__row-${nextRowNumber} .offence-name`).text(offenceName);
       $(`#govuk-summary-list__row-${nextRowNumber} .govuk-hint`).text(`Class ${offenceClass}`);
@@ -47,7 +53,7 @@ $(document).ready(function () {
   $('body').on('click', '#remove-offence-link', function(e) {
     e.preventDefault()
     var offenceName = $(this).parent().siblings()[0].firstElementChild.innerHTML.replace(/&amp;/g, '&');
-    $("[offencename='" + offenceName + "']" ).prop('checked', false);
+    $("[data-offencename='" + offenceName + "']" ).prop('checked', false);
     $("dd:contains('" + offenceName + "')").parent().remove();
     
     setOffencesAddedHeading()
@@ -55,13 +61,17 @@ $(document).ready(function () {
  
   function setOffencesAddedHeading() {
     totalSelected = $('input:checkbox:checked').length
-    var text
-    if (totalSelected == 1) {
-      text = `You have added 1 offence`
+    if (totalSelected > 0) {
+      var text
+      if (totalSelected == 1) {
+        text = `You have added 1 offence`
+      } else {
+        text = `You have added ${totalSelected} offences`
+      }
+      $('#offence-summary-heading').text(text).removeAttr('style')
     } else {
-      text = `You have added ${totalSelected} offences`
+        $('#offence-summary-heading').parent().parent().css({ display: "none" });
     }
-    $('.govuk-grid-row .govuk-grid-column-two-thirds-from-desktop .govuk-heading-m').text(text)
   }
 
   // file uploads
