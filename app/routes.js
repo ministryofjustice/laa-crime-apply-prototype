@@ -194,11 +194,19 @@ router.get('/client_details_long', function (req, res) {
   res.render('client_details_long', { mvp: mvp });
 });
 
+router.get('/case_details_confirm', function (req, res) {
+  let passported = passporting.isPassported(req.session.data);
+
+  console.log(passported)
+  res.render('case_details_confirm', { date_stamp: passported});
+});
+
 router.post('/case_details_confirm', function (req, res, next) {
   let origin = req.session.data['origin'];
   if (origin == 'case_details_urn') {
     delete req.session.data['origin'];
     req.session.data['case_details_type'] = 'urn';
+    res.redirect('case_details_confirm')
     return next();
   }
 
@@ -308,9 +316,8 @@ router.get('/case_details_offence', function (req, res) {
 });
 
 router.get('/application_cert_review', function (req, res) {
-  let passported = passporting.isPassported(req.session.data);
   let date = utils.constructDate(req.session.data.dob);
-  res.render('application_cert_review', { date_of_birth: utils.formatDate(date), date_stamp: passported });
+  res.render('application_cert_review', { date_of_birth: utils.formatDate(date) });
 });
 
 router.post('/confirm_the_following', async (req, res, next) => {
