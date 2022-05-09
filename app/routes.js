@@ -121,7 +121,7 @@ router.get('/dwp_passported', function (req, res) {
   if (outOfScope) {
     res.redirect('/eforms_redirect');
   } else {
-    res.render('dwp_passported');
+    res.render('dwp_passported', { mvp: mvp });
   }
 });
 
