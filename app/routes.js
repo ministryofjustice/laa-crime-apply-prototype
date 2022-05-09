@@ -21,19 +21,13 @@ router.use((req, res, next) => {
 });
 
 router.post('/account_number_answer', function (req, res) {
-
-  var accountNumberCorrect = req.session.data['account-number-correct']
-
-  // Check whether the variable matches a condition
+  let accountNumberCorrect = req.session.data['account-number-correct']
   if (accountNumberCorrect == "yes"){
-    // Send user to next page
     res.redirect('/dashboard')
   } else {
-    // Send user to ineligible page
     res.redirect('/account_number_select')
   }
-
-})
+});
 
 router.get('/tasklist/:id', async (req, res, next) => {
   try {

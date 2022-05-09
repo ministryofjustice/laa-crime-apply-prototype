@@ -93,11 +93,10 @@
                   If you cannot provide your client's National Insurance number, you’ll have to answer additional questions and might need to submit additional evidence.
               </strong>
             </div> -->
-            {% if mvp == true %}
-            {% else %}
-            <div class="govuk-inset-text">
-              If you cannot provide your client's National Insurance number, you’ll have to answer additional questions and might need to submit additional evidence.
-            </div>
+            {% if mvp == false %}
+              <div class="govuk-inset-text">
+                If you cannot provide your client's National Insurance number, you’ll have to answer additional questions and might need to submit additional evidence.
+              </div>
             {% endif %}
             <div>
               <input class="govuk-input govuk-input--width-10" id="national-insurance-number" name="client_details[client][national_insurance_number]" value="{{ data['client_details']['client']['national_insurance_number'] }}" type="text" spellcheck="false" aria-describedby="national-insurance-number-hint">

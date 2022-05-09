@@ -24,12 +24,12 @@
         </h1>
 
         <p>Client: <strong>Sam Doe</strong>
-            <br>LAA reference: <strong>L-23A-56D</strong>
-            <br>Date stamp: <strong>22 April 2022 2:45pm</strong>
-          </p>
-          <a href="print_view" role="button" class="govuk-button">
-            Print application
-          </a>
+          <br>LAA reference: <strong>L-23A-56D</strong>
+          <br>Date stamp: <strong>22 April 2022 2:45pm</strong>
+        </p>
+        <a href="print_view" role="button" class="govuk-button">
+          Print application
+        </a>
 
         <br>
 
@@ -41,107 +41,105 @@
           </div>
         </div>
 
-          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              First name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['client_details']['client']['first_name'] }}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Last name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['client_details']['client']['last_name'] }}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date of birth
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ date_of_birth }}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              National Insurance number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['client_details']['client']['national_insurance_number'] }}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Correspondence address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['client_details']['client']['address']['address_line_one'] %}
+                {{ data['client_details']['client']['address']['address_line_one'] }}
+                {{ data['client_details']['client']['address']['address_line_two'] }}
+                <br>
+                {{ data['client_details']['client']['address']['city'] }}
+                <br>
+                {{ data['client_details']['client']['address']['postcode'] }}
+              {% elif data['address-select'] %}
+                {{ data['address-select'] }} Main Street
+                <br>
+                London
+                <br>
+                {{ data['client_details']['client']['address']['postcode'] }}
+              {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Passporting benefit
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['means_assessment']['benefits_status']['passported'] == true %}
+                Yes
+              {% else %}
+                No
+              {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Partner
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['marriage-civil-partnership'] == "yes" %}
+                Yes
+              {% else %}
+                No
+              {% endif %}
+            </dd>
+          </div>
+          {% if data['client_details']['partner']['first_name'] %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                First name
+                Partner's first name
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data['client_details']['client']['first_name'] }}
+                {{ data['client_details']['partner']['first_name'] }}
               </dd>
             </div>
+          {% endif %}
+          {% if data['client_details']['partner']['last_name'] %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                Last name
+                Partner's last name
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data['client_details']['client']['last_name'] }}
+                {{ data['client_details']['partner']['last_name'] }}
               </dd>
             </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Date of birth
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {{ date_of_birth }}
-              </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                National Insurance number
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {{ data['client_details']['client']['national_insurance_number'] }}
-              </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Correspondence address
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {% if data['client_details']['client']['address']['address_line_one'] %}
-                  {{ data['client_details']['client']['address']['address_line_one'] }}
-                  {{ data['client_details']['client']['address']['address_line_two'] }}
-                  <br>
-                  {{ data['client_details']['client']['address']['city'] }}
-                  <br>
-                  {{ data['client_details']['client']['address']['postcode'] }}
-                {% elif data['address-select'] %}
-                  {{ data['address-select'] }} Main Street
-                  <br>
-                  London
-                  <br>
-                  {{ data['client_details']['client']['address']['postcode'] }}
-                {% endif %}
-              </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Passporting benefit
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {% if data['means_assessment']['benefits_status']['passported'] == true %}
-                  Yes
-                {% else %}
-                  No
-                {% endif %}
-              </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Partner
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {% if data['marriage-civil-partnership'] == "yes" %}
-                  Yes
-                {% else %}
-                  No
-                {% endif %}
-              </dd>
-            </div>
-            {% if data['client_details']['partner']['first_name'] %}
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  Partner's first name
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  {{ data['client_details']['partner']['first_name'] }}
-                </dd>
-              </div>
-            {% endif %}
-            {% if data['client_details']['partner']['last_name'] %}
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  Partner's last name
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  {{ data['client_details']['partner']['last_name'] }}
-                </dd>
-              </div>
-            {% endif %}
-          </dl>
-
-
+          {% endif %}
+        </dl>
 
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-two-thirds">
@@ -151,101 +149,101 @@
           </div>
         </div>
 
-      <dl class="govuk-summary-list">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Case type
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {% if data['case_details']['case_type'] == 'summary_only' %}
-              Summary only
-            {% elif data['case_details']['case_type'] == 'either_way' %}
-              Either way
-            {% elif data['case_details']['case_type'] == 'indictable' %}
-              Indictable
-            {% elif data['case_details']['case_type'] == 'already_in_crown_court' %}
-              Trial already in Crown Court
-            {% elif data['case_details']['case_type'] == 'commital' %}
-              Commital for sentence
-            {% endif %}
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Offence
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {% if data['case_details']['offence'] %}
-              <p>{{ data['case_details']['offence'] }}</p>
-            {% endif %}
-            {% if data['case_details']['offence_class'] %}
-              <p>Class {{ data['case_details']['offence_class'] | capitalize }}</p>
-            {% endif %}
-          </dd>
-        </div>
-        {% for defendant in data['case_details']['co_defendant_names'] -%}
+        <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Co-defendant {{loop.index}}
+              Case type
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ defendant }}
+              {% if data['case_details']['case_type'] == 'summary_only' %}
+                Summary only
+              {% elif data['case_details']['case_type'] == 'either_way' %}
+                Either way
+              {% elif data['case_details']['case_type'] == 'indictable' %}
+                Indictable
+              {% elif data['case_details']['case_type'] == 'already_in_crown_court' %}
+                Trial already in Crown Court
+              {% elif data['case_details']['case_type'] == 'commital' %}
+                Commital for sentence
+              {% endif %}
             </dd>
           </div>
-        {%- endfor %}
-      </dl>
-
-      <br>
-
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          <h2 class="govuk-heading-m">Interests of Justice</h2>
-        </div>
-        <div class="govuk-grid-column-one-third">
-        </div>
-      </div>
-
-      <dl class="govuk-summary-list">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Criteria
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {% for ioj in data['interests_of_justice'] -%}
-              {% if ioj == 'liberty' %}
-                <p>Loss of liberty</p>
-              {% elif ioj == 'suspended_sentence' %}
-                <p>Suspended or non-custodial sentence</p>
-              {% elif ioj == 'livelihood' %}
-                <p>Loss of livelihood</p>
-              {% elif ioj == 'reputation' %}
-                <p>Serious damage to their reputation</p>
-              {% elif ioj == 'question_of_law' %}
-                <p>Substantial question of law may be involved</p>
-              {% elif ioj == 'unable_to_understand' %}
-                <p>Unable to understand the court proceedings or present own case</p>
-              {% elif ioj == 'witnesses_needed' %}
-                <p>Witnesses may need to be traced or interviewed</p>
-              {% elif ioj == 'expert_cross_examination' %}
-                <p>The proceedings may involve expert cross-examination</p>
-              {% elif ioj == 'interests_of_another' %}
-                <p>It is in the interests of another person</p>
-              {% elif ioj == 'ioj_other' %}
-                <p>Other reason</p>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Offence
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['case_details']['offence'] %}
+                <p>{{ data['case_details']['offence'] }}</p>
               {% endif %}
-            {%- endfor %}
-          </dd>
+              {% if data['case_details']['offence_class'] %}
+                <p>Class {{ data['case_details']['offence_class'] | capitalize }}</p>
+              {% endif %}
+            </dd>
+          </div>
+          {% for defendant in data['case_details']['co_defendant_names'] -%}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Co-defendant {{loop.index}}
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ defendant }}
+              </dd>
+            </div>
+          {%- endfor %}
+        </dl>
+
+        <br>
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-m">Interests of Justice</h2>
+          </div>
+          <div class="govuk-grid-column-one-third">
+          </div>
         </div>
-      </dl>
 
-      <br>
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Criteria
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% for ioj in data['interests_of_justice'] -%}
+                {% if ioj == 'liberty' %}
+                  <p>Loss of liberty</p>
+                {% elif ioj == 'suspended_sentence' %}
+                  <p>Suspended or non-custodial sentence</p>
+                {% elif ioj == 'livelihood' %}
+                  <p>Loss of livelihood</p>
+                {% elif ioj == 'reputation' %}
+                  <p>Serious damage to their reputation</p>
+                {% elif ioj == 'question_of_law' %}
+                  <p>Substantial question of law may be involved</p>
+                {% elif ioj == 'unable_to_understand' %}
+                  <p>Unable to understand the court proceedings or present own case</p>
+                {% elif ioj == 'witnesses_needed' %}
+                  <p>Witnesses may need to be traced or interviewed</p>
+                {% elif ioj == 'expert_cross_examination' %}
+                  <p>The proceedings may involve expert cross-examination</p>
+                {% elif ioj == 'interests_of_another' %}
+                  <p>It is in the interests of another person</p>
+                {% elif ioj == 'ioj_other' %}
+                  <p>Other reason</p>
+                {% endif %}
+              {%- endfor %}
+            </dd>
+          </div>
+        </dl>
 
+        <br>
+      </div>
+      <a href="print_view" role="button" class="govuk-button">
+        Print application
+      </a>
+      <a href="dashboard" role="button" class="govuk-button govuk-button--secondary">
+        Back to your applications
+      </a>
     </div>
-
-    <a href="print_view" role="button" class="govuk-button">
-      Print application
-    </a>
-    <a href="dashboard" role="button" class="govuk-button govuk-button--secondary">
-      Back to your applications
-    </a>
+  </div>
 {% endblock %}
