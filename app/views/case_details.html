@@ -11,7 +11,7 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
               <h1 class="govuk-fieldset__heading">
-                When was your client charged?
+                Date of the offence
               </h1>
             </legend>
             <div>
@@ -61,7 +61,7 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
               <h1 class="govuk-fieldset__heading">
-                When is the next hearing?
+                Date of next court hearing
               </h1>
             </legend>
             <div class="govuk-form-group">
@@ -163,6 +163,23 @@
                           </label>
                           <input class="govuk-input govuk-!-width-three-quarters" id="names[{{loop.index - 1}}][last_name]" name="new_names[{{loop.index - 1}}][last_name]" type="text" data-name="new_names[%index%][last_name]" data-id="names[%index%][last_name]" value="{{ co_defendant[1] }}">
                         </div>
+                        <div class="govuk-form-group">
+                          <label class="govuk-label" for="conflict">
+                            Conflict of interest
+                          </label>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="conflict-yes" name="conflict" type="radio" value="yes">
+                            <label class="govuk-label govuk-radios__label" for="conflict-yes">
+                              Yes
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="conflict-no" name="conflict" type="radio" value="no">
+                            <label class="govuk-label govuk-radios__label" for="conflict-no">
+                              No
+                            </label>
+                          </div>
+                        </div>
                       </fieldset>
                       <button type="button" class="govuk-button govuk-button--secondary moj-add-another__remove-button">Remove</button>
                     {%- endfor %}
@@ -187,6 +204,14 @@
             </div>
           </fieldset>
         </div>
+
+        <div>
+          <div class="govuk-!-padding-bottom-2"></div>
+
+          <h2 class="govuk-heading-m">What happens next</h2>
+          <p class="govuk-body">We'll use this information to check if this case needs a  justification for legal aid. </p>
+        </div>
+
         <input type="hidden" name="[case_details][checkpoint]" value="completed">
         <button class="govuk-button button-left" data-module="govuk-button">Save and continue</button>
       </form>
