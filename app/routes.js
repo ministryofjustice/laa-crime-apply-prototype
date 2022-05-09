@@ -22,10 +22,10 @@ router.use((req, res, next) => {
 
 router.post('/account_number_answer', function (req, res) {
 
-  var howManyBalls = req.session.data['account-number-correct']
+  var accountNumberCorrect = req.session.data['account-number-correct']
 
   // Check whether the variable matches a condition
-  if (howManyBalls == "yes"){
+  if (accountNumberCorrect == "yes"){
     // Send user to next page
     res.redirect('/dashboard')
   } else {
