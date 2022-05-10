@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Enter the case type</h1>
+
+      <form class="form" action="/case_details_offence" method="post">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="type-of-case-1" name="case_details[case_type]" type="radio" value="summary_only" {{ checked("['case_details']['case_type']", "summary_only") }}>
+                <label class="govuk-label govuk-radios__label" for="type-of-case-1">
+                  Summary only
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="type-of-case-2" name="case_details[case_type]" type="radio" value="either_way" {{ checked("['case_details']['case_type']", "either_way") }}>
+                <label class="govuk-label govuk-radios__label" for="type-of-case-2">
+                  Either way
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="type-of-case-3" name="case_details[case_type]" type="radio" value="indictable" {{ checked("['case_details']['case_type']", "indictable") }}>
+                <label class="govuk-label govuk-radios__label" for="type-of-case-3">
+                  Indictable
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="type-of-case-4" name="case_details[case_type]" type="radio" value="already_in_crown_court" {{ checked("['case_details']['case_type']", "already_in_crown_court") }}>
+                <label class="govuk-label govuk-radios__label" for="type-of-case-4">
+                  Trial already in Crown Court
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="type-of-case-5" name="case_details[case_type]" type="radio" value="commital" {{ checked("['case_details']['case_type']", "commital") }}>
+                <label class="govuk-label govuk-radios__label" for="type-of-case-5">
+                  Committal for sentence
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="type-of-case-6" name="case_details[case_type]" type="radio" value="appeal" {{ checked("['case_details']['case_type']", "appeal") }} data-aria-controls="maat-id-conditional-yes">
+                <label class="govuk-label govuk-radios__label" for="type-of-case-6">
+                  Appeal to Crown Court
+                </label>
+              </div>
+              <!-- START: CONDITIONAL REVEAL -->
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="maat-id-conditional-yes"> <!-- id needs to match data-aria-controls -->
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="national-insurance-1">
+                    Previous MAAT ID (optional)
+                  </label>
+                  <input class="govuk-input govuk-!-width-three-quarters" id="maat_id" name="client_details[client][maat_id]" value="{{ data['client_details']['client']['maat_id'] }}" type="text">
+                </div>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="type-of-case-7" name="case_details[case_type]" type="radio" value="appeal-with-changes" {{ checked("['case_details']['case_type']", "appeal") }} data-aria-controls="details-conditional-yes">
+                <label class="govuk-label govuk-radios__label" for="type-of-case-7">
+                  Appeal to Crown Court with changes in financial circumstances
+                </label>
+              </div>
+              <!-- START: CONDITIONAL REVEAL -->
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="details-conditional-yes"> <!-- id needs to match data-aria-controls -->
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="national-insurance-1">
+                    Enter the details of what has changed
+                  </label>
+                  <textarea class="govuk-textarea govuk-!-width-three-quarters" id="changed-details" name="client_details[client][changed-details]" value="{{ data['client_details']['client']['changed-details'] }}" type="text"></textarea>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <input type="hidden" name="[case_details][checkpoint]" value="completed">
+        <button class="govuk-button button-left" data-module="govuk-button">Save and continue</button>
+      </form>
+      
+      <form class="form inline-form" action="/tasklist" method="post">
+        <input type="hidden" name="[case_details][checkpoint]" value="completed">
+        <button class="govuk-button" data-module="govuk-button">Save and come back later</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

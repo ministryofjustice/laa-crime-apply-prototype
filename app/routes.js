@@ -310,6 +310,11 @@ router.get('/case_details', function (req, res) {
   res.render('case_details', { offencesList: offencesList, offenceIds: offenceIds, banner, names });
 });
 
+router.get('/case_details_case_type', function (req, res) {
+
+  res.render('case_details_case_type');
+});
+
 router.get('/case_details_offence', function (req, res) {
 
   res.render('case_details_offence', { offences: offencesList });
