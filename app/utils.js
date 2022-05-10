@@ -99,7 +99,8 @@ const utils = {
     return {
       dob,
       first_name: _.get(req.session.data, 'client_details.client.first_name'),
-      last_name: _.get(req.session.data, 'client_details.client.last_name')
+      last_name: _.get(req.session.data, 'client_details.client.last_name'),
+      urn: _.get(req.session.data, 'case_details.urn')
     };
   },
   skipMeans: (req) => {
