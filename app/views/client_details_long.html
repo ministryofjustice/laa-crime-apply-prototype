@@ -93,12 +93,14 @@
                   If you cannot provide your client's National Insurance number, you’ll have to answer additional questions and might need to submit additional evidence.
               </strong>
             </div> -->
-            <div class="govuk-inset-text">
-              If you cannot provide your client's National Insurance number, you’ll have to answer additional questions and might need to submit additional evidence.
-            </div>
+            {% if mvp == false %}
+              <div class="govuk-inset-text">
+                If you cannot provide your client's National Insurance number, you’ll have to answer additional questions and might need to submit additional evidence.
+              </div>
+            {% endif %}
             <div>
               <input class="govuk-input govuk-input--width-10" id="national-insurance-number" name="client_details[client][national_insurance_number]" value="{{ data['client_details']['client']['national_insurance_number'] }}" type="text" spellcheck="false" aria-describedby="national-insurance-number-hint">
-            
+
               <div class="govuk-!-padding-bottom-2"></div>
               <!-- <details class="govuk-details" data-module="govuk-details">
                 <summary class="govuk-details__summary">
@@ -228,7 +230,7 @@
             {% if not data['client_details']['client']['address']['address_line_one'] %}
               </details>
             {% endif %}
-            
+
             <div class="govuk-!-padding-bottom-2"></div>
 
             <div class="govuk-form-group" data-module="govuk-radios">
@@ -245,9 +247,8 @@
                   Yes
                 </label>
               </div>
-              <!-- START: CONDITIONAL REVEAL -->
-              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-yes"> <!-- id needs to match data-aria-controls -->
-                <div class="govuk-form-group">
+              <!-- <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-yes"> <!-- id needs to match data-aria-controls -->
+                <!-- <div class="govuk-form-group">
                     <label class="govuk-label" for="partner_firstname">
                       First name
                     </label>
@@ -260,17 +261,16 @@
                     </label>
                   <input class="govuk-input govuk-!-width-three-quarters" id="partner_lastname" name="client_details[partner][last_name]" value="{{ data['client_details']['partner']['last_name'] }}">
                 </div>
-              </div>
-              
+              </div> -->
+
               <div class="govuk-form-group">
-              <!-- END: CONDITIONAL REVEAL  -->
                 <div class="govuk-radios__item">
                   <input class="govuk-radios__input" id="marriage-civil-partnership-2" name="marriage-civil-partnership" type="radio" value="no" {{ checked("['marriage-civil-partnership']", "no") }}>
                   <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership-2">
                     No
                   </label>
                 </div>
-              </div>
+              </div> 
             </div>
 
             <div class="govuk-!-padding-bottom-2"></div>

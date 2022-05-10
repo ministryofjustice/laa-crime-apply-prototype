@@ -84,12 +84,16 @@
             </label>
             <input class="govuk-input govuk-input--width-20" id="offence_name" name="offence_name" type="text" value="{{ data['offence_name'] }}">
           </div>
+          <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+            Add another offence
+          </button>
         </div>
         <div class="govuk-details__text">
           <div class="govuk-form-group">
             <label class="govuk-label" for="width-10">
-              Enter the offence class
+              Enter the offence class of the most serious offence
             </label>
+            <div class="govuk-!-padding-bottom-2"></div>
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="offence_class" name="offence_class" type="radio" value="offence_class_B" aria-describedby="class-A-hint">
@@ -190,11 +194,7 @@
                   Other offences of dishonesty (high value: if the value involved exceeds £100,000)
                 </div>
               </div>
-              <div class="govuk-!-padding-bottom-4"></div>
-              <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
-                Add another offence
-              </button>
-            </div>      
+            </div>
           </div>
         </div>
       </details>
@@ -205,7 +205,7 @@
         <div class="govuk-grid-column-two-thirds-from-desktop">
           <h1 class="govuk-heading-m" id="offence-summary-heading">You have added 0 offences</h1>
           <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-            <div class="govuk-summary-list__row" id="govuk-summary-list__row-0" style="display: none;"> 
+            <div class="govuk-summary-list__row" id="govuk-summary-list__row-0" style="display: none;">
               <dd class="govuk-summary-list__value">
                 <p class="offence-name" style="margin: 0;"></p>
                 <p class="govuk-hint"></p>

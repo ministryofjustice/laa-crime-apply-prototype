@@ -20,6 +20,15 @@ router.use((req, res, next) => {
   next();
 });
 
+router.post('/account_number_answer', function (req, res) {
+  let accountNumberCorrect = req.session.data['account-number-correct']
+  if (accountNumberCorrect == "yes"){
+    res.redirect('/dashboard')
+  } else {
+    res.redirect('/account_number_select')
+  }
+});
+
 router.get('/tasklist/:id', async (req, res, next) => {
   try {
     let id = req.params && req.params.id;

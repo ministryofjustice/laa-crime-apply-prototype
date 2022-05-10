@@ -3,13 +3,12 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form action="account_number_answer" method="post" class="form">
-
+      <form action="dashboard" method="post" class="form">
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
               <h1 class="govuk-fieldset__heading">
-                Is 2M012V your office account number?
+                Select the account number of the office handling this application
               </h1>
             </legend>
 
@@ -17,15 +16,15 @@
 
             <div class="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="office-1" name="account-number-correct" type="radio" value="yes" {{ checked("office","yes") }}>
-                <label class="govuk-label govuk-radios__label" for="capital-1">
-                  Yes
+                <input class="govuk-radios__input" id="office-1" name="account-number-correct" type="radio" value="0B721W" {{ checked("office","0B721W") }}>
+                <label class="govuk-label govuk-radios__label" for="office">
+                  0B721W
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="office-2" name="account-number-correct" type="radio" value="no" {{ checked("office","no") }}>
-                <label class="govuk-label govuk-radios__label" for="property-3">
-                  No, another office is handling this application
+                <input class="govuk-radios__input" id="office-2" name="account-number-correct" type="radio" value="2N078D" {{ checked("office","2N078D") }}>
+                <label class="govuk-label govuk-radios__label" for="office">
+                  2N078D
                 </label>
               </div>
             </div>

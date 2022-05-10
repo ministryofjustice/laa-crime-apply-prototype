@@ -3,20 +3,6 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      {% if banner %}
-        <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-          <div class="govuk-notification-banner__header">
-            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-              Important
-            </h2>
-          </div>
-          <div class="govuk-notification-banner__content">
-            <p class="govuk-notification-banner__heading">
-              A record of this case has not been created by the court yet. You can enter the case details now or come back later.
-            </p>
-          </div>
-        </div>
-      {% endif %}
 
       <h1 class="govuk-heading-xl">Enter the case details</h1>
 
@@ -25,7 +11,7 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
               <h1 class="govuk-fieldset__heading">
-                When was your client charged?
+                Date of the offence
               </h1>
             </legend>
             <div>
@@ -63,7 +49,7 @@
                   </div>
                   {% if loop.index != 1 %}
                     <div class="govuk-!-padding-bottom-2"></div>
-                    <p><a href="">Same day as previous offence</a></p>
+                    <p><a href="">Same day as above offence</a></p>
                   {% endif %}
                 </div>
               {%- endfor %}
@@ -75,70 +61,7 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
               <h1 class="govuk-fieldset__heading">
-                What type of case is it?
-              </h1>
-            </legend>
-            <div class="govuk-radios" data-module="govuk-radios">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="type-of-case-1" name="case_details[case_type]" type="radio" value="summary_only" {{ checked("['case_details']['case_type']", "summary_only") }}>
-                <label class="govuk-label govuk-radios__label" for="type-of-case-1">
-                  Summary only
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="type-of-case-2" name="case_details[case_type]" type="radio" value="either_way" {{ checked("['case_details']['case_type']", "either_way") }}>
-                <label class="govuk-label govuk-radios__label" for="type-of-case-2">
-                  Either way
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="type-of-case-3" name="case_details[case_type]" type="radio" value="indictable" {{ checked("['case_details']['case_type']", "indictable") }}>
-                <label class="govuk-label govuk-radios__label" for="type-of-case-3">
-                  Indictable
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="type-of-case-4" name="case_details[case_type]" type="radio" value="already_in_crown_court" {{ checked("['case_details']['case_type']", "already_in_crown_court") }}>
-                <label class="govuk-label govuk-radios__label" for="type-of-case-4">
-                  Trial already in Crown Court
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="type-of-case-5" name="case_details[case_type]" type="radio" value="commital" {{ checked("['case_details']['case_type']", "commital") }}>
-                <label class="govuk-label govuk-radios__label" for="type-of-case-5">
-                  Committal for sentence
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="type-of-case-6" name="case_details[case_type]" type="radio" value="appeal" {{ checked("['case_details']['case_type']", "appeal") }} data-aria-controls="conditional-yes">
-                <label class="govuk-label govuk-radios__label" for="type-of-case-6">
-                  Appeal to Crown Court
-                </label>
-              </div>
-              <!-- START: CONDITIONAL REVEAL -->
-              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-yes"> <!-- id needs to match data-aria-controls -->
-                <div class="govuk-form-group">
-                  <label class="govuk-label" for="national-insurance-1">
-                    Previous MAAT ID
-                  </label>
-                  <input class="govuk-input govuk-!-width-three-quarters" id="maat_id" name="client_details[client][maat_id]" value="{{ data['client_details']['client']['maat_id'] }}" type="text">
-                </div>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="type-of-case-7" name="case_details[case_type]" type="radio" value="appeal-with-changes" {{ checked("['case_details']['case_type']", "appeal") }}>
-                <label class="govuk-label govuk-radios__label" for="type-of-case-7">
-                  Appeal to Crown Court with changes in financial circumstances
-                </label>
-              </div>
-            </div>
-          </fieldset>
-        </div>
-
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              <h1 class="govuk-fieldset__heading">
-                When is the next hearing?
+                Date of next court hearing
               </h1>
             </legend>
             <div class="govuk-form-group">
@@ -240,6 +163,23 @@
                           </label>
                           <input class="govuk-input govuk-!-width-three-quarters" id="names[{{loop.index - 1}}][last_name]" name="new_names[{{loop.index - 1}}][last_name]" type="text" data-name="new_names[%index%][last_name]" data-id="names[%index%][last_name]" value="{{ co_defendant[1] }}">
                         </div>
+                        <div class="govuk-form-group">
+                          <label class="govuk-label" for="conflict">
+                            Conflict of interest
+                          </label>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="conflict-yes" name="conflict" type="radio" value="yes">
+                            <label class="govuk-label govuk-radios__label" for="conflict-yes">
+                              Yes
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="conflict-no" name="conflict" type="radio" value="no">
+                            <label class="govuk-label govuk-radios__label" for="conflict-no">
+                              No
+                            </label>
+                          </div>
+                        </div>
                       </fieldset>
                       <button type="button" class="govuk-button govuk-button--secondary moj-add-another__remove-button">Remove</button>
                     {%- endfor %}
@@ -264,10 +204,18 @@
             </div>
           </fieldset>
         </div>
+
+        <div>
+          <div class="govuk-!-padding-bottom-2"></div>
+
+          <h2 class="govuk-heading-m">What happens next</h2>
+          <p class="govuk-body">We'll use this information to check if this case needs a justification for legal aid. </p>
+        </div>
+
         <input type="hidden" name="[case_details][checkpoint]" value="completed">
         <button class="govuk-button button-left" data-module="govuk-button">Save and continue</button>
       </form>
-      
+
       <form class="form inline-form" action="/tasklist" method="post">
         <input type="hidden" name="[case_details][checkpoint]" value="completed">
         <button class="govuk-button" data-module="govuk-button">Save and come back later</button>
