@@ -315,9 +315,15 @@ router.get('/case_details_case_type', function (req, res) {
   res.render('case_details_case_type');
 });
 
-router.get('/case_details_offence', function (req, res) {
+router.post('/case_details_case_type', function (req, res) {
 
-  res.render('case_details_offence', { offences: offencesList });
+  res.redirect('/case_details_offence');
+});
+
+router.get('/case_details_offence', function (req, res) {
+  let passported = passporting.isPassported(req.session.data);
+
+  res.render('case_details_offence', { offences: offencesList, date_stamp: passported });
 });
 
 router.get('/application_cert_review', function (req, res) {
