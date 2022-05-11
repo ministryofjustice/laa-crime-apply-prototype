@@ -18,6 +18,10 @@ $(document).ready(function () {
 
   // status tags
   $('.not_started, .blocked').find('.govuk-tag').addClass("govuk-tag--grey");
+  $('.not_applicable').find('.govuk-tag').addClass("govuk-tag--grey");
+  $('.not_applicable').find('.app-task-list__task-name').children().css({"color":"grey", "pointer-events":"none", "text-decoration":"none"});
+  $('.eligible').find('.govuk-tag').addClass("govuk-tag--green");
+  $('.eligible').find('.app-task-list__task-name').children().css({"color":"grey", "pointer-events":"none", "text-decoration":"none"});
   $('.in_progress').find('.govuk-tag').addClass("govuk-tag--blue");
 
   $('#clear-search').on('click', function (e) {

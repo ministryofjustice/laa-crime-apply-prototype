@@ -101,7 +101,10 @@ const isBlocked = (dependencies, sections) => {
 const checkPassporting = (data, sections) => {
   _.each(sections, (status, id) => {
     if (passporting.passport(id, data)) {
-      sections[id] = 'completed';
+      sections[id] = 'not_applicable';
+    }
+    if (passporting.passport(id, data) && id == 'check_means_result') {
+      sections[id] = 'eligible';
     }
   });
 

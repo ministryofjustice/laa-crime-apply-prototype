@@ -35,6 +35,8 @@ module.exports = {
     not_started: 'Not started',
     in_progress: 'In progress',
     not_needed: 'Not needed',
+    not_applicable: 'Not applicable',
+    eligible: 'Eligible',
     completed: 'Completed'
   }
 };

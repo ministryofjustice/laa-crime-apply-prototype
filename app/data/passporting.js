@@ -35,7 +35,7 @@ module.exports = {
       return false;
     }
 
-    let means = ['income','capital','check_means_answers','check_means_result'];
+    let means = ['income','capital','check_means_answers','check_means_result', 'evidence'];
     if (!isCrownCourt(data)) {
       means.push('capital');
     }
