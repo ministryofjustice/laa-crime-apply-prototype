@@ -197,7 +197,6 @@ router.get('/client_details_long', function (req, res) {
 router.get('/case_details_confirm', function (req, res) {
   let passported = passporting.isPassported(req.session.data);
 
-  console.log(passported)
   res.render('case_details_confirm', { date_stamp: passported});
 });
 
@@ -308,16 +307,6 @@ router.get('/case_details', function (req, res) {
   offenceIds = utils.filterOffenceIds(req.session.data.offence)
 
   res.render('case_details', { offencesList: offencesList, offenceIds: offenceIds, banner, names });
-});
-
-router.get('/case_details_case_type', function (req, res) {
-
-  res.render('case_details_case_type');
-});
-
-router.post('/case_details_case_type', function (req, res) {
-
-  res.redirect('/case_details_offence');
 });
 
 router.get('/case_details_offence', function (req, res) {
