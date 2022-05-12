@@ -144,6 +144,12 @@ router.get('/dwp_nonpassported', function (req, res) {
   }
 });
 
+router.get('/ioj_passported', function (req, res) {
+  let mvp = req.session.mvp;
+
+  res.render('ioj_passported', { mvp: mvp });
+});
+
 router.get('/sign_in', function (req, res) {
    let injected_id = req.query && req.query.id;
    delete req.session.data;
