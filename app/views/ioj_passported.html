@@ -10,11 +10,7 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-      {% if passported == true %}
-        <form class="form" action="/application_cert_review" method="post">
-      {% else %}
-        <form class="form" action="/tasklist" method="post">
-      {% endif %}
+     <form class="form" action={{ route }} method="post">
       <p>
         <input type="hidden" name="[interests_of_justice][checkpoint]" value="completed">
         <button class="govuk-button button-left" data-module="govuk-button">
