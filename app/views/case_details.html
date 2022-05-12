@@ -11,95 +11,6 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
               <h1 class="govuk-fieldset__heading">
-                Date of the offence
-              </h1>
-            </legend>
-            <div>
-              {% for offenceId in offenceIds -%}
-                <label class="govuk-label" for="offence[{{loop.index - 1}}]">
-                  {{ offencesList[offenceId].B }}
-                </label>
-                <div class="govuk-form-group">
-                  <div id="offence-issued-hint" class="govuk-hint">
-                    For example, 27 3 2007
-                  </div>
-                  <div class="govuk-date-input__item">
-                    <div class="govuk-form-group">
-                      <label class="govuk-label govuk-date-input__label" for="offence-day">
-                        Day
-                      </label>
-                      <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="offence-{{ loop.index }}-day" name="offence-day[{{ loop.index-1 }}]" type="text" pattern="[0-9]*" inputmode="numeric">
-                    </div>
-                  </div>
-                  <div class="govuk-date-input__item">
-                    <div class="govuk-form-group">
-                      <label class="govuk-label govuk-date-input__label" for="offence-month">
-                        Month
-                      </label>
-                      <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="offence-{{ loop.index }}-month" name="offence-month[{{ loop.index-1 }}]" type="text" pattern="[0-9]*" inputmode="numeric">
-                    </div>
-                  </div>
-                  <div class="govuk-date-input__item">
-                    <div class="govuk-form-group">
-                      <label class="govuk-label govuk-date-input__label" for="offence-year">
-                        Year
-                      </label>
-                      <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="offence-{{ loop.index }}-year" name="offence-year[{{ loop.index-1 }}]" type="text" pattern="[0-9]*" inputmode="numeric">
-                    </div>
-                  </div>
-                  {% if loop.index != 1 %}
-                    <div class="govuk-!-padding-bottom-2"></div>
-                    <p><a href="">Same day as above offence</a></p>
-                  {% endif %}
-                </div>
-              {%- endfor %}
-            </div>
-          </fieldset>
-        </div>
-
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              <h1 class="govuk-fieldset__heading">
-                When is the next hearing?
-              </h1>
-            </legend>
-            <div class="govuk-form-group">
-              <div id="next-hearing-hint" class="govuk-hint">
-                For example, 27 3 2007
-              </div>
-              <div class="govuk-date-input__item">
-                <div class="govuk-form-group">
-                  <label class="govuk-label govuk-date-input__label" for="next-hearing-day">
-                    Day
-                  </label>
-                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="next-hearing-day" name="next-hearing-day" type="text" pattern="[0-9]*" inputmode="numeric">
-                </div>
-              </div>
-              <div class="govuk-date-input__item">
-                <div class="govuk-form-group">
-                  <label class="govuk-label govuk-date-input__label" for="next-hearing-month">
-                    Month
-                  </label>
-                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="next-hearing-month" name="next-hearing-month" type="text" pattern="[0-9]*" inputmode="numeric">
-                </div>
-              </div>
-              <div class="govuk-date-input__item">
-                <div class="govuk-form-group">
-                  <label class="govuk-label govuk-date-input__label" for="next-hearing-year">
-                    Year
-                  </label>
-                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="next-hearing-year" name="next-hearing-year" type="text" pattern="[0-9]*" inputmode="numeric">
-                </div>
-              </div>
-            </div>
-          </fieldset>
-        </div>
-
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              <h1 class="govuk-fieldset__heading">
                 Does your client have any co-defendants in this case?
               </h1>
             </legend>
@@ -184,12 +95,12 @@
                       <button type="button" class="govuk-button govuk-button--secondary moj-add-another__remove-button">Remove</button>
                     {%- endfor %}
                   {% endif %}
-                </div>
-                <div class="govuk-!-padding-bottom-2"></div>
-                <div class="moj-button-action">
-                  <button class="govuk-button govuk-button--secondary moj-add-another__add-button" data-module="govuk-button">
-                    Add another defendant
-                  </button>
+                  <div class="govuk-!-padding-bottom-2"></div>
+                  <div class="moj-button-action">
+                    <button class="govuk-button govuk-button--secondary moj-add-another__add-button" data-module="govuk-button">
+                      Add another defendant
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -205,9 +116,48 @@
           </fieldset>
         </div>
 
-        <div>
-          <div class="govuk-!-padding-bottom-2"></div>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h1 class="govuk-fieldset__heading">
+                Date of next court hearing
+              </h1>
+            </legend>
+            <div class="govuk-form-group">
+              <div id="next-hearing-hint" class="govuk-hint">
+                For example, 27 3 2007
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="next-hearing-day">
+                    Day
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="next-hearing-day" name="next-hearing-day" type="text" pattern="[0-9]*" inputmode="numeric">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="next-hearing-month">
+                    Month
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="next-hearing-month" name="next-hearing-month" type="text" pattern="[0-9]*" inputmode="numeric">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="next-hearing-year">
+                    Year
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="next-hearing-year" name="next-hearing-year" type="text" pattern="[0-9]*" inputmode="numeric">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
 
+        <div class="govuk-!-padding-bottom-2"></div>
+
+        <div>
           <h2 class="govuk-heading-m">What happens next</h2>
           <p class="govuk-body">We'll use this information to check if this case needs a justification for legal aid. </p>
         </div>
