@@ -145,9 +145,9 @@ router.get('/dwp_nonpassported', function (req, res) {
 });
 
 router.get('/ioj_passported', function (req, res) {
-  let mvp = req.session.mvp;
+  let passported = passporting.isPassported(req.session.data);
 
-  res.render('ioj_passported', { mvp: mvp });
+  res.render('ioj_passported', { passported: passported });
 });
 
 router.get('/sign_in', function (req, res) {
