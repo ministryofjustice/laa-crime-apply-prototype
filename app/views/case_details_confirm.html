@@ -22,6 +22,11 @@ Apply for legal aid - Client details
               <dd class="govuk-summary-list__value">
                 {{ data['case_details']['URN'] }}
               </dd>
+              <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="/case_details_urn">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+              </dd>
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
@@ -29,6 +34,11 @@ Apply for legal aid - Client details
               </dt>
               <dd class="govuk-summary-list__value">
                 Summary only
+              </dd>
+              <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="/case_details_type">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
               </dd>
             </div>
             <div class="govuk-summary-list__row">
@@ -47,9 +57,22 @@ Apply for legal aid - Client details
                 22 April 2022
               </dd>
             </div>
+          </dl>
+
+          <div class="govuk-!-padding-bottom-4"></div>
+
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              <h2 class="govuk-heading-m">Offence</h2>
+            </div>
+            <div class="govuk-grid-column-one-third">
+              <p><a class="govuk-link" style="float:right;" href="/case_details_offence">Change</a></p>
+            </div>
+          </div>
+          <dl class="govuk-summary-list govuk-!-margin-bottom-6">
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                Offence
+                Offence 1
               </dt>
               <dd class="govuk-summary-list__value">
                 Forgery and misuse of driving documents<br>
@@ -58,32 +81,139 @@ Apply for legal aid - Client details
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                Co-defendants
+                Offence 2
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Attempted murder<br>
+                <p style="color: #b7b7b7;">Class A</p>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Offence 3
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Conspiracy to commit murder<br>
+                <p style="color: #b7b7b7;">Class B</p>
+              </dd>
+            </div>
+          </dl>
+
+          <div class="govuk-!-padding-bottom-4"></div>
+
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              <h2 class="govuk-heading-m">Offence dates</h2>
+            </div>
+            <div class="govuk-grid-column-one-third">
+              <p><a class="govuk-link" style="float:right;" href="/case_details_offence_date">Change</a></p>
+            </div>
+          </div>
+          <dl class="govuk-summary-list govuk-!-margin-bottom-6">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Forgery and misuse of driving documents
+              </dt>
+              <dd class="govuk-summary-list__value">
+                01 January 2022
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Attempted murder
+              </dt>
+              <dd class="govuk-summary-list__value">
+                09 January 2022
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Conspiracy to commit murder
+              </dt>
+              <dd class="govuk-summary-list__value">
+                12 January 2022
+              </dd>
+            </div>
+          </dl>
+
+          <div class="govuk-!-padding-bottom-4"></div>
+
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              <h2 class="govuk-heading-m">Co-defendants</h2>
+            </div>
+            <div class="govuk-grid-column-one-third">
+              <p><a class="govuk-link" style="float:right;" href="/case_details">Change</a></p>
+            </div>
+          </div>
+          <dl class="govuk-summary-list govuk-!-margin-bottom-6">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Co-defendant 1
               </dt>
               <dd class="govuk-summary-list__value">
                 Alex Welsh
-                <br>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Co-defendant 2
+              </dt>
+              <dd class="govuk-summary-list__value">
                 Joe Taylor
               </dd>
             </div>
           </dl>
 
-          <h2 class="govuk-heading-m">Are these details correct?</h2>
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="case_details_confirm-1" name="case_details_confirm" type="radio" value="correct">
-            <label class="govuk-label govuk-radios__label" for="case_details_confirm-1">
-              Yes
-            </label>
-          </div>
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="case_details_confirm-2" name="case_details_confirm" type="radio" value="change">
-            <label class="govuk-label govuk-radios__label" for="case_details_confirm-2">
-              No, I need to change these details
-            </label>
-          </div>
-        </div>
+          <div class="govuk-!-padding-bottom-4"></div>
 
-        <div class="govuk-!-padding-bottom-2"></div>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h1 class="govuk-fieldset__heading">
+                Is there a conflict of interest with a co-defendant?
+              </h1>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <!-- REMEMBER: data-aria-controls -->
+                <input class="govuk-radios__input" id="co_defendants-1" name="co_defendants" type="radio" value="yes" data-aria-controls="conflict-yes" {{ checked("['co_defendants']", "yes") }}>
+                <label class="govuk-label govuk-radios__label" for="co_defendants-1">
+                  Yes
+                </label>
+              </div>
+              <!-- START: CONDITIONAL REVEAL -->
+
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conflict-yes"> <!-- id needs to match data-aria-controls -->
+                <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                      <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="conflict-yes" name="conflict-yes" type="checkbox" value="Alex Welsh">
+                        <label class="govuk-label govuk-checkboxes__label" for="conflict-yes">
+                          Alex Welsh
+                        </label>
+                      </div>
+                      <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="conflict-yes" name="conflict-yes" type="checkbox" value="Joe Taylor">
+                        <label class="govuk-label govuk-checkboxes__label" for="conflict-yes">
+                          Joe Taylor
+                        </label>
+                      </div>
+                    </div>
+              </div>
+            <div class="govuk-form-group">
+              <!-- END: CONDITIONAL REVEAL  -->
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="co_defendants-2" name="co_defendants" type="radio" value="no"  {{ checked("['co_defendants']", "no") }}>
+                <label class="govuk-label govuk-radios__label" for="co_defendants-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+
+        <div class="govuk-!-padding-bottom-4"></div>
 
         <h2 class="govuk-heading-m">What happens next</h2>
         <p class="govuk-body">We'll use this information to check if this case needs a justification for legal aid. </p>
@@ -101,7 +231,5 @@ Apply for legal aid - Client details
       </form>
     </div>
   </div>
-
   <p><a href="/ioj_passported" style="color: #b7b7b7;">If user enters a slipstreamed offence</a></p>
-
 {% endblock %}
