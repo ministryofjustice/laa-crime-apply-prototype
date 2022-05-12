@@ -279,8 +279,7 @@
             <p class="govuk-body">We'll check your client's benefits status with the Department of Work and Pensions (DWP). </p>
           </div>
 
-          {% if mvp == true %}
-          {% else %}
+          {% if mvp == false %}
           <div class="govuk-form-group">
             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
               <div class="govuk-checkboxes__item">
@@ -292,7 +291,7 @@
             </div>
           </div>
           {% endif %}
-          
+
           <button type="submit" class="govuk-button button-left">
             Save and continue
           </button>
