@@ -295,15 +295,20 @@ router.get('/hmrc_record', function (req, res) {
   res.render('hmrc_record');
 });
 
-router.get('/case_details', function (req, res) {
+router.get('/case_details_case_type', function (req, res) {
   let banner = req.query && req.query.banner;
+
+  res.render('case_details_case_type', { banner });
+});
+
+router.get('/case_details', function (req, res) {
   let case_details = req.session.data.case_details || {};
   let names = _.map(case_details.co_defendant_names, name => {
     return name.split(" ");
   });
   offenceIds = utils.filterOffenceIds(req.session.data.offence)
 
-  res.render('case_details', { offencesList: offencesList, offenceIds: offenceIds, banner, names });
+  res.render('case_details', { offencesList: offencesList, offenceIds: offenceIds, names });
 });
 
 router.get('/case_details_offence', function (req, res) {
