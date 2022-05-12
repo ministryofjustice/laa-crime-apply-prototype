@@ -134,14 +134,14 @@
           <div class="govuk-form-group">
             {% if not data['client_details']['client']['address']['address_line_one'] %}
               <label class="govuk-label govuk-label--m">
-                Correspondence address
+                Where should we send correspondence to?
               </label>
               <label class="govuk-label" for="postcode">
                 Postcode
               </label>
-              <div id="postcode-hint" class="govuk-hint">
+              <!-- <div id="postcode-hint" class="govuk-hint">
                 We’ll only use this to send your client correspondence about their legal aid.
-              </div>
+              </div> -->
               <div id="postcode-entry" class="togglePostcode">
                 <div class="govuk-form-group">
                   <input class="govuk-input govuk-input--width-10" id="postcode" name="postcode" type="text" value="{{ data['postcode'] }}">
@@ -180,7 +180,7 @@
               <details class="govuk-details" data-module="govuk-details">
                 <summary class="govuk-details__summary">
                   <span class="govuk-details__summary-text togglePostcode" id="address-manual">
-                    Enter your client's correspondence address manually
+                    Enter the correspondence address manually
                   </span>
                   <span class="govuk-details__summary-text govuk-visually-hidden togglePostcode" id="address-not-listed">
                     I can't find the address in the list
@@ -270,7 +270,7 @@
                     No
                   </label>
                 </div>
-              </div> 
+              </div>
             </div>
 
             <div class="govuk-!-padding-bottom-2"></div>
