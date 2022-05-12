@@ -14,10 +14,15 @@
                 <label class="govuk-label" for="offence[{{loop.index - 1}}]">
                   {{ offencesList[offenceId].B }}
                 </label>
+                <div id="offence-issued-hint" class="govuk-hint">
+                  For example, 27 3 2007
+                </div>
+
+                <div data-module="moj-add-another">
+                  <form method="post">
+                    <fieldset class="govuk-fieldset moj-add-another__item">
                 <div class="govuk-form-group">
-                  <div id="offence-issued-hint" class="govuk-hint">
-                    For example, 27 3 2007
-                  </div>
+                  <div>
                   <div class="govuk-date-input__item">
                     <div class="govuk-form-group">
                       <label class="govuk-label govuk-date-input__label" for="offence-day">
@@ -42,11 +47,21 @@
                       <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="offence-{{ loop.index }}-year" name="offence-year[{{ loop.index-1 }}]" type="text" pattern="[0-9]*" inputmode="numeric">
                     </div>
                   </div>
+                  <a href="">Add a date range</a>
+                  </div>
                   {% if loop.index != 1 %}
                     <div class="govuk-!-padding-bottom-2"></div>
                     <p><a href="">Same day as above offence</a></p>
                   {% endif %}
                 </div>
+              </fieldset>
+              <div class="moj-button-action">
+                <button class="govuk-button govuk-button--secondary moj-add-another__add-button govuk-!-margin-bottom-4" data-module="govuk-button">
+                  Add another date
+                </button>
+              </div>
+            </form>
+          </div>
               {%- endfor %}
             </div>
           </fieldset>
