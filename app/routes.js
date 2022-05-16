@@ -42,7 +42,7 @@ router.get('/tasklist/:id', async (req, res, next) => {
       }
     }
 
-    let status = statusCheck(req.session.data, validators);
+    let status = statusCheck(req.session, validators);
     status.sidemenu = utils.sidemenu(req);
 
     res.render('tasklist', status);
@@ -52,7 +52,7 @@ router.get('/tasklist/:id', async (req, res, next) => {
 });
 
 router.get('/tasklist', function (req, res) {
-  let status = statusCheck(req.session.data, validators);
+  let status = statusCheck(req.session, validators);
   status.sidemenu = utils.sidemenu(req);
 
   res.render('tasklist', status);
@@ -89,8 +89,6 @@ router.get('/start_page', function (req, res) {
 });
 
 router.post('/dwp_nonpassported', function (req, res) {
-  let mvp = req.session.mvp;
-
   let isDwpCorrect = req.session.data['not-passported'];
 
   if (isDwpCorrect == "no") {
