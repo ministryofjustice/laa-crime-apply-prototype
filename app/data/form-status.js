@@ -3,8 +3,8 @@ const settings = require('./form-settings');
 const passporting = require('./passporting');
 
 class SectionStatus {
-  constructor(section, session, validator) {
-    this.data = session.data || {};
+  constructor(section, data, validator) {
+    this.data = data || {};
     this.section = section;
     this.validator = validator;
     this.values = this.getValues();
@@ -75,13 +75,11 @@ class SectionStatus {
   }
 }
 
-const checkDependencies = (data, sections) => {
-  let isPassported = passporting.isPassported(data.data);
-  let isMvp = data.mvp
+const checkDependencies = (session, sections) => {
+  let isMvp = session.mvp
 
   return _.mapValues(sections, (status, id) => {
-    if (isMvp || isPassported) {settings.dependencies["evidence"] = ["mvp"]}
-
+    if (isMvp) {settings.dependencies['evidence'] = ['capital']}
     let dependencies = settings.dependencies[id] || [];
     if (isBlocked(dependencies, sections)) {
       return 'blocked';
@@ -122,10 +120,10 @@ const progressCheck = (data, validators) => {
   });
 }
 
-module.exports = (data, validators) => {
-  let sections = progressCheck(data, validators);
-  sections = checkDependencies(data, sections);
-  sections = checkPassporting(data, sections);
+module.exports = (session, validators) => {
+  let sections = progressCheck(session.data, validators);
+  sections = checkDependencies(session, sections);
+  sections = checkPassporting(session.data, sections);
   let statuses = _.mapValues(sections, status => {
     return {
       label: settings.statuses[status],
