@@ -13,10 +13,9 @@
 {% endblock %}
 
 {% block content %}
-  {% include "includes/date-stamp-banner.html" %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-
+      {% include "includes/date-stamp-banner.html" %}
     <h1 class="govuk-heading-xl">What has your client been charged with?</h1>
 
     <form class="form" action="/case_details_offence_date" method="post">

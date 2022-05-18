@@ -42,7 +42,7 @@ router.get('/tasklist/:id', async (req, res, next) => {
       }
     }
 
-    let status = statusCheck(req.session.data, validators);
+    let status = statusCheck(req.session, validators);
     status.sidemenu = utils.sidemenu(req);
 
     res.render('tasklist', status);
@@ -52,7 +52,7 @@ router.get('/tasklist/:id', async (req, res, next) => {
 });
 
 router.get('/tasklist', function (req, res) {
-  let status = statusCheck(req.session.data, validators);
+  let status = statusCheck(req.session, validators);
   status.sidemenu = utils.sidemenu(req);
 
   res.render('tasklist', status);
@@ -89,8 +89,6 @@ router.get('/start_page', function (req, res) {
 });
 
 router.post('/dwp_nonpassported', function (req, res) {
-  let mvp = req.session.mvp;
-
   let isDwpCorrect = req.session.data['not-passported'];
 
   if (isDwpCorrect == "no") {
@@ -296,14 +294,23 @@ router.get('/hmrc_record', function (req, res) {
 });
 
 router.get('/case_details_offence_date', function (req, res) {
+    res.render('case_details_offence_date', { offencesList: offencesList, offenceIds: offenceIds, banner, names });
+});
+  
+router.get('/case_details_case_type', function (req, res) {
   let banner = req.query && req.query.banner;
+
+  res.render('case_details_case_type', { banner });
+});
+
+router.get('/case_details', function (req, res) {
   let case_details = req.session.data.case_details || {};
   let names = _.map(case_details.co_defendant_names, name => {
     return name.split(" ");
   });
   offenceIds = utils.filterOffenceIds(req.session.data.offence)
 
-  res.render('case_details_offence_date', { offencesList: offencesList, offenceIds: offenceIds, banner, names });
+  res.render('case_details', { offencesList: offencesList, offenceIds: offenceIds, names });
 });
 
 router.get('/case_details_offence', function (req, res) {
