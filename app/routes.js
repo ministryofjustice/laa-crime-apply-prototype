@@ -293,6 +293,10 @@ router.get('/hmrc_record', function (req, res) {
   res.render('hmrc_record');
 });
 
+router.get('/case_details_offence_date', function (req, res) {
+    res.render('case_details_offence_date', { offencesList: offencesList, offenceIds: offenceIds, banner, names });
+});
+  
 router.get('/case_details_case_type', function (req, res) {
   let banner = req.query && req.query.banner;
 
