@@ -1,87 +1,51 @@
 {% extends "layout.html" %}
 
 {% block content %}
-
-
-<style media="screen">
-.govuk-checkboxes--small .govuk-checkboxes__label::before{
-  /*top: 10px;
-  left: 9px;
-  width: 24px;
-  height: 24px;*/
-}
-.govuk-checkboxes--small .govuk-checkboxes__label{
-  padding-left: 30px;
-  padding-top: 4px;
-  padding-bottom: 0px;
+<style>
+.app-task-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  @include govuk-media-query($from: tablet) {
+    min-width: 550px;
+  }
 }
 
-.moj-badge{
-  text-transform: none;
-  font-size: 16px;
-  letter-spacing: 0.5px;
+.app-task-list__section {
+  display: table;
+  @include govuk-font($size:24, $weight: bold);
 }
 
-table .govuk-tag {
-  white-space: nowrap;
-  color: white;
-  background-color: #85994b;
-  border: 2px solid #85994b;
-  font-weight: 700;
-  font-size: 16px;
-  text-transform: none;
-}
-.inprogress{
-  background-color: #005ea5 !important;
-  border-color: #005ea5 !important;
-}
-.granted{
-  background-color: #0b0c0c !important;
-  border-color: #0b0c0c !important;
+.app-task-list__section-number {
+  display: table-cell;
+
+  @include govuk-media-query($from: tablet) {
+    min-width: govuk-spacing(6);
+    padding-right: 0;
+  }
 }
 
-.col_bespoke{
-  width:auto;
+.app-task-list__items {
+  @include govuk-font($size: 19);
+  @include govuk-responsive-margin(9, "bottom");
+  list-style: none;
+  padding-left: 0;
+  @include govuk-media-query($from: tablet) {
+    padding-left: govuk-spacing(6);
+  }
 }
-.govuk-table__header{
-  color: #0b0c0c;
-  /*background-color: #dee0e2;*/
-  background-color: #f3f2f1;
-  border: 1px solid #bfc1c3;
-  box-shadow: 0 2px 0 #b5babe;
-  padding-left: 10px;
-  text-align: left;
-  font-weight: 100;
+
+.app-task-list__item {
+  border-bottom: 1px solid $govuk-border-colour;
+  margin-bottom: 0 !important;
+  padding-top: govuk-spacing(2);
+  padding-bottom: govuk-spacing(2);
+  @include govuk-clearfix;
 }
-.th_bespoke{
-  padding-right: 15px;
-  position: relative;
-}
-.th_bespoke::before{
-  /*down*/
-  content:" \25bc";
-  position: absolute;
-  right: -1px;
-  top: 11px;
-  font-size: 0.6em;
-}
-.th_bespoke::after{
-  /*up*/
-  content:" \25b2";
-  position: absolute;
-  right: -1px;
-  top: 1px;
-  font-size: 0.6em;
-}
-.th_bespoke_hover:hover{
-  background-color: #c8cacb;
-  cursor:pointer;
-}
-.govuk-table__head{
-  position: relative;
-}
-.govuk-table__cell{
-  padding-left: 10px;
+
+.govuk-button {
+  margin: 10px;
 }
 
 </style>
@@ -114,42 +78,37 @@ table .govuk-tag {
 
   <!-- <div class="govuk-!-padding-top-3"></div> -->
     <div class="govuk-grid-column-full">
-      <table class="govuk-table">
+      <table class="govuk-table" data-module="moj-sortable-table">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
-            <th class="govuk-table__header th_bespoke_hover col_bespoke" scope="col"><span class="th_bespoke">Name</span></th>
-            <th class="govuk-table__header th_bespoke_hover col_bespoke" scope="col"><span class="th_bespoke">Start date</span></th>
-            <th class="govuk-table__header th_bespoke_hover" style="width:auto" scope="col"><span class="th_bespoke">LAA reference</span></th>
-            <th class="govuk-table__header th_bespoke_hover col_bespoke govuk-table__cell--numeric"  scope="col" style="padding-right:10px !important; text-align:right !important"><span  class="th_bespoke">Status</span></th>
-            <th class="govuk-table__header th_bespoke_hover col_bespoke govuk-table__cell--numeric"  scope="col" style="padding-right:10px !important; text-align:right !important"><span  class="th_bespoke">Action</span></th>
+            <th scope="col" class="govuk-table__header" aria-sort="ascending">Name</th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">Start date</th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">LAA reference</th>
+            <th scope="col" class="govuk-table__header" aria-sort="none" scope="col">Status</th>
+            <th scope="col" class="govuk-table__header" aria-sort="none" scope="col">Action</th>
           </tr>
         </thead>
 
-        <tbody class="govuk-table__body">
+        <tbody class="govuk-table__body app-task-list__items">
           {% for application in applications -%}
-          <tr class="govuk-table__row">
+          <tr class="govuk-table__row app-task-list__item">
+            <td><a href="/tasklist/{{ application.id }}">{{ application.name }}</a></td>
+            <td>{{ application.date }}</td>
+            <td>{{ application.reference }}</td>
             {% if application.status == 'completed' %}
-              <td class="govuk-table__cell"><a href="/application_certificate/{{ application.id }}">{{ application.name }}</a></td>
-            {% else %}
-              <td class="govuk-table__cell"><a href="/tasklist/{{ application.id }}">{{ application.name }}</a></td>
-            {% endif %}
-            <td class="govuk-table__cell">{{ application.date }}</td>
-            <td class="govuk-table__cell">{{ application.reference }}</td>
-            <!-- <td class="govuk-table__cell">Substantive</td> -->
-            {% if application.status == 'completed' %}
-              <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="moj-badge moj-badge--green">
+              <td><strong class="govuk-tag govuk-tag--green">
                 Submitted
               </strong></td>
             {% elif application.status == 'updated' %}
-              <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="moj-badge moj-badge--red">
+              <td><strong class="govuk-tag">
                 Amended
               </strong></td>
             {% else %}
-              <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="moj-badge moj-badge--blue">
+              <td><strong class="govuk-tag govuk-tag--blue">
                 In progress
               </strong></td>
             {% endif %}
-            <td class="govuk-table__cell">
+            <td>
               <a href="/delete/{{ application.id }}" class="govuk-button govuk-button--secondary">Delete</a>
             </td>
           </tr>
