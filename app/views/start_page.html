@@ -15,9 +15,11 @@
             <li>get a provisional means assessment result </li>
           </ul> -->
 
+          {% if mvp == false %}
           <div class="govuk-inset-text">
             <p>This guide is also available <a href="">in Welsh (Cymraeg)</a>.</p>
           </div>
+          {% endif %}
 
         <h2 class="govuk-heading-m">Before you start</h2>
         <p class="govuk-body">You can only use this service to apply for an ongoing case where your client:</p>
@@ -29,8 +31,6 @@
         </ul>
 
         <p class="govuk-body">Use <a href="#">eForms</a> for all other applications.</p>
-
-
 
         <a href="/account_number" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
           Start now
