@@ -16,21 +16,6 @@
     }
   </style>
 
-  {% if date_stamp %}
-    <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-      <div class="govuk-notification-banner__header">
-        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-          Success
-        </h2>
-      </div>
-      <div class="govuk-notification-banner__content">
-        <h3 class="govuk-notification-banner__heading">
-          Your application has been date stamped
-        </h3>
-      </div>
-    </div>
-  {% endif %}
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <div>
@@ -174,8 +159,8 @@
               Indictable
             {% elif data['case_details']['case_type'] == 'already_in_crown_court' %}
               Trial already in Crown Court
-            {% elif data['case_details']['case_type'] == 'commital' %}
-              Commital for sentence
+            {% elif data['case_details']['case_type'] == 'committal' %}
+              Committal for sentence
             {% endif %}
           </dd>
         </div>

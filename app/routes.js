@@ -42,7 +42,7 @@ router.get('/tasklist/:id', async (req, res, next) => {
       }
     }
 
-    let status = statusCheck(req.session.data, validators);
+    let status = statusCheck(req.session, validators);
     status.sidemenu = utils.sidemenu(req);
 
     res.render('tasklist', status);
@@ -52,12 +52,8 @@ router.get('/tasklist/:id', async (req, res, next) => {
 });
 
 router.get('/tasklist', function (req, res) {
-  let status = statusCheck(req.session.data, validators);
+  let status = statusCheck(req.session, validators);
   status.sidemenu = utils.sidemenu(req);
-
-  let iojStatus = _.get(status.sections, 'interests_of_justice.key');
-  let passported = passporting.isPassported(req.session.data);
-  status.date_stamp = (iojStatus == 'completed' && !passported) ? true : false;
 
   res.render('tasklist', status);
 });
@@ -93,8 +89,6 @@ router.get('/start_page', function (req, res) {
 });
 
 router.post('/dwp_nonpassported', function (req, res) {
-  let mvp = req.session.mvp;
-
   let isDwpCorrect = req.session.data['not-passported'];
 
   if (isDwpCorrect == "no") {
@@ -130,7 +124,7 @@ router.get('/dwp_passported', function (req, res) {
   if (outOfScope) {
     res.redirect('/eforms_redirect');
   } else {
-    res.render('dwp_passported');
+    res.render('dwp_passported', { mvp: mvp });
   }
 });
 
@@ -142,6 +136,18 @@ router.get('/dwp_nonpassported', function (req, res) {
     _.set(req.session.data, 'means_assessment.benefits_status.passported', false);
     res.render('dwp_nonpassported');
   }
+});
+
+router.get('/ioj_passported', function (req, res) {
+  let passported = passporting.isPassported(req.session.data);
+  var route
+  if (passported) {
+    route = "/application_cert_review"
+  } else {
+    route = "/tasklist"
+  }
+
+  res.render('ioj_passported', { route: route });
 });
 
 router.get('/sign_in', function (req, res) {
@@ -182,11 +188,19 @@ router.get('/client_details_long', function (req, res) {
   res.render('client_details_long', { mvp: mvp });
 });
 
+router.get('/case_details_confirm', function (req, res) {
+  let caseType = req.session.data['case_details']['case_type']
+  let dateStamp = utils.dateStampApplicable(caseType)
+
+  res.render('case_details_confirm', { date_stamp: dateStamp});
+});
+
 router.post('/case_details_confirm', function (req, res, next) {
   let origin = req.session.data['origin'];
   if (origin == 'case_details_urn') {
     delete req.session.data['origin'];
     req.session.data['case_details_type'] = 'urn';
+    res.redirect('case_details_confirm')
     return next();
   }
 
@@ -279,26 +293,64 @@ router.get('/hmrc_record', function (req, res) {
   res.render('hmrc_record');
 });
 
-router.get('/case_details', function (req, res) {
+router.get('/case_details_offence_date', function (req, res) {
+    res.render('case_details_offence_date', { offencesList: offencesList, offenceIds: offenceIds, banner, names });
+});
+  
+router.get('/case_details_case_type', function (req, res) {
   let banner = req.query && req.query.banner;
+
+  res.render('case_details_case_type', { banner });
+});
+
+router.get('/case_details', function (req, res) {
   let case_details = req.session.data.case_details || {};
   let names = _.map(case_details.co_defendant_names, name => {
     return name.split(" ");
   });
   offenceIds = utils.filterOffenceIds(req.session.data.offence)
 
-  res.render('case_details', { offencesList: offencesList, offenceIds: offenceIds, banner, names });
+  res.render('case_details', { offencesList: offencesList, offenceIds: offenceIds, names });
 });
 
 router.get('/case_details_offence', function (req, res) {
+  let caseType = req.session.data['case_details']['case_type']
+  let dateStamp = utils.dateStampApplicable(caseType)
 
-  res.render('case_details_offence', { offences: offencesList });
+  res.render('case_details_offence', { offences: offencesList, date_stamp: dateStamp });
 });
 
 router.get('/application_cert_review', function (req, res) {
-  let passported = passporting.isPassported(req.session.data);
   let date = utils.constructDate(req.session.data.dob);
-  res.render('application_cert_review', { date_of_birth: utils.formatDate(date), date_stamp: passported });
+  res.render('application_cert_review', { date_of_birth: utils.formatDate(date) });
+});
+
+router.get('/application_certificate/:id', async (req, res, next) => {
+  try {
+    let id = req.params && req.params.id;
+    
+    if (id) {
+      let dataUrl = applicationsApiUrl + '/' + id;
+      let response = await fetch(dataUrl);
+      let data = utils.parseItemResponse(response);
+
+      if (data) {
+        req.session.data = data
+      }
+    }
+    let date_of_birth = utils.formatDate(req.session.data.client_details.client.date_of_birth);
+    let laa_ref = 'LAA-' + id.substring(1, 7)
+
+    res.render('application_certificate', { date_of_birth: date_of_birth, laa_ref: laa_ref } );
+  } catch (err) {
+    return next(err);
+  }
+});
+
+router.get('/application_certificate', function (req, res) {
+  let date = utils.constructDate(req.session.data.dob);
+
+  res.render('application_certificate', {date_of_birth: utils.formatDate(date), laa_ref: "LAA-7dhv2e"})
 });
 
 router.post('/confirm_the_following', async (req, res, next) => {

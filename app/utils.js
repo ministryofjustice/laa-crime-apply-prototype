@@ -108,6 +108,10 @@ const utils = {
    req.session.data.check_means_result = { 'checkpoint': 'completed' };
    return;
   },
+  dateStampApplicable: (caseType) => {
+    let dateStampCaseTypes = ['summary_only', 'either_way', 'committal', 'appeal','appeal-with-changes']
+    return dateStampCaseTypes.includes(caseType) ? true : false
+  }
 };
 
 module.exports = utils;

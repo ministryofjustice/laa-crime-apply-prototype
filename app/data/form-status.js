@@ -76,8 +76,12 @@ class SectionStatus {
 
 }
 
-const checkDependencies = (sections) => {
+const checkDependencies = (session, sections) => {
+  let isMvp = session.mvp
+
   return _.mapValues(sections, (status, id) => {
+    if (isMvp) {settings.dependencies['evidence'] = ['capital']}
+
     let dependencies = settings.dependencies[id] || [];
     if (isBlocked(dependencies, sections)) {
       return 'blocked';
@@ -101,7 +105,10 @@ const isBlocked = (dependencies, sections) => {
 const checkPassporting = (data, sections) => {
   _.each(sections, (status, id) => {
     if (passporting.passport(id, data)) {
-      sections[id] = 'completed';
+      sections[id] = 'not_applicable';
+    }
+    if (passporting.passport(id, data) && id == 'check_means_result') {
+      sections[id] = 'eligible';
     }
   });
 
@@ -115,10 +122,10 @@ const progressCheck = (data, validators) => {
   });
 }
 
-module.exports = (data, validators) => {
-  let sections = progressCheck(data, validators);
-  sections = checkDependencies(sections);
-  sections = checkPassporting(data, sections);
+module.exports = (session, validators) => {
+  let sections = progressCheck(session.data, validators);
+  sections = checkDependencies(session, sections);
+  sections = checkPassporting(session.data, sections);
 
   let statuses = _.mapValues(sections, status => {
     return {

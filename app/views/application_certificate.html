@@ -23,8 +23,8 @@
           Application for criminal legal aid certificate
         </h1>
 
-        <p>Client: <strong>Sam Doe</strong>
-          <br>LAA reference: <strong>L-23A-56D</strong>
+        <p>Client: <strong>{{ data['client_details']['client']['first_name'] + " " + data['client_details']['client']['last_name'] }}</strong>
+          <br>LAA reference: <strong>{{ laa_ref }}</strong>
           <br>Date stamp: <strong>22 April 2022 2:45pm</strong>
         </p>
         <a href="print_view" role="button" class="govuk-button">
@@ -163,8 +163,8 @@
                 Indictable
               {% elif data['case_details']['case_type'] == 'already_in_crown_court' %}
                 Trial already in Crown Court
-              {% elif data['case_details']['case_type'] == 'commital' %}
-                Commital for sentence
+              {% elif data['case_details']['case_type'] == '' %}
+                Committal for sentence
               {% endif %}
             </dd>
           </div>
