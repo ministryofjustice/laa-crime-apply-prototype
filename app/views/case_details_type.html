@@ -88,11 +88,10 @@
           </fieldset>
         </div>
 
-      <form class="form inline-form" action="/case_details_offence" method="post">
-        <input type="hidden" name="[case_details][checkpoint]" value="completed">
-        <button type="submit" class="govuk-button button-left">Save and continue
-        </button>
-      </form>
+        <form class="form inline-form" action="/tasklist" method="post">
+          <input type="hidden" name="[case_details][checkpoint]" value="completed">
+          <button class="govuk-button" data-module="govuk-button">Save and come back later</button>
+        </form>
 
     </div>
   </div>
