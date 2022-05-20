@@ -294,7 +294,8 @@ router.get('/hmrc_record', function (req, res) {
 });
 
 router.get('/case_details_offence_date', function (req, res) {
-    res.render('case_details_offence_date', { offencesList: offencesList, offenceIds: offenceIds, banner, names });
+  offenceIds = utils.filterOffenceIds(req.session.data.offence)
+  res.render('case_details_offence_date', { offencesList: offencesList, offenceIds: offenceIds });
 });
   
 router.get('/case_details_case_type', function (req, res) {
@@ -308,9 +309,8 @@ router.get('/case_details', function (req, res) {
   let names = _.map(case_details.co_defendant_names, name => {
     return name.split(" ");
   });
-  offenceIds = utils.filterOffenceIds(req.session.data.offence)
 
-  res.render('case_details', { offencesList: offencesList, offenceIds: offenceIds, names });
+  res.render('case_details', {  names });
 });
 
 router.get('/case_details_offence', function (req, res) {
