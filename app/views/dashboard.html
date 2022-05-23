@@ -92,7 +92,11 @@
         <tbody class="govuk-table__body app-task-list__items">
           {% for application in applications -%}
           <tr class="govuk-table__row app-task-list__item">
-            <td><a href="/tasklist/{{ application.id }}">{{ application.name }}</a></td>
+            {% if application.status == 'completed' %}
+              <td class="govuk-table__cell"><a href="/application_certificate/{{ application.id }}">{{ application.name }}</a></td>
+            {% else %}
+              <td class="govuk-table__cell"><a href="/tasklist/{{ application.id }}">{{ application.name }}</a></td>
+            {% endif %}            
             <td>{{ application.date }}</td>
             <td>{{ application.reference }}</td>
             {% if application.status == 'completed' %}
