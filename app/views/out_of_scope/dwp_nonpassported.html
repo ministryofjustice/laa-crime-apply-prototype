@@ -10,7 +10,7 @@
         <header>
           <h1 class="govuk-heading-l">DWP records show that your client does not receive a passporting benefit – is this correct?</h1>
         </header>
-        <form action="/dwp_nonpassported" method="post" class="form">
+        <form action="/out_of_scope/dwp_nonpassported" method="post" class="form">
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios" data-module="govuk-radios">
                 <div class="govuk-radios__item">
@@ -20,6 +20,16 @@
                     Yes
                   </label>
                 </div>
+                <!-- START: CONDITIONAL REVEAL -->
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-yes"> <!-- id needs to match data-aria-controls -->
+                  <div class="govuk-form-group">
+                    <label style="color: #fff;" class="govuk-label" for="not-passported-1">
+                      We'll check your client's details with HM Revenue and Customs (HMRC). You'll need to review your client's employment details later on.
+                    </label>
+                  </div>
+                </div>
+                <div class="govuk-form-group">
+                <!-- END: CONDITIONAL REVEAL  -->
               <div class="govuk-radios__item">
                  <input class="govuk-radios__input" id="not-passported-2" name="not-passported" type="radio" value="no">
                  <label style="color: #fff;" class="govuk-label govuk-radios__label" for="not-passported-2">

@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="flash-card">
+  <header>
+    <h1 class="govuk-heading-l">Based on the offence details you provided, you do not need to enter further justification for legal aid</h1>
+    <h2 class="govuk-label">You still need to provide details of your client’s finances before legal aid can be granted</h2>
+  </header>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+     <form class="form" action="/out_of_scope/tasklist" method="post">
+      <p>
+        <input type="hidden" name="[interests_of_justice][checkpoint]" value="completed">
+        <button class="govuk-button button-left" data-module="govuk-button">
+          Save and continue
+        </button>
+      </p>
+      </form>
+      <form class="form inline-form" action="/tasklist" method="post">
+        <input type="hidden" name="[interests_of_justice][checkpoint]" value="completed">
+        <button class="govuk-button" data-module="govuk-button">Save and come back later</button>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

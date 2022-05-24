@@ -30,7 +30,7 @@
             <h2 class="govuk-heading-m">Client details</h2>
           </div>
           <div class="govuk-grid-column-one-third">
-            <p><a class="govuk-link" style="float:right;" href="/client_details_long">Change</a></p>
+            <p><a class="govuk-link" style="float:right;" href="/out_of_scope/client_details_long">Change</a></p>
           </div>
         </div>
 
@@ -160,7 +160,7 @@
               {{ data['case_details']['URN'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/case_details_urn">
+              <a class="govuk-link" href="/out_of_scope/case_details_urn">
                 Change<span class="govuk-visually-hidden"> name</span>
               </a>
             </dd>
@@ -183,7 +183,7 @@
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/case_details_case_type">
+              <a class="govuk-link" href="/out_of_scope/case_details_case_type">
                 Change<span class="govuk-visually-hidden"> name</span>
               </a>
             </dd>
@@ -196,7 +196,7 @@
               {{ next_hearing_day }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/case_details">
+              <a class="govuk-link" href="/out_of_scope/case_details">
                 Change<span class="govuk-visually-hidden"> name</span>
               </a>
             </dd>
@@ -210,7 +210,7 @@
             <h2 class="govuk-heading-m">Offence </h2>
           </div>
           <div class="govuk-grid-column-one-third">
-            <p><a class="govuk-link" style="float:right;" href="/case_details_offence">Change</a></p>
+            <p><a class="govuk-link" style="float:right;" href="/out_of_scope/case_details_offence">Change</a></p>
           </div>
         </div>
 
@@ -237,7 +237,7 @@
           <h2 class="govuk-heading-m">Offence dates</h2>
         </div>
         <div class="govuk-grid-column-one-third">
-          <p><a class="govuk-link" style="float:right;" href="/case_details_offence_date">Change</a></p>
+          <p><a class="govuk-link" style="float:right;" href="/out_of_scope/case_details_offence_date">Change</a></p>
         </div>
       </div>
 
@@ -259,7 +259,7 @@
         <h2 class="govuk-heading-m">Co-defendants</h2>
       </div>
       <div class="govuk-grid-column-one-third">
-        <p><a class="govuk-link" style="float:right;" href="/case_details">Change</a></p>
+        <p><a class="govuk-link" style="float:right;" href="/out_of_scope/case_details">Change</a></p>
       </div>
     </div>
 
@@ -283,7 +283,7 @@
           <h2 class="govuk-heading-m">Interests of Justice</h2>
         </div>
         <div class="govuk-grid-column-one-third">
-          <p><a class="govuk-link" style="float:right;" href="/ioj">Change</a></p>
+          <p><a class="govuk-link" style="float:right;" href="/out_of_scope/ioj">Change</a></p>
         </div>
       </div>
 
@@ -345,7 +345,7 @@
     <!-- <a role="button" href="/print_view" target="_blank" style="margin-left:" class="govuk-button govuk-button--secondary">Print application</a> -->
 
     <p></p>
-    <form action="/confirm_the_following" method="post" novalidate>
+    <form action="/out_of_scope/confirm_the_following" method="post" novalidate>
       <input type="hidden" name="[review][checkpoint]" value="completed">
       <button type="submit" class="govuk-button button-left">
         Save and continue

@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="dashboard" method="post" class="form">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                Select the account number of the office handling this application
+              </h1>
+            </legend>
+
+            <div class="govuk-!-padding-top-4"></div>
+
+            <div class="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="office-1" name="account-number-correct" type="radio" value="0B721W" {{ checked("office","0B721W") }}>
+                <label class="govuk-label govuk-radios__label" for="office">
+                  0B721W
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="office-2" name="account-number-correct" type="radio" value="2N078D" {{ checked("office","2N078D") }}>
+                <label class="govuk-label govuk-radios__label" for="office">
+                  2N078D
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <button type="submit" class="govuk-button">
+          Save and continue
+        </button>
+
+        <a href="tasklist" role="button" style="margin-left: 15px;" class="govuk-button govuk-button--secondary">
+          Save and come back later
+        </a>
+      </form>
+    </div>
+  </div>
+{% endblock %}

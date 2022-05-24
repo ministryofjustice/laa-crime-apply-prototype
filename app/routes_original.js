@@ -29,15 +29,6 @@ router.post('/account_number_answer', function (req, res) {
   }
 });
 
-router.post('/out_of_scope/account_number_answer', function (req, res) {
-  let accountNumberCorrect = req.session.data['account-number-correct']
-  if (accountNumberCorrect == "yes"){
-    res.redirect('/out_of_scope/dashboard')
-  } else {
-    res.redirect('/out_of_scope/account_number_select')
-  }
-});
-
 router.get('/tasklist/:id', async (req, res, next) => {
   try {
     let id = req.params && req.params.id;
@@ -103,17 +94,7 @@ router.post('/dwp_nonpassported', function (req, res) {
   if (isDwpCorrect == "no") {
     res.redirect('/benefit_checker_confirm');
   } else {
-    res.redirect('/eforms_redirect');
-  }
-});
-
-router.post('/out_of_scope/dwp_nonpassported', function (req, res) {
-  let isDwpCorrect = req.session.data['not-passported'];
-
-  if (isDwpCorrect == "no") {
-    res.redirect('/out_of_scope/benefit_checker_confirm');
-  } else {
-    res.redirect('/out_of_scope/tasklist');
+    res.redirect('/tasklist');
   }
 });
 
@@ -121,15 +102,6 @@ router.post('/dwp_passported', function (req, res, next) {
   let nonPassported = req.session.data['goto-non-passported'];
   if (nonPassported == 'yes') {
     res.redirect('/dwp_nonpassported');
-  } else {
-    return next();
-  }
-});
-
-router.post('/out_of_scope/dwp_passported', function (req, res, next) {
-  let nonPassported = req.session.data['goto-non-passported'];
-  if (nonPassported == 'yes') {
-    res.redirect('/out_of_scope/dwp_nonpassported');
   } else {
     return next();
   }
@@ -156,15 +128,15 @@ router.get('/dwp_passported', function (req, res) {
   }
 });
 
-// router.get('/dwp_nonpassported', function (req, res) {
-//   let mvp = req.session.mvp;
-//   if (mvp) {
-//     res.redirect('/eforms_redirect');
-//   } else {
-//     _.set(req.session.data, 'means_assessment.benefits_status.passported', false);
-//     res.render('dwp_nonpassported');
-//   }
-// });
+router.get('/dwp_nonpassported', function (req, res) {
+  let mvp = req.session.mvp;
+  if (mvp) {
+    res.redirect('/eforms_redirect');
+  } else {
+    _.set(req.session.data, 'means_assessment.benefits_status.passported', false);
+    res.render('dwp_nonpassported');
+  }
+});
 
 router.get('/ioj_passported', function (req, res) {
   let passported = passporting.isPassported(req.session.data);
@@ -195,17 +167,7 @@ router.post('/benefit_checker_confirm', function (req, res) {
   if (clientDetailsCorrect == "no") {
     res.redirect('/client_details_long');
   } else {
-    res.redirect('/eforms_redirect');
-  }
-});
-
-router.post('/out_of_scope/benefit_checker_confirm', function (req, res) {
-  let clientDetailsCorrect = req.session.data['client-details-correct'];
-
-  if (clientDetailsCorrect == "no") {
-    res.redirect('/out_of_scope/client_details_long');
-  } else {
-    res.redirect('/out_of_scope/benefit_checker_select');
+    res.redirect('/benefit_checker_select');
   }
 });
 
@@ -217,17 +179,6 @@ router.post('/benefit_checker_select', function (req, res) {
   } else {
     req.session.data['means_assessment']['benefits_status']['passported'] = true;
     res.redirect('/benefit_checker_evidence');
-  }
-});
-
-router.post('/out_of_scope/benefit_checker_select', function (req, res) {
-  let benefits = req.session.data['passporting-benefit'];
-  if (benefits == "none") {
-    req.session.data['means_assessment']['benefits_status']['passported'] = false;
-    res.redirect('/out_of_scope/case_details_urn');
-  } else {
-    req.session.data['means_assessment']['benefits_status']['passported'] = true;
-    res.redirect('/out_of_scope/benefit_checker_evidence');
   }
 });
 
@@ -346,7 +297,7 @@ router.get('/case_details_offence_date', function (req, res) {
   offenceIds = utils.filterOffenceIds(req.session.data.offence)
   res.render('case_details_offence_date', { offencesList: offencesList, offenceIds: offenceIds });
 });
-
+  
 router.get('/case_details_case_type', function (req, res) {
   let banner = req.query && req.query.banner;
 
@@ -377,7 +328,7 @@ router.get('/application_cert_review', function (req, res) {
 router.get('/application_certificate/:id', async (req, res, next) => {
   try {
     let id = req.params && req.params.id;
-
+    
     if (id) {
       let dataUrl = applicationsApiUrl + '/' + id;
       let response = await fetch(dataUrl);

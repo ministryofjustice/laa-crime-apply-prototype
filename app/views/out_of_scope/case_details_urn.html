@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">Enter the case details</h1>
+
+      <form class="form" action="/out_of_scope/case_details_confirm" method="post">
+          <fieldset class="govuk-fieldset">
+            <div class="govuk-form-group">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                <h1 class="govuk-fieldset__heading">
+                  Unique reference number (URN)
+                </h1>
+                <div class="govuk-hint">
+                  For example, ‘12 AB 3456789’.
+                </div>
+                <div class="govuk-inset-text">
+                  This should reduce the amount of information you need to enter about the case.
+                </div>
+              </legend>
+              <div class="govuk-form-group">
+                <input class="govuk-input govuk-input--width-10" id="urn" name="case_details[URN]" value="{{ data['case_details']['URN'] }}">
+              </div>
+              <div class="govuk-!-padding-bottom-2"></div>
+              <p><a href="/out_of_scope/case_details_case_type">Enter the case details manually</a></p>
+
+            </div>
+
+           </fieldset>
+           <input type="hidden" name="[case_details][case_type]" value="summary_only">
+           <input type="hidden" name="[case_details][court_type]" value="magistrates">
+           <input type="hidden" name="[case_details][court]" value="Westminster Magistrates Court">
+           <input type="hidden" name="[case_details][offence]" value="Forgery and misuse of driving documents">
+           <input type="hidden" name="[case_details][offence_class]" value="h">
+           <input type="hidden" name="[case_details][co_defendant_names][0]" value="Alex Welsh">
+           <input type="hidden" name="[case_details][co_defendant_names][1]" value="Joe Taylor">
+           <input type="hidden" name="[origin]" value="case_details_urn">
+           <button class="govuk-button button-left" data-module="govuk-button">Search</button>
+        </form>
+        <form class="form inline-form" action="/tasklist" method="post">
+          <input type="hidden" name="[case_details][checkpoint]" value="completed">
+          <button class="govuk-button govuk-button--secondary" data-module="govuk-button">Save and come back later</button>
+        </form>
+
+      </div>
+    </div>
+
+  <p><a href="/case_details_case_type?banner=true" style="color: #b7b7b7;">Continue to case not created yet</a></p>
+{% endblock %}

@@ -10,7 +10,7 @@
       <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-xl">Enter your client's details</h1>
 
-        <form action="/dwp_passported" method="post" novalidate>
+        <form action="/out_of_scope/dwp_passported" method="post" novalidate>
           <div class="govuk-form-group">
             <fieldset class="govuk-fieldset">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--m"> Full name
@@ -75,14 +75,16 @@
 
           <div class="govuk-form-group">
               <label class="govuk-label govuk-label--m" for="national-insurance-number">
-                National Insurance number
+                National Insurance number (optional)
               </label>
             <div id="national-insurance-number-hint" class="govuk-hint">
               It’s on their National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
             </div>
+            <div class="govuk-inset-text">
+              If you cannot provide your client's National Insurance number, you’ll have to answer additional questions and might need to submit additional evidence.
+            </div>
             <div>
               <input class="govuk-input govuk-input--width-10" id="national-insurance-number" name="client_details[client][national_insurance_number]" value="{{ data['client_details']['client']['national_insurance_number'] }}" type="text" spellcheck="false" aria-describedby="national-insurance-number-hint">
-
               <div class="govuk-!-padding-bottom-2"></div>
             </div>
           </div>
@@ -217,6 +219,20 @@
                   Yes
                 </label>
               </div>
+              <!-- <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-yes">
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="partner_firstname">
+                      First name
+                    </label>
+                  <input class="govuk-input govuk-!-width-three-quarters" id="partner_firstname" name="client_details[partner][first_name]" value="{{ data['client_details']['partner']['first_name'] }}" type="text">
+                </div>
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="partner_lastname">
+                      Last name
+                    </label>
+                  <input class="govuk-input govuk-!-width-three-quarters" id="partner_lastname" name="client_details[partner][last_name]" value="{{ data['client_details']['partner']['last_name'] }}">
+                </div>
+              </div> -->
 
               <div class="govuk-form-group">
                 <div class="govuk-radios__item">
@@ -234,6 +250,17 @@
             <p class="govuk-body">We'll check your client's benefits status with the Department of Work and Pensions (DWP). </p>
           </div>
 
+          <div class="govuk-form-group">
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="goto-non-passported" name="goto-non-passported" type="checkbox" value="yes">
+                <label class="govuk-label govuk-checkboxes__label greyed-out" for="goto-non-passported">
+                  Continue to non-passported journey
+                </label>
+              </div>
+            </div>
+          </div>
+
           <button type="submit" class="govuk-button button-left">
             Save and continue
           </button>
@@ -244,8 +271,5 @@
       </div>
     </div>
   </div>
-
-  <p><a href="/eforms_redirect" style="color: #b7b7b7;">If user does not enter NINO</a></p>
-
 
 {% endblock %}

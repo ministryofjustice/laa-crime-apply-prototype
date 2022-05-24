@@ -1,0 +1,177 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Make a new application
+      </h1>
+
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Application incomplete</h2>
+      <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{ completed }} of {{ total }} sections.</p>
+
+      <ol class="app-task-list">
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">1. </span> About your client
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item {{ sections['client_details']['key'] }}">
+              <span class="app-task-list__task-name">
+                <a href="/out_of_scope/client_details_long" aria-describedby="company-information-status">
+                  Client details
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag" id="company-information-status">{{ sections['client_details']['label'] }}</strong>
+            </li>
+            <li class="app-task-list__item {{ sections['benefits_status']['key'] }}">
+              <span class="app-task-list__task-name">
+                <a href="/out_of_scope/dwp_nonpassported" aria-describedby="list-benefits-status">
+                  Check your client's benefits status
+                </a>
+              </span>
+              <strong class="govuk-tag govuk-tag app-task-list__tag" id="list-benefits-status">{{ sections['benefits_status']['label'] }}</strong>
+            </li>
+
+        <div class="govuk-!-padding-bottom-4"></div>
+
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">2. </span> About the case
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item {{ sections['case_details']['key'] }}">
+              <span class="app-task-list__task-name">
+                <a href="{% if data['case_details_type'] == 'manual' %}/out_of_scope/case_details{% else %}/out_of_scope/case_details_urn{% endif %}" aria-describedby="contact-details-status">
+                  Case details
+                </a>
+              </span>
+              <strong class="govuk-tag govuk-tag app-task-list__tag" id="contact-details-status">{{ sections['case_details']['label'] }}</strong>
+            </li>
+            <li class="app-task-list__item  {{ sections['interests_of_justice']['key'] }}">
+              <span class="app-task-list__task-name">
+                <a href="/out_of_scope/ioj" aria-describedby="list-ioj-status">
+                  Justification for legal aid
+                </a>
+              </span>
+              <strong class="govuk-tag govuk-tag app-task-list__tag" id="list-ioj-status">{{ sections['interests_of_justice']['label'] }}</strong>
+            </li>
+
+        <div class="govuk-!-padding-bottom-4"></div>
+
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">3. </span> Means assessment
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item {{ sections['income']['key'] }}">
+              <span class="app-task-list__task-name">
+                <a href="/out_of_scope/income_threshold" aria-describedby="income-status">
+                  Income assessment
+                </a>
+              </span>
+              <strong class="govuk-tag govuk-tag app-task-list__tag" id="income-status">{{ sections['income']['label'] }}</strong>
+            </li>
+            <li class="app-task-list__item {{ sections['capital']['key'] }}">
+              <span class="app-task-list__task-name">
+                <a href="/out_of_scope/property" aria-describedby="capital-status">
+                  Capital assessment
+                </a>
+              </span>
+              <strong class="govuk-tag govuk-tag app-task-list__tag" id="capital-status">{{ sections['capital']['label'] }}</strong>
+            </li>
+            <li class="app-task-list__item {{ sections['check_means_answers']['key'] }}">
+              <span class="app-task-list__task-name">
+                <a href="/out_of_scope/means_assessment_check_answers" aria-describedby="list-check-means-status">
+                  Check your answers
+                </a>
+              </span>
+              <strong class="govuk-tag govuk-tag app-task-list__tag" id="list-check-means-status">{{ sections['check_means_answers']['label'] }}</strong>
+            </li>
+            <li class="app-task-list__item {{ sections['check_means_result']['key'] }}">
+              <span class="app-task-list__task-name">
+                <a href="/out_of_scope/means_assessment_results" aria-describedby="list-check-means-result-status">
+                  Check means assessment result
+                </a>
+              </span>
+              <strong class="govuk-tag govuk-tag app-task-list__tag" id="list-check-means-result-status">{{ sections['check_means_result']['label'] }}</strong>
+            </li>
+
+        <div class="govuk-!-padding-bottom-4"></div>
+
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">4. </span> Supporting evidence
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item {{ sections['evidence']['key'] }}">
+              <span class="app-task-list__task-name">
+                <a href="/out_of_scope/upload" aria-describedby="list-evidence-status">
+                  Upload evidence
+                </a>
+              </span>
+              <strong class="govuk-tag govuk-tag app-task-list__tag" id="list-evidence-status">{{ sections['evidence']['label'] }}</strong>
+            </li>
+
+        <div class="govuk-!-padding-bottom-4"></div>
+
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">5. </span> Review and confirm
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item {{ sections['review']['key'] }}">
+              <span class="app-task-list__task-name">
+                <a href="/out_of_scope/application_cert_review" aria-describedby="list-review-status">
+                  Review and print your application
+                </a>
+              </span>
+              <strong class="govuk-tag govuk-tag app-task-list__tag" id="list-review-status">{{ sections['review']['label'] }}</strong>
+            </li>
+            <li class="app-task-list__item {{ sections['confirm']['key'] }}">
+              <span class="app-task-list__task-name">
+                <a href="/confirm_the_following" aria-describedby="list-confirm-status">
+                  Confirm and submit your application
+                </a>
+              </span>
+              <strong class="govuk-tag govuk-tag app-task-list__tag" id="list-confirm-status">{{ sections['confirm']['label'] }}</strong>
+            </li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+
+    <div class="right-sidebar-menu">
+      <div class="govuk-grid-column-one-third">
+        <aside class="app-related-items" role="complementary">
+          <h2 class="govuk-body-s" id="subsection-title">
+            <strong>Reference number</strong>
+            <p class="govuk-body-s"> L-A1B-C2D </p>
+          </h2>
+          {% if sidemenu.first_name %}
+            <h2 class="govuk-body-s" id="subsection-title">
+              <strong>First name</strong>
+              <p class="govuk-body-s"> {{ sidemenu.first_name }} </p>
+            </h2>
+          {% endif %}
+          {% if sidemenu.last_name %}
+          <h2 class="govuk-body-s" id="subsection-title">
+            <strong>Last name</strong>
+            <p class="govuk-body-s"> {{ sidemenu.last_name }} </p>
+          </h2>
+          {% endif %}
+          {% if sidemenu.dob %}
+          <h2 class="govuk-body-s" id="subsection-title">
+            <strong>Date of birth</strong>
+            <p class="govuk-body-s"> {{ sidemenu.dob }} </p>
+          </h2>
+          {% endif %}
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <a href="/out_of_scope/dashboard" role="button" class="govuk-button govuk-button--secondary" style="background-color:#dee0e2; color:#0b0c0c">
+    Back to your applications
+  </a>
+{% endblock %}

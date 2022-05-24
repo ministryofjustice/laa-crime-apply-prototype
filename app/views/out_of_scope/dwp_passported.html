@@ -7,7 +7,7 @@
     </header>
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
-          <form class="form" action="/case_details_urn" method="post">
+          <form class="form" action="/out_of_scope/case_details_urn" method="post">
           <p>
             <input type="hidden" name="[benefits_status][checkpoint]" value="completed">
             <button class="govuk-button button-left" data-module="govuk-button">
@@ -26,7 +26,5 @@
   <div class="govuk-!-padding-bottom-4"></div>
 
   <p><a href="/dwp_loading" style="color: #b7b7b7;">If DWP checks takes a while</a></p>
-
-  <p><a href="/dwp_nonpassported" style="color: #b7b7b7;">If DWP checks fail or client is non passported</a></p>
 
 {% endblock %}
