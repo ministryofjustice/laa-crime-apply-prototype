@@ -419,13 +419,43 @@ router.post('/confirm_the_following', async (req, res, next) => {
 
     let url = applicationsApiUrl + '/submit';
     let submit = await post(url, JSON.stringify(application));
-    res.redirect('/equality_intro');
+    res.redirect('/out_of_scope/equality_intro');
   } catch (err) {
     console.log(err);
     return next(err);
   }
 });
 
+router.post('/out_of_scope/disability_answer', function (req, res) {
+  let disabilityQuestions = req.session.data['disability']
+  if (disabilityQuestions == "yes"){
+    res.redirect('/out_of_scope/equality_disability_2')
+  } else {
+    res.redirect('/out_of_scope/equality_ethnicity')
+  }
+
+})
+
+router.post('/out_of_scope/equality_intro_answer', function (req, res) {
+  let equalityQuestions = req.session.data['equality-info']
+  if (equalityQuestions == "yes"){
+    res.redirect('/out_of_scope/equality_sex_gender')
+  } else {
+    res.redirect('/application_submitted')
+  }
+
+})
+
+
+router.post('/out_of_scope/ethnicity_answer', function (req, res) {
+  let equalityQuestions = req.session.data['ethnicity']
+  if (equalityQuestions == "white"){
+    res.redirect('/out_of_scope/equality_ethnicity_white')
+  } else {
+    res.redirect('/application_submitted')
+  }
+
+})
 router.get('/delete/:id', async (req, res, next) => {
   try {
     let id = req.params && req.params.id;

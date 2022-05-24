@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1 class="govuk-heading-xl">We have received your application</h1>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/out_of_scope/equality_intro_answer" method="post" class="form">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">
+              Do you want to answer the equality questions?
+            </h1>
+          </legend>
+          <div id="equalities-info-hint" class="govuk-hint">
+            <p class="govuk-!-margin-top-0">These questions are optional. Your answers will not affect your application.</p>
+          </div>
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="equality-info-1" name="equality-info" type="radio" value="yes" {{ checked("equality-info","yes") }}>
+              <label class="govuk-label govuk-radios__label" for="capital-1">
+                Yes, answer the equality questions (takes 2 minutes)
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="equality-info-2" name="equality-info" type="radio" value="no" {{ checked("equality-info","no") }}>
+              <label class="govuk-label govuk-radios__label" for="property-3">
+                No, skip the equality questions
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Why we ask equality questions
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        Your responses will help us to monitor and ensure that legal aid is being delivered fairly and that we do not discriminate in our decision making. The data will only be used anonymously and your individual responses will never be shared outside the legal aid agency.
+      </div>
+      </details>
+
+      <button type="submit" class="govuk-button">
+        Save and continue
+      </button>
+
+      <a href= "out_of_scope/dashboard" role="button" style="margin-left: 15px;" class="govuk-button govuk-button--secondary">
+        Back to applications
+      </a>
+
+    </form>
+  </div>
+</div>
+
+
+
+{% endblock %}

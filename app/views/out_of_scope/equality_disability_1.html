@@ -2,6 +2,8 @@
 
 {% block content %}
 
+<form action="/out_of_scope/disability_answer" method="post" class="form">
+
 <span class="govuk-caption-xl">Equality questions</span>
 <div class="govuk-form-group">
   <fieldset class="govuk-fieldset">
@@ -35,14 +37,12 @@
   </fieldset>
 </div>
 
-<a href="/equality_disability_2"
-<button class="govuk-button" data-module="govuk-button">
-Save and continue
+<button type="submit" class="govuk-button">
+  Save and continue
 </button>
-</a>
 
 <a href="/dashboard" role="button" class="govuk-button govuk-button--secondary" style="background-color:#dee0e2; color:#0b0c0c; margin-left:10px">
-  Back to your applications
+  Back to applications
 </a>
 
 {% endblock %}
