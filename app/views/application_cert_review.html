@@ -20,7 +20,7 @@
     <div class="govuk-grid-column-two-thirds">
       <div>
         <h1 class="govuk-heading-xl">
-          Review and print your application
+          Review the application
         </h1>
 
         <br>
@@ -69,6 +69,14 @@
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
+                UK telephone number
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['client_details']['client']['phone'] }}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
                 Correspondence address
               </dt>
               <dd class="govuk-summary-list__value">
@@ -112,7 +120,7 @@
                 {% endif %}
               </dd>
             </div>
-            {% if data['client_details']['partner']['first_name'] %}
+            <!-- {% if data['client_details']['partner']['first_name'] %}
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                   Partner's first name
@@ -131,42 +139,85 @@
                   {{ data['client_details']['partner']['last_name'] }}
                 </dd>
               </div>
-            {% endif %}
+            {% endif %} -->
           </dl>
-
-
 
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-two-thirds">
             <h2 class="govuk-heading-m">Case details</h2>
           </div>
-          <div class="govuk-grid-column-one-third">
+          <!-- <div class="govuk-grid-column-one-third">
             <p><a class="govuk-link" style="float:right;" href="/case_details">Change</a></p>
+          </div> -->
+        </div>
+
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Unique reference number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['case_details']['URN'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="/case_details_urn">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Case type
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['case_details']['case_type'] == 'summary_only' %}
+                Summary only
+              {% elif data['case_details']['case_type'] == 'either_way' %}
+                Either way
+              {% elif data['case_details']['case_type'] == 'indictable' %}
+                Indictable
+              {% elif data['case_details']['case_type'] == 'already_in_crown_court' %}
+                Trial already in Crown Court
+              {% elif data['case_details']['case_type'] == 'committal' %}
+                Committal for sentence
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="/case_details_case_type">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Next court hearing
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ next_hearing_day }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="/case_details">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+        </dl>
+
+        <br>
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-m">Offence </h2>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <p><a class="govuk-link" style="float:right;" href="/case_details_offence">Change</a></p>
           </div>
         </div>
 
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Case type
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {% if data['case_details']['case_type'] == 'summary_only' %}
-              Summary only
-            {% elif data['case_details']['case_type'] == 'either_way' %}
-              Either way
-            {% elif data['case_details']['case_type'] == 'indictable' %}
-              Indictable
-            {% elif data['case_details']['case_type'] == 'already_in_crown_court' %}
-              Trial already in Crown Court
-            {% elif data['case_details']['case_type'] == 'committal' %}
-              Committal for sentence
-            {% endif %}
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Offence
+            Offence {{loop.index}}
           </dt>
           <dd class="govuk-summary-list__value">
             {% if data['case_details']['offence'] %}
@@ -177,7 +228,43 @@
             {% endif %}
           </dd>
         </div>
-        {% for defendant in data['case_details']['co_defendant_names'] -%}
+      </dl>
+
+      <br>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-m">Offence dates</h2>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <p><a class="govuk-link" style="float:right;" href="/case_details_offence_date">Change</a></p>
+        </div>
+      </div>
+
+      <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          {{ offencesList[offenceId].B }} Forgery
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ offence_day }}
+        </dd>
+      </div>
+      </dl>
+
+    <br>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-m">Co-defendants</h2>
+      </div>
+      <div class="govuk-grid-column-one-third">
+        <p><a class="govuk-link" style="float:right;" href="/case_details">Change</a></p>
+      </div>
+    </div>
+
+    <dl class="govuk-summary-list">
+          {% for defendant in data['case_details']['co_defendant_names'] -%}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Co-defendant {{loop.index}}
@@ -193,7 +280,7 @@
 
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-          <h2 class="govuk-heading-m">Interests of Justice</h2>
+          <h2 class="govuk-heading-m">Justification for legal aid</h2>
         </div>
         <div class="govuk-grid-column-one-third">
           <p><a class="govuk-link" style="float:right;" href="/ioj">Change</a></p>
@@ -203,9 +290,6 @@
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Criteria
-          </dt>
-          <dd class="govuk-summary-list__value">
             {% for ioj in data['interests_of_justice'] -%}
               {% if ioj == 'liberty' %}
                 <p>Loss of liberty</p>
@@ -229,6 +313,9 @@
                 <p>Other reason</p>
               {% endif %}
             {%- endfor %}
+          </dt>
+          <dd class="govuk-summary-list__value">
+              {{ more-detail-hint }}
           </dd>
         </div>
       </dl>
@@ -242,22 +329,20 @@
     </div>
 
 
-    <h1 class="govuk-heading-l">Print application</h1>
+    <!-- <h1 class="govuk-heading-l">Print application</h1> -->
 
   <!-- <p class="govuk-body">Print your application and get your client to sign the declaration.</p> -->
 
-    <p class="govuk-body">You'll need to keep a copy of it on file, along with any evidence you used to determine your client's financial situation.</p>
+    <!-- <p class="govuk-body">You'll need to keep a copy of it on file, along with any evidence you used to determine your client's financial situation.</p> -->
 
   <!-- <ul class="govuk-list govuk-list--bullet">
   <li>any evidence you used to determine your client's financial sitaution</li>
   <li>a signed copy of your client's declaration</li>
   </ul> -->
 
-    <p class="govuk-body">You may need to show this if you’re audited by the LAA in the future.</p>
+    <!-- <p class="govuk-body">You may need to show this if you’re audited by the LAA in the future.</p> -->
 
-    <br>
-
-    <a role="button" href="/print_view" target="_blank" style="margin-left:" class="govuk-button govuk-button--secondary">Print application</a>
+    <!-- <a role="button" href="/print_view" target="_blank" style="margin-left:" class="govuk-button govuk-button--secondary">Print application</a> -->
 
     <p></p>
     <form action="/confirm_the_following" method="post" novalidate>
