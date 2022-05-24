@@ -57,134 +57,31 @@
           </div>
         </div>
       </div>
-      <details class="govuk-details" data-module="govuk-details">
-        <summary class="govuk-details__summary">
-          <span class="govuk-details__summary-text">
-            I cannot find the right offence
-          </span>
-        </summary>
-        <div class="govuk-details__text">
-          <div class="govuk-form-group">
-            <label class="govuk-label" for="width-10">
-              Enter the offence name
-            </label>
-            <input class="govuk-input govuk-input--width-20" id="offence_name" name="offence_name" type="text" value="{{ data['offence_name'] }}">
-          </div>
-        </div>
-        <div class="govuk-details__text">
-          <div class="govuk-form-group">
-            <label class="govuk-label" for="width-10">
-              Enter the offence class
-            </label>
-            <div class="govuk-!-padding-bottom-2"></div>
-            <div class="govuk-radios" data-module="govuk-radios">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="offence_class" name="offence_class" type="radio" value="offence_class_B" aria-describedby="class-A-hint">
-                <label class="govuk-label govuk-radios__label" for="offence_class">
-                  Class A
-                </label>
-                <div id="class-A-hint" class="govuk-hint govuk-radios__hint">
-                  Homicide and related grave offences
-                </div>
+      
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              I cannot find the right offence
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <div data-module="moj-add-another">
+              <fieldset class="govuk-fieldset moj-add-another__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="width-10">
+                      Enter the offence name
+                    </label>
+                    <input class="govuk-input govuk-input--width-20" id="offence_name" name="offence_name" type="text" value="{{ data['offence_name'] }}">
+                  </div>
+              </fieldset>
+              <div class="moj-button-action">
+                <button class="govuk-button govuk-button--secondary moj-add-another__add-button govuk-!-margin-bottom-4" data-module="govuk-button">
+                  Add another offence
+                </button>
               </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="offence_class" name="offence_class" type="radio" value="offence_class_B" aria-describedby="class-B-hint">
-                <label class="govuk-label govuk-radios__label" for="offence_class">
-                  Class B
-                </label>
-                <div id="class-B-hint" class="govuk-hint govuk-radios__hint">
-                  Offences involving serious violence or damage, and serious drugs offences
-                </div>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="offence_class" name="offence_class" type="radio" value="offence_class_C" aria-describedby="class-C-hint">
-                <label class="govuk-label govuk-radios__label" for="offence_class">
-                  Class C
-                </label>
-                <div id="class-C-hint" class="govuk-hint govuk-radios__hint">
-                  Lesser offences involving violence or damage, and less serious drugs offences
-                </div>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="offence_class" name="offence_class" type="radio" value="offence_class_D" aria-describedby="class-D-hint">
-                <label class="govuk-label govuk-radios__label" for="offence_class">
-                  Class D
-                </label>
-                <div id="class-D-hint" class="govuk-hint govuk-radios__hint">
-                  Sexual offences and offences against children
-                </div>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="offence_class" name="offence_class" type="radio" value="offence_class_E" aria-describedby="class-E-hint">
-                <label class="govuk-label govuk-radios__label" for="offence_class">
-                  Class E
-                </label>
-                <div id="class-E-hint" class="govuk-hint govuk-radios__hint">
-                  Burglary etc
-                </div>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="offence_class" name="offence_class" type="radio" value="offence_class_F" aria-describedby="class-F-hint">
-                <label class="govuk-label govuk-radios__label" for="offence_class">
-                  Class F
-                </label>
-                <div id="class-F-hint" class="govuk-hint govuk-radios__hint">
-                  Other offences of dishonesty (specified offences and offences where the value is £30,000 or less)
-                </div>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="offence_class" name="offence_class" type="radio" value="offence_class_G" aria-describedby="class-G-hint">
-                <label class="govuk-label govuk-radios__label" for="offence_class">
-                  Class G
-                </label>
-                <div id="class-G-hint" class="govuk-hint govuk-radios__hint">
-                  Other offences of dishonesty (specified offences and offences where the value involved exceeds £30,000 but does not exceed £100,000)
-                </div>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="offence_class" name="offence_class" type="radio" value="offence_class_H" aria-describedby="class-H-hint">
-                <label class="govuk-label govuk-radios__label" for="offence_class">
-                  Class H
-                </label>
-                <div id="class-H-hint" class="govuk-hint govuk-radios__hint">
-                  Miscellaneous other offences
-                </div>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="offence_class" name="offence_class" type="radio" value="offence_class_I" aria-describedby="class-I-hint">
-                <label class="govuk-label govuk-radios__label" for="offence_class">
-                  Class I
-                </label>
-                <div id="class-I-hint" class="govuk-hint govuk-radios__hint">
-                  Offences against public justice and similar offences
-                </div>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="offence_class" name="offence_class" type="radio" value="offence_class_J" aria-describedby="class-J-hint">
-                <label class="govuk-label govuk-radios__label" for="offence_class">
-                  Class J
-                </label>
-                <div id="class-J-hint" class="govuk-hint govuk-radios__hint">
-                  Serious sexual offences
-                </div>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="offence_class" name="offence_class" type="radio" value="offence_class_J" aria-describedby="class-J-hint">
-                <label class="govuk-label govuk-radios__label" for="offence_class">
-                  Class K
-                </label>
-                <div id="class-J-hint" class="govuk-hint govuk-radios__hint">
-                  Other offences of dishonesty (high value: if the value involved exceeds £100,000)
-                </div>
-              </div>
-              <div class="govuk-!-padding-bottom-2"></div>
             </div>
-            <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
-              Add another offence
-            </button>
           </div>
-        </div>
-      </details>
+        </details>
 
       <div class="govuk-!-padding-bottom-6"></div>
 
