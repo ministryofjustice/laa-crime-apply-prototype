@@ -90,11 +90,16 @@ router.get('/start_page', function (req, res) {
 
 router.post('/dwp_nonpassported', function (req, res) {
   let isDwpCorrect = req.session.data['not-passported'];
+  let mvp = req.session.mvp;
 
   if (isDwpCorrect == "no") {
     res.redirect('/benefit_checker_confirm');
   } else {
-    res.redirect('/tasklist');
+    if (mvp) {
+      res.redirect('/eforms_redirect')
+    } else {
+      res.redirect('/tasklist');
+    }
   }
 });
 
@@ -129,13 +134,8 @@ router.get('/dwp_passported', function (req, res) {
 });
 
 router.get('/dwp_nonpassported', function (req, res) {
-  let mvp = req.session.mvp;
-  if (mvp) {
-    res.redirect('/eforms_redirect');
-  } else {
     _.set(req.session.data, 'means_assessment.benefits_status.passported', false);
     res.render('dwp_nonpassported');
-  }
 });
 
 router.get('/ioj_passported', function (req, res) {
@@ -163,11 +163,16 @@ router.get('/laa_portal', function (req, res) {
 
 router.post('/benefit_checker_confirm', function (req, res) {
   let clientDetailsCorrect = req.session.data['client-details-correct'];
+  let mvp = req.session.mvp;
 
   if (clientDetailsCorrect == "no") {
     res.redirect('/client_details_long');
   } else {
-    res.redirect('/benefit_checker_select');
+    if (mvp) {
+      res.redirect('/eforms_redirect');
+    } else {
+      res.redirect('/benefit_checker_select');
+    }
   }
 });
 
