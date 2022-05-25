@@ -152,6 +152,7 @@
         </div>
 
         <dl class="govuk-summary-list">
+        {% if data.case_details_type == 'urn' %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Unique reference number
@@ -165,6 +166,7 @@
               </a>
             </dd>
           </div>
+          {% endif %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Case type
@@ -193,7 +195,7 @@
               Next court hearing
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ next_hearing_day }}
+              {{ next_hearing }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="/case_details">
@@ -207,7 +209,7 @@
 
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-two-thirds">
-            <h2 class="govuk-heading-m">Offence </h2>
+            <h2 class="govuk-heading-m">Offences</h2>
           </div>
           <div class="govuk-grid-column-one-third">
             <p><a class="govuk-link" style="float:right;" href="/case_details_offence">Change</a></p>
@@ -215,19 +217,18 @@
         </div>
 
       <dl class="govuk-summary-list">
+        {% for offence in data['case_details']['offences'] -%}
+
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Offence {{loop.index}}
           </dt>
           <dd class="govuk-summary-list__value">
-            {% if data['case_details']['offence'] %}
-              <p>{{ data['case_details']['offence'] }}</p>
-            {% endif %}
-            {% if data['case_details']['offence_class'] %}
-              <p>Class {{ data['case_details']['offence_class'] | capitalize }}</p>
-            {% endif %}
+              <p>{{ offence.offence }}</p>
+              <p>Class {{ offence.offence_class | capitalize }}</p>
           </dd>
         </div>
+        {%- endfor %}
       </dl>
 
       <br>
@@ -242,14 +243,17 @@
       </div>
 
       <dl class="govuk-summary-list">
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          {{ offencesList[offenceId].B }} Forgery
-        </dt>
-        <dd class="govuk-summary-list__value">
-          {{ offence_day }}
-        </dd>
-      </div>
+        {% for offence in offences -%}
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            {{ offence.offence }}
+          </dt>
+          <dd class="govuk-summary-list__value">
+              <p>{{ offence.offence_date }}</p>
+          </dd>
+        </div>
+        {%- endfor %}
       </dl>
 
     <br>
@@ -288,36 +292,36 @@
       </div>
 
       <dl class="govuk-summary-list">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            {% for ioj in data['interests_of_justice'] -%}
+        {% for ioj in data['interests_of_justice'] -%}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
               {% if ioj == 'liberty' %}
-                <p>Loss of liberty</p>
+                Loss of liberty
               {% elif ioj == 'suspended_sentence' %}
-                <p>Suspended or non-custodial sentence</p>
+                Suspended or non-custodial sentence
               {% elif ioj == 'livelihood' %}
-                <p>Loss of livelihood</p>
+                Loss of livelihood
               {% elif ioj == 'reputation' %}
-                <p>Serious damage to their reputation</p>
+                Serious damage to their reputation
               {% elif ioj == 'question_of_law' %}
-                <p>Substantial question of law may be involved</p>
+                Substantial question of law may be involved
               {% elif ioj == 'unable_to_understand' %}
-                <p>Unable to understand the court proceedings or present own case</p>
+                Unable to understand the court proceedings or present own case
               {% elif ioj == 'witnesses_needed' %}
-                <p>Witnesses may need to be traced or interviewed</p>
+                Witnesses may need to be traced or interviewed
               {% elif ioj == 'expert_cross_examination' %}
-                <p>The proceedings may involve expert cross-examination</p>
+                The proceedings may involve expert cross-examination
               {% elif ioj == 'interests_of_another' %}
-                <p>It is in the interests of another person</p>
+                It is in the interests of another person
               {% elif ioj == 'ioj_other' %}
-                <p>Other reason</p>
+                Other reason
               {% endif %}
-            {%- endfor %}
-          </dt>
-          <dd class="govuk-summary-list__value">
-              {{ more-detail-hint }}
-          </dd>
-        </div>
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['more-detail'][loop.index-1] }}
+            </dd>
+          </div>
+        {%- endfor %}
       </dl>
 
   <!-- FOR PASSPORTED CASES, THE CHECK YOUR ANSWERS FINISHES HERE -->

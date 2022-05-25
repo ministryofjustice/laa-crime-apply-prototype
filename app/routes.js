@@ -321,8 +321,13 @@ router.get('/case_details_offence', function (req, res) {
 });
 
 router.get('/application_cert_review', function (req, res) {
-  let date = utils.constructDate(req.session.data.dob);
-  res.render('application_cert_review', { date_of_birth: utils.formatDate(date) });
+  let dob = utils.constructDate(req.session.data.dob);
+  let next_hearing_string = `${req.session.data['next-hearing-year']}-${req.session.data['next-hearing-month']}-${req.session.data['next-hearing-day']}`
+  let next_hearing = utils.formatDate(next_hearing_string);
+  let offences = req.session.data['case_details']['offences']
+  offences.forEach( offence => offence.offence_date = utils.formatDate(offence.offence_date));
+
+  res.render('application_cert_review', { date_of_birth: utils.formatDate(dob), next_hearing, offences });
 });
 
 router.get('/application_certificate/:id', async (req, res, next) => {
