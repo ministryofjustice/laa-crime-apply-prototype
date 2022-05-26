@@ -236,23 +236,19 @@ router.post('/ioj', function (req, res, next) {
     }
   } else {
     req.session.data['case_details_type'] = 'manual';
-    let offences = []
-    offenceIds = utils.filterOffenceIds(req.session.data.offence)
 
-    offenceIds.forEach((offenceId, index) => {
+    let offences = req.session.data.case_details.offences;
+    let offencesWithDates = offences.map((offence, index) => {
       let year = req.session.data['offence-year'][index]
       let month = req.session.data['offence-month'][index]
       let day = req.session.data['offence-day'][index]
-      if (offenceId) {
-        offences.push(
-          {
-            offence: offencesList[offenceId].B,
-            offence_class: offencesList[offenceId].D,
-            offence_date: `${year}-${month}-${day}`
-          })
+      return {
+        offence: offence.B,
+        offence_class: offence.D || null,
+        offence_date: `${year}-${month}-${day}`
       }
     })
-    req.session.data['case_details']['offences'] = offences;
+    req.session.data['case_details']['offences'] = offencesWithDates;
 
     let case_type = req.session.data['case_details']['case_type'];
     if (case_type.includes('trial') || case_type.includes('indictable')) {
@@ -299,8 +295,8 @@ router.get('/hmrc_record', function (req, res) {
 });
 
 router.get('/case_details_offence_date', function (req, res) {
-  offenceIds = utils.filterOffenceIds(req.session.data.offence)
-  res.render('case_details_offence_date', { offencesList: offencesList, offenceIds: offenceIds });
+  utils.constructOffences(req)
+  res.render('case_details_offence_date');
 });
   
 router.get('/case_details_case_type', function (req, res) {

@@ -1,6 +1,7 @@
 const _ = require('lodash');
 const fetch = require('./data/fetch');
 const schemaUrl = require('./data/form-settings').schemas.applications;
+const offencesList = require('./data/offence_list');
 
 const utils = {
   constructDate: (date) => {
@@ -21,6 +22,14 @@ const utils = {
   filterOffenceIds: (offenceIdList) => {
     let offenceIds = _.compact(offenceIdList?.filter(item => item != "_unchecked"));
     return offenceIds
+  },
+  constructOffences: (req) => {
+    let data = req.session.data
+    let offenceIds = utils.filterOffenceIds(data.offences_search_entry)
+    let offences = offenceIds.map(offenceId => offencesList[offenceId])
+    let manual_offences = Array.isArray(data.offences_manual_entry)? data.offences_manual_entry : [data.offences_manual_entry]
+    manual_offences.forEach(offence => offences.push({B: `${offence}`}))
+    req.session.data.case_details.offences = offences;
   },
   formatDate: (date) => {
     if (!date) {

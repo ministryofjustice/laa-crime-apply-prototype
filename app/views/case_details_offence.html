@@ -44,7 +44,7 @@
                         <div class="govuk-grid-row offences-list" id="offence-item-{{loop.index}}" >
                           <div class="govuk-checkboxes govuk-checkboxes">
                             <div class="govuk-checkboxes__item">
-                              <input class="govuk-checkboxes__input" id="offence-value-{{loop.index}}" name="offence" data-offencename="{{ offence.B }}" data-offenceclass="{{ offence.D }}" type="checkbox" value="{{loop.index - 1}}">
+                              <input class="govuk-checkboxes__input" id="offence-value-{{loop.index}}" name="offences_search_entry" data-offencename="{{ offence.B }}" data-offenceclass="{{ offence.D }}" type="checkbox" value="{{loop.index - 1}}">
                               <label class="govuk-label govuk-checkboxes__label"><strong>{{ offence.B }}</strong><br>Class: {{offence.D}}</label>
                             </div>
                           </div>
@@ -71,7 +71,7 @@
                     <label class="govuk-label" for="width-10">
                       Enter the offence name
                     </label>
-                    <input class="govuk-input govuk-input--width-20" id="offence_name" name="offence_name" type="text" value="{{ data['offence_name'] }}">
+                    <input class="govuk-input govuk-input--width-20" id="offences_manual_entry" name="offences_manual_entry" type="text" value="{{ data['offence_name'] }}">
                   </div>
               </fieldset>
               <div class="moj-button-action">

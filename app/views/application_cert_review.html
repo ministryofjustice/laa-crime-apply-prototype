@@ -224,8 +224,10 @@
             Offence {{loop.index}}
           </dt>
           <dd class="govuk-summary-list__value">
-              <p>{{ offence.offence }}</p>
-              <p>Class {{ offence.offence_class | capitalize }}</p>
+              <p>{{ offence.offence | capitalize}}</p>
+              {% if offence.offence_class %}
+                <p>Class {{ offence.offence_class | capitalize }}</p>
+              {% endif %}
           </dd>
         </div>
         {%- endfor %}
