@@ -21,6 +21,7 @@
                   </label>
                 </div>
                 <!-- START: CONDITIONAL REVEAL -->
+                {% if mvp == false %}
                 <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-yes"> <!-- id needs to match data-aria-controls -->
                   <div class="govuk-form-group">
                     <label style="color: #fff;" class="govuk-label" for="not-passported-1">
@@ -28,6 +29,7 @@
                     </label>
                   </div>
                 </div>
+                {% endif %}
                 <div class="govuk-form-group">
                 <!-- END: CONDITIONAL REVEAL  -->
               <div class="govuk-radios__item">
