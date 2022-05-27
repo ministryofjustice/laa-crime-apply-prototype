@@ -11,6 +11,7 @@ const applicationsApiUrl = "https://n7ykjge71d.execute-api.eu-west-2.amazonaws.c
 const offencesList = require('./data/offence_list');
 const https = require('https');
 const utils = require('./utils');
+const { constructDate } = require('./utils');
 
 router.use((req, res, next) => {
   let mvpFlag = req.query?.mvp;
@@ -237,18 +238,40 @@ router.post('/ioj', function (req, res, next) {
   } else {
     req.session.data['case_details_type'] = 'manual';
 
-    let offences = req.session.data.case_details.offences;
-    let offencesWithDates = offences.map((offence, index) => {
-      let year = req.session.data['offence-year'][index]
-      let month = req.session.data['offence-month'][index]
-      let day = req.session.data['offence-day'][index]
-      return {
-        offence: offence.B,
-        offence_class: offence.D || null,
-        offence_date: `${year}-${month}-${day}`
+    let dates = []
+
+    req.session.data['offence-year'].map((year, index) => {
+      if (Array.isArray(year)) {
+        let nestedDates = []
+        year.map((innerYear, innerIndex) => {
+          nestedDates.push(`${innerYear}-${req.session.data['offence-month'][index][innerIndex]}-${req.session.data['offence-day'][index][innerIndex]}`)
+        });
+        dates.push(nestedDates)
+      } else {
+        dates.push(`${year}-${req.session.data['offence-month'][index]}-${req.session.data['offence-day'][index]}`)
+      }
+    });
+
+    let offencesWithDates = []
+
+    dates.map((date, index) => {
+      if (Array.isArray(date)) {
+        date.map(date => {
+          offencesWithDates.push({
+            offence: req.session.data['case_details']['offences'][index].B,
+            offence_class: req.session.data['case_details']['offences'][index].D || "not specified",
+            offence_date: date
+          })
+        })
+      } else {
+        offencesWithDates.push({
+          offence: req.session.data['case_details']['offences'][index].B,
+          offence_class: req.session.data['case_details']['offences'][index].D || "not specified",
+          offence_date: date
+        })
       }
     })
-    req.session.data['case_details']['offences'] = offencesWithDates;
+    req.session.data['case_details']['offences'] = offencesWithDates.flat();
 
     let case_type = req.session.data['case_details']['case_type'];
     if (case_type.includes('trial') || case_type.includes('indictable')) {

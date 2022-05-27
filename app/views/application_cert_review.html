@@ -225,8 +225,10 @@
           </dt>
           <dd class="govuk-summary-list__value">
               <p>{{ offence.offence | capitalize}}</p>
-              {% if offence.offence_class %}
-                <p>Class {{ offence.offence_class | capitalize }}</p>
+              {% if offence.offence_class == "not specified" %}
+                <p class="govuk-secondary-text-colour">Class {{ offence.offence_class }}</p>
+              {% else %}
+                <p class="govuk-secondary-text-colour">Class {{ offence.offence_class | capitalize }}</p>
               {% endif %}
           </dd>
         </div>
