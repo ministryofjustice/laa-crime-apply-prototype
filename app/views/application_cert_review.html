@@ -226,9 +226,9 @@
           <dd class="govuk-summary-list__value">
               <p>{{ offence.offence | capitalize}}</p>
               {% if offence.offence_class == "not specified" %}
-                <p class="govuk-secondary-text-colour">Class {{ offence.offence_class }}</p>
+                <p class="offence-class">Class {{ offence.offence_class }}</p>
               {% else %}
-                <p class="govuk-secondary-text-colour">Class {{ offence.offence_class | capitalize }}</p>
+                <p class="offence-class">Class {{ offence.offence_class | capitalize }}</p>
               {% endif %}
           </dd>
         </div>
@@ -261,18 +261,18 @@
       </dl>
 
     <br>
-
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <h2 class="govuk-heading-m">Co-defendants</h2>
+    {% if data['case_details']['co_defendant_names'] > 0 %}
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-m">Co-defendants</h2>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <p><a class="govuk-link" style="float:right;" href="/case_details">Change</a></p>
+        </div>
       </div>
-      <div class="govuk-grid-column-one-third">
-        <p><a class="govuk-link" style="float:right;" href="/case_details">Change</a></p>
-      </div>
-    </div>
 
-    <dl class="govuk-summary-list">
-          {% for defendant in data['case_details']['co_defendant_names'] -%}
+      <dl class="govuk-summary-list">
+        {% for defendant in data['case_details']['co_defendant_names'] -%}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Co-defendant {{loop.index}}
@@ -285,7 +285,7 @@
       </dl>
 
       <br>
-
+    {% endif %}
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
           <h2 class="govuk-heading-m">Justification for legal aid</h2>

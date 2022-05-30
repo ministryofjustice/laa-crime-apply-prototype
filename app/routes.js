@@ -11,7 +11,6 @@ const applicationsApiUrl = "https://n7ykjge71d.execute-api.eu-west-2.amazonaws.c
 const offencesList = require('./data/offence_list');
 const https = require('https');
 const utils = require('./utils');
-const { constructDate } = require('./utils');
 
 router.use((req, res, next) => {
   let mvpFlag = req.query?.mvp;

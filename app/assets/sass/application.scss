@@ -26,3 +26,7 @@ $govuk-assets-path: '/govuk/assets/';
     position: sticky;
     top: 1%;
   }
+
+p.offence-class {
+  color: $govuk-secondary-text-colour;
+}
