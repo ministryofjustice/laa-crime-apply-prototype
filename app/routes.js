@@ -238,39 +238,10 @@ router.post('/ioj', function (req, res, next) {
   } else {
     req.session.data['case_details_type'] = 'manual';
 
-    let dates = []
+    let dates = utils.combineDateComponents(req.session.data)
+   
+    let offencesWithDates =  utils.pairOffencesWithDates(dates, req.session.data)
 
-    req.session.data['offence-year'].map((year, index) => {
-      if (Array.isArray(year)) {
-        let nestedDates = []
-        year.map((innerYear, innerIndex) => {
-          nestedDates.push(`${innerYear}-${req.session.data['offence-month'][index][innerIndex]}-${req.session.data['offence-day'][index][innerIndex]}`)
-        });
-        dates.push(nestedDates)
-      } else {
-        dates.push(`${year}-${req.session.data['offence-month'][index]}-${req.session.data['offence-day'][index]}`)
-      }
-    });
-
-    let offencesWithDates = []
-
-    dates.map((date, index) => {
-      if (Array.isArray(date)) {
-        date.map(date => {
-          offencesWithDates.push({
-            offence: req.session.data['case_details']['offences'][index].B,
-            offence_class: req.session.data['case_details']['offences'][index].D || "not specified",
-            offence_date: date
-          })
-        })
-      } else {
-        offencesWithDates.push({
-          offence: req.session.data['case_details']['offences'][index].B,
-          offence_class: req.session.data['case_details']['offences'][index].D || "not specified",
-          offence_date: date
-        })
-      }
-    })
     req.session.data['case_details']['offences'] = offencesWithDates.flat();
 
     let case_type = req.session.data['case_details']['case_type'];
