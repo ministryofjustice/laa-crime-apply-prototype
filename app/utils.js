@@ -56,18 +56,19 @@ const utils = {
           offencesWithDates.push({
             offence: data['case_details']['offences'][index].B,
             offence_class: data['case_details']['offences'][index].D || "not specified",
-            offence_date: date
+            offence_date: utils.formatDate(date)
           });
         });
       } else {
         offencesWithDates.push({
           offence: data['case_details']['offences'][index].B,
           offence_class: data['case_details']['offences'][index].D || "not specified",
-          offence_date: date
+          offence_date: utils.formatDate(date)
         });
       }
     });
-    return offencesWithDates
+  
+    return offencesWithDates.flat()
   },
   formatDate: (date) => {
     if (!date) {
