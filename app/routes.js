@@ -238,12 +238,12 @@ router.post('/ioj', function (req, res, next) {
     req.session.data['case_details_type'] = 'manual';
 
     let dates = utils.combineDateComponents(req.session.data)
-   
+
     let offencesWithDates =  utils.pairOffencesWithDates(dates, req.session.data)
 
     req.session.data['case_details']['offences'] = offencesWithDates.flat();
 
-    let case_type = req.session.data['case_details']['case_type'];
+    let case_type = req.session.data['case_details']['case_type'] || [];
     if (case_type.includes('trial') || case_type.includes('indictable')) {
       req.session.data['case_details']['court_type'] = 'crown';
     } else {
@@ -253,7 +253,7 @@ router.post('/ioj', function (req, res, next) {
     utils.setNamesAsDefendants(req);
 
     let dob = utils.constructDate(req.session.data.dob);
-    req.session.data['client_details']['dob'] = utils.formatDate(dob)
+    _.set(req.session.data, 'client_details.dob', utils.formatDate(dob));
 
     let next_hearing_string = `${req.session.data['next-hearing-year']}-${req.session.data['next-hearing-month']}-${req.session.data['next-hearing-day']}`
     req.session.data['case_details']['next_hearing'] = utils.formatDate(next_hearing_string);
@@ -297,7 +297,7 @@ router.get('/case_details_offence_date', function (req, res) {
   utils.constructOffences(req)
   res.render('case_details_offence_date');
 });
-  
+
 router.get('/case_details_case_type', function (req, res) {
   let banner = req.query && req.query.banner;
 
@@ -327,7 +327,7 @@ router.get('/application_cert_review', function (req, res) {
 router.get('/application_certificate/:id', async (req, res, next) => {
   try {
     let id = req.params && req.params.id;
-    
+
     if (id) {
       let dataUrl = applicationsApiUrl + '/' + id;
       let response = await fetch(dataUrl);

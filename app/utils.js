@@ -21,20 +21,25 @@ const utils = {
   },
   filterOffenceIds: (offenceIdList) => {
     let offenceIds = _.compact(offenceIdList?.filter(item => item != "_unchecked"));
-    return offenceIds
+    return offenceIds || [];
   },
   constructOffences: (req) => {
     let data = req.session.data
-    let offenceIds = utils.filterOffenceIds(data.offences_search_entry)
+    let offenceIds = utils.filterOffenceIds(data.offences_search_entry);
     let offences = offenceIds.map(offenceId => offencesList[offenceId])
     if (data.offences_manual_entry) {
       let manual_offences = Array.isArray(data.offences_manual_entry) ? data.offences_manual_entry : [data.offences_manual_entry]
-      manual_offences.forEach(offence => offences.push({B: `${offence}`})) 
+      manual_offences.forEach(offence => offences.push({B: `${offence}`}))
     }
     _.set(req.session.data, 'case_details.offences', offences);
   },
   combineDateComponents: (data) => {
     let dates = []
+
+    if (!Array.isArray(data['offence-year'])) {
+      return dates;
+    }
+
     data['offence-year'].map((year, index) => {
       if (Array.isArray(year)) {
         let nestedDates = [];
@@ -48,13 +53,13 @@ const utils = {
     });
     return dates
   },
-  pairOffencesWithDates: (dates, data) => {
+  pairOffencesWithDates: (dates = [], data) => {
     let offencesWithDates = []
     dates.map((date, index) => {
-      if (!Array.isArray(date)) { 
+      if (!Array.isArray(date)) {
         date = [date]
       }
-      
+
       const addOffence = (date) => {
          offencesWithDates.push({
           offence: data['case_details']['offences'][index].B,
@@ -64,7 +69,7 @@ const utils = {
       };
       date.forEach(addOffence);
     });
-  
+
     return offencesWithDates.flat()
   },
   formatDate: (date) => {
