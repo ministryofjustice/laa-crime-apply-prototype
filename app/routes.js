@@ -211,7 +211,7 @@ router.post('/case_details_confirm', function (req, res, next) {
 
   let confirm = req.session.data['case_details_confirm'];
   if (confirm == "change") {
-    res.redirect('/case_details');
+    res.redirect('/case_details_case_type');
   } else {
     res.redirect('/ioj');
   }
@@ -236,25 +236,14 @@ router.post('/ioj', function (req, res, next) {
     }
   } else {
     req.session.data['case_details_type'] = 'manual';
-    let offences = []
-    offenceIds = utils.filterOffenceIds(req.session.data.offence)
 
-    offenceIds.forEach((offenceId, index) => {
-      let year = req.session.data['offence-year'][index]
-      let month = req.session.data['offence-month'][index]
-      let day = req.session.data['offence-day'][index]
-      if (offenceId) {
-        offences.push(
-          {
-            offence: offencesList[offenceId].B,
-            offence_class: offencesList[offenceId].D,
-            offence_date: `${year}-${month}-${day}`
-          })
-      }
-    })
-    req.session.data['case_details']['offences'] = offences;
+    let dates = utils.combineDateComponents(req.session.data)
 
-    let case_type = req.session.data['case_details']['case_type'];
+    let offencesWithDates =  utils.pairOffencesWithDates(dates, req.session.data)
+
+    req.session.data['case_details']['offences'] = offencesWithDates.flat();
+
+    let case_type = req.session.data['case_details']['case_type'] || [];
     if (case_type.includes('trial') || case_type.includes('indictable')) {
       req.session.data['case_details']['court_type'] = 'crown';
     } else {
@@ -262,6 +251,12 @@ router.post('/ioj', function (req, res, next) {
     }
 
     utils.setNamesAsDefendants(req);
+
+    let dob = utils.constructDate(req.session.data.dob);
+    _.set(req.session.data, 'client_details.dob', utils.formatDate(dob));
+
+    let next_hearing_string = `${req.session.data['next-hearing-year']}-${req.session.data['next-hearing-month']}-${req.session.data['next-hearing-day']}`
+    req.session.data['case_details']['next_hearing'] = utils.formatDate(next_hearing_string);
 
     return next();
   }
@@ -299,10 +294,10 @@ router.get('/hmrc_record', function (req, res) {
 });
 
 router.get('/case_details_offence_date', function (req, res) {
-  offenceIds = utils.filterOffenceIds(req.session.data.offence)
-  res.render('case_details_offence_date', { offencesList: offencesList, offenceIds: offenceIds });
+  utils.constructOffences(req)
+  res.render('case_details_offence_date');
 });
-  
+
 router.get('/case_details_case_type', function (req, res) {
   let banner = req.query && req.query.banner;
 
@@ -326,20 +321,13 @@ router.get('/case_details_offence', function (req, res) {
 });
 
 router.get('/application_cert_review', function (req, res) {
-  let dob = utils.constructDate(req.session.data.dob);
-  let next_hearing_string = `${req.session.data['next-hearing-year']}-${req.session.data['next-hearing-month']}-${req.session.data['next-hearing-day']}`
-  let next_hearing = utils.formatDate(next_hearing_string);
-
-  let offences = req.session.data['case_details']['offences'] || []
-  offences.forEach( offence => offence.offence_date = utils.formatDate(offence.offence_date));
-
-  res.render('application_cert_review', { date_of_birth: utils.formatDate(dob), next_hearing, offences });
+  res.render('application_cert_review');
 });
 
 router.get('/application_certificate/:id', async (req, res, next) => {
   try {
     let id = req.params && req.params.id;
-    
+
     if (id) {
       let dataUrl = applicationsApiUrl + '/' + id;
       let response = await fetch(dataUrl);

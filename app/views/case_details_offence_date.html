@@ -9,9 +9,9 @@
       <form class="form" action="/case_details" method="post">
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
-            {% for offenceId in offenceIds -%}
+            {% for offence in data['case_details']['offences'] -%}
               <label class="govuk-label" for="offence[{{loop.index - 1}}]">
-                {{ offencesList[offenceId].B }}
+                {{ offence.B }}
               </label>
               <div id="offence-issued-hint" class="govuk-hint">
                 For example, 27 3 2007
