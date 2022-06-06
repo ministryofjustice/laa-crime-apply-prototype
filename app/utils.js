@@ -28,10 +28,10 @@ const utils = {
     let offenceIds = utils.filterOffenceIds(data.offences_search_entry)
     let offences = offenceIds.map(offenceId => offencesList[offenceId])
     if (data.offences_manual_entry) {
-      let manual_offences = Array.isArray(data.offences_manual_entry)? data.offences_manual_entry : [data.offences_manual_entry]
+      let manual_offences = Array.isArray(data.offences_manual_entry) ? data.offences_manual_entry : [data.offences_manual_entry]
       manual_offences.forEach(offence => offences.push({B: `${offence}`})) 
     }
-    req.session.data.case_details.offences = offences;
+    _.set(req.session.data, 'case_details.offences', offences);
   },
   combineDateComponents: (data) => {
     let dates = []
@@ -51,21 +51,18 @@ const utils = {
   pairOffencesWithDates: (dates, data) => {
     let offencesWithDates = []
     dates.map((date, index) => {
-      if (Array.isArray(date)) {
-        date.map(date => {
-          offencesWithDates.push({
-            offence: data['case_details']['offences'][index].B,
-            offence_class: data['case_details']['offences'][index].D || "not specified",
-            offence_date: utils.formatDate(date)
-          });
-        });
-      } else {
-        offencesWithDates.push({
+      if (!Array.isArray(date)) { 
+        date = [date]
+      }
+      
+      const addOffence = (date) => {
+         offencesWithDates.push({
           offence: data['case_details']['offences'][index].B,
           offence_class: data['case_details']['offences'][index].D || "not specified",
           offence_date: utils.formatDate(date)
-        });
-      }
+        })
+      };
+      date.forEach(addOffence);
     });
   
     return offencesWithDates.flat()
