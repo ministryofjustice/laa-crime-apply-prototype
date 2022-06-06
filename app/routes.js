@@ -211,7 +211,7 @@ router.post('/case_details_confirm', function (req, res, next) {
 
   let confirm = req.session.data['case_details_confirm'];
   if (confirm == "change") {
-    res.redirect('/case_details');
+    res.redirect('/case_details_case_type');
   } else {
     res.redirect('/ioj');
   }
