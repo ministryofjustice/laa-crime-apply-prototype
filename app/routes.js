@@ -194,16 +194,9 @@ router.get('/client_details_long', function (req, res) {
 });
 
 router.get('/case_details_confirm', function (req, res) {
-  let caseType = req.session.data['case_details']['case_type']
-  let dateStamp = utils.dateStampApplicable(caseType)
-  let showDateStamp
+  let showDateStamp = utils.dateStampApplicable(req)
 
-  if (dateStamp && !req.session.data['date_stamp']) {
-    req.session.data['date_stamp'] = new Date()
-    showDateStamp = true
-  }
-
-  res.render('case_details_confirm', showDateStamp);
+  res.render('case_details_confirm', {showDateStamp});
 });
 
 router.post('/case_details_confirm', function (req, res, next) {
@@ -325,15 +318,8 @@ router.get('/case_details', function (req, res) {
 });
 
 router.get('/case_details_offence', function (req, res) {
-  let caseType = req.session.data['case_details']['case_type']
-  let dateStamp = utils.dateStampApplicable(caseType)
-  let showDateStamp
+  let showDateStamp = utils.dateStampApplicable(req)
   
-  if (dateStamp && !req.session.data['date_stamp']) {
-    req.session.data['date_stamp'] = new Date()
-    showDateStamp = true
-  }
-
   res.render('case_details_offence', { offences: offencesList, showDateStamp});
 });
 

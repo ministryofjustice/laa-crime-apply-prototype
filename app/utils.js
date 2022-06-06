@@ -42,9 +42,10 @@ const utils = {
   },
   getFormattedDateStamp: (req) => {
     let dateStamp = new Date(req.session.data.date_stamp) || {};
-    let date = `${dateStamp.getDate()}-${dateStamp.getMonth()}-${dateStamp.getFullYear()}`
+    let date = `${dateStamp.getFullYear()}-${dateStamp.getMonth()+1}-${dateStamp.getDate()}`
+    
     if (req.session.data.date_stamp) {
-      formattedDateStamp = utils.formatDate(date);
+      let formattedDateStamp = utils.formatDate(date);
       let time
       if (dateStamp.getHours() > 12) {
         time = `${dateStamp.getHours()-12}:${dateStamp.getMinutes()}pm`
@@ -126,9 +127,13 @@ const utils = {
    req.session.data.check_means_result = { 'checkpoint': 'completed' };
    return;
   },
-  dateStampApplicable: (caseType) => {
+  dateStampApplicable: (req) => {
     let dateStampCaseTypes = ['summary_only', 'either_way', 'committal', 'appeal','appeal-with-changes']
-    return dateStampCaseTypes.includes(caseType) ? true : false
+    let setDateStamp = dateStampCaseTypes.includes(req.session.data['case_details']['case_type']) ? true : false
+    if (setDateStamp && !req.session.data['date_stamp']) {
+      req.session.data['date_stamp'] = new Date()
+    }
+    return setDateStamp
   }
 };
 
