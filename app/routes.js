@@ -194,10 +194,9 @@ router.get('/client_details_long', function (req, res) {
 });
 
 router.get('/case_details_confirm', function (req, res) {
-  let caseType = req.session.data['case_details']['case_type']
-  let dateStamp = utils.dateStampApplicable(caseType)
+  let showDateStamp = utils.dateStampApplicable(req)
 
-  res.render('case_details_confirm', { date_stamp: dateStamp});
+  res.render('case_details_confirm', {showDateStamp});
 });
 
 router.post('/case_details_confirm', function (req, res, next) {
@@ -314,10 +313,9 @@ router.get('/case_details', function (req, res) {
 });
 
 router.get('/case_details_offence', function (req, res) {
-  let caseType = req.session.data['case_details']['case_type']
-  let dateStamp = utils.dateStampApplicable(caseType)
-
-  res.render('case_details_offence', { offences: offencesList, date_stamp: dateStamp });
+  let showDateStamp = utils.dateStampApplicable(req)
+  
+  res.render('case_details_offence', { offences: offencesList, showDateStamp});
 });
 
 router.get('/application_cert_review', function (req, res) {

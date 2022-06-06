@@ -166,6 +166,12 @@
             <p class="govuk-body-s"> {{ sidemenu.dob }} </p>
           </h2>
           {% endif %}
+          {% if sidemenu.date_stamp %}
+          <h2 class="govuk-body-s" id="subsection-title">
+            <strong>Date stamp</strong>
+            <p class="govuk-body-s"> {{ sidemenu.date_stamp }} </p>
+          </h2>
+          {% endif %}
         </aside>
       </div>
     </div>

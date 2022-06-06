@@ -90,6 +90,23 @@ const utils = {
       return false;
     }
   },
+  getFormattedDateStamp: (req) => {
+    let dateStamp = new Date(req.session.data.date_stamp) || {};
+    let date = `${dateStamp.getFullYear()}-${dateStamp.getMonth()+1}-${dateStamp.getDate()}`
+    
+    if (req.session.data.date_stamp) {
+      let formattedDateStamp = utils.formatDate(date);
+      let time
+      if (dateStamp.getHours() > 12) {
+        time = `${dateStamp.getHours()-12}:${dateStamp.getMinutes()}pm`
+      } else {
+        time = `${dateStamp.getHours()}:${dateStamp.getMinutes()}am`
+      }
+      return`${formattedDateStamp} ${time}`
+    } else {
+      return false;
+    }
+  },
   parseItemResponse: (response) => {
     if (response.Item) {
       return response.Item.data
@@ -146,10 +163,12 @@ const utils = {
   sidemenu: (req) => {
     req.session.data.dob = req.session.data.dob || utils.setDateElements(req);
     let dob = utils.getFormattedDob(req);
+    let date_stamp = utils.getFormattedDateStamp(req);
     return {
       dob,
       first_name: _.get(req.session.data, 'client_details.client.first_name'),
-      last_name: _.get(req.session.data, 'client_details.client.last_name')
+      last_name: _.get(req.session.data, 'client_details.client.last_name'),
+      date_stamp
     };
   },
   skipMeans: (req) => {
@@ -158,9 +177,13 @@ const utils = {
    req.session.data.check_means_result = { 'checkpoint': 'completed' };
    return;
   },
-  dateStampApplicable: (caseType) => {
+  dateStampApplicable: (req) => {
     let dateStampCaseTypes = ['summary_only', 'either_way', 'committal', 'appeal','appeal-with-changes']
-    return dateStampCaseTypes.includes(caseType) ? true : false
+    let setDateStamp = dateStampCaseTypes.includes(req.session.data['case_details']['case_type']) ? true : false
+    if (setDateStamp && !req.session.data['date_stamp']) {
+      req.session.data['date_stamp'] = new Date()
+    }
+    return setDateStamp
   }
 };
 
