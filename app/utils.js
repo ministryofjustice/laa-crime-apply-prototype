@@ -40,6 +40,22 @@ const utils = {
       return false;
     }
   },
+  getFormattedDateStamp: (req) => {
+    let dateStamp = new Date(req.session.data.date_stamp) || {};
+    let date = `${dateStamp.getDate()}-${dateStamp.getMonth()}-${dateStamp.getFullYear()}`
+    if (req.session.data.date_stamp) {
+      formattedDateStamp = utils.formatDate(date);
+      let time
+      if (dateStamp.getHours() > 12) {
+        time = `${dateStamp.getHours()-12}:${dateStamp.getMinutes()}pm`
+      } else {
+        time = `${dateStamp.getHours()}:${dateStamp.getMinutes()}am`
+      }
+      return`${formattedDateStamp} ${time}`
+    } else {
+      return false;
+    }
+  },
   parseItemResponse: (response) => {
     if (response.Item) {
       return response.Item.data
@@ -96,10 +112,12 @@ const utils = {
   sidemenu: (req) => {
     req.session.data.dob = req.session.data.dob || utils.setDateElements(req);
     let dob = utils.getFormattedDob(req);
+    let date_stamp = utils.getFormattedDateStamp(req);
     return {
       dob,
       first_name: _.get(req.session.data, 'client_details.client.first_name'),
-      last_name: _.get(req.session.data, 'client_details.client.last_name')
+      last_name: _.get(req.session.data, 'client_details.client.last_name'),
+      date_stamp
     };
   },
   skipMeans: (req) => {
