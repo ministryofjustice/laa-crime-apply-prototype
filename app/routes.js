@@ -345,9 +345,10 @@ router.get('/application_certificate/:id', async (req, res, next) => {
 });
 
 router.get('/application_certificate', function (req, res) {
-  let date = utils.constructDate(req.session.data.dob);
+  let status = statusCheck(req.session, validators);
+  status.sidemenu = utils.sidemenu(req);
 
-  res.render('application_certificate', {date_of_birth: utils.formatDate(date), laa_ref: "LAA-7dhv2e"})
+  res.render('application_certificate', { laa_ref: "LAA-7dhv2e", status} )
 });
 
 router.post('/confirm_the_following', async (req, res, next) => {

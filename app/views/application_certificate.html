@@ -25,7 +25,7 @@
 
         <p>Client: <strong>{{ data['client_details']['client']['first_name'] + " " + data['client_details']['client']['last_name'] }}</strong>
           <br>LAA reference: <strong>{{ laa_ref }}</strong>
-          <br>Date stamp: <strong>22 April 2022 2:45pm</strong>
+          <br>Date stamp: <strong>{{ status.sidemenu.date_stamp }}</strong>
         </p>
         <a href="print_view" role="button" class="govuk-button">
           Print application
@@ -61,7 +61,7 @@
               Date of birth
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ date_of_birth }}
+              {{ status.sidemenu.dob }}
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -189,7 +189,7 @@
               Next court hearing
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ next_hearing }}
+              {{ data['case_details']['next_hearing'] }}
             </dd>
           </div>
         </dl>
@@ -227,15 +227,16 @@
         </div>
   
         <dl class="govuk-summary-list">
-          {% for offence in offences -%}
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                {{ offence.offence }}
-              </dt>
-              <dd class="govuk-summary-list__value">
+          {% for offence in data['case_details']['offences'] -%}
+  
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              {{ offence.offence }}
+            </dt>
+            <dd class="govuk-summary-list__value">
                 <p>{{ offence.offence_date }}</p>
-              </dd>
-            </div>
+            </dd>
+          </div>
           {%- endfor %}
         </dl>
   
