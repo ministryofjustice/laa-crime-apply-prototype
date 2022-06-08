@@ -161,10 +161,13 @@ const utils = {
     updated: 'Amended'
   },
   sidemenu: (req) => {
+    let id = req.params && req.params.id || "05a7d3c6-310d-440c-b48d-ddbf082a0cbe";
+    let laa_reference = `LAA-${id.substring(1, 7)}`
     req.session.data.dob = req.session.data.dob || utils.setDateElements(req);
     let dob = utils.getFormattedDob(req);
     let date_stamp = utils.getFormattedDateStamp(req);
     return {
+      laa_reference,
       dob,
       first_name: _.get(req.session.data, 'client_details.client.first_name'),
       last_name: _.get(req.session.data, 'client_details.client.last_name'),

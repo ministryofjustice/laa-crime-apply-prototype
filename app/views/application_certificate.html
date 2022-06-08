@@ -24,8 +24,8 @@
         </h1>
 
         <p>Client: <strong>{{ data['client_details']['client']['first_name'] + " " + data['client_details']['client']['last_name'] }}</strong>
-          <br>LAA reference: <strong>{{ laa_ref }}</strong>
-          <br>Date stamp: <strong>{{ status.sidemenu.date_stamp }}</strong>
+          <br>LAA reference: <strong>{{ laa_reference }}</strong>
+          <br>Date stamp: <strong>{{ date_stamp }}</strong>
         </p>
         <a href="print_view" role="button" class="govuk-button">
           Print application
@@ -61,7 +61,7 @@
               Date of birth
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ status.sidemenu.dob }}
+              {{ dob }}
             </dd>
           </div>
           <div class="govuk-summary-list__row">
