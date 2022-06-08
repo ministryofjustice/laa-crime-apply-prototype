@@ -24,8 +24,8 @@
         </h1>
 
         <p>Client: <strong>{{ data['client_details']['client']['first_name'] + " " + data['client_details']['client']['last_name'] }}</strong>
-          <br>LAA reference: <strong>{{ laa_ref }}</strong>
-          <br>Date stamp: <strong>22 April 2022 2:45pm</strong>
+          <br>LAA reference: <strong>{{ laa_reference }}</strong>
+          <br>Date stamp: <strong>{{ date_stamp }}</strong>
         </p>
         <a href="print_view" role="button" class="govuk-button">
           Print application
@@ -36,8 +36,6 @@
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-two-thirds">
             <h2 class="govuk-heading-m">Client details</h2>
-          </div>
-          <div class="govuk-grid-column-one-third">
           </div>
         </div>
 
@@ -63,7 +61,7 @@
               Date of birth
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ date_of_birth }}
+              {{ dob }}
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -72,6 +70,14 @@
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['client_details']['client']['national_insurance_number'] }}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              UK telephone number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['client_details']['client']['phone'] }}
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -119,7 +125,7 @@
               {% endif %}
             </dd>
           </div>
-          {% if data['client_details']['partner']['first_name'] %}
+          <!-- {% if data['client_details']['partner']['first_name'] %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Partner's first name
@@ -138,7 +144,7 @@
                 {{ data['client_details']['partner']['last_name'] }}
               </dd>
             </div>
-          {% endif %}
+          {% endif %} -->
         </dl>
 
         <div class="govuk-grid-row">
@@ -150,6 +156,16 @@
         </div>
 
         <dl class="govuk-summary-list">
+          {% if data.case_details_type == 'urn' %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Unique reference number
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['case_details']['URN'] }}
+              </dd>
+            </div>
+          {% endif %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Case type
@@ -163,77 +179,129 @@
                 Indictable
               {% elif data['case_details']['case_type'] == 'already_in_crown_court' %}
                 Trial already in Crown Court
-              {% elif data['case_details']['case_type'] == '' %}
+              {% elif data['case_details']['case_type'] == 'committal' %}
                 Committal for sentence
               {% endif %}
             </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Offence
+              Next court hearing
             </dt>
             <dd class="govuk-summary-list__value">
-              {% if data['case_details']['offence'] %}
-                <p>{{ data['case_details']['offence'] }}</p>
-              {% endif %}
-              {% if data['case_details']['offence_class'] %}
-                <p>Class {{ data['case_details']['offence_class'] | capitalize }}</p>
-              {% endif %}
+              {{ data['case_details']['next_hearing'] }}
             </dd>
           </div>
-          {% for defendant in data['case_details']['co_defendant_names'] -%}
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Co-defendant {{loop.index}}
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {{ defendant }}
-              </dd>
-            </div>
-          {%- endfor %}
         </dl>
 
         <br>
 
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-two-thirds">
-            <h2 class="govuk-heading-m">Interests of Justice</h2>
-          </div>
-          <div class="govuk-grid-column-one-third">
+            <h2 class="govuk-heading-m">Offences</h2>
           </div>
         </div>
 
         <dl class="govuk-summary-list">
+          {% for offence in data['case_details']['offences'] -%}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Offence {{loop.index}}
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  <p>{{ offence.offence | capitalize}}</p>
+                  {% if offence.offence_class == "not specified" %}
+                    <p class="offence-class">Class {{ offence.offence_class }}</p>
+                  {% else %}
+                    <p class="offence-class">Class {{ offence.offence_class | capitalize }}</p>
+                  {% endif %}
+              </dd>
+            </div>
+          {%- endfor %}
+        </dl>
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-m">Offence dates</h2>
+          </div>
+        </div>
+  
+        <dl class="govuk-summary-list">
+          {% for offence in data['case_details']['offences'] -%}
+  
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Criteria
+              {{ offence.offence }}
             </dt>
             <dd class="govuk-summary-list__value">
-              {% for ioj in data['interests_of_justice'] -%}
-                {% if ioj == 'liberty' %}
-                  <p>Loss of liberty</p>
-                {% elif ioj == 'suspended_sentence' %}
-                  <p>Suspended or non-custodial sentence</p>
-                {% elif ioj == 'livelihood' %}
-                  <p>Loss of livelihood</p>
-                {% elif ioj == 'reputation' %}
-                  <p>Serious damage to their reputation</p>
-                {% elif ioj == 'question_of_law' %}
-                  <p>Substantial question of law may be involved</p>
-                {% elif ioj == 'unable_to_understand' %}
-                  <p>Unable to understand the court proceedings or present own case</p>
-                {% elif ioj == 'witnesses_needed' %}
-                  <p>Witnesses may need to be traced or interviewed</p>
-                {% elif ioj == 'expert_cross_examination' %}
-                  <p>The proceedings may involve expert cross-examination</p>
-                {% elif ioj == 'interests_of_another' %}
-                  <p>It is in the interests of another person</p>
-                {% elif ioj == 'ioj_other' %}
-                  <p>Other reason</p>
-                {% endif %}
-              {%- endfor %}
+                <p>{{ offence.offence_date }}</p>
             </dd>
           </div>
+          {%- endfor %}
+        </dl>
+  
+        <br>
+
+        {% if data['case_details']['co_defendant_names'] > 0 %}
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              <h2 class="govuk-heading-m">Co-defendants</h2>
+            </div>
+          </div>
+    
+          <dl class="govuk-summary-list">
+            {% for defendant in data['case_details']['co_defendant_names'] -%}
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Co-defendant {{loop.index}}
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ defendant }}
+                </dd>
+              </div>
+            {%- endfor %}
+          </dl>
+    
+          <br>
+        {% endif %}
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-m">Justification for legal aid</h2>
+          </div>
+        </div>
+
+        <dl class="govuk-summary-list">
+          {% for ioj in data['interests_of_justice'] -%}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                {% if ioj == 'liberty' %}
+                  Loss of liberty
+                {% elif ioj == 'suspended_sentence' %}
+                  Suspended or non-custodial sentence
+                {% elif ioj == 'livelihood' %}
+                  Loss of livelihood
+                {% elif ioj == 'reputation' %}
+                  Serious damage to their reputation
+                {% elif ioj == 'question_of_law' %}
+                  Substantial question of law may be involved
+                {% elif ioj == 'unable_to_understand' %}
+                  Unable to understand the court proceedings or present own case
+                {% elif ioj == 'witnesses_needed' %}
+                  Witnesses may need to be traced or interviewed
+                {% elif ioj == 'expert_cross_examination' %}
+                  The proceedings may involve expert cross-examination
+                {% elif ioj == 'interests_of_another' %}
+                  It is in the interests of another person
+                {% elif ioj == 'ioj_other' %}
+                  Other reason
+                {% endif %}
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['more-detail'][loop.index-1] }}
+              </dd>
+            </div>
+          {%- endfor %}
         </dl>
 
         <br>

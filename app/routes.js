@@ -335,19 +335,19 @@ router.get('/application_certificate/:id', async (req, res, next) => {
         req.session.data = data
       }
     }
-    let date_of_birth = utils.formatDate(req.session.data.client_details.client.date_of_birth);
-    let laa_ref = 'LAA-' + id.substring(1, 7)
 
-    res.render('application_certificate', { date_of_birth: date_of_birth, laa_ref: laa_ref } );
+    let details = utils.sidemenu(req);    
+
+    res.render('application_certificate', details);
   } catch (err) {
     return next(err);
   }
 });
 
 router.get('/application_certificate', function (req, res) {
-  let date = utils.constructDate(req.session.data.dob);
+  let details = utils.sidemenu(req);
 
-  res.render('application_certificate', {date_of_birth: utils.formatDate(date), laa_ref: "LAA-7dhv2e"})
+  res.render('application_certificate', details)
 });
 
 router.post('/confirm_the_following', async (req, res, next) => {

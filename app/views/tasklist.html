@@ -144,10 +144,12 @@
     <div class="right-sidebar-menu">
       <div class="govuk-grid-column-one-third">
         <aside class="app-related-items" role="complementary">
-          <h2 class="govuk-body-s" id="subsection-title">
-            <strong>Reference number</strong>
-            <p class="govuk-body-s"> L-A1B-C2D </p>
-          </h2>
+          {% if sidemenu.laa_reference %}
+            <h2 class="govuk-body-s" id="subsection-title">
+              <strong>Reference number</strong>
+              <p class="govuk-body-s"> {{ sidemenu.laa_reference }} </p>
+            </h2>
+          {% endif %}
           {% if sidemenu.first_name %}
             <h2 class="govuk-body-s" id="subsection-title">
               <strong>First name</strong>
