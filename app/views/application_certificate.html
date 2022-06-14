@@ -56,6 +56,16 @@
               {{ data['client_details']['client']['last_name'] }}
             </dd>
           </div>
+          {% if data['client_details']['client']['other_names'] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Other names
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['client_details']['client']['other_names'] }}
+              </dd>
+            </div>
+          {% endif %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Date of birth
@@ -225,10 +235,10 @@
             <h2 class="govuk-heading-m">Offence dates</h2>
           </div>
         </div>
-  
+
         <dl class="govuk-summary-list">
           {% for offence in data['case_details']['offences'] -%}
-  
+
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               {{ offence.offence }}
@@ -239,7 +249,7 @@
           </div>
           {%- endfor %}
         </dl>
-  
+
         <br>
 
         {% if data['case_details']['co_defendant_names'] > 0 %}
@@ -248,7 +258,7 @@
               <h2 class="govuk-heading-m">Co-defendants</h2>
             </div>
           </div>
-    
+
           <dl class="govuk-summary-list">
             {% for defendant in data['case_details']['co_defendant_names'] -%}
               <div class="govuk-summary-list__row">
@@ -261,7 +271,7 @@
               </div>
             {%- endfor %}
           </dl>
-    
+
           <br>
         {% endif %}
 

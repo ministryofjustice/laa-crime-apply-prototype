@@ -33,6 +33,21 @@
           <div class="govuk-!-padding-bottom-2"></div>
 
           <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m"> Other names (optional)
+              </legend>
+              <div id="other_names-hint" class="govuk-hint">
+                This includes aliases, nicknames or other names your client may be known as.
+              </div>
+              <div class="govuk-form-group">
+                <input class="govuk-input govuk-!-width-three-quarters" id="other_names" name="client_details[client][other_names]" type="text" value="{{ data['client_details']['client']['other_names'] }}">
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="govuk-!-padding-bottom-2"></div>
+
+          <div class="govuk-form-group">
             <fieldset class="govuk-fieldset" role="group" aria-describedby="date-of-birth-hint">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                 <h1 class="govuk-fieldset__heading">

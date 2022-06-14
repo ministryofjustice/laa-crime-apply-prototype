@@ -51,6 +51,16 @@
                 {{ data['client_details']['client']['last_name'] }}
               </dd>
             </div>
+            {% if data['client_details']['client']['other_names'] %}
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Other names
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['client_details']['client']['other_names'] }}
+                </dd>
+              </div>
+            {% endif %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Date of birth
