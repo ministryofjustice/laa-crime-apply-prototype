@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Apply for legal aid - Client details
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Enter your client's home address</h1>
+
+        <form action="/client_details_correspondence_address" method="post" novalidate>
+
+          <div class="govuk-form-group">
+            {% if not data['client_details']['client']['address']['address_line_one'] %}
+              <label class="govuk-label" for="postcode">
+                Postcode
+              </label>
+              <div id="postcode-hint" class="govuk-hint">
+                This must be a UK postcode, for example SW1A 2AA.
+              </div>
+              <div id="postcode-entry" class="togglePostcode">
+                <div class="govuk-form-group">
+                  <input class="govuk-input govuk-input--width-10" id="postcode" name="postcode" type="text" value="{{ data['postcode'] }}">
+                </div>
+                <div type="submit" class="govuk-button govuk-button--secondary" id="find-address">
+                  Find address
+                </div>
+              </div>
+              <div id="address-entry" class="govuk-visually-hidden togglePostcode">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-!-font-weight-bold postcode_change" for="change-postcode">
+                    {{ data['postcode'] }}
+                  </label>
+                  <p class="postcode_change">
+                    <a class="govuk-link" href="client_details_long#toggle-postcode" aria-label="change postcode">Change</a>
+                  </p>
+                </div>
+
+                <div class="govuk-form-group">
+                  <p>
+                    <label class="govuk-label" for="address-select">
+                      Select an address
+                    </label>
+                    <select class="govuk-select govuk-!-width-three-quarters" id="address-select" name="address-select">
+                      <option disabled selected>5 addresses found</option>
+                      <option value="1">1 Main Street, London{% if data['postcode'] %}, {{ data['postcode'] }}{% endif %}</option>
+                      <option value="2">2 Main Street, London{% if data['postcode'] %}, {{ data['postcode'] }}{% endif %}</option>
+                      <option value="3">3 Main Street, London{% if data['postcode'] %}, {{ data['postcode'] }}{% endif %}</option>
+                      <option value="4">4 Main Street, London{% if data['postcode'] %}, {{ data['postcode'] }}{% endif %}</option>
+                      <option value="5">5 Main Street, London{% if data['postcode'] %}, {{ data['postcode'] }}{% endif %}</option>
+                    </select>
+                  </p>
+                </div>
+              </div>
+
+              <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text togglePostcode" id="address-manual">
+                    Enter the correspondence address manually
+                  </span>
+                  <span class="govuk-details__summary-text govuk-visually-hidden togglePostcode" id="address-not-listed">
+                    I can't find the address in the list
+                  </span>
+                </summary>
+            {% else %}
+              <label class="govuk-label govuk-label--m" for="address">
+                Address
+              </label>
+            {% endif %}
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="address-line-1">
+                Building and street
+                <span class="govuk-visually-hidden">line 1 of 2</span>
+              </label>
+              <input class="govuk-input" id="address-line-1" name="client_details[client][address][address_line_one]" value="{{ data['client_details']['client']['address']['address_line_one'] }}" type="text">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="address-line-2">
+                <span class="govuk-visually-hidden">Building and street line 2 of 2</span>
+              </label>
+              <input class="govuk-input" id="address-line-2" name="client_details[client][address][address_line_two]" value="{{ data['client_details']['client']['address']['address_line_two'] }}" type="text">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="address-town">
+                Town or city
+              </label>
+              <input class="govuk-input govuk-!-width-two-thirds" id="address-town" name="client_details[client][address][city]" value="{{ data['client_details']['client']['address']['city'] }}" type="text">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="address-county">
+                County
+              </label>
+              <input class="govuk-input govuk-!-width-two-thirds" id="address-county" name="client_details[client][address][county]" value="{{ data['client_details']['client']['address']['county'] }}" type="text">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="address-postcode">
+                Postcode
+              </label>
+              <input class="govuk-input govuk-input--width-10" id="address-postcode" name="client_details[client][address][postcode]" value="{{ data['client_details']['client']['address']['postcode'] }}" type="text">
+            </div>
+
+            {% if not data['client_details']['client']['address']['address_line_one'] %}
+              </details>
+            {% endif %}
+
+          <button type="submit" class="govuk-button button-left">
+            Save and continue
+          </button>
+        </form>
+        <form class="form inline-form" action="/tasklist" method="post">
+          <button class="govuk-button govuk-button--secondary" data-module="govuk-button">Save and come back later</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
