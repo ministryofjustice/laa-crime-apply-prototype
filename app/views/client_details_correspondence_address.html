@@ -16,12 +16,14 @@
             <fieldset class="govuk-fieldset">
 
               <div class="govuk-radios" data-module="govuk-radios">
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="correspondence-address-1" name="where-do-you-live" type="radio" value="home-address">
-                  <label class="govuk-label govuk-radios__label" for="correspondence-address-1">
-                    Their home address
-                  </label>
-                </div>
+                {% if data['home-address'] == 'yes' %}
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="correspondence-address-1" name="where-do-you-live" type="radio" value="home-address">
+                    <label class="govuk-label govuk-radios__label" for="correspondence-address-1">
+                      Their home address
+                    </label>
+                  </div>
+                {% endif %}
                 <div class="govuk-radios__item">
                   <input class="govuk-radios__input" id="correspondence-address-2" name="where-do-you-live" type="radio" value="provider-office">
                   <label class="govuk-label govuk-radios__label" for="correspondence-address-2">
