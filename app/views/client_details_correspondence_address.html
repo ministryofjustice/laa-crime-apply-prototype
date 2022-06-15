@@ -8,7 +8,7 @@
   <div class="govuk-width-container">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-xl">Where should we send your client’s correspondence to?</h1>
+        <h1 class="govuk-heading-xl">Enter your client's correspondence address</h1>
 
         <form action="/case_details_case_type" method="post" novalidate>
 
@@ -17,20 +17,13 @@
 
               <div class="govuk-radios" data-module="govuk-radios">
                 {% if data['home-address'] == 'yes' %}
-                  <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="correspondence-address-1" name="where-do-you-live" type="radio" value="home-address">
-                    <label class="govuk-label govuk-radios__label" for="correspondence-address-1">
-                      Their home address
-                    </label>
-                  </div>
                 {% endif %}
                 <div class="govuk-radios__item">
                   <input class="govuk-radios__input" id="correspondence-address-2" name="where-do-you-live" type="radio" value="provider-office">
                   <label class="govuk-label govuk-radios__label" for="correspondence-address-2">
-                    My office
+                    Provider's office
                   </label>
                 </div>
-                <div class="govuk-radios__divider">or</div>
                 <div class="govuk-radios__item">
                   <input class="govuk-radios__input" id="correspondence-address-3" name="where-do-you-live" type="radio" value="correspondence-address-other" data-aria-controls="conditional-yes">
                   <label class="govuk-label govuk-radios__label" for="correspondence-address-3">
