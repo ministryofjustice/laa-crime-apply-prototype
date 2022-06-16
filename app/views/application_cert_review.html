@@ -90,7 +90,7 @@
                 Home address
               </dt>
               <dd class="govuk-summary-list__value">
-                {% if data['home-address'] == yes %}
+                {% if data['home-address'] == 'yes' %}
                   {% if data['client_details']['client']['address']['address_line_one'] %}
                     {{ data['client_details']['client']['address']['address_line_one'] }}
                     {{ data['client_details']['client']['address']['address_line_two'] }}
