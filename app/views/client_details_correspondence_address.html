@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Apply for legal aid - Client details
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Enter your client's correspondence address</h1>
+
+        <form action="/case_details_case_type" method="post" novalidate>
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="correspondence-address-2" name="correspondence_address_type" type="radio" value="provider-office">
+                  <label class="govuk-label govuk-radios__label" for="correspondence-address-2">
+                    Provider's office
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="correspondence-address-3" name="correspondence_address_type" type="radio" value="correspondence-address-other" data-aria-controls="conditional-yes">
+                  <label class="govuk-label govuk-radios__label" for="correspondence-address-3">
+                    Somewhere else
+                  </label>
+                </div>
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-yes">
+
+                  <div class="govuk-form-group">
+
+                  <label class="govuk-label" for="address-line-1">
+                    Building and street
+                  </label>
+                  <input class="govuk-input" id="address-line-1" name="client_details[client][correspondence_address][address_line_one]" value="{{ data['client_details']['client']['correspondence_address']['address_line_one'] }}" type="text">
+                  </div>
+
+                  <div class="govuk-form-group">
+                  <label class="govuk-label" for="address-line-2">
+                    <span class="govuk-visually-hidden">Building and street line 2 of 2</span>
+                  </label>
+                  <input class="govuk-input" id="address-line-2" name="client_details[client][correspondence_address][address_line_two]" value="{{ data['client_details']['client']['correspondence_address']['address_line_two'] }}" type="text">
+                  </div>
+
+                  <div class="govuk-form-group">
+                  <label class="govuk-label" for="address-town">
+                    Town or city
+                  </label>
+                  <input class="govuk-input govuk-!-width-two-thirds" id="address-town" name="client_details[client][correspondence_address][city]" value="{{ data['client_details']['client']['correspondence_address']['city'] }}" type="text">
+                  </div>
+
+                  <div class="govuk-form-group">
+                  <label class="govuk-label" for="address-county">
+                    County
+                  </label>
+                  <input class="govuk-input govuk-!-width-two-thirds" id="address-county" name="client_details[client][correspondence_address][county]" value="{{ data['client_details']['client']['correspondence_address']['county'] }}" type="text">
+                  </div>
+
+                  <div class="govuk-form-group">
+                  <label class="govuk-label" for="address-postcode">
+                    Postcode
+                  </label>
+                  <input class="govuk-input govuk-input--width-10" id="address-postcode" name="client_details[client][correspondence_address][postcode]" value="{{ data['client_details']['client']['correspondence_address']['postcode'] }}" type="text">
+                  </div>
+
+
+              </div>
+            </fieldset>
+          </div>
+
+          <button type="submit" class="govuk-button button-left">
+            Save and continue
+          </button>
+        </form>
+        <form class="form inline-form" action="/tasklist" method="post">
+          <button class="govuk-button govuk-button--secondary" data-module="govuk-button">Save and come back later</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

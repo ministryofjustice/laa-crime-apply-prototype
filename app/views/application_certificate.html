@@ -92,22 +92,58 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
+              Home address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['home-address'] == 'yes' %}
+                {% if data['client_details']['client']['address']['address_line_one'] %}
+                  {{ data['client_details']['client']['address']['address_line_one'] }}
+                  {{ data['client_details']['client']['address']['address_line_two'] }}
+                  <br>
+                  {{ data['client_details']['client']['address']['city'] }}
+                  <br>
+                  {{ data['client_details']['client']['address']['postcode'] }}
+                {% elif data['address-select'] %}
+                  {{ data['address-select'] }} Main Street
+                  <br>
+                  London
+                  <br>
+                  {{ data['client_details']['client']['address']['postcode'] }}
+                {% endif %}
+              {% else %}
+                No home address provided
+              {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
               Correspondence address
             </dt>
             <dd class="govuk-summary-list__value">
-              {% if data['client_details']['client']['address']['address_line_one'] %}
-                {{ data['client_details']['client']['address']['address_line_one'] }}
-                {{ data['client_details']['client']['address']['address_line_two'] }}
-                <br>
-                {{ data['client_details']['client']['address']['city'] }}
-                <br>
-                {{ data['client_details']['client']['address']['postcode'] }}
-              {% elif data['address-select'] %}
-                {{ data['address-select'] }} Main Street
-                <br>
-                London
-                <br>
-                {{ data['client_details']['client']['address']['postcode'] }}
+              {% if data['correspondence_address_type'] == 'home-address' %}
+                Same as home address
+              {% elseif data['correspondence_address_type'] == 'provider-office' %}
+                Provider's office
+              {% elseif data['correspondence_address_type'] == 'correspondence-address-other' %}
+                {% if data['client_details']['client']['correspondence_address']['address_line_one'] %}
+                  {{ data['client_details']['client']['correspondence_address']['address_line_one']}}
+                  <br>
+                {% endif %}
+                {% if data['client_details']['client']['correspondence_address']['address_line_two'] %}
+                  {{ data['client_details']['client']['correspondence_address']['address_line_two']}}
+                  <br>
+                {% endif %}
+                {% if data['client_details']['client']['correspondence_address']['city'] %}
+                  {{ data['client_details']['client']['correspondence_address']['city']}}
+                  <br>
+                {% endif %}
+                {% if data['client_details']['client']['correspondence_address']['county'] %}
+                  {{ data['client_details']['client']['correspondence_address']['county']}}
+                  <br>
+                {% endif %}
+                {% if data['client_details']['client']['correspondence_address']['postcode'] %}
+                  {{ data['client_details']['client']['correspondence_address']['postcode']}}
+                {% endif %}
               {% endif %}
             </dd>
           </div>
