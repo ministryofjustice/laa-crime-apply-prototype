@@ -253,7 +253,7 @@ router.post('/ioj', function (req, res, next) {
     utils.setNamesAsDefendants(req);
 
     let dob = utils.constructDate(req.session.data.dob);
-    _.set(req.session.data, 'client_details.dob', utils.formatDate(dob));
+    _.set(req.session.data, 'client_details.client.dob', utils.formatDate(dob));
 
     let next_hearing_string = `${req.session.data['next-hearing-year']}-${req.session.data['next-hearing-month']}-${req.session.data['next-hearing-day']}`
     req.session.data['case_details']['next_hearing'] = utils.formatDate(next_hearing_string);
