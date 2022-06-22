@@ -44,7 +44,7 @@
                           <div class="govuk-grid-row courts-list" id="court-item-{{loop.index}}" >
                             <div class="govuk-radios govuk-radios">
                               <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="court-value-{{loop.index}}" name="court" type="radio" value="{{loop.index - 1}}">
+                                <input class="govuk-radios__input" id="court-value-{{loop.index}}" name="court_name" type="radio" value="{{court.name}}">
                                 <label class="govuk-label govuk-radios__label"><strong>{{ court.name }}</strong></label>
                               </div>
                             </div>
