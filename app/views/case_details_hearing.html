@@ -1,5 +1,17 @@
 {% extends "layout.html" %}
 
+{% block pageScripts %}
+  <script src="/public/javascripts/jquery.hideseek.min.js"></script>
+  <script>
+    $('#court_search').hideseek({
+        min_chars: 3,
+        nodata: "No results found.",
+        hidden_mode: true,
+        highlight: true
+    });
+  </script>
+{% endblock %}
+
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -9,21 +21,49 @@
       <form class="form" action="/ioj" method="post">
         <div class="govuk-form-group">
           <h1 class="govuk-label-wrapper">
-          <label class="govuk-label govuk-label--m" for="event-name">
-            Court
+          <label class="govuk-label govuk-label--m" for="court_name">
+            Court name
           </label>
           </h1>
           <div id="next-hearing-hint" class="govuk-hint">
             For example, Cardiff
           </div>
-        <input class="govuk-input" id="event-name" name="event-name" type="text">
+          <div id="search-field" class="govuk-form-group">
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-two-thirds">
+                <input class="govuk-input search-field" autocomplete="off" id="court_search" name="court_search" type="text" data-list="#courts-list">
+              </div>
+            </div>
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-two-thirds">
+                <div id="case-court-list" class="govuk-grid-column-full ">
+                  <div class="govuk-radios govuk-radios--inline">
+                    <ul id="courts-list" style="text">
+                      {% for court in courts -%}
+                        <li>
+                          <div class="govuk-grid-row courts-list" id="court-item-{{loop.index}}" >
+                            <div class="govuk-radios govuk-radios">
+                              <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="court-value-{{loop.index}}" name="court" type="radio" value="{{loop.index - 1}}">
+                                <label class="govuk-label govuk-radios__label"><strong>{{ court.name }}</strong></label>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </div>    
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
               <h1 class="govuk-fieldset__heading">
-                Date
+                Date of next hearing
               </h1>
             </legend>
             <div class="govuk-form-group">
@@ -76,4 +116,5 @@
     </div>
   </div>
   <p><a href="/ioj_passported" style="color: #b7b7b7;">If user enters a slipstreamed offence</a></p>
+
 {% endblock %}

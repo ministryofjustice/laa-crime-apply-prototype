@@ -157,7 +157,7 @@
             <h2 class="govuk-heading-m">Case details</h2>
           </div>
           <!-- <div class="govuk-grid-column-one-third">
-            <p><a class="govuk-link" style="float:right;" href="/case_details">Change</a></p>
+            <p><a class="govuk-link" style="float:right;" href="/case_details_codefendants">Change</a></p>
           </div> -->
         </div>
 
@@ -203,13 +203,26 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
+              Court hearing the case
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['court_name'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="/case_details_hearing">
+                Change<span class="govuk-visually-hidden">court name</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
               Next court hearing
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['case_details']['next_hearing'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/case_details">
+              <a class="govuk-link" href="/case_details_hearing">
                 Change<span class="govuk-visually-hidden">next court hearing</span>
               </a>
             </dd>
@@ -278,7 +291,7 @@
           <h2 class="govuk-heading-m">Co-defendants</h2>
         </div>
         <div class="govuk-grid-column-one-third">
-          <p><a class="govuk-link" style="float:right;" href="/case_details">Change</a></p>
+          <p><a class="govuk-link" style="float:right;" href="/case_details_codefendants">Change</a></p>
         </div>
       </div>
 

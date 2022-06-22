@@ -111,6 +111,16 @@ ul#offences-list {
   }
 }
 
+ul#courts-list {
+  padding: 0px;
+  margin-top: 22px;
+  li {
+    display: inline-block;
+    list-style-type: none;
+    margin-bottom: 10px;
+  }
+}
+
 div.clear-search {
   padding-top: 8px;
 }

@@ -1,0 +1,322 @@
+[
+    {
+        "name": "Aylesbury",
+        "code": "401"
+    },
+    {
+        "name": "Basildon",
+        "code": "461"
+    },
+    {
+        "name": "Birmingham",
+        "code": "404"
+    },
+    {
+        "name": "Blackfriars",
+        "code": "428"
+    },
+    {
+        "name": "Bolton",
+        "code": "470"
+    },
+    {
+        "name": "Bournemouth",
+        "code": "406"
+    },
+    {
+        "name": "Bradford",
+        "code": "402"
+    },
+    {
+        "name": "Bristol",
+        "code": "408"
+    },
+    {
+        "name": "Burnley",
+        "code": "409"
+    },
+    {
+        "name": "Cambridge",
+        "code": "410"
+    },
+    {
+        "name": "Canterbury",
+        "code": "479"
+    },
+    {
+        "name": "Cardiff",
+        "code": "411"
+    },
+    {
+        "name": "Carlisle",
+        "code": "412"
+    },
+    {
+        "name": "Central Criminal Court",
+        "code": "413"
+    },
+    {
+        "name": "Chelmsford",
+        "code": "414"
+    },
+    {
+        "name": "Chester",
+        "code": "415"
+    },
+    {
+        "name": "Chichester",
+        "code": "416"
+    },
+    {
+        "name": "Coventry",
+        "code": "417"
+    },
+    {
+        "name": "Croydon",
+        "code": "418"
+    },
+    {
+        "name": "Derby",
+        "code": "419"
+    },
+    {
+        "name": "Doncaster",
+        "code": "420"
+    },
+    {
+        "name": "Durham",
+        "code": "422"
+    },
+    {
+        "name": "Exeter",
+        "code": "423"
+    },
+    {
+        "name": "Gloucester",
+        "code": "424"
+    },
+    {
+        "name": "Grimsby",
+        "code": "425"
+    },
+    {
+        "name": "Guildford",
+        "code": "474"
+    },
+    {
+        "name": "Harrow",
+        "code": "468"
+    },
+    {
+        "name": "Hull",
+        "code": "403"
+    },
+    {
+        "name": "Inner London",
+        "code": "440"
+    },
+    {
+        "name": "Ipswich",
+        "code": "426"
+    },
+    {
+        "name": "Isleworth",
+        "code": "475"
+    },
+    {
+        "name": "Kingston Upon Thames",
+        "code": "427"
+    },
+    {
+        "name": "Leeds",
+        "code": "429"
+    },
+    {
+        "name": "Leicester",
+        "code": "430"
+    },
+    {
+        "name": "Lewes",
+        "code": "431"
+    },
+    {
+        "name": "Lincoln",
+        "code": "432"
+    },
+    {
+        "name": "Liverpool",
+        "code": "433"
+    },
+    {
+        "name": "Luton",
+        "code": "476"
+    },
+    {
+        "name": "Maidstone",
+        "code": "434"
+    },
+    {
+        "name": "Manchester (Crown Sq)",
+        "code": "435"
+    },
+    {
+        "name": "Manchester (Minshull St)",
+        "code": "436"
+    },
+    {
+        "name": "Merthyr Tydfil",
+        "code": "437"
+    },
+    {
+        "name": "Middx Guildhall",
+        "code": "464"
+    },
+    {
+        "name": "Mold",
+        "code": "438"
+    },
+    {
+        "name": "Newcastle",
+        "code": "439"
+    },
+    {
+        "name": "Newport (IOW)",
+        "code": "478"
+    },
+    {
+        "name": "Newport",
+        "code": "441"
+    },
+    {
+        "name": "Northampton",
+        "code": "442"
+    },
+    {
+        "name": "Norwich",
+        "code": "443"
+    },
+    {
+        "name": "Nottingham",
+        "code": "444"
+    },
+    {
+        "name": "Oxford",
+        "code": "445"
+    },
+    {
+        "name": "Peterborough",
+        "code": "473"
+    },
+    {
+        "name": "Plymouth",
+        "code": "446"
+    },
+    {
+        "name": "Portsmouth",
+        "code": "447"
+    },
+    {
+        "name": "Preston",
+        "code": "448"
+    },
+    {
+        "name": "Reading",
+        "code": "449"
+    },
+    {
+        "name": "Salisbury",
+        "code": "480"
+    },
+    {
+        "name": "Sheffield",
+        "code": "451"
+    },
+    {
+        "name": "Shrewsbury",
+        "code": "452"
+    },
+    {
+        "name": "Snaresbrook",
+        "code": "453"
+    },
+    {
+        "name": "Southampton",
+        "code": "454"
+    },
+    {
+        "name": "Southwark",
+        "code": "471"
+    },
+    {
+        "name": "St Albans",
+        "code": "450"
+    },
+    {
+        "name": "Stafford",
+        "code": "455"
+    },
+    {
+        "name": "Stoke on Trent",
+        "code": "456"
+    },
+    {
+        "name": "Swansea",
+        "code": "457"
+    },
+    {
+        "name": "Swindon",
+        "code": "458"
+    },
+    {
+        "name": "Taunton",
+        "code": "459"
+    },
+    {
+        "name": "Teesside",
+        "code": "460"
+    },
+    {
+        "name": "Truro",
+        "code": "477"
+    },
+    {
+        "name": "Warrington",
+        "code": "462"
+    },
+    {
+        "name": "Warwick",
+        "code": "463"
+    },
+    {
+        "name": "Weymouth and Dorcester",
+        "code": "470"
+    },
+    {
+        "name": "Winchester",
+        "code": "465"
+    },
+    {
+        "name": "Wolverhampton",
+        "code": "421"
+    },
+    {
+        "name": "Wood Green",
+        "code": "469"
+    },
+    {
+        "name": "Woolwich",
+        "code": "472"
+    },
+    {
+        "name": "Worcester",
+        "code": "466"
+    },
+    {
+        "name": "York",
+        "code": "467"
+    },
+    {
+        "name": "Caernarfon",
+        "code": "999"
+    }
+]

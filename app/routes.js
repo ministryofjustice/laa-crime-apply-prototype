@@ -9,6 +9,7 @@ const hmrc_record = require('./data/hmrc-record');
 const passporting = require('./data/passporting');
 const applicationsApiUrl = "https://n7ykjge71d.execute-api.eu-west-2.amazonaws.com/alpha/applications";
 const offencesList = require('./data/offence_list');
+const courtsList = require('./data/court_list');
 const https = require('https');
 const utils = require('./utils');
 
@@ -303,13 +304,14 @@ router.get('/case_details_case_type', function (req, res) {
   res.render('case_details_case_type', { banner });
 });
 
-router.get('/case_details', function (req, res) {
-  let case_details = req.session.data.case_details || {};
-  let names = _.map(case_details.co_defendant_names, name => {
-    return name.split(" ");
-  });
+router.get('/case_details_hearing', function (req, res) {
+  
+  res.render('case_details_hearing', {courts: courtsList });
+});
 
-  res.render('case_details', {  names });
+router.get('/case_details_codefendants', function (req, res) {
+
+  res.render('case_details_codefendants');
 });
 
 router.get('/case_details_offence', function (req, res) {
