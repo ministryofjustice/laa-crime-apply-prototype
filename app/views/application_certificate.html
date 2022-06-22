@@ -194,6 +194,7 @@
               {% endif %}
             </dd>
           </div>
+          {% if data.case_details.urn_provided == 'no' %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Court hearing the case
@@ -210,6 +211,7 @@
               {{ data['case_details']['next_hearing'] }}
             </dd>
           </div>
+          {% endif %}
         </dl>
 
         <br>
