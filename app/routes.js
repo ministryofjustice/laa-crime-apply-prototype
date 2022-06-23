@@ -374,13 +374,21 @@ router.post('/confirm_the_following', async (req, res, next) => {
   }
 });
 
+router.get('/confirm_delete', function (req, res) {
+  let id = req.query && req.query.id;
+  let name = req.query && req.query.name;
+  let reference = req.query && req.query.reference;
+
+  res.render('confirm_delete', {id, name, reference})
+});
+
 router.get('/delete/:id', async (req, res, next) => {
   try {
     let id = req.params && req.params.id;
     let protectedApps = [
       '79fec2f7-2790-42a9-b092-b1308afa4a6c',
       'cc9faf9c-4a65-4383-8ec1-b08f6c65ac0c',
-      '4ccd3e44-b534-48d9-8cee-8a4eada06a93'
+      'ee712003-ffc9-477d-8340-1bfbb5a2e3fb'
     ];
 
     if (protectedApps.includes(id)) {
