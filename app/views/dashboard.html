@@ -113,7 +113,7 @@
               </strong></td>
             {% endif %}
             <td>
-              <a href="/delete" class="govuk-button govuk-button--secondary">Delete</a>
+              <a href="/confirm_delete?id={{ application.id }}&name={{ application.name }}&reference={{  application.reference }}" class="govuk-button govuk-button--secondary">Delete</a>
             </td>
           </tr>
          {%- endfor %}

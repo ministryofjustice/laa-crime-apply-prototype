@@ -15,8 +15,8 @@
 
             <div class="govuk-!-padding-top-6"></div>
 
-            <h2 class="govuk-body-m"><strong>Name:</strong> Mary Smith<br>
-              <strong>LAA reference:</strong> LAA-90d26c
+            <h2 class="govuk-body-m"><strong>Name:</strong> {{ name }}<br>
+              <strong>LAA reference:</strong> {{ reference }}
             </h2>
 
             <div class="govuk-!-padding-top-6"></div>
@@ -32,11 +32,11 @@
           </fieldset>
         </div>
 
-        <button type="submit" class="govuk-button govuk-button--warning">
+        <a href="delete/{{id}}" role="button" class="govuk-button govuk-button--warning">
           Yes, delete it
         </button>
 
-        <a href= "dashboard" role="button" style="margin-left: 15px;" class="govuk-button">
+        <a href="dashboard" role="button" style="margin-left: 15px;" class="govuk-button">
           No, do not delete it
         </a>
 
