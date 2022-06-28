@@ -51,22 +51,24 @@
                 {{ data['client_details']['client']['last_name'] }}
               </dd>
             </div>
-            {% if data['client_details']['client']['other_names'] %}
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  Other names
-                </dt>
-                <dd class="govuk-summary-list__value">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Other names
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['client_details']['client']['other_names'] %}
                   {{ data['client_details']['client']['other_names'] }}
-                </dd>
-              </div>
-            {% endif %}
+                {% else %}
+                  None
+                {% endif %}
+              </dd>
+            </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Date of birth
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data['client_details']['dob'] }}
+                {{ data['client_details']['client']['dob'] }}
               </dd>
             </div>
             <div class="govuk-summary-list__row">
@@ -193,18 +195,18 @@
             <h2 class="govuk-heading-m">Case details</h2>
           </div>
           <!-- <div class="govuk-grid-column-one-third">
-            <p><a class="govuk-link" style="float:right;" href="/case_details">Change</a></p>
+            <p><a class="govuk-link" style="float:right;" href="/case_details_codefendants">Change</a></p>
           </div> -->
         </div>
 
         <dl class="govuk-summary-list">
-        {% if data.case_details_type == 'urn' %}
+          {% if data.case_details.urn_provided == 'yes' %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Unique reference number
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['case_details']['URN'] }}
+              {{ data['case_details']['urn'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="/case_details_urn">
@@ -237,6 +239,20 @@
               </a>
             </dd>
           </div>
+          {% if data.case_details.urn_provided == 'no' %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Court hearing the case
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['court_name'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="/case_details_hearing">
+                Change<span class="govuk-visually-hidden">court name</span>
+              </a>
+            </dd>
+          </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Next court hearing
@@ -245,11 +261,12 @@
               {{ data['case_details']['next_hearing'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/case_details">
+              <a class="govuk-link" href="/case_details_hearing">
                 Change<span class="govuk-visually-hidden">next court hearing</span>
               </a>
             </dd>
           </div>
+          {% endif %}
         </dl>
 
         <br>
@@ -308,13 +325,13 @@
       </dl>
 
     <br>
-    {% if data['case_details']['co_defendant_names'] > 0 %}
+    {% if data['case_details']['co_defendant_names'] | length > 0 %}
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
           <h2 class="govuk-heading-m">Co-defendants</h2>
         </div>
         <div class="govuk-grid-column-one-third">
-          <p><a class="govuk-link" style="float:right;" href="/case_details">Change</a></p>
+          <p><a class="govuk-link" style="float:right;" href="/case_details_codefendants">Change</a></p>
         </div>
       </div>
 

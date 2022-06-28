@@ -4,16 +4,14 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl">Enter the case details</h1>
-
+      <h1 class="govuk-heading-xl">Does your client have any co-defendants in this case?</h1>
+      {% if data.case_details.urn_provided == 'yes' %}
       <form class="form" action="/ioj" method="post">
+      {% else %}
+      <form class="form" action="/case_details_hearing" method="post">
+      {% endif %}
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              <h1 class="govuk-fieldset__heading">
-                Does your client have any co-defendants in this case?
-              </h1>
-            </legend>
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
                 <!-- REMEMBER: data-aria-controls -->
@@ -116,52 +114,6 @@
           </fieldset>
         </div>
 
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              <h1 class="govuk-fieldset__heading">
-                Date of next court hearing
-              </h1>
-            </legend>
-            <div class="govuk-form-group">
-              <div id="next-hearing-hint" class="govuk-hint">
-                For example, 27 3 2007
-              </div>
-              <div class="govuk-date-input__item">
-                <div class="govuk-form-group">
-                  <label class="govuk-label govuk-date-input__label" for="next-hearing-day">
-                    Day
-                  </label>
-                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="next-hearing-day" name="next-hearing-day" type="text" pattern="[0-9]*" inputmode="numeric">
-                </div>
-              </div>
-              <div class="govuk-date-input__item">
-                <div class="govuk-form-group">
-                  <label class="govuk-label govuk-date-input__label" for="next-hearing-month">
-                    Month
-                  </label>
-                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="next-hearing-month" name="next-hearing-month" type="text" pattern="[0-9]*" inputmode="numeric">
-                </div>
-              </div>
-              <div class="govuk-date-input__item">
-                <div class="govuk-form-group">
-                  <label class="govuk-label govuk-date-input__label" for="next-hearing-year">
-                    Year
-                  </label>
-                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="next-hearing-year" name="next-hearing-year" type="text" pattern="[0-9]*" inputmode="numeric">
-                </div>
-              </div>
-            </div>
-          </fieldset>
-        </div>
-
-        <div class="govuk-!-padding-bottom-2"></div>
-
-        <div>
-          <h2 class="govuk-heading-m">What happens next</h2>
-          <p class="govuk-body">We'll use this information to check if this case needs a justification for legal aid. </p>
-        </div>
-
         <input type="hidden" name="[case_details][checkpoint]" value="completed">
         <button class="govuk-button button-left" data-module="govuk-button">Save and continue</button>
       </form>
@@ -172,5 +124,4 @@
       </form>
     </div>
   </div>
-  <p><a href="/ioj_passported" style="color: #b7b7b7;">If user enters a slipstreamed offence</a></p>
 {% endblock %}

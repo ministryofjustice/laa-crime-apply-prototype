@@ -5,10 +5,43 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl">Enter the case details</h1>
+      <!-- <h1 class="govuk-heading-xl">Enter the case details</h1> -->
 
-      <form class="form" action="/case_details_confirm" method="post">
-          <fieldset class="govuk-fieldset">
+      <!-- <form class="form" action="/case_details_confirm" method="post"> -->
+      <form class="form" action="/case_details_case_type" method="post">
+
+        <h1 class="govuk-heading-xl">Do you have the unique reference number (URN) for your client's case?</h1>
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="urn-1" name="case_details[urn_provided]" type="radio" value="yes" {{ checked("{{ data['case_details']['urn_provided'] }}") }} data-aria-controls="urn-conditional-yes">
+                  <label class="govuk-label govuk-radios__label" for="urn-1">
+                    Yes
+                  </label>
+                </div>
+                <!-- START: CONDITIONAL REVEAL -->
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="urn-conditional-yes"> <!-- id needs to match data-aria-controls -->
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="urn-1">
+                      Enter the case URN
+                    </label>
+                    <div class="govuk-hint">
+                      For example, ‘12 AB 3456789’.
+                    </div>
+                    <input class="govuk-input govuk-!-width-three-quarters" id="urn-1" name="case_details[urn]" value="{{ data['case_details']['urn'] }}" type="text">
+                  </div>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="urn-2" name="case_details[urn_provided]" type="radio" value="no" {{ checked("{{ data['case_details']['urn_provided'] }}") }}>
+                  <label class="govuk-label govuk-radios__label" for="urn-2">
+                    No
+                  </label>
+                </div>
+                <div class="govuk-!-padding-bottom-6"></div>
+
+          <!-- <fieldset class="govuk-fieldset">
             <div class="govuk-form-group">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                 <h1 class="govuk-fieldset__heading">
@@ -38,8 +71,9 @@
            <input type="hidden" name="[case_details][offences][0][offence_date]" value="2022-02-01">
            <input type="hidden" name="[case_details][co_defendant_names][0]" value="Alex Welsh">
            <input type="hidden" name="[case_details][co_defendant_names][1]" value="Joe Taylor">
-           <input type="hidden" name="[origin]" value="case_details_urn">
-           <button class="govuk-button button-left" data-module="govuk-button">Search</button>
+           <input type="hidden" name="[origin]" value="case_details_urn"> -->
+           <!-- <button class="govuk-button button-left" data-module="govuk-button">Search</button> -->
+           <button class="govuk-button button-left" data-module="govuk-button">Save and continue</button>
         </form>
         <form class="form inline-form" action="/tasklist" method="post">
           <input type="hidden" name="[case_details][checkpoint]" value="completed">
@@ -49,5 +83,5 @@
       </div>
     </div>
 
-  <p><a href="/case_details_case_type?banner=true" style="color: #b7b7b7;">Continue to case not created yet</a></p>
+  <!-- <p><a href="/case_details_case_type?banner=true" style="color: #b7b7b7;">Continue to case not created yet</a></p> -->
 {% endblock %}
