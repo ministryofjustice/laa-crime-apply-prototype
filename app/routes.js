@@ -306,7 +306,7 @@ router.get('/case_details_case_type', function (req, res) {
 
 router.get('/case_details_hearing', function (req, res) {
   
-  res.render('case_details_hearing', {courts: courtsList });
+  res.render('case_details_hearing', { courts: courtsList } );
 });
 
 router.get('/case_details_codefendants', function (req, res) {

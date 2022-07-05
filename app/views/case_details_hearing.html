@@ -1,15 +1,21 @@
 {% extends "layout.html" %}
 
 {% block pageScripts %}
-  <script src="/public/javascripts/jquery.hideseek.min.js"></script>
+  <script type="text/javascript" src="public/javascripts/accessible-autocomplete.min.js"></script>
+
   <script>
-    $('#court_search').hideseek({
-        min_chars: 3,
-        nodata: "No results found.",
-        hidden_mode: true,
-        highlight: true
-    });
+    var courtNameSelect = document.querySelector('#court-name')
+
+    accessibleAutocomplete.enhanceSelectElement({
+      confirmOnBlur: true,
+      autoSelect: true,
+      displayMenu: 'overlay',
+      minLength: 2,
+      selectElement: courtNameSelect
+    })
+
   </script>
+
 {% endblock %}
 
 {% block content %}
@@ -19,44 +25,35 @@
       <h1 class="govuk-heading-xl">Enter the details of the next court hearing</h1>
 
       <form class="form" action="/ioj" method="post">
+
         <div class="govuk-form-group">
-          <h1 class="govuk-label-wrapper">
-          <label class="govuk-label govuk-label--m" for="court_name">
-            Court name
-          </label>
-          </h1>
-          <div id="next-hearing-hint" class="govuk-hint">
-            For example, Cardiff
-          </div>
-          <div id="search-field" class="govuk-form-group">
-            <div class="govuk-grid-row">
-              <div class="govuk-grid-column-two-thirds">
-                <input class="govuk-input search-field" autocomplete="off" id="court_search" name="court_search" type="text" data-list="#courts-list">
-              </div>
+          <fieldset class="govuk-fieldset">
+
+            <label class="govuk-label govuk-label--m" for="court-name">
+              Court name
+            </label>
+
+            <div id="next-hearing-hint" class="govuk-hint">
+              For example, Cardiff
             </div>
-            <div class="govuk-grid-row">
-              <div class="govuk-grid-column-two-thirds">
-                <div id="case-court-list" class="govuk-grid-column-full ">
-                  <div class="govuk-radios govuk-radios--inline">
-                    <ul id="courts-list" style="text">
+
+            <div id="select-field" class="govuk-form-group">
+              <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                  <div class="govuk autocomplete-wrapper">
+                    <select class="govuk-select" name="court-name" id="court-name">
+
+                      <option></option>
                       {% for court in courts -%}
-                        <li>
-                          <div class="govuk-grid-row courts-list" id="court-item-{{loop.index}}" >
-                            <div class="govuk-radios govuk-radios">
-                              <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="court-value-{{loop.index}}" name="court_name" type="radio" value="{{court.name}}">
-                                <label class="govuk-label govuk-radios__label"><strong>{{ court.name }}</strong></label>
-                              </div>
-                            </div>
-                          </div>
-                        </li>
+                        <option>{{ court.name }}</option>
                       {% endfor %}
-                    </ul>
-                  </div>    
+
+                    </select>
+                  <div>
                 </div>
               </div>
             </div>
-          </div>
+          </fieldset>
         </div>
 
         <div class="govuk-form-group">

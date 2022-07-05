@@ -18,6 +18,8 @@ $govuk-assets-path: '/govuk/assets/';
 // MOJ Frontend component styles
 @import "node_modules/@ministryofjustice/frontend/moj/all";
 
+@import "node_modules/accessible-autocomplete/src/autocomplete";
+
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 @import "main";
 
@@ -30,3 +32,8 @@ $govuk-assets-path: '/govuk/assets/';
 p.offence-class {
   color: $govuk-secondary-text-colour;
 }
+
+.autocomplete__option {
+  font-family: "GDS Transport", arial, sans-serif;
+}
+
