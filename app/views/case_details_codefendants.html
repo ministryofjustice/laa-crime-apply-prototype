@@ -14,96 +14,11 @@
           <fieldset class="govuk-fieldset">
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <!-- REMEMBER: data-aria-controls -->
-                <input class="govuk-radios__input" id="co_defendants-1" name="co_defendants" type="radio" value="yes" data-aria-controls="co-defendant-yes" {{ checked("['co_defendants']", "yes") }}>
+                <input class="govuk-radios__input" id="co_defendants-1" name="co_defendants" type="radio" value="yes" {{ checked("['co_defendants']", "yes") }}>
                 <label class="govuk-label govuk-radios__label" for="co_defendants-1">
                   Yes
                 </label>
               </div>
-              <!-- START: CONDITIONAL REVEAL -->
-              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="co-defendant-yes"> <!-- id needs to match data-aria-controls -->
-                <div data-module="moj-add-another">
-                  {% if not names or names | length < 1 %}
-                    <fieldset class="govuk-fieldset moj-add-another__item">
-                      <p class="govuk-heading-s">Co-defendant</p>
-                      <div class="govuk-form-group">
-                        <label class="govuk-label" for="names[0][first_name]">
-                          First name
-                        </label>
-                        <input class="govuk-input govuk-!-width-three-quarters" id="names[0][first_name]" name="new_names[0][first_name]" type="text" data-name="new_names[%index%][first_name]" data-id="names[%index%][first_name]">
-                      </div>
-                      <div class="govuk-form-group">
-                        <label class="govuk-label" for="names[0][last_name]">
-                          Last name
-                        </label>
-                        <input class="govuk-input govuk-!-width-three-quarters" id="names[0][last_name]" name="new_names[0][last_name]" type="text" data-name="new_names[%index%][last_name]" data-id="names[%index%][last_name]">
-                      </div>
-                      <div class="govuk-form-group">
-                        <label class="govuk-label" for="conflict">
-                          Conflict of interest
-                        </label>
-                        <div class="govuk-radios__item">
-                          <input class="govuk-radios__input" id="conflict-yes" name="conflict" type="radio" value="yes">
-                          <label class="govuk-label govuk-radios__label" for="conflict-yes">
-                            Yes
-                          </label>
-                        </div>
-                        <div class="govuk-radios__item">
-                          <input class="govuk-radios__input" id="conflict-no" name="conflict" type="radio" value="no">
-                          <label class="govuk-label govuk-radios__label" for="conflict-no">
-                            No
-                          </label>
-                        </div>
-                      </div>
-                    </fieldset>
-                  {% else %}
-                    {% for co_defendant in names -%}
-                      <fieldset class="govuk-fieldset moj-add-another__item">
-                        <p class="govuk-heading-s">Co-defendant</p>
-                        <div class="govuk-form-group">
-                          <label class="govuk-label" for="names[{{loop.index - 1}}][first_name]">
-                            First name
-                          </label>
-                          <input class="govuk-input govuk-!-width-three-quarters" id="names[{{loop.index - 1}}][first_name]" name="new_names[{{loop.index - 1}}][first_name]" type="text" data-name="new_names[%index%][first_name]" data-id="names[%index%][first_name]" value="{{ co_defendant[0] }}">
-                        </div>
-                        <div class="govuk-form-group">
-                          <label class="govuk-label" for="names[{{loop.index}}][last_name]">
-                            Last name
-                          </label>
-                          <input class="govuk-input govuk-!-width-three-quarters" id="names[{{loop.index - 1}}][last_name]" name="new_names[{{loop.index - 1}}][last_name]" type="text" data-name="new_names[%index%][last_name]" data-id="names[%index%][last_name]" value="{{ co_defendant[1] }}">
-                        </div>
-                        <div class="govuk-form-group">
-                          <label class="govuk-label" for="conflict">
-                            Conflict of interest
-                          </label>
-                          <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="conflict-yes" name="conflict" type="radio" value="yes">
-                            <label class="govuk-label govuk-radios__label" for="conflict-yes">
-                              Yes
-                            </label>
-                          </div>
-                          <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="conflict-no" name="conflict" type="radio" value="no">
-                            <label class="govuk-label govuk-radios__label" for="conflict-no">
-                              No
-                            </label>
-                          </div>
-                        </div>
-                      </fieldset>
-                      <button type="button" class="govuk-button govuk-button--secondary moj-add-another__remove-button">Remove</button>
-                    {%- endfor %}
-                  {% endif %}
-                  <div class="govuk-!-padding-bottom-2"></div>
-                  <div class="moj-button-action">
-                    <button class="govuk-button govuk-button--secondary moj-add-another__add-button" data-module="govuk-button">
-                      Add another defendant
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="govuk-form-group">
-              <!-- END: CONDITIONAL REVEAL  -->
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="co_defendants-2" name="co_defendants" type="radio" value="no"  {{ checked("['co_defendants']", "no") }}>
                 <label class="govuk-label govuk-radios__label" for="co_defendants-2">
