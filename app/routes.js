@@ -167,10 +167,10 @@ router.post('/benefit_checker_confirm', function (req, res) {
   let mvp = req.session.mvp;
 
   if (clientDetailsCorrect == "no") {
-    res.redirect('/client_details_long');
+    res.redirect('/client_details');
   } else {
     if (mvp) {
-      res.redirect('/eforms_redirect');
+      res.redirect('/dwp_passported');
     } else {
       res.redirect('/benefit_checker_select');
     }
@@ -188,10 +188,10 @@ router.post('/benefit_checker_select', function (req, res) {
   }
 });
 
-router.get('/client_details_long', function (req, res) {
+router.get('/client_details', function (req, res) {
   let mvp = req.session.mvp;
 
-  res.render('client_details_long', { mvp: mvp });
+  res.render('client_details', { mvp: mvp });
 });
 
 router.get('/case_details_confirm', function (req, res) {
@@ -305,7 +305,7 @@ router.get('/case_details_case_type', function (req, res) {
 });
 
 router.get('/case_details_hearing', function (req, res) {
-  
+
   res.render('case_details_hearing', { courts: courtsList } );
 });
 
@@ -316,7 +316,7 @@ router.get('/case_details_codefendants', function (req, res) {
 
 router.get('/case_details_offence', function (req, res) {
   let showDateStamp = utils.dateStampApplicable(req)
-  
+
   res.render('case_details_offence', { offences: offencesList, showDateStamp});
 });
 
@@ -338,7 +338,7 @@ router.get('/application_certificate/:id', async (req, res, next) => {
       }
     }
 
-    let details = utils.sidemenu(req);    
+    let details = utils.sidemenu(req);
 
     res.render('application_certificate', details);
   } catch (err) {
