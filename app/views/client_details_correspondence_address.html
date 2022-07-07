@@ -8,14 +8,36 @@
   <div class="govuk-width-container">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-xl">Enter your client's correspondence address</h1>
+        <h1 class="govuk-heading-xl">Enter your client's contact details</h1>
 
         <form action="/case_details_urn" method="post" novalidate>
 
           <div class="govuk-form-group">
             <fieldset class="govuk-fieldset">
 
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--m" for="phone">
+                  UK telephone number
+                </label>
+                <div id="phone-hint" class="govuk-hint">
+                  We'll use this to chase your client if they don't pay towards their legal aid.
+                </div>
+                <div>
+                  <input class="govuk-input govuk-input--width-10" id="phone" name="client_details[client][phone]" value="{{ data['client_details']['client']['phone'] }}" type="text" spellcheck="false" aria-describedby="phone-hint">
+                </div>
+              </div>
+
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--m" for="phone">
+                  Correspondence address
+                </label>
               <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="correspondence-address-1" name="correspondence_address_type" type="radio" value="home-address">
+                  <label class="govuk-label govuk-radios__label" for="correspondence-address-1">
+                    Same as home address
+                  </label>
+                </div>
                 <div class="govuk-radios__item">
                   <input class="govuk-radios__input" id="correspondence-address-2" name="correspondence_address_type" type="radio" value="provider-office">
                   <label class="govuk-label govuk-radios__label" for="correspondence-address-2">
@@ -28,7 +50,7 @@
                     Somewhere else
                   </label>
                 </div>
-                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-yes">
+                <!-- <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-yes">
 
                   <div class="govuk-form-group">
 
@@ -64,10 +86,9 @@
                     Postcode
                   </label>
                   <input class="govuk-input govuk-input--width-10" id="address-postcode" name="client_details[client][correspondence_address][postcode]" value="{{ data['client_details']['client']['correspondence_address']['postcode'] }}" type="text">
-                  </div>
-
-
+                  </div> -->
               </div>
+            </div>
             </fieldset>
           </div>
 
