@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/account_number" method="post">
+
+        <h1 class="govuk-heading-xl">Dooes your client have a partner?</h1>
+
+        <div class="govuk-hint">
+          By partner we mean someone they are married to, in a civil partnership with, cohabit with or otherwise share finances.
+        </div>
+
+        <div class="govuk-!-padding-bottom-6"></div>
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="partner-yes" name="case_details[urn_provided]" type="radio" value="yes" {{ checked("{{ data['client_details']['partner'] }}") }}>
+                  <label class="govuk-label govuk-radios__label" for="partner-yes">
+                    Yes
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="partner-no" name="case_details[urn_provided]" type="radio" value="no" {{ checked("{{ data['client_details']['partner'] }}") }}>
+                  <label class="govuk-label govuk-radios__label" for="partner-no">
+                    No
+                  </label>
+                </div>
+                <div class="govuk-!-padding-bottom-6"></div>
+
+           <button class="govuk-button button-left" data-module="govuk-button">Save and continue</button>
+        </form>
+        <form class="form inline-form" action="/tasklist" method="post">
+          <input type="hidden" name="[client_details][checkpoint]" value="completed">
+          <button class="govuk-button govuk-button--secondary" data-module="govuk-button">Save and come back later</button>
+        </form>
+
+      </div>
+    </div>
+
+  <!-- <p><a href="/case_details_case_type?banner=true" style="color: #b7b7b7;">Continue to case not created yet</a></p> -->
+{% endblock %}
