@@ -18,7 +18,31 @@ router.use((req, res, next) => {
   if (mvpFlag) {
     req.session.mvp = mvpFlag == 'true';
   }
+  console.log(req.session)
   next();
+});
+
+router.post('/tasklist', function (req, res) {
+  let mvpFlag = req.session.mvp 
+  if (mvpFlag) {
+    res.redirect('/client_details_postcode_finder');
+  } else {
+    res.redirect('/tasklist');
+  }
+});
+
+router.get('/client_details_postcode_finder', function(req, res) {
+  res.render('client_details_postcode_finder');
+});
+
+
+router.post('/account_number', function (req, res) {
+  let partner = req.session.data['case_details']['partner']
+  if (partner == "yes"){
+    res.redirect('/eforms_redirect')
+  } else {
+    res.redirect('/account_number')
+  }
 });
 
 router.post('/account_number_answer', function (req, res) {
@@ -109,20 +133,41 @@ router.post('/dwp_passported', function (req, res, next) {
   if (nonPassported == 'yes') {
     res.redirect('/dwp_nonpassported');
   } else {
-    return next();
+    let hasNino = req.session.data['case_details']['nino']
+    if(hasNino === "no") {
+      res.redirect('/eforms_redirect');
+    } else {
+      res.redirect('/dwp_passported');
+    }
   }
 });
 
-router.get('/dwp_passported', function (req, res) {
+router.post('/client_details_nino', function (req, res, next) {
+  let dob_day = req.session.data['dob']['day']
+  let dob_month = req.session.data['dob']['month']
+  let dob_year = req.session.data['dob']['year']
+  let dob = new Date(dob_year, dob_month, dob_day);
+
+  let eighteenYearsAgo = new Date()
+  eighteenYearsAgo.setFullYear(eighteenYearsAgo.getFullYear() - 18)
+
+  if (dob < eighteenYearsAgo) {
+    res.redirect('/client_details_nino');
+  } else {
+    res.redirect('/client_details_postcode_finder');
+  }
+
+});
+
+router.get('/dwp_passported', function (req, res, next) {
   _.set(req.session.data, 'means_assessment.benefits_status.passported', true);
 
   let mvp = req.session.mvp;
+
   let outOfScope = false;
   if (mvp) {
     let nino = _.get(req.session.data, 'client_details.client.national_insurance_number');
-    let partner = _.get(req.session.data, 'client_details.partner.first_name');
-    let hasPartner = !_.isEmpty(partner);
-    if (_.isEmpty(nino) || hasPartner) {
+    if (_.isEmpty(nino)) {
       outOfScope = true;
     }
   }
@@ -167,10 +212,10 @@ router.post('/benefit_checker_confirm', function (req, res) {
   let mvp = req.session.mvp;
 
   if (clientDetailsCorrect == "no") {
-    res.redirect('/client_details_long');
+    res.redirect('/client_details');
   } else {
     if (mvp) {
-      res.redirect('/eforms_redirect');
+      res.redirect('/dwp_passported');
     } else {
       res.redirect('/benefit_checker_select');
     }
@@ -188,16 +233,29 @@ router.post('/benefit_checker_select', function (req, res) {
   }
 });
 
-router.get('/client_details_long', function (req, res) {
+router.get('/client_details', function (req, res) {
   let mvp = req.session.mvp;
 
-  res.render('client_details_long', { mvp: mvp });
+  res.render('client_details', { mvp: mvp });
 });
 
 router.get('/case_details_confirm', function (req, res) {
   let showDateStamp = utils.dateStampApplicable(req)
 
   res.render('case_details_confirm', {showDateStamp});
+});
+
+router.post('/case_details_urn', function (req, res, next) {
+  let address_type = req.session.data['correspondence_address_type'];
+  if (address_type == 'correspondence-address-other') {
+    res.redirect('client_details_postcode_finder_correspondence')
+  } else {
+    res.redirect('case_details_urn')
+  }
+});
+
+router.post('/client_details_postcode_select_correspondence', function (req, res, next) {
+  res.redirect('client_details_postcode_select_correspondence')
 });
 
 router.post('/case_details_confirm', function (req, res, next) {
@@ -305,7 +363,7 @@ router.get('/case_details_case_type', function (req, res) {
 });
 
 router.get('/case_details_hearing', function (req, res) {
-  
+
   res.render('case_details_hearing', { courts: courtsList } );
 });
 
@@ -316,7 +374,7 @@ router.get('/case_details_codefendants', function (req, res) {
 
 router.get('/case_details_offence', function (req, res) {
   let showDateStamp = utils.dateStampApplicable(req)
-  
+
   res.render('case_details_offence', { offences: offencesList, showDateStamp});
 });
 
@@ -338,7 +396,7 @@ router.get('/application_certificate/:id', async (req, res, next) => {
       }
     }
 
-    let details = utils.sidemenu(req);    
+    let details = utils.sidemenu(req);
 
     res.render('application_certificate', details);
   } catch (err) {

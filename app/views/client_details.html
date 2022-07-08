@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Apply for legal aid - Client details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Enter your client's details</h1>
+
+      <form action="/client_details_nino" method="post" novalidate>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              Full name
+            </legend>
+            <div class="govuk-form-group">
+                <label class="govuk-label" for="first_name">
+                First name
+                </label>
+              <input class="govuk-input govuk-!-width-three-quarters" id="first_name" name="client_details[client][first_name]" type="text" value="{{ data['client_details']['client']['first_name'] }}">
+            </div>
+            <div class="govuk-form-group">
+                <label class="govuk-label" for="last_name">
+                Last name
+                </label>
+              <input class="govuk-input govuk-!-width-three-quarters" id="last_name" name="client_details[client][last_name]" type="text" value="{{ data['client_details']['client']['last_name'] }}">
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="govuk-!-padding-bottom-2"></div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m"> Other names (optional)
+            </legend>
+            <div id="other_names-hint" class="govuk-hint">
+              This includes aliases, nicknames or other names your client may be known as.
+            </div>
+            <div class="govuk-form-group">
+              <input class="govuk-input govuk-!-width-three-quarters" id="other_names" name="client_details[client][other_names]" type="text" value="{{ data['client_details']['client']['other_names'] }}">
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="govuk-!-padding-bottom-2"></div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="date-of-birth-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h1 class="govuk-fieldset__heading">
+                Date of birth
+              </h1>
+            </legend>
+            <div id="date-of-birth-hint" class="govuk-hint">
+              For example, 27 3 2007
+            </div>
+            <div class="govuk-date-input" id="date-of-birth">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="date-of-birth-day">
+                    Day
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-of-birth-day" name="dob[day]" value="{{ data['dob']['day'] }}">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="date-of-birth-month">
+                    Month
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-of-birth-month" name="dob[month]" value="{{ data['dob']['month'] }}">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="date-of-birth-year">
+                    Year
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="date-of-birth-year" name="dob[year]" value="{{ data['dob']['year'] }}">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="govuk-!-padding-bottom-6"></div>
+
+        <button type="submit" class="govuk-button button-left">
+          Save and continue
+        </button>
+      </form>
+
+    <form class="form inline-form" action="/tasklist" method="post">
+      <input type="hidden" name="client_details[]" value="completed">
+      <button class="govuk-button govuk-button--secondary" data-module="govuk-button">Save and come back later</button>
+    </form>
+
+    </div>
+
+  </div>
+
+{% endblock %}

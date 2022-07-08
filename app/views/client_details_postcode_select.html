@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Enter your client's home address</h1>
+
+    <form action="client_details_correspondence_address" method="post" novalidate>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <label class="govuk-label" for="postcode">
+          Postcode
+          </label>
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-!-font-weight-bold postcode_change" for="change-postcode">{{ data['postcode'] }}</label>
+              <p class="postcode_change"><a class="govuk-link" href="postcode_finder" aria-label="change postcode">Change</a></p>
+            </div>
+
+          <div class="govuk-form-group">
+              <label class="govuk-label" for="address-select">
+              Select an address
+              </label>
+              <select class="govuk-select govuk-!-width-three-quarters" id="address-select" name="address-select">
+                <option>5 addresses found</option>
+                <option>1 Main Street, London, {{ data['postcode'] }} </option>
+                <option>2 Main Street, London, {{ data['postcode'] }} </option>
+                <option>3 Main Street, London, {{ data['postcode'] }} </option>
+                <option>4 Main Street, London, {{ data['postcode'] }} </option>
+                <option>5 Main Street, London, {{ data['postcode'] }} </option>
+              </select>
+          </div>
+
+          <div class="govuk-form-group">
+            <p>
+              <a class="govuk-link" href="client_details_manual_address">I can't find the address in the list</a>
+            </p>
+          </div>
+        </fieldset>
+      </div>
+
+      <button type="submit" class="govuk-button button-left">
+        Save and continue
+      </button>
+      </form>
+
+      <form class="form inline-form" action="/tasklist" method="post">
+      <input type="hidden" name="client_details[]" value="completed">
+      <button class="govuk-button govuk-button--secondary" data-module="govuk-button">Save and come back later</button>
+      </form>
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+    {{ govukFooter({
+      meta: {
+          items: [
+            {
+              href: "#",
+              text: "Help"
+            },
+            {
+              href: "https://www.gov.uk/help/cookies",
+              text: "Cookies"
+            },
+            {
+              href: "#",
+              text: "Contact"
+            },
+            {
+              href: "#",
+              text: "Feedback"
+            },
+            {
+              href: "#",
+              text: "Terms and conditions"
+            },
+            {
+              href: "https://mojdigital.blog.gov.uk/",
+              text: "MOJ Digital Services"
+            },
+            {
+              href: "/prototype-admin/clear-data",
+              text: "Clear data"
+            }
+          ]
+        }
+      }) }}
+    {% endblock %}
