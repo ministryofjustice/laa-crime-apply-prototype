@@ -7,79 +7,74 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+        <h1 class="govuk-heading-xl">Confirm the following and submit application</h1>
 
+         <p class="govuk-body">Your client agrees that:</p>
 
-<h1 class="govuk-heading-xl">Confirm the following and submit application</h1>
+         <ul class="govuk-list govuk-list--bullet">
 
- <p class="govuk-body">Your client agrees that:</p>
+         <li>they've instructed Hitchcock, Jones and King to represent them</li>
+         <li>they've read the <a href="/privacy/privacy">LAA privacy policy</a></li>
+         <li>we can share their information with other government departments like the DWP and HMRC (as stated in our privacy policy)</li>
+         <li>we can check their details with bank and credit reference agencies</li>
+         <li>they may have to pay towards legal aid</li>
+         <li>they may have to repay the legal costs if they are found guilty on one or more offences at the end of the case</li>
+         <li>the information they’ve given is complete and correct</li>
+         <li>they’ll report any changes to their financial situation immediately</li>
+         </ul>
 
- <ul class="govuk-list govuk-list--bullet">
+         <div class="govuk-warning-text">
+           <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+           <strong class="govuk-warning-text__text">
+             <span class="govuk-warning-text__assistive">Warning</span>
+             If your client gives wrong or incomplete information, does not report changes, or is found to have committed benefit fraud, they may:</p>
+             <li>be prosecuted</li>
+             <li>need to pay a financial penalty</li>
+             <li>have their legal aid stopped and have to pay back the costs</li>
+           </strong>
+         </div>
 
- <li>they've instructed Hitchcock, Jones and King to represent them</li>
- <li>they've read the <a href="/privacy/privacy">LAA privacy policy</a></li>
- <li>we can share their information with other government departments like the DWP and HMRC (as stated in our privacy policy)</li>
- <li>we can check their details with bank and credit reference agencies</li>
- <li>they may have to pay towards legal aid</li>
- <li>they may have to repay the legal costs if they are found guilty on one or more offences at the end of the case (the 'statutory charge')</li>
- <li>the information they’ve given is complete and correct</li>
- <li>they’ll report any changes to their financial situation immediately</li>
- </ul>
+         <p class="govuk-body">You agree that:</p>
 
- <div class="govuk-warning-text">
- <span class="govuk-warning-text__icon" aria-hidden="true" style="top: 30px;">!</span>
-
- <p class="govuk-body" style="padding-left: 60px;">
-
- <strong>If your client gives wrong or incomplete information, does not report changes, or is found to have committed benefit fraud, they may:</p>
- <ul class="govuk-list govuk-list--bullet" style="border-left-width: 60px; padding-left: 78px;">
- <strong><li>be prosecuted</li>
- <li>need to pay a financial penalty</li>
- <li>have their legal aid stopped and have to pay back the costs</li></strong>
- </ul>
- </div>
-
-<form action="/application_submitted" method="post" class="form">
- <div class="govuk-form-group">
-
-<!-- <p class="govuk-body">You confirm that:</p> -->
-
-     <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-       <div class="govuk-checkboxes__item">
-         <input class="govuk-checkboxes__input" id="declaration" name="declaration" type="checkbox" value="yes">
-         <label class="govuk-label govuk-checkboxes__label" for="declaration">
-          <!-- I confirm the above is correct and that I have obtained a signed declaration from my client. -->
-          I, the instructed legal representative, confirm the above is correct and that:
+         <ul class="govuk-list govuk-list--bullet">
            <ul class="govuk-list govuk-list--bullet">
 
            <li>I've obtained a signed declaration from my client</li>
            <li>I've provided correct and complete information in this application</li>
            <li>I'll share a copy of the completed application with my client</li>
            </ul>
-         </label>
-       </div>
-     </div>
- </div>
-    <input type="hidden" name="[confirm][checkpoint]" value="completed">
-    <button type="submit" class="govuk-button button-left">
-      Save and continue
-    </button>
-</form>
+         </ul>
 
-<form class="form inline-form" action="/tasklist" method="post">
-  <input type="hidden" name="[confirm][checkpoint]" value="completed">
-  <button class="govuk-button govuk-button--secondary" data-module="govuk-button">Save and come back later
-  </button>
-</form>
+           <div class="govuk-!-padding-top-4"></div>
 
-</div>
-</div>
+        <form action="/application_submitted" method="post" class="form">
+         <div class="govuk-form-group">
 
+             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+               <div class="govuk-checkboxes__item">
+                 <input class="govuk-checkboxes__input" id="declaration" name="declaration" type="checkbox" value="yes">
+                 <label class="govuk-label govuk-checkboxes__label" for="declaration">
+                  <!-- I confirm the above is correct and that I have obtained a signed declaration from my client. -->
+                  I, the instructed legal representative, confirm the above is correct.
+                 </label>
+               </div>
+             </div>
+         </div>
+            <input type="hidden" name="[confirm][checkpoint]" value="completed">
+            <button type="submit" class="govuk-button button-left">
+              Save and continue
+            </button>
+        </form>
 
+        <form class="form inline-form" action="/tasklist" method="post">
+          <input type="hidden" name="[confirm][checkpoint]" value="completed">
+          <button class="govuk-button govuk-button--secondary" data-module="govuk-button">Save and come back later
+          </button>
+        </form>
 
-
-
-
-
+    </div>
   </div>
+
+</div>
 
 {% endblock %}
