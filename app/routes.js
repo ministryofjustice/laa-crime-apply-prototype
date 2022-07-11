@@ -35,6 +35,15 @@ router.get('/client_details_postcode_finder', function(req, res) {
   res.render('client_details_postcode_finder');
 });
 
+router.post('/client_details_urn', function(req, res) {
+  let address = req.session.data['address-select']
+  if (address !== '5 addresses found') {
+    res.render('case_details_urn');
+  } else {
+    res.redirect('client_details_postcode_select_correspondence')
+  }
+});
+
 
 router.post('/account_number', function (req, res) {
   let partner = req.session.data['case_details']['partner']
