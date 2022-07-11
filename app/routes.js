@@ -130,14 +130,16 @@ router.post('/dwp_nonpassported', function (req, res) {
 
 router.post('/dwp_passported', function (req, res, next) {
   let nonPassported = req.session.data['goto-non-passported'];
+
   if (nonPassported == 'yes') {
     res.redirect('/dwp_nonpassported');
   } else {
     let hasNino = req.session.data['case_details']['nino']
-    if(hasNino === "no") {
-      res.redirect('/eforms_redirect');
-    } else {
+
+    if(hasNino == 'yes') {
       res.redirect('/dwp_passported');
+    } else {
+      res.redirect('/eforms_redirect');
     }
   }
 });
@@ -166,7 +168,8 @@ router.get('/dwp_passported', function (req, res, next) {
 
   let outOfScope = false;
   if (mvp) {
-    let nino = _.get(req.session.data, 'client_details.client.national_insurance_number');
+    let nino = req.session.data['case_details']['nino_number']
+
     if (_.isEmpty(nino)) {
       outOfScope = true;
     }
