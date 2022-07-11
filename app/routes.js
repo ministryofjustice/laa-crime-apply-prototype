@@ -448,7 +448,8 @@ router.get('/delete/:id', async (req, res, next) => {
     let protectedApps = [
       '79fec2f7-2790-42a9-b092-b1308afa4a6c',
       'cc9faf9c-4a65-4383-8ec1-b08f6c65ac0c',
-      'ee712003-ffc9-477d-8340-1bfbb5a2e3fb'
+      'ee712003-ffc9-477d-8340-1bfbb5a2e3fb',
+      '4ccd3e44-b534-48d9-8cee-8a4eada06a93'
     ];
 
     if (protectedApps.includes(id)) {
