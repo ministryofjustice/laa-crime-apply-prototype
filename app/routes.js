@@ -35,6 +35,15 @@ router.get('/client_details_postcode_finder', function(req, res) {
   res.render('client_details_postcode_finder');
 });
 
+router.post('/client_details_urn', function(req, res) {
+  let address = req.session.data['address-select']
+  if (address !== '5 addresses found') {
+    res.render('case_details_urn');
+  } else {
+    res.redirect('client_details_postcode_select_correspondence')
+  }
+});
+
 
 router.post('/account_number', function (req, res) {
   let partner = req.session.data['case_details']['partner']
@@ -130,14 +139,16 @@ router.post('/dwp_nonpassported', function (req, res) {
 
 router.post('/dwp_passported', function (req, res, next) {
   let nonPassported = req.session.data['goto-non-passported'];
+
   if (nonPassported == 'yes') {
     res.redirect('/dwp_nonpassported');
   } else {
     let hasNino = req.session.data['case_details']['nino']
-    if(hasNino === "no") {
-      res.redirect('/eforms_redirect');
-    } else {
+
+    if(hasNino == 'yes') {
       res.redirect('/dwp_passported');
+    } else {
+      res.redirect('/eforms_redirect');
     }
   }
 });
@@ -166,7 +177,8 @@ router.get('/dwp_passported', function (req, res, next) {
 
   let outOfScope = false;
   if (mvp) {
-    let nino = _.get(req.session.data, 'client_details.client.national_insurance_number');
+    let nino = req.session.data['case_details']['nino_number']
+
     if (_.isEmpty(nino)) {
       outOfScope = true;
     }
@@ -363,12 +375,20 @@ router.get('/case_details_case_type', function (req, res) {
 });
 
 router.get('/case_details_hearing', function (req, res) {
-
   res.render('case_details_hearing', { courts: courtsList } );
 });
 
-router.get('/case_details_codefendants', function (req, res) {
+router.post('/case_details_hearing', function (req, res) {
+  let hasCoDef = req.session.data['co_defendants']
+  if (hasCoDef === 'yes') {
+    res.render('case_details_codefendants_details')
+  } else {
+    res.render('ioj')
+  }
+});
 
+
+router.get('/case_details_codefendants', function (req, res) {
   res.render('case_details_codefendants');
 });
 
@@ -448,7 +468,8 @@ router.get('/delete/:id', async (req, res, next) => {
     let protectedApps = [
       '79fec2f7-2790-42a9-b092-b1308afa4a6c',
       'cc9faf9c-4a65-4383-8ec1-b08f6c65ac0c',
-      'ee712003-ffc9-477d-8340-1bfbb5a2e3fb'
+      'ee712003-ffc9-477d-8340-1bfbb5a2e3fb',
+      '4ccd3e44-b534-48d9-8cee-8a4eada06a93'
     ];
 
     if (protectedApps.includes(id)) {
