@@ -29,9 +29,9 @@
           <div class="govuk-grid-column-two-thirds">
             <h2 class="govuk-heading-m">Client details</h2>
           </div>
-          <div class="govuk-grid-column-one-third">
+          <!-- <div class="govuk-grid-column-one-third">
             <p><a class="govuk-link" style="float:right;" href="/client_details">Change</a></p>
-          </div>
+          </div> -->
         </div>
 
           <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -42,6 +42,12 @@
               <dd class="govuk-summary-list__value">
                 {{ data['client_details']['client']['first_name'] }}
               </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/client_details">
+                  Change
+                  <span class="govuk-visually-hidden">first name</span>
+                </a>
+              </dd>
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
@@ -49,6 +55,12 @@
               </dt>
               <dd class="govuk-summary-list__value">
                 {{ data['client_details']['client']['last_name'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="/client_details">
+                Change
+                <span class="govuk-visually-hidden">last name</span>
+              </a>
               </dd>
             </div>
             <div class="govuk-summary-list__row">
@@ -62,6 +74,12 @@
                   None
                 {% endif %}
               </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/client_details">
+                Change
+                <span class="govuk-visually-hidden">other names</span>
+              </a>
+              </dd>
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
@@ -69,6 +87,12 @@
               </dt>
               <dd class="govuk-summary-list__value">
                 {{ data['client_details']['client']['dob'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/client_details">
+                Change
+                <span class="govuk-visually-hidden">date of birth</span>
+              </a>
               </dd>
             </div>
             <div class="govuk-summary-list__row">
@@ -78,6 +102,24 @@
               <dd class="govuk-summary-list__value">
                 {{ data['client_details']['client']['national_insurance_number'] }}
               </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/client_details_nino">
+                Change
+                <span class="govuk-visually-hidden">national insurance number</span>
+              </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Passporting benefit
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['means_assessment']['benefits_status']['passported'] == true %}
+                  Yes
+                {% else %}
+                  No
+                {% endif %}
+              </dd>
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
@@ -85,6 +127,12 @@
               </dt>
               <dd class="govuk-summary-list__value">
                 {{ data['client_details']['client']['phone'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/client_details_correspondence_address">
+                Change
+                <span class="govuk-visually-hidden">UK telephone number</span>
+              </a>
               </dd>
             </div>
             <div class="govuk-summary-list__row">
@@ -110,6 +158,12 @@
                 {% else %}
                   No home address provided
                 {% endif %}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/client_details_postcode_finder">
+                Change
+                <span class="govuk-visually-hidden">home address</span>
+              </a>
               </dd>
             </div>
             <div class="govuk-summary-list__row">
@@ -143,17 +197,11 @@
                   {% endif %}
                 {% endif %}
               </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Passporting benefit
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {% if data['means_assessment']['benefits_status']['passported'] == true %}
-                  Yes
-                {% else %}
-                  No
-                {% endif %}
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/client_details_correspondence_address">
+                Change
+                <span class="govuk-visually-hidden">correspondence address</span>
+              </a>
               </dd>
             </div>
             <div class="govuk-summary-list__row">
