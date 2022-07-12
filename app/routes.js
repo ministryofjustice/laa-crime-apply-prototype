@@ -385,12 +385,12 @@ router.get('/case_details_hearing', function (req, res) {
   res.render('case_details_hearing', { courts: courtsList } );
 });
 
-router.post('/case_details_hearing', function (req, res) {
+router.post('/case_details_codefendants_details', function (req, res) {
   let hasCoDef = req.session.data['co_defendants']
   if (hasCoDef === 'yes') {
-    res.render('case_details_codefendants_details')
+    res.redirect('case_details_codefendants_details')
   } else {
-    res.render('ioj')
+    res.redirect('case_details_hearing')
   }
 });
 
