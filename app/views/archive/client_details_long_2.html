@@ -221,7 +221,7 @@ Apply for legal aid - Client details
           </div>
           <div class="govuk-radios__item">
             <!-- REMEMBER: data-aria-controls -->
-            <input class="govuk-radios__input" id="marriage-civil-partnership-1" name="marriage-civil-partnership" type="radio" value="yes" data-aria-controls="conditional-2-yes" {% if data['client_details']['partner']['first_name'] %}checked{% endif %}>
+            <input class="govuk-radios__input" id="marriage-civil-partnership-1" name="marriage-civil-partnership" type="radio" value="yes" data-aria-controls="conditional-2-yes" {% if data['partner']['first_name'] %}checked{% endif %}>
             <label class="govuk-label govuk-radios__label" for="marriage-civil-partnership">
               Yes
             </label>
@@ -232,14 +232,14 @@ Apply for legal aid - Client details
                 <label class="govuk-label" for="partner_firstname">
                 First name
                 </label>
-              <input class="govuk-input govuk-!-width-three-quarters" id="partner_firstname" name="client_details[partner][first_name]" value="{{ data['client_details']['partner']['first_name'] }}" type="text">
+              <input class="govuk-input govuk-!-width-three-quarters" id="partner_firstname" name="client_details[partner][first_name]" value="{{ data['partner']['first_name'] }}" type="text">
             </div>
 
             <div class="govuk-form-group">
                 <label class="govuk-label" for="partner_lastname">
                 Last name
                 </label>
-              <input class="govuk-input govuk-!-width-three-quarters" id="partner_lastname" name="client_details[partner][last_name]" value="{{ data['client_details']['partner']['last_name'] }}">
+              <input class="govuk-input govuk-!-width-three-quarters" id="partner_lastname" name="client_details[partner][last_name]" value="{{ data['partner']['last_name'] }}">
             </div>
           </div>
           <div class="govuk-form-group">

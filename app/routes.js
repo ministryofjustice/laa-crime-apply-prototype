@@ -25,7 +25,7 @@ router.use((req, res, next) => {
 
 router.post('/tasklist', function (req, res) {
   let mvpFlag = req.session.mvp
-  let hasPartner = req.session.data['case_details']['partner']
+  let hasPartner = req.session.data['partner']
 
   if (mvpFlag) {
     if (hasPartner === 'yes') {
@@ -53,7 +53,7 @@ router.post('/client_details_urn', function(req, res) {
 
 
 router.post('/account_number', function (req, res) {
-  let partner = req.session.data['case_details']['partner']
+  let partner = req.session.data['partner']
   if (partner == "yes"){
     res.redirect('/eforms_redirect')
   } else {

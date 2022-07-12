@@ -17,13 +17,13 @@
             <fieldset class="govuk-fieldset">
               <div class="govuk-radios" data-module="govuk-radios">
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="partner-yes" name="case_details[partner]" type="radio" value="yes" {{ checked("{{ data['client_details']['partner'] }}") }}>
+                  <input class="govuk-radios__input" id="partner-yes" name="partner" type="radio" value="yes" {{ checked("{{ data['partner'] }}") }}>
                   <label class="govuk-label govuk-radios__label" for="partner-yes">
                     Yes
                   </label>
                 </div>
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="partner-no" name="case_details[partner]" type="radio" value="no" {{ checked("{{ data['client_details']['partner'] }}") }}>
+                  <input class="govuk-radios__input" id="partner-no" name="partner" type="radio" value="no" {{ checked("{{ data['partner'] }}") }}>
                   <label class="govuk-label govuk-radios__label" for="partner-no">
                     No
                   </label>

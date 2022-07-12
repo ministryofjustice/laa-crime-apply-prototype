@@ -13,6 +13,7 @@ module.exports = {
     'confirm'
   ],
   dependencies: {
+    interests_of_justice: ['case_details'],
     income: ['benefits_status'],
     capital: ['benefits_status', 'case_details'],
     check_means_answers: ['income', 'capital'],

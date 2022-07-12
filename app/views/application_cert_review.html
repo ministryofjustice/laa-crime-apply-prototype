@@ -161,30 +161,30 @@
                 Partner
               </dt>
               <dd class="govuk-summary-list__value">
-                {% if data['marriage-civil-partnership'] == "yes" %}
+                {% if data['partner'] == "yes" %}
                   Yes
                 {% else %}
                   No
                 {% endif %}
               </dd>
             </div>
-            <!-- {% if data['client_details']['partner']['first_name'] %}
+            <!-- {% if data['partner']['first_name'] %}
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                   Partner's first name
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  {{ data['client_details']['partner']['first_name'] }}
+                  {{ data['partner']['first_name'] }}
                 </dd>
               </div>
             {% endif %}
-            {% if data['client_details']['partner']['last_name'] %}
+            {% if data['partner']['last_name'] %}
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                   Partner's last name
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  {{ data['client_details']['partner']['last_name'] }}
+                  {{ data['partner']['last_name'] }}
                 </dd>
               </div>
             {% endif %} -->
