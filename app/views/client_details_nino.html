@@ -17,7 +17,7 @@
             <fieldset class="govuk-fieldset">
               <div class="govuk-radios" data-module="govuk-radios">
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="urn-1" name="case_details[nino]" type="radio" value="yes" {{ checked("{{ data['client_details']['nino'] }}") }} data-aria-controls="urn-conditional-yes">
+                  <input class="govuk-radios__input" id="urn-1" name="client_details[nino]" type="radio" value="yes" {{ checked("{{ data['client_details']['nino'] }}") }} data-aria-controls="urn-conditional-yes">
                   <label class="govuk-label govuk-radios__label" for="urn-1">
                     Yes
                   </label>
@@ -32,7 +32,7 @@
                   </div>
                 </div>
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="urn-2" name="case_details[nino]" type="radio" value="no" {{ checked("{{ data['client_details']['nino'] }}") }}>
+                  <input class="govuk-radios__input" id="urn-2" name="client_details[nino]" type="radio" value="no" {{ checked("{{ data['client_details']['nino'] }}") }}>
                   <label class="govuk-label govuk-radios__label" for="urn-2">
                     No
                   </label>
