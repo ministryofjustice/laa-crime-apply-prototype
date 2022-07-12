@@ -14,10 +14,8 @@ const https = require('https');
 const utils = require('./utils');
 
 router.use((req, res, next) => {
-  let mvpFlag = req.query?.mvp;
-  if (mvpFlag) {
-    req.session.mvp = mvpFlag == 'true';
-  }
+  // let mvpFlag = req.query?.mvp;
+  req.session.mvp = true 
 
   console.log(req.session)
   next();
@@ -34,7 +32,7 @@ router.post('/tasklist', function (req, res) {
       res.redirect('/tasklist')
     }
   } else {
-    res.redirect('/tasklist');
+    res.redirect('/client_details_postcode_finder');
   }
 });
 
