@@ -17,15 +17,22 @@ router.use((req, res, next) => {
   let mvpFlag = req.query?.mvp;
   if (mvpFlag) {
     req.session.mvp = mvpFlag == 'true';
-  }
+  } 
+
   console.log(req.session)
   next();
 });
 
 router.post('/tasklist', function (req, res) {
   let mvpFlag = req.session.mvp 
+  let hasPartner = req.session.data['case_details']['partner']
+
   if (mvpFlag) {
-    res.redirect('/client_details_postcode_finder');
+    if (hasPartner === 'yes') {
+      res.redirect('/tasklist');
+    } else {
+      res.redirect('/eforms_redirect')
+    }
   } else {
     res.redirect('/tasklist');
   }
