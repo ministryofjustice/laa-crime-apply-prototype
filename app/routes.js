@@ -150,7 +150,7 @@ router.post('/dwp_passported', function (req, res, next) {
   if (nonPassported == 'yes') {
     res.redirect('/dwp_nonpassported');
   } else {
-    let hasNino = req.session.data['case_details']['nino']
+    let hasNino = req.session.data['client_details']['nino']
 
     if(hasNino == 'yes') {
       res.redirect('/dwp_passported');
@@ -184,7 +184,7 @@ router.get('/dwp_passported', function (req, res, next) {
 
   let outOfScope = false;
   if (mvp) {
-    let nino = req.session.data['case_details']['nino_number']
+    let nino = req.session.data['client_details']['nino_number']
 
     if (_.isEmpty(nino)) {
       outOfScope = true;
