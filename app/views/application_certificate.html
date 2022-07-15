@@ -81,72 +81,7 @@
               National Insurance number
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['client_details']['client']['national_insurance_number'] }}
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              UK telephone number
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['client_details']['client']['phone'] }}
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Home address
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {% if data['home-address'] == 'yes' %}
-                {% if data['client_details']['client']['address']['address_line_one'] %}
-                  {{ data['client_details']['client']['address']['address_line_one'] }}
-                  {{ data['client_details']['client']['address']['address_line_two'] }}
-                  <br>
-                  {{ data['client_details']['client']['address']['city'] }}
-                  <br>
-                  {{ data['client_details']['client']['address']['postcode'] }}
-                {% elif data['address-select'] %}
-                  {{ data['address-select'] }} Main Street
-                  <br>
-                  London
-                  <br>
-                  {{ data['client_details']['client']['address']['postcode'] }}
-                {% endif %}
-              {% else %}
-                No home address provided
-              {% endif %}
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Correspondence address
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {% if data['correspondence_address_type'] == 'home-address' %}
-                Same as home address
-              {% elseif data['correspondence_address_type'] == 'provider-office' %}
-                Provider's office
-              {% elseif data['correspondence_address_type'] == 'correspondence-address-other' %}
-                {% if data['client_details']['client']['correspondence_address']['address_line_one'] %}
-                  {{ data['client_details']['client']['correspondence_address']['address_line_one']}}
-                  <br>
-                {% endif %}
-                {% if data['client_details']['client']['correspondence_address']['address_line_two'] %}
-                  {{ data['client_details']['client']['correspondence_address']['address_line_two']}}
-                  <br>
-                {% endif %}
-                {% if data['client_details']['client']['correspondence_address']['city'] %}
-                  {{ data['client_details']['client']['correspondence_address']['city']}}
-                  <br>
-                {% endif %}
-                {% if data['client_details']['client']['correspondence_address']['county'] %}
-                  {{ data['client_details']['client']['correspondence_address']['county']}}
-                  <br>
-                {% endif %}
-                {% if data['client_details']['client']['correspondence_address']['postcode'] %}
-                  {{ data['client_details']['client']['correspondence_address']['postcode']}}
-                {% endif %}
-              {% endif %}
+              {{ data['client_details']['nino'] }}
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -163,10 +98,85 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
+              Home address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['postcode'] %}
+                  {% if data['address-line-1'] %}
+                    {{ data['address-line-1'] }}
+                    {{ data['address-line-2'] }}
+                    <br>
+                    {{ data['address-town'] }}
+                    <br>
+                    {{ data['address-county'] }}
+                    <br>
+                    {{ data['address-postcode'] }}
+                  {% elif data['address-select'] %}
+                    {{ data['address-house-number'] }} Main Street
+                    <br>
+                    London
+                    <br>
+                    {{ data['postcode'] }}
+                  {% endif %}
+                {% else %}
+                  No home address provided
+                {% endif %}
+              </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Correspondence address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['correspondence_address_type'] == 'home-address' %}
+                Same as home address
+              {% elseif data['correspondence_address_type'] == 'provider-office' %}
+                Provider's office
+              {% elseif data['correspondence_address_type'] == 'correspondence-address-other' %}
+                {% if data['postcode-correspondence'] %}
+                  {% if data['correspondence-address-line-1'] %}
+                    {{ data['correspondence-address-line-1'] }}
+                    <br>
+                  {% endif %}
+                  {% if data['correspondence-address-line-2'] %}
+                    {{ data['correspondence-address-line-2'] }}
+                    <br>
+                  {% endif %}
+                  {% if data['correspondence-address-town'] %}
+                    {{ data['correspondence-address-town'] }}
+                    <br>
+                  {% endif %}
+                  {% if data['correspondence-address-county'] %}
+                    {{ data['correspondence-address-county'] }}
+                    <br>
+                  {% endif %}
+                  {% if data['correspondence-address-postcode'] %}
+                    {{ data['correspondence-address-postcode'] }}
+                  {% endif %}
+                {% elseif data['address-select-correspondence'] %}
+                  {{ data['correspondence-house-number'] }} Main Street
+                  <br>
+                  London
+                  <br>
+                  {{ data['postcode_correspondence'] }}
+                {% endif %}
+              {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              UK telephone number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['client_details']['client']['phone'] }}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
               Partner
             </dt>
             <dd class="govuk-summary-list__value">
-              {% if data['marriage-civil-partnership'] == "yes" %}
+              {% if data['partner'] == "yes" %}
                 Yes
               {% else %}
                 No
@@ -232,24 +242,6 @@
               {% endif %}
             </dd>
           </div>
-          {% if data.case_details.urn_provided == 'no' %}
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Court hearing the case
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['court_name'] }}
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">       
-            <dt class="govuk-summary-list__key">
-              Next court hearing
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['case_details']['next_hearing'] }}
-            </dd>
-          </div>
-          {% endif %}
         </dl>
 
         <br>
@@ -277,6 +269,8 @@
             </div>
           {%- endfor %}
         </dl>
+
+        <br>
 
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-two-thirds">
@@ -322,6 +316,45 @@
 
           <br>
         {% endif %}
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-m">Next court hearing</h2>
+          </div>
+          <div class="govuk-grid-column-one-third">
+          </div>
+        </div>
+
+        <dl class="govuk-summary-list">
+          {% if data.case_details.urn_provided == 'no' %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Court name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['court-name'] }}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row"> 
+            <dt class="govuk-summary-list__key">
+              Date of next hearing
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['case_details']['next_hearing'] }}
+            </dd>
+          </div>
+          {% else %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Details on VCD
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['case_details']['urn'] }}
+            </dd>
+          </div>
+          {% endif %}
+        </dl>
+
+        <br>
 
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-two-thirds">
