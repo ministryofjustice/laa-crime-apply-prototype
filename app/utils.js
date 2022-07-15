@@ -144,7 +144,7 @@ const utils = {
         return false;
       }
 
-      return person.first_name + ' ' + person.last_name;
+      return { name: person.first_name + ' ' + person.last_name, conflict: person.conflict };
     });
 
     if (names) {

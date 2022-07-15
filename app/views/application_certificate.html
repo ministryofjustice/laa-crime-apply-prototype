@@ -315,7 +315,7 @@
                 Co-defendant {{loop.index}}
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ defendant }}
+                {{ defendant.name }}
               </dd>
             </div>
           {%- endfor %}
@@ -323,9 +323,19 @@
             <dt class="govuk-summary-list__key">
               Conflict of interest
             </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['conflict'] | capitalize }}
-            </dd>
+            {% for defendant in data['case_details']['co_defendant_names'] -%}
+              {% if defendant.conflict ==  'yes' %}
+                <dd class="govuk-summary-list__value">
+                  Yes
+                  <br>
+                  <p class=conflict-codefendant-name>{{ defendant.name }}</p>
+                </dd>
+
+<!-- This needs fixing to loop through and only display no if all are no -->
+              {% elif defendant.conflict ==  'no'%}
+                No
+              {% endif %}
+            {%- endfor %}
           </div>
         </dl>
 

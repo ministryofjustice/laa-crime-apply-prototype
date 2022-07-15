@@ -389,12 +389,12 @@
             Co-defendant {{loop.index}}
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ defendant }}
+            {{ defendant.name }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="/case_details_codefendants_details">
               Change
-              <span class="govuk-visually-hidden">codefendant {{loop.index}}</span>
+              <span class="govuk-visually-hidden">codefendants {{loop.index}}</span>
             </a>
           </dd>
         </div>
@@ -403,15 +403,31 @@
         <dt class="govuk-summary-list__key">
           Conflict of interest
         </dt>
-        <dd class="govuk-summary-list__value">
-          {{ data['conflict'] | capitalize }}
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="/case_details_codefendants_details">
-            Change
-            <span class="govuk-visually-hidden">conflict of interests</span>
-          </a>
-        </dd>
+        {% for defendant in data['case_details']['co_defendant_names'] -%}
+          {% if defendant.conflict ==  'yes' %}
+            <dd class="govuk-summary-list__value">
+              Yes
+              <br>
+              <p class=conflict-codefendant-name>{{ defendant.name }}</p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="/case_details_codefendants_details">
+                Change
+                <span class="govuk-visually-hidden">conflict of interests</span>
+              </a>
+            </dd>
+
+<!-- This needs fixing to loop through and only display no if all are no -->
+          {% elif defendant.conflict ==  'no'%}
+            No
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="/case_details_codefendants_details">
+                Change
+                <span class="govuk-visually-hidden">conflict of interests</span>
+              </a>
+            </dd>
+          {% endif %}
+        {%- endfor %}
       </div>
     </dl>
 
