@@ -77,7 +77,7 @@ const utils = {
       return 'n/a';
     }
 
-    const month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    const month = ["January","February","March","April;","May","June","July","August","September","October","November","December"];
     date = new Date(date);
     return date.getDate() + ' ' + month[date.getMonth()] + ' ' + date.getFullYear();
   },

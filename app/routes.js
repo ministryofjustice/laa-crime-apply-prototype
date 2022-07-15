@@ -19,7 +19,6 @@ router.use((req, res, next) => {
     req.session.mvp = mvpFlag == 'true';
   }
 
-  console.log(req.session)
   next();
 });
 
@@ -39,10 +38,22 @@ router.post('/tasklist', function (req, res) {
 });
 
 router.get('/client_details_postcode_finder', function(req, res) {
+  let addressType = req.session.data['correspondence_address_type'];
+  let homeAddress = req.session.data['postcode'] ? true : false
+  if (addressType == 'home-address' && !homeAddress) {
+    _.set(req.session.data, 'requires-home-address', 'yes')
+  } else {
+    _.set(req.session.data, 'requires-home-address', 'no')
+  }
   res.render('client_details_postcode_finder');
 });
 
 router.post('/client_details_urn', function(req, res) {
+  if (req.session.data['address-select-correspondence']) {
+    let houseNumber = Array.from(req.session.data['address-select-correspondence'])[0]
+    _.set(req.session.data, 'correspondence-house-number', houseNumber)
+  }
+
   let address = req.session.data['address-select']
   if (address !== '5 addresses found') {
     res.render('case_details_urn');
@@ -50,7 +61,6 @@ router.post('/client_details_urn', function(req, res) {
     res.redirect('client_details_postcode_select_correspondence')
   }
 });
-
 
 router.post('/account_number', function (req, res) {
   let partner = req.session.data['partner']
@@ -150,7 +160,7 @@ router.post('/dwp_passported', function (req, res, next) {
   if (nonPassported == 'yes') {
     res.redirect('/dwp_nonpassported');
   } else {
-    let hasNino = req.session.data['case_details']['nino']
+    let hasNino = req.session.data['client_details']['nino_provided']
 
     if(hasNino == 'yes') {
       res.redirect('/dwp_passported');
@@ -184,7 +194,7 @@ router.get('/dwp_passported', function (req, res, next) {
 
   let outOfScope = false;
   if (mvp) {
-    let nino = req.session.data['case_details']['nino_number']
+    let nino = _.get(req.session.data, 'client_details.nino');
 
     if (_.isEmpty(nino)) {
       outOfScope = true;
@@ -264,11 +274,26 @@ router.get('/case_details_confirm', function (req, res) {
   res.render('case_details_confirm', {showDateStamp});
 });
 
+router.get('/client_details_manual_address_correspondence', function (req, res) {
+  _.set(req.session.data, 'origin', '/client_details_manual_address_correspondence')
+
+  res.render('client_details_manual_address_correspondence');
+});
+
 router.post('/case_details_urn', function (req, res, next) {
-  let address_type = req.session.data['correspondence_address_type'];
-  if (address_type == 'correspondence-address-other') {
+  if (req.session.data['address-select']) {
+    let houseNumber = Array.from(req.session.data['address-select'])[0]
+    _.set(req.session.data, 'address-house-number', houseNumber)
+  }
+  let origin = _.get(req.session.data, 'origin');
+  let addressType = req.session.data['correspondence_address_type'];
+  let homeAddress = req.session.data['postcode']
+  if (addressType == 'correspondence-address-other' && origin != '/client_details_manual_address_correspondence') {
     res.redirect('client_details_postcode_finder_correspondence')
+  } else if (addressType == 'home-address' && !homeAddress) {
+    res.redirect('client_details_postcode_finder')
   } else {
+    delete req.session.data['origin'];
     res.redirect('case_details_urn')
   }
 });
