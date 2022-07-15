@@ -433,65 +433,56 @@
 
     <br>
 
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <h2 class="govuk-heading-m">Next court hearing</h2>
+    {% if data.case_details.urn_provided == 'no' %}
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-m">Next court hearing</h2>
+        </div>
+        <div class="govuk-grid-column-one-third">
+        </div>
       </div>
-      <div class="govuk-grid-column-one-third">
-      </div>
-    </div>
 
-    <dl class="govuk-summary-list">
-      {% if data.case_details.urn_provided == 'no' %}
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Court name
-        </dt>
-        <dd class="govuk-summary-list__value">
-          {{ data['court-name'] }}
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="/case_details_hearing">
-            Change<span class="govuk-visually-hidden">court name</span>
-          </a>
-        </dd>
-      </div>
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Date of next hearing
-        </dt>
-        <dd class="govuk-summary-list__value">
-          {{ data['case_details']['next_hearing'] }}
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="/case_details_hearing">
-            Change<span class="govuk-visually-hidden">date of next hearing</span>
-          </a>
-        </dd>
-      </div>
-      {% else %}
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Details on VCD
-        </dt>
-        <dd class="govuk-summary-list__value">
-          {{ data['case_details']['urn'] }}
-        </dd>
-      </div>
-      {% endif %}
-    </dl>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Court name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['court-name'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/case_details_hearing">
+              Change<span class="govuk-visually-hidden">court name</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of next hearing
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['case_details']['next_hearing'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/case_details_hearing">
+              Change<span class="govuk-visually-hidden">date of next hearing</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+    {% endif %}
 
     <br>
 
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          <h2 class="govuk-heading-m">Justification for legal aid</h2>
-        </div>
-        <div class="govuk-grid-column-one-third">
-          <p><a class="govuk-link" style="float:right;" href="/ioj">Change</a></p>
-        </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-m">Justification for legal aid</h2>
       </div>
-
+      <div class="govuk-grid-column-one-third">
+        <p><a class="govuk-link" style="float:right;" href="/ioj">Change</a></p>
+      </div>
+    </div>
+    {% if data['interests_of_justice'].length > 0 -%}
       <dl class="govuk-summary-list">
         {% for ioj in data['interests_of_justice'] -%}
           <div class="govuk-summary-list__row">
@@ -524,6 +515,19 @@
           </div>
         {%- endfor %}
       </dl>
+    {% else %}
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Passported
+          </dt>
+          <dd>
+            Case details provided do not require further justification for legal aid
+          </dd>
+          <br>
+        </div>
+      </dl>
+    {% endif %}
 
   <!-- FOR PASSPORTED CASES, THE CHECK YOUR ANSWERS FINISHES HERE -->
 
