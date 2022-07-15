@@ -5,11 +5,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-xl">Does your client have any co-defendants in this case?</h1>
-      {% if data.case_details.urn_provided == 'yes' %}
-      <form class="form" action="/ioj" method="post">
-      {% else %}
       <form class="form" action="/case_details_codefendants_details" method="post">
-      {% endif %}
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <div class="govuk-radios" data-module="govuk-radios">

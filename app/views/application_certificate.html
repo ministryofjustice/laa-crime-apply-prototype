@@ -294,28 +294,43 @@
 
         <br>
 
-        {% if data['case_details']['co_defendant_names'] | length > 0 %}
-          <div class="govuk-grid-row">
-            <div class="govuk-grid-column-two-thirds">
-              <h2 class="govuk-heading-m">Co-defendants</h2>
-            </div>
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-m">Co-defendants</h2>
           </div>
+        </div>
 
-          <dl class="govuk-summary-list">
-            {% for defendant in data['case_details']['co_defendant_names'] -%}
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  Co-defendant {{loop.index}}
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  {{ defendant }}
-                </dd>
-              </div>
-            {%- endfor %}
-          </dl>
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Co-defendants
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['co_defendants'] | capitalize }}
+            </dd>
+          </div>
+          {% for defendant in data['case_details']['co_defendant_names'] -%}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Co-defendant {{loop.index}}
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ defendant }}
+              </dd>
+            </div>
+          {%- endfor %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Conflict of interest
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['conflict'] | capitalize }}
+            </dd>
+          </div>
+        </dl>
 
-          <br>
-        {% endif %}
+        <br>
+
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-two-thirds">
             <h2 class="govuk-heading-m">Next court hearing</h2>
