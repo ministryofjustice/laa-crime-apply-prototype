@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="case_details_urn" method="post" novalidate>
+
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            <h1 class="govuk-fieldset__heading">
+              Enter your client's correspondence address manually
+            </h1>
+          </legend>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="correspondence-address-line-1">
+              Address line 1
+            </label>
+            <input class="govuk-input" id="correspondence-address-line-1" name="correspondence-address-line-1" type="text" autocomplete="address-line1">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="correspondence-address-line-2">
+              Address line 2 (optional)
+            </label>
+            <input class="govuk-input" id="correspondence-address-line-2" name="correspondence-address-line-2" type="text" autocomplete="address-line2">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="correspondence-address-town">
+              Town or city
+            </label>
+            <input class="govuk-input govuk-!-width-two-thirds" id="correspondence-address-town" name="correspondence-address-town" type="text" autocomplete="address-level2">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="correspondence-address-county">
+              County (optional)
+            </label>
+            <input class="govuk-input govuk-!-width-two-thirds" id="correspondence-address-county" name="correspondence-address-county" type="text">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="correspondence-address-postcode">
+              Postcode
+            </label>
+            <input class="govuk-input govuk-input--width-10" id="correspondence-address-postcode" name="correspondence-address-postcode" type="text" autocomplete="postal-code">
+          </div>
+
+        </fieldset>
+
+        <button type="submit" class="govuk-button button-left">
+          Save and continue
+        </button>
+        </form>
+
+        <form class="form inline-form" action="/tasklist" method="post">
+        <input type="hidden" name="client_details[]" value="completed">
+        <button class="govuk-button govuk-button--secondary" data-module="govuk-button">Save and come back later</button>
+        </form>
+
+    </div>
+  </div>
+
+{% endblock %}

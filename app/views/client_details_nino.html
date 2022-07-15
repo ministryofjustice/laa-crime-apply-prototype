@@ -17,7 +17,7 @@
             <fieldset class="govuk-fieldset">
               <div class="govuk-radios" data-module="govuk-radios">
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="urn-1" name="client_details[nino]" type="radio" value="yes" {{ checked("{{ data['client_details']['nino'] }}") }} data-aria-controls="urn-conditional-yes">
+                  <input class="govuk-radios__input" id="urn-1" name="client_details[nino_provided]" type="radio" value="yes" {{ checked("{{ data['client_details']['nino_provided'] }}") }} data-aria-controls="urn-conditional-yes">
                   <label class="govuk-label govuk-radios__label" for="urn-1">
                     Yes
                   </label>
@@ -28,7 +28,7 @@
                     <label class="govuk-label" for="urn-1">
                       Enter their National Insurance number
                     </label>
-                    <input class="govuk-input govuk-!-width-three-quarters" id="urn-1" name="client_details[nino_number]" value="{{ data['client_details']['nino_number'] }}" type="text">
+                    <input class="govuk-input govuk-!-width-three-quarters" id="urn-1" name="client_details[nino]" value="{{ data['client_details']['nino'] }}" type="text">
                   </div>
                 </div>
                 <div class="govuk-radios__item">

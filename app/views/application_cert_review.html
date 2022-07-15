@@ -86,7 +86,7 @@
                 Date of birth
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data['client_details']['client']['date_of_birth'] }}
+                {{ data['client_details']['client']['dob'] }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/client_details">
@@ -100,7 +100,7 @@
                 National Insurance number
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data['client_details']['nino_number'] }}
+                {{ data['client_details']['nino'] }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/client_details_nino">
@@ -140,20 +140,22 @@
                 Home address
               </dt>
               <dd class="govuk-summary-list__value">
-                {% if data['home-address'] == 'yes' %}
-                  {% if data['client_details']['client']['address']['address_line_one'] %}
-                    {{ data['client_details']['client']['address']['address_line_one'] }}
-                    {{ data['client_details']['client']['address']['address_line_two'] }}
+                {% if data['postcode'] %}
+                  {% if data['address-line-1'] %}
+                    {{ data['address-line-1'] }}
+                    {{ data['address-line-2'] }}
                     <br>
-                    {{ data['client_details']['client']['address']['city'] }}
+                    {{ data['address-town'] }}
                     <br>
-                    {{ data['client_details']['client']['address']['postcode'] }}
+                    {{ data['address-county'] }}
+                    <br>
+                    {{ data['address-postcode'] }}
                   {% elif data['address-select'] %}
-                    {{ data['address-select'] }} Main Street
+                    {{ data['address-house-number'] }} Main Street
                     <br>
                     London
                     <br>
-                    {{ data['client_details']['client']['address']['postcode'] }}
+                    {{ data['postcode'] }}
                   {% endif %}
                 {% else %}
                   No home address provided
@@ -176,24 +178,32 @@
                 {% elseif data['correspondence_address_type'] == 'provider-office' %}
                   Provider's office
                 {% elseif data['correspondence_address_type'] == 'correspondence-address-other' %}
-                  {% if data['client_details']['client']['correspondence_address']['address_line_one'] %}
-                    {{ data['client_details']['client']['correspondence_address']['address_line_one']}}
+                  {% if data['postcode-correspondence'] %}
+                    {% if data['correspondence-address-line-1'] %}
+                      {{ data['correspondence-address-line-1'] }}
+                      <br>
+                    {% endif %}
+                    {% if data['correspondence-address-line-2'] %}
+                      {{ data['correspondence-address-line-2'] }}
+                      <br>
+                    {% endif %}
+                    {% if data['correspondence-address-town'] %}
+                      {{ data['correspondence-address-town'] }}
+                      <br>
+                    {% endif %}
+                    {% if data['correspondence-address-county'] %}
+                      {{ data['correspondence-address-county'] }}
+                      <br>
+                    {% endif %}
+                    {% if data['correspondence-address-postcode'] %}
+                      {{ data['correspondence-address-postcode'] }}
+                    {% endif %}
+                  {% elseif data['address-select-correspondence'] %}
+                    {{ data['correspondence-house-number'] }} Main Street
                     <br>
-                  {% endif %}
-                  {% if data['client_details']['client']['correspondence_address']['address_line_two'] %}
-                    {{ data['client_details']['client']['correspondence_address']['address_line_two']}}
+                    London
                     <br>
-                  {% endif %}
-                  {% if data['client_details']['client']['correspondence_address']['city'] %}
-                    {{ data['client_details']['client']['correspondence_address']['city']}}
-                    <br>
-                  {% endif %}
-                  {% if data['client_details']['client']['correspondence_address']['county'] %}
-                    {{ data['client_details']['client']['correspondence_address']['county']}}
-                    <br>
-                  {% endif %}
-                  {% if data['client_details']['client']['correspondence_address']['postcode'] %}
-                    {{ data['client_details']['client']['correspondence_address']['postcode']}}
+                    {{ data['postcode_correspondence'] }}
                   {% endif %}
                 {% endif %}
               </dd>
