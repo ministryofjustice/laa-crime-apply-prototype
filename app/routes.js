@@ -18,7 +18,6 @@ router.use((req, res, next) => {
   if (mvpFlag) {
     req.session.mvp = mvpFlag == 'true';
   }
-
   next();
 });
 
@@ -38,13 +37,9 @@ router.post('/tasklist', function (req, res) {
 });
 
 router.get('/client_details_postcode_finder', function(req, res) {
-  let addressType = req.session.data['correspondence_address_type'];
-  let homeAddress = req.session.data['postcode'] ? true : false
-  if (addressType == 'home-address' && !homeAddress) {
-    _.set(req.session.data, 'requires-home-address', 'yes')
-  } else {
-    _.set(req.session.data, 'requires-home-address', 'no')
-  }
+  _.unset(req.session.data, 'postcode')
+  _.unset(req.session.data, 'address-select')
+
   res.render('client_details_postcode_finder');
 });
 

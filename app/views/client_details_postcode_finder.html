@@ -7,20 +7,6 @@
 
         <h1 class="govuk-heading-xl">Enter your client's home address</h1>
 
-        {% if data['requires-home-address'] == 'yes' %}
-          <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-            <div class="govuk-notification-banner__header">
-              <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-                Important
-              </h2>
-            </div>
-            <div class="govuk-notification-banner__content">
-              <p class="govuk-notification-banner__heading">
-                You must provide a home address to set correspondence address to 'Same as home address'.            </p>
-            </div>
-          </div>
-        {% endif %}
-
         <form action="client_details_postcode_select" method="post" novalidate>
           <div class="govuk-form-group">
 
