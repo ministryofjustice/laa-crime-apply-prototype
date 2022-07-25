@@ -56,18 +56,18 @@
               {{ data['client_details']['client']['last_name'] }}
             </dd>
           </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Other names
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {% if data['client_details']['client']['other_names'] %}
-                  {{ data['client_details']['client']['other_names'] }}
-                {% else %}
-                  None
-                {% endif %} 
-              </dd>
-            </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Other names
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['client_details']['client']['other_names'] %}
+                {{ data['client_details']['client']['other_names'] }}
+              {% else %}
+                None
+              {% endif %}
+            </dd>
+          </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Date of birth
@@ -119,7 +119,7 @@
                     {{ data['postcode'] }}
                   {% endif %}
                 {% else %}
-                  No home address provided
+                  Not provided
                 {% endif %}
               </dd>
           </div>
@@ -222,7 +222,7 @@
               {% if data.case_details.urn_provided == 'yes' %}
                 {{ data['case_details']['urn'] }}
               {% else %}
-                URN not provided
+                Not provided
               {% endif %}
             </dd>
           </div>
@@ -321,24 +321,26 @@
               </dd>
             </div>
           {%- endfor %}
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Conflict of interest
-            </dt>
-            {% for defendant in data['case_details']['co_defendant_names'] -%}
-              {% if defendant.conflict ==  'yes' %}
-                <dd class="govuk-summary-list__value">
-                  Yes
-                  <br>
-                  <p class=conflict-codefendant-name>{{ defendant.name }}</p>
-                </dd>
+          {% if data['co_defendants'] == "yes" %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Conflict of interest
+              </dt>
+              {% for defendant in data['case_details']['co_defendant_names'] -%}
+                {% if defendant.conflict ==  'yes' %}
+                  <dd class="govuk-summary-list__value">
+                    Yes
+                    <br>
+                    <p class=conflict-codefendant-name>{{ defendant.name }}</p>
+                  </dd>
 
 <!-- This needs fixing to loop through and only display no if all are no -->
-              {% elif defendant.conflict ==  'no'%}
-                No
-              {% endif %}
-            {%- endfor %}
-          </div>
+                {% elif defendant.conflict ==  'no '%}
+                  No
+                {% endif %}
+              {%- endfor %}
+            </div>
+          {% endif %}
         </dl>
 
         <br>
