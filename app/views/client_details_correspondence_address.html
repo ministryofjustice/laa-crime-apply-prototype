@@ -32,12 +32,14 @@
                   Correspondence address
                 </label>
               <div class="govuk-radios" data-module="govuk-radios">
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="correspondence-address-1" name="correspondence_address_type" type="radio" value="home-address">
-                  <label class="govuk-label govuk-radios__label" for="correspondence-address-1">
-                    Same as home address
-                  </label>
-                </div>
+                {% if data['postcode'] %}
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="correspondence-address-1" name="correspondence_address_type" type="radio" value="home-address">
+                    <label class="govuk-label govuk-radios__label" for="correspondence-address-1">
+                      Same as home address
+                    </label>
+                  </div>
+                {% endif %}
                 <div class="govuk-radios__item">
                   <input class="govuk-radios__input" id="correspondence-address-2" name="correspondence_address_type" type="radio" value="provider-office">
                   <label class="govuk-label govuk-radios__label" for="correspondence-address-2">
