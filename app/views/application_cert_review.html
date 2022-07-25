@@ -264,13 +264,16 @@
         </div>
 
         <dl class="govuk-summary-list">
-          {% if data.case_details.urn_provided == 'yes' %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Unique reference number
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['case_details']['urn'] }}
+              {% if data.case_details.urn_provided == 'yes' %}
+                {{ data['case_details']['urn'] }}
+              {% else %}
+                URN not provided
+              {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="/case_details_urn">
@@ -278,7 +281,6 @@
               </a>
             </dd>
           </div>
-          {% endif %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Case type
@@ -433,51 +435,42 @@
 
     <br>
 
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <h2 class="govuk-heading-m">Next court hearing</h2>
+    {% if data.case_details.urn_provided == 'no' %}
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-m">Next court hearing</h2>
+        </div>
+        <div class="govuk-grid-column-one-third">
+        </div>
       </div>
-      <div class="govuk-grid-column-one-third">
-      </div>
-    </div>
 
-    <dl class="govuk-summary-list">
-      {% if data.case_details.urn_provided == 'no' %}
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Court name
-        </dt>
-        <dd class="govuk-summary-list__value">
-          {{ data['court-name'] }}
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="/case_details_hearing">
-            Change<span class="govuk-visually-hidden">court name</span>
-          </a>
-        </dd>
-      </div>
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Date of next hearing
-        </dt>
-        <dd class="govuk-summary-list__value">
-          {{ data['case_details']['next_hearing'] }}
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="/case_details_hearing">
-            Change<span class="govuk-visually-hidden">date of next hearing</span>
-          </a>
-        </dd>
-      </div>
-      {% else %}
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Details on VCD
-        </dt>
-        <dd class="govuk-summary-list__value">
-          {{ data['case_details']['urn'] }}
-        </dd>
-      </div>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Court name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['court-name'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/case_details_hearing">
+              Change<span class="govuk-visually-hidden">court name</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of next hearing
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['case_details']['next_hearing'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/case_details_hearing">
+              Change<span class="govuk-visually-hidden">date of next hearing</span>
+            </a>
+          </dd>
+        </div>
       {% endif %}
     </dl>
 
