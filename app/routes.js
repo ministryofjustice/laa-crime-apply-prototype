@@ -429,6 +429,8 @@ router.get('/case_details_offence', function (req, res) {
 });
 
 router.get('/application_cert_review', function (req, res) {
+  utils.determineConflicts(req)
+
   res.render('application_cert_review');
 });
 
