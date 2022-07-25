@@ -407,10 +407,13 @@ router.get('/case_details_hearing', function (req, res) {
 
 router.post('/case_details_codefendants_details', function (req, res) {
   let hasCoDef = req.session.data['co_defendants']
+  let urnProvided = req.session.data['case_details']['urn_provided']
   if (hasCoDef === 'yes') {
     res.redirect('case_details_codefendants_details')
-  } else {
+  } else if (hasCoDef === 'no' && urnProvided === 'no') {
     res.redirect('case_details_hearing')
+  } else {
+    res.redirect('ioj')
   }
 });
 
