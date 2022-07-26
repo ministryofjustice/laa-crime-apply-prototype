@@ -322,23 +322,20 @@
             </div>
           {%- endfor %}
           {% if data['co_defendants'] == "yes" %}
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Conflict of interest
-              </dt>
-              {% for defendant in data['case_details']['co_defendant_names'] -%}
-                {% if defendant.conflict ==  'yes' %}
-                  <dd class="govuk-summary-list__value">
-                    Yes
-                    <br>
-                    <p class=conflict-codefendant-name>{{ defendant.name }}</p>
-                  </dd>
-
-<!-- This needs fixing to loop through and only display no if all are no -->
-                {% elif defendant.conflict ==  'no '%}
-                  No
-                {% endif %}
-              {%- endfor %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Conflict of interest
+            </dt>
+            {% if data['case_details']['co_defendant_conflict'] | length > 0 %}
+              <dd class="govuk-summary-list__value">
+                <p>Yes</p>
+                {% for defendant in data['case_details']['co_defendant_conflict'] -%}
+                  <p class=conflict-codefendant-name>{{ defendant.name }}</p>
+                {%- endfor %}
+              </dd>
+            {% else %}
+              <p>No</p>
+            {% endif %}
             </div>
           {% endif %}
         </dl>

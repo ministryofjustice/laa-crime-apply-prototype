@@ -187,6 +187,12 @@ const utils = {
       req.session.data['date_stamp'] = new Date()
     }
     return setDateStamp
+  },
+  determineConflicts: (req) => {
+    codefendantConflict = req.session.data['case_details']['co_defendant_names'].filter(
+      codefendant => codefendant.conflict == 'yes'
+    );
+    _.set(req.session.data, 'case_details.co_defendant_conflict', codefendantConflict);
   }
 };
 

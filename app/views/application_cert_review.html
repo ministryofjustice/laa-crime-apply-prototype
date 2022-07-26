@@ -406,33 +406,30 @@
           <dt class="govuk-summary-list__key">
             Conflict of interest
           </dt>
-          {% for defendant in data['case_details']['co_defendant_names'] -%}
-            {% if defendant.conflict ==  'yes' %}
-              <dd class="govuk-summary-list__value">
-                Yes
-                <br>
+          {% if data['case_details']['co_defendant_conflict'] | length > 0 %}
+            <dd class="govuk-summary-list__value">
+              <p>Yes</p>
+              {% for defendant in data['case_details']['co_defendant_conflict'] -%}
                 <p class=conflict-codefendant-name>{{ defendant.name }}</p>
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/case_details_codefendants_details">
-                  Change
-                  <span class="govuk-visually-hidden">conflict of interests</span>
-                </a>
-              </dd>
-
-<!-- This needs fixing to loop through and only display no if all are no -->
-            {% elif defendant.conflict ==  'no '%}
-              No
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/case_details_codefendants_details">
-                  Change
-                  <span class="govuk-visually-hidden">conflict of interests</span>
-                </a>
-              </dd>
-            {% endif %}
-          {%- endfor %}
+              {%- endfor %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="/case_details_codefendants_details">
+                Change
+                <span class="govuk-visually-hidden">conflict of interests</span>
+              </a>
+            </dd>
+          {% else %}
+            <p>No</p>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="/case_details_codefendants_details">
+                Change
+                <span class="govuk-visually-hidden">conflict of interests</span>
+              </a>
+            </dd>
+          {% endif %}
         </div>
-        {% endif %}
+      {% endif %}
     </dl>
 
     <br>
