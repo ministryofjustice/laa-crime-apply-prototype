@@ -380,33 +380,13 @@
         </div>
 
         <dl class="govuk-summary-list">
-          {% for ioj in data['interests_of_justice'] -%}
+          {% for ioj in data['case_details']['ioj'] -%}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                {% if ioj == 'liberty' %}
-                  Loss of liberty
-                {% elif ioj == 'suspended_sentence' %}
-                  Suspended or non-custodial sentence
-                {% elif ioj == 'livelihood' %}
-                  Loss of livelihood
-                {% elif ioj == 'reputation' %}
-                  Serious damage to their reputation
-                {% elif ioj == 'question_of_law' %}
-                  Substantial question of law may be involved
-                {% elif ioj == 'unable_to_understand' %}
-                  Unable to understand the court proceedings or present own case
-                {% elif ioj == 'witnesses_needed' %}
-                  Witnesses may need to be traced or interviewed
-                {% elif ioj == 'expert_cross_examination' %}
-                  The proceedings may involve expert cross-examination
-                {% elif ioj == 'interests_of_another' %}
-                  It is in the interests of another person
-                {% elif ioj == 'ioj_other' %}
-                  Other reason
-                {% endif %}
+                {{ ioj.title }}
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data['more-detail'][loop.index-1] }}
+                {{ ioj.details }}
               </dd>
             </div>
           {%- endfor %}

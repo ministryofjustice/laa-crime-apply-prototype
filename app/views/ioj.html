@@ -1,176 +1,173 @@
 {% extends "layout.html" %}
 
 {% block content %}
-
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <form action="/ioj" method="post" class="form">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="/ioj" method="post" class="form">
         <div class="govuk-form-group">
-            <fieldset class="govuk-fieldset" aria-describedby="ioj-hint">
-              <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-                <h1 class="govuk-fieldset__heading">
-                  Why should your client get legal aid?
-                </h1>
-              </legend>
-              <div id="ioj-hint" class="govuk-hint">
-                Select all that apply.
+          <fieldset class="govuk-fieldset" aria-describedby="ioj-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                Why should your client get legal aid?
+              </h1>
+            </legend>
+            <div id="ioj-hint" class="govuk-hint">
+              Select all that apply.
+            </div>
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="ioj-1" name="interests_of_justice[]" type="checkbox" value="liberty" data-aria-controls="liberty-yes" {% if data['interests_of_justice'] and 'liberty' in data['interests_of_justice'] %}checked{% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="ioj-1">
+                  It is likely that they will lose their liberty if any matter in the proceedings is decided against them.
+                </label>
               </div>
-              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="ioj-1" name="interests_of_justice[]" type="checkbox" value="liberty" data-aria-controls="liberty-yes" {% if data['interests_of_justice'] and 'liberty' in data['interests_of_justice'] %}checked{% endif %}>
-                  <label class="govuk-label govuk-checkboxes__label" for="ioj-1">
-                    It is likely that they will lose their liberty if any matter in the proceedings is decided against them.
-                  </label>
-                </div>
-                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="liberty-yes">
-                   <div class="govuk-form-group">
-                    <label class="govuk-label" for="ioj-1">
-                      Enter justification
-                    </label>
-                    <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
-                  </div>
-                </div>
-
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="ioj-2" name="interests_of_justice[]" type="checkbox" value="suspended_sentence" data-aria-controls="suspended_sentence-yes" {% if data['interests_of_justice'] and 'suspended_sentence' in data['interests_of_justice'] %}checked{% endif %}>
-                  <label class="govuk-label govuk-checkboxes__label" for="ioj-2">
-                    They have been given a sentence that is suspended or non-custodial. If they break this, the court may be able to deal with them for the original offence.
-                  </label>
-                </div>
-                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="suspended_sentence-yes">
-                   <div class="govuk-form-group">
-                    <label class="govuk-label" for="ioj-2">
-                      Enter justification
-                    </label>
-                    <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
-                  </div>
-                </div>
-
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="ioj-3" name="interests_of_justice[]" type="checkbox" value="livelihood" data-aria-controls="livelihood-yes" {% if data['interests_of_justice'] and 'livelihood' in data['interests_of_justice'] %}checked{% endif %}>
-                  <label class="govuk-label govuk-checkboxes__label" for="ioj-3">
-                    It is likely that they will lose their livelihood.
-                  </label>
-                </div>
-                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="livelihood-yes">
-                   <div class="govuk-form-group">
-                    <label class="govuk-label" for="ioj-3">
-                      Enter justification
-                    </label>
-                    <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
-                  </div>
-                </div>
-
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="ioj-4" name="interests_of_justice[]" type="checkbox" value="reputation" data-aria-controls="reputation-yes" {% if data['interests_of_justice'] and 'reputation' in data['interests_of_justice'] %}checked{% endif %}>
-                  <label class="govuk-label govuk-checkboxes__label" for="ioj-4">
-                    It is likely that they will suffer serious damage to their reputation.
-                  </label>
-                </div>
-                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="reputation-yes">
-                   <div class="govuk-form-group">
-                    <label class="govuk-label" for="ioj-4">
-                      Enter justification
-                    </label>
-                    <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
-                  </div>
-                </div>
-
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="ioj-5" name="interests_of_justice[]" type="checkbox" value="question_of_law" data-aria-controls="question_of_law-yes" {% if data['interests_of_justice'] and 'question_of_law' in data['interests_of_justice'] %}checked{% endif %}>
-                  <label class="govuk-label govuk-checkboxes__label" for="ioj-5">
-                    A substantial question of law may be involved (whether arising from legislation, judicial authority or other source of law).
-                  </label>
-                </div>
-                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="question_of_law-yes">
-                   <div class="govuk-form-group">
-                    <label class="govuk-label" for="ioj-5">
-                      Enter justification
-                    </label>
-                    <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
-                  </div>
-                </div>
-
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="ioj-6" name="interests_of_justice[]" type="checkbox" value="unable_to_understand" data-aria-controls="unable_to_understand-yes" {% if data['interests_of_justice'] and 'unable_to_understand' in data['interests_of_justice'] %}checked{% endif %}>
-                  <label class="govuk-label govuk-checkboxes__label" for="ioj-6">
-                    They may not be able to understand the court proceedings or present their own case.
-                  </label>
-                </div>
-                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="unable_to_understand-yes">
-                   <div class="govuk-form-group">
-                    <label class="govuk-label" for="ioj-6">
-                      Enter justification
-                    </label>
-                    <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
-                  </div>
-                </div>
-
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="ioj-7" name="interests_of_justice[]" type="checkbox" value="witnesses_needed" data-aria-controls="witnesses_needed-yes" {% if data['interests_of_justice'] and 'witnesses_needed' in data['interests_of_justice'] %}checked{% endif %}>
-                  <label class="govuk-label govuk-checkboxes__label" for="ioj-7">
-                    Witnesses may need to be traced or interviewed on their behalf.
-                  </label>
-                </div>
-                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="witnesses_needed-yes">
-                   <div class="govuk-form-group">
-                    <label class="govuk-label" for="ioj-7">
-                      Enter justification
-                    </label>
-                    <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
-                  </div>
-                </div>
-
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="ioj-8" name="interests_of_justice[]" type="checkbox" value="expert_cross_examination" data-aria-controls="expert_cross_examination-yes" {% if data['interests_of_justice'] and 'expert_cross_examination' in data['interests_of_justice'] %}checked{% endif %}>
-                  <label class="govuk-label govuk-checkboxes__label" for="ioj-8">
-                    The proceedings may involve expert cross-examination of a prosecution witness (whether an expert or not).
-                  </label>
-                </div>
-                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="expert_cross_examination-yes">
-                   <div class="govuk-form-group">
-                    <label class="govuk-label" for="ioj-8">
-                      Enter justification
-                    </label>
-                    <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
-                  </div>
-                </div>
-
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="ioj-9" name="interests_of_justice[]" type="checkbox" value="interests_of_another" data-aria-controls="interests_of_another-yes" {% if data['interests_of_justice'] and 'interests_of_another' in data['interests_of_justice'] %}checked{% endif %}>
-                  <label class="govuk-label govuk-checkboxes__label" for="ioj-9">
-                    It is in the interests of another person (such as the person making a complaint or other witness) that they are represented.
-                  </label>
-                </div>
-                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="interests_of_another-yes">
-                   <div class="govuk-form-group">
-                    <label class="govuk-label" for="ioj-9">
-                      Enter justification
-                    </label>
-                    <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
-                  </div>
-                </div>
-
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="ioj-10" name="interests_of_justice[]" type="checkbox" value="ioj_other" data-aria-controls="ioj_other-yes" {% if data['interests_of_justice'] and 'ioj_other' in data['interests_of_justice'] %}checked{% endif %}>
-                  <label class="govuk-label govuk-checkboxes__label" for="ioj-10">
-                    Other
-                  </label>
-                </div>
-              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="ioj_other-yes">
-                 <div class="govuk-form-group">
-                  <label class="govuk-label" for="ioj-10">
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="liberty-yes">
+                  <div class="govuk-form-group">
+                  <label class="govuk-label" for="ioj-1">
                     Enter justification
                   </label>
-                  <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+                  <textarea class="govuk-textarea" id="more-detail-1" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
                 </div>
               </div>
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="ioj-2" name="interests_of_justice[]" type="checkbox" value="suspended_sentence" data-aria-controls="suspended_sentence-yes" {% if data['interests_of_justice'] and 'suspended_sentence' in data['interests_of_justice'] %}checked{% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="ioj-2">
+                  They have been given a sentence that is suspended or non-custodial. If they break this, the court may be able to deal with them for the original offence.
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="suspended_sentence-yes">
+                  <div class="govuk-form-group">
+                  <label class="govuk-label" for="ioj-2">
+                    Enter justification
+                  </label>
+                  <textarea class="govuk-textarea" id="more-detail-2" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+                </div>
+              </div>
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="ioj-3" name="interests_of_justice[]" type="checkbox" value="livelihood" data-aria-controls="livelihood-yes" {% if data['interests_of_justice'] and 'livelihood' in data['interests_of_justice'] %}checked{% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="ioj-3">
+                  It is likely that they will lose their livelihood.
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="livelihood-yes">
+                  <div class="govuk-form-group">
+                  <label class="govuk-label" for="ioj-3">
+                    Enter justification
+                  </label>
+                  <textarea class="govuk-textarea" id="more-detail-3" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+                </div>
+              </div>
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="ioj-4" name="interests_of_justice[]" type="checkbox" value="reputation" data-aria-controls="reputation-yes" {% if data['interests_of_justice'] and 'reputation' in data['interests_of_justice'] %}checked{% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="ioj-4">
+                  It is likely that they will suffer serious damage to their reputation.
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="reputation-yes">
+                  <div class="govuk-form-group">
+                  <label class="govuk-label" for="ioj-4">
+                    Enter justification
+                  </label>
+                  <textarea class="govuk-textarea" id="more-detail-4" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+                </div>
+              </div>
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="ioj-5" name="interests_of_justice[]" type="checkbox" value="question_of_law" data-aria-controls="question_of_law-yes" {% if data['interests_of_justice'] and 'question_of_law' in data['interests_of_justice'] %}checked{% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="ioj-5">
+                  A substantial question of law may be involved (whether arising from legislation, judicial authority or other source of law).
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="question_of_law-yes">
+                  <div class="govuk-form-group">
+                  <label class="govuk-label" for="ioj-5">
+                    Enter justification
+                  </label>
+                  <textarea class="govuk-textarea" id="more-detail-5" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+                </div>
+              </div>
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="ioj-6" name="interests_of_justice[]" type="checkbox" value="unable_to_understand" data-aria-controls="unable_to_understand-yes" {% if data['interests_of_justice'] and 'unable_to_understand' in data['interests_of_justice'] %}checked{% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="ioj-6">
+                  They may not be able to understand the court proceedings or present their own case.
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="unable_to_understand-yes">
+                  <div class="govuk-form-group">
+                  <label class="govuk-label" for="ioj-6">
+                    Enter justification
+                  </label>
+                  <textarea class="govuk-textarea" id="more-detail-6" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+                </div>
+              </div>
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="ioj-7" name="interests_of_justice[]" type="checkbox" value="witnesses_needed" data-aria-controls="witnesses_needed-yes" {% if data['interests_of_justice'] and 'witnesses_needed' in data['interests_of_justice'] %}checked{% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="ioj-7">
+                  Witnesses may need to be traced or interviewed on their behalf.
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="witnesses_needed-yes">
+                  <div class="govuk-form-group">
+                  <label class="govuk-label" for="ioj-7">
+                    Enter justification
+                  </label>
+                  <textarea class="govuk-textarea" id="more-detail-7" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+                </div>
+              </div>
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="ioj-8" name="interests_of_justice[]" type="checkbox" value="expert_cross_examination" data-aria-controls="expert_cross_examination-yes" {% if data['interests_of_justice'] and 'expert_cross_examination' in data['interests_of_justice'] %}checked{% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="ioj-8">
+                  The proceedings may involve expert cross-examination of a prosecution witness (whether an expert or not).
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="expert_cross_examination-yes">
+                  <div class="govuk-form-group">
+                  <label class="govuk-label" for="ioj-8">
+                    Enter justification
+                  </label>
+                  <textarea class="govuk-textarea" id="more-detail-8" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+                </div>
+              </div>
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="ioj-9" name="interests_of_justice[]" type="checkbox" value="interests_of_another" data-aria-controls="interests_of_another-yes" {% if data['interests_of_justice'] and 'interests_of_another' in data['interests_of_justice'] %}checked{% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="ioj-9">
+                  It is in the interests of another person (such as the person making a complaint or other witness) that they are represented.
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="interests_of_another-yes">
+                  <div class="govuk-form-group">
+                  <label class="govuk-label" for="ioj-9">
+                    Enter justification
+                  </label>
+                  <textarea class="govuk-textarea" id="more-detail-9" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+                </div>
+              </div>
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="ioj-10" name="interests_of_justice[]" type="checkbox" value="ioj_other" data-aria-controls="ioj_other-yes" {% if data['interests_of_justice'] and 'ioj_other' in data['interests_of_justice'] %}checked{% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="ioj-10">
+                  Other
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="ioj_other-yes">
+                <div class="govuk-form-group">
+                <label class="govuk-label" for="ioj-10">
+                  Enter justification
+                </label>
+                <textarea class="govuk-textarea" id="more-detail-10" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+              </div>
+              </div>
             </div>
-
-
-            </fieldset>
+          </fieldset>
         </div>
-       <input type="hidden" name="[origin]" value="ioj">
+        <input type="hidden" name="[origin]" value="ioj">
         <button type="submit" class="govuk-button button-left">
           Save and continue
         </button>
@@ -179,12 +176,6 @@
         <input type="hidden" name="[interests_of_justice][checkpoint]" value="completed">
         <button class="govuk-button govuk-button--secondary" data-module="govuk-button">Save and come back later</button>
       </form>
-
     </div>
   </div>
-
-
-
-
-
 {% endblock %}
