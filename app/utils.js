@@ -189,10 +189,39 @@ const utils = {
     return setDateStamp
   },
   determineConflicts: (req) => {
-    codefendantConflict = req.session.data['case_details']['co_defendant_names'].filter(
+    let codefendants = req.session.data['case_details']['co_defendant_names'] || []
+    let codefendantConflict = codefendants.filter(
       codefendant => codefendant.conflict == 'yes'
     );
     _.set(req.session.data, 'case_details.co_defendant_conflict', codefendantConflict);
+  },
+  convertIojName: (ioj) => {
+    const mappings = {
+      'liberty': 'Loss of liberty',
+      'suspended_sentence': 'Suspended or non-custodial sentence',
+      'livelihood': 'Loss of livelihood',
+      'reputation': 'Serious damage to their reputation',
+      'question_of_law': 'Substantial question of law may be involved',
+      'unable_to_understand': 'Unable to understand the court proceedings or present own case',
+      'witnesses_needed': 'Witnesses may need to be traced or interviewed',
+      'expert_cross_examination': 'The proceedings may involve expert cross-examination',
+      'interests_of_another': 'It is in the interests of another person',
+      'ioj_other': 'Other reason'
+    }
+
+    return mappings[ioj]
+  },
+
+  pairIojWithDetails: (req) => {
+    let iojWithDetails = [];
+    let ioj = req.session.data['interests_of_justice'] || []
+    let details = req.session.data['more-detail'].filter(
+      detail => detail.length > 0
+    )
+    ioj.map((title, index) => {
+      iojWithDetails.push({ title: utils.convertIojName(title), details: details[index] })
+    })
+    _.set(req.session.data, 'case_details.ioj', iojWithDetails);
   }
 };
 

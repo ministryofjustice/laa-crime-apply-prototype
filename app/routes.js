@@ -317,6 +317,7 @@ router.post('/case_details_confirm', function (req, res, next) {
 router.post('/ioj', function (req, res, next) {
   let origin = req.session.data['origin'];
   if (origin == 'ioj') {
+    utils.pairIojWithDetails(req)
     delete req.session.data['origin'];
     let passported = passporting.isPassported(req.session.data);
 
