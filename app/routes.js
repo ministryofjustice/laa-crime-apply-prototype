@@ -175,8 +175,10 @@ router.post('/client_details_nino', function (req, res, next) {
   eighteenYearsAgo.setFullYear(eighteenYearsAgo.getFullYear() - 18)
 
   if (dob < eighteenYearsAgo) {
+    _.set(req.session.data, 'client_details.under_eighteen', false);
     res.redirect('/client_details_nino');
   } else {
+    _.set(req.session.data, 'client_details.under_eighteen', true);
     res.redirect('/client_details_postcode_finder');
   }
 
@@ -209,6 +211,7 @@ router.get('/dwp_nonpassported', function (req, res) {
 });
 
 router.get('/ioj_passported', function (req, res) {
+  utils.compileData(req)
   let passported = passporting.isPassported(req.session.data);
   var route
   if (passported) {
@@ -333,28 +336,14 @@ router.post('/ioj', function (req, res, next) {
       res.redirect('/tasklist');
     }
   } else {
-    req.session.data['case_details_type'] = 'manual';
+    utils.compileData(req)
+    let isIojPassported = req.session.data['ioj_passported']
 
-    let dates = utils.combineDateComponents(req.session.data)
-
-    let offencesWithDates =  utils.pairOffencesWithDates(dates, req.session.data)
-
-    req.session.data['case_details']['offences'] = offencesWithDates.flat();
-
-    let case_type = req.session.data['case_details']['case_type'] || [];
-    if (case_type.includes('trial') || case_type.includes('indictable')) {
-      req.session.data['case_details']['court_type'] = 'crown';
+    if (isIojPassported) {
+      res.redirect('ioj_passported')
     } else {
-      req.session.data['case_details']['court_type'] = 'magistrates';
+      res.redirect('ioj')
     }
-
-    utils.setNamesAsDefendants(req);
-
-    let dob = utils.constructDate(req.session.data.dob);
-    _.set(req.session.data, 'client_details.client.dob', utils.formatDate(dob));
-
-    let next_hearing_string = `${req.session.data['next-hearing-year']}-${req.session.data['next-hearing-month']}-${req.session.data['next-hearing-day']}`
-    req.session.data['case_details']['next_hearing'] = utils.formatDate(next_hearing_string);
 
     return next();
   }
@@ -393,6 +382,7 @@ router.get('/hmrc_record', function (req, res) {
 
 router.get('/case_details_offence_date', function (req, res) {
   utils.constructOffences(req)
+  utils.determinePassportedOnIoj(req)
   res.render('case_details_offence_date');
 });
 
@@ -403,16 +393,27 @@ router.get('/case_details_case_type', function (req, res) {
 });
 
 router.get('/case_details_hearing', function (req, res) {
-  res.render('case_details_hearing', { courts: courtsList } );
+  let urnProvided = req.session.data['case_details']['urn_provided']
+  let isIojPassported = req.session.data['ioj_passported']
+  if (urnProvided === 'no') {
+    res.render('case_details_hearing', { courts: courtsList } )
+  } else if (isIojPassported) {
+    res.redirect('ioj_passported')
+  } else {
+    res.redirect('ioj')
+  }
 });
 
 router.post('/case_details_codefendants_details', function (req, res) {
   let hasCoDef = req.session.data['co_defendants']
   let urnProvided = req.session.data['case_details']['urn_provided']
+  let isIojPassported = req.session.data['ioj_passported']
   if (hasCoDef === 'yes') {
     res.redirect('case_details_codefendants_details')
   } else if (hasCoDef === 'no' && urnProvided === 'no') {
     res.redirect('case_details_hearing')
+  } else if (isIojPassported) {
+    res.redirect('ioj_passported')
   } else {
     res.redirect('ioj')
   }

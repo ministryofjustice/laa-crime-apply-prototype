@@ -35,12 +35,11 @@ $(document).ready(function () {
     $('#proceedings-list').removeAttr('style');
   });
   
-  $('.govuk-checkboxes__input').on('click', function (e) {
+  $("[id^='offence-value-']").on('click', function (e) {
     let offenceName = e.currentTarget.dataset.offencename
     let offenceClass = e.currentTarget.dataset.offenceclass
 
     setOffencesAddedHeading()
-     
     if(this.checked) {
       $('#offence-summary-container').removeAttr('style')
       var $div = $('div[id^="govuk-summary-list__row"]:last');

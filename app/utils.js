@@ -222,6 +222,38 @@ const utils = {
       iojWithDetails.push({ title: utils.convertIojName(title), details: details[index] })
     })
     _.set(req.session.data, 'case_details.ioj', iojWithDetails);
+  },
+  determinePassportedOnIoj: (req) => {
+    let typePassported = req.session.data['case-type-passported-ioj']
+    let offencePassported = req.session.data['offence-passported-ioj']
+    let underEighteen = req.session.data['client_details']['under_eighteen']
+    if (typePassported == 'yes' || offencePassported == 'yes' || underEighteen) {
+      _.set(req.session.data, 'ioj_passported', true);
+    }
+  },
+  compileData: (req) => {
+    req.session.data['case_details_type'] = 'manual';
+
+    let dates = utils.combineDateComponents(req.session.data)
+
+    let offencesWithDates =  utils.pairOffencesWithDates(dates, req.session.data)
+
+    req.session.data['case_details']['offences'] = offencesWithDates.flat();
+
+    let case_type = req.session.data['case_details']['case_type'] || [];
+    if (case_type.includes('trial') || case_type.includes('indictable')) {
+      req.session.data['case_details']['court_type'] = 'crown';
+    } else {
+      req.session.data['case_details']['court_type'] = 'magistrates';
+    }
+
+    utils.setNamesAsDefendants(req);
+
+    let dob = utils.constructDate(req.session.data.dob);
+    _.set(req.session.data, 'client_details.client.dob', utils.formatDate(dob));
+
+    let next_hearing_string = `${req.session.data['next-hearing-year']}-${req.session.data['next-hearing-month']}-${req.session.data['next-hearing-day']}`
+    req.session.data['case_details']['next_hearing'] = utils.formatDate(next_hearing_string);
   }
 };
 
