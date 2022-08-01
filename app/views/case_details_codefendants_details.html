@@ -3,95 +3,89 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-
       <h1 class="govuk-heading-xl">Enter the details of any co-defendants in the case</h1>
-      {% if data.case_details.urn_provided == 'yes' %}
-      <form class="form" action="/ioj" method="post">
-      {% else %}
       <form class="form" action="/case_details_hearing" method="post">
-      {% endif %}
-
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <div class="govuk-radios" data-module="govuk-radios">
-                <div data-module="moj-add-another">
-                  {% if not names or names | length < 1 %}
+              <div data-module="moj-add-another">
+                {% if not names or names | length < 1 %}
+                  <fieldset class="govuk-fieldset moj-add-another__item">
+                    <p class="govuk-heading-m">Co-defendant</p>
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="names[0][first_name]">
+                        First name
+                      </label>
+                      <input class="govuk-input govuk-!-width-three-quarters" id="names[0][first_name]" name="new_names[0][first_name]" type="text" data-name="new_names[%index%][first_name]" data-id="names[%index%][first_name]">
+                    </div>
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="names[0][last_name]">
+                        Last name
+                      </label>
+                      <input class="govuk-input govuk-!-width-three-quarters" id="names[0][last_name]" name="new_names[0][last_name]" type="text" data-name="new_names[%index%][last_name]" data-id="names[%index%][last_name]">
+                    </div>
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="conflict">
+                        Is there a conflict of interest with this co-defendant?
+                      </label>
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="conflict-yes" name="new_names[0][conflict]" type="radio" value="yes" data-name="new_names[%index%][conflict]" data-id="names[%index%][conflict]">
+                        <label class="govuk-label govuk-radios__label" for="conflict-yes">
+                          Yes
+                        </label>
+                      </div>
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="conflict-no" name="new_names[0][conflict]" type="radio" value="no" data-name="new_names[%index%][conflict]" data-id="names[%index%][conflict]">
+                        <label class="govuk-label govuk-radios__label" for="conflict-no">
+                          No
+                        </label>
+                      </div>
+                    </div>
+                  </fieldset>
+                {% else %}
+                  {% for co_defendant in names -%}
                     <fieldset class="govuk-fieldset moj-add-another__item">
                       <p class="govuk-heading-m">Co-defendant</p>
                       <div class="govuk-form-group">
-                        <label class="govuk-label" for="names[0][first_name]">
+                        <label class="govuk-label" for="names[{{loop.index - 1}}][first_name]">
                           First name
                         </label>
-                        <input class="govuk-input govuk-!-width-three-quarters" id="names[0][first_name]" name="new_names[0][first_name]" type="text" data-name="new_names[%index%][first_name]" data-id="names[%index%][first_name]">
+                        <input class="govuk-input govuk-!-width-three-quarters" id="names[{{loop.index - 1}}][first_name]" name="new_names[{{loop.index - 1}}][first_name]" type="text" data-name="new_names[%index%][first_name]" data-id="names[%index%][first_name]" value="{{ co_defendant[0] }}">
                       </div>
                       <div class="govuk-form-group">
-                        <label class="govuk-label" for="names[0][last_name]">
+                        <label class="govuk-label" for="names[{{loop.index}}][last_name]">
                           Last name
                         </label>
-                        <input class="govuk-input govuk-!-width-three-quarters" id="names[0][last_name]" name="new_names[0][last_name]" type="text" data-name="new_names[%index%][last_name]" data-id="names[%index%][last_name]">
+                        <input class="govuk-input govuk-!-width-three-quarters" id="names[{{loop.index - 1}}][last_name]" name="new_names[{{loop.index - 1}}][last_name]" type="text" data-name="new_names[%index%][last_name]" data-id="names[%index%][last_name]" value="{{ co_defendant[1] }}">
                       </div>
                       <div class="govuk-form-group">
                         <label class="govuk-label" for="conflict">
                           Is there a conflict of interest with this co-defendant?
                         </label>
                         <div class="govuk-radios__item">
-                          <input class="govuk-radios__input" id="conflict-yes" name="new_names[0][conflict]" type="radio" value="yes" data-name="new_names[%index%][conflict]" data-id="names[%index%][conflict]">
+                          <input class="govuk-radios__input" id="conflict-yes" name="conflict" type="radio" value="yes">
                           <label class="govuk-label govuk-radios__label" for="conflict-yes">
                             Yes
                           </label>
                         </div>
                         <div class="govuk-radios__item">
-                          <input class="govuk-radios__input" id="conflict-no" name="new_names[0][conflict]" type="radio" value="no" data-name="new_names[%index%][conflict]" data-id="names[%index%][conflict]">
+                          <input class="govuk-radios__input" id="conflict-no" name="conflict" type="radio" value="no">
                           <label class="govuk-label govuk-radios__label" for="conflict-no">
                             No
                           </label>
                         </div>
                       </div>
                     </fieldset>
-                  {% else %}
-                    {% for co_defendant in names -%}
-                      <fieldset class="govuk-fieldset moj-add-another__item">
-                        <p class="govuk-heading-m">Co-defendant</p>
-                        <div class="govuk-form-group">
-                          <label class="govuk-label" for="names[{{loop.index - 1}}][first_name]">
-                            First name
-                          </label>
-                          <input class="govuk-input govuk-!-width-three-quarters" id="names[{{loop.index - 1}}][first_name]" name="new_names[{{loop.index - 1}}][first_name]" type="text" data-name="new_names[%index%][first_name]" data-id="names[%index%][first_name]" value="{{ co_defendant[0] }}">
-                        </div>
-                        <div class="govuk-form-group">
-                          <label class="govuk-label" for="names[{{loop.index}}][last_name]">
-                            Last name
-                          </label>
-                          <input class="govuk-input govuk-!-width-three-quarters" id="names[{{loop.index - 1}}][last_name]" name="new_names[{{loop.index - 1}}][last_name]" type="text" data-name="new_names[%index%][last_name]" data-id="names[%index%][last_name]" value="{{ co_defendant[1] }}">
-                        </div>
-                        <div class="govuk-form-group">
-                          <label class="govuk-label" for="conflict">
-                            Is there a conflict of interest with this co-defendant?
-                          </label>
-                          <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="conflict-yes" name="conflict" type="radio" value="yes">
-                            <label class="govuk-label govuk-radios__label" for="conflict-yes">
-                              Yes
-                            </label>
-                          </div>
-                          <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="conflict-no" name="conflict" type="radio" value="no">
-                            <label class="govuk-label govuk-radios__label" for="conflict-no">
-                              No
-                            </label>
-                          </div>
-                        </div>
-                      </fieldset>
-                      <button type="button" class="govuk-button govuk-button--secondary moj-add-another__remove-button">Remove</button>
-                    {%- endfor %}
-                  {% endif %}
-                  <div class="govuk-!-padding-bottom-4"></div>
-                  <div class="moj-button-action">
-                    <button class="govuk-button govuk-button--secondary moj-add-another__add-button" data-module="govuk-button">
-                      Add another defendant
-                    </button>
-                  </div>
+                    <button type="button" class="govuk-button govuk-button--secondary moj-add-another__remove-button">Remove</button>
+                  {%- endfor %}
+                {% endif %}
+                <div class="govuk-!-padding-bottom-4"></div>
+                <div class="moj-button-action">
+                  <button class="govuk-button govuk-button--secondary moj-add-another__add-button" data-module="govuk-button">
+                    Add another defendant
+                  </button>
                 </div>
+              </div>
             </div>
           </fieldset>
         </div>

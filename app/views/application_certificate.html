@@ -76,26 +76,28 @@
               {{ dob }}
             </dd>
           </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              National Insurance number
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['client_details']['nino'] }}
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Passporting benefit
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {% if data['means_assessment']['benefits_status']['passported'] == true %}
-                Yes
-              {% else %}
-                No
-              {% endif %}
-            </dd>
-          </div>
+          {% if data['client_details']['nino'] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                National Insurance number
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['client_details']['nino'] }}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Passporting benefit
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['means_assessment']['benefits_status']['passported'] == true %}
+                  Yes
+                {% else %}
+                  No
+                {% endif %}
+              </dd>
+            </div>
+          {% endif %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Home address
@@ -378,20 +380,31 @@
             <h2 class="govuk-heading-m">Justification for legal aid</h2>
           </div>
         </div>
-
-        <dl class="govuk-summary-list">
-          {% for ioj in data['case_details']['ioj'] -%}
+        {% if data.ioj_passported %}
+          <dl class="govuk-summary-list">
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                {{ ioj.title }}
+                Passported
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ ioj.details }}
+                Details provided do not require further justification for legal aid
               </dd>
             </div>
-          {%- endfor %}
-        </dl>
-
+          </dl>
+        {% else %}
+          <dl class="govuk-summary-list">
+            {% for ioj in data['case_details']['ioj'] -%}
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  {{ ioj.title }}
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ ioj.details }}
+                </dd>
+              </div>
+            {%- endfor %}
+          </dl>
+        {% endif %}
         <br>
       </div>
       <a href="print_view" role="button" class="govuk-button">

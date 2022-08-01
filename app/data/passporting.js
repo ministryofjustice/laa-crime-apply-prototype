@@ -3,7 +3,11 @@ const settings = require('./form-settings');
 
 const isPassported = (data) => {
   try {
-    return JSON.parse(data['means_assessment']['benefits_status']['passported']);
+    if (data['means_assessment']) {
+      return JSON.parse(data['means_assessment']['benefits_status']['passported'])
+    } else {
+      return JSON.parse(data['client_details']['under_eighteen'])
+    }
   } catch (err) {
     return false;
   }
