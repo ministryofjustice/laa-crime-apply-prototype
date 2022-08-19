@@ -22,14 +22,14 @@ module.exports = {
     confirm: ['review']
   },
   schemas: {
-    'applications': 'https://raw.githubusercontent.com/ministryofjustice/laa-schemas/main/prototyping/criminal-legal-aid/schemas/laa_application.json',
-    'client_details': 'https://raw.githubusercontent.com/ministryofjustice/laa-schemas/main/prototyping/criminal-legal-aid/schemas/client_details.json',
-    'case_details': 'https://raw.githubusercontent.com/ministryofjustice/laa-schemas/main/prototyping/criminal-legal-aid/schemas/case_details.json',
-    'interests_of_justice': 'https://raw.githubusercontent.com/ministryofjustice/laa-schemas/main/prototyping/criminal-legal-aid/schemas/interests_of_justice.json',
-    'benefits_status': 'https://raw.githubusercontent.com/ministryofjustice/laa-schemas/main/prototyping/criminal-legal-aid/schemas/benefits_status.json',
-    'income': 'https://raw.githubusercontent.com/ministryofjustice/laa-schemas/main/prototyping/criminal-legal-aid/schemas/means_assessment.json#/definitions/income',
-    'capital': 'https://raw.githubusercontent.com/ministryofjustice/laa-schemas/main/prototyping/criminal-legal-aid/schemas/means_assessment.json#/definitions/capital',
-    'evidence': 'https://raw.githubusercontent.com/ministryofjustice/laa-schemas/main/prototyping/criminal-legal-aid/schemas/means_assessment.json#/definitions/income'
+    'applications': 'https://raw.githubusercontent.com/ministryofjustice/laa-schemas/main/prototyping/criminal-legal-aid/0.0.1/schemas/laa_application.json',
+    'client_details': 'https://raw.githubusercontent.com/ministryofjustice/laa-schemas/main/prototyping/criminal-legal-aid/0.0.1/schemas/client_details.json',
+    'case_details': 'https://raw.githubusercontent.com/ministryofjustice/laa-schemas/main/prototyping/criminal-legal-aid/0.0.1/schemas/case_details.json',
+    'interests_of_justice': 'https://raw.githubusercontent.com/ministryofjustice/laa-schemas/main/prototyping/criminal-legal-aid/0.0.1/schemas/interests_of_justice.json',
+    'benefits_status': 'https://raw.githubusercontent.com/ministryofjustice/laa-schemas/main/prototyping/criminal-legal-aid/0.0.1/schemas/benefits_status.json',
+    'income': 'https://raw.githubusercontent.com/ministryofjustice/laa-schemas/main/prototyping/criminal-legal-aid/0.0.1/schemas/means_assessment.json#/definitions/income',
+    'capital': 'https://raw.githubusercontent.com/ministryofjustice/laa-schemas/main/prototyping/criminal-legal-aid/0.0.1/schemas/means_assessment.json#/definitions/capital',
+    'evidence': 'https://raw.githubusercontent.com/ministryofjustice/laa-schemas/main/prototyping/criminal-legal-aid/0.0.1/schemas/means_assessment.json#/definitions/income'
   },
   statuses: {
     blocked: 'Cannot yet start',
