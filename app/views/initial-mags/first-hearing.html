@@ -1,0 +1,44 @@
+{% extends "layout_new.html" %}
+
+{% block content %}
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <form action="/first-court-answer" method="post" novalidate>
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+          {{ govukInput({
+            label: {
+              text: "Where was the first court hearing?",
+              classes: "govuk-label--xl",
+              isPageHeading: true
+            },
+            hint: {
+              text: "For example, Bristol Magistrates Court"
+            },
+            classes: "govuk-!-width-two-thirds govuk-!-margin-bottom-4",
+            id: "first-court-name",
+            name: "first-court-name"
+          }) }}
+
+
+          {% from "govuk/components/button/macro.njk" import govukButton %}
+
+          <div class="govuk-button-group">
+            {{ govukButton({
+              text: "Save and continue"
+            }) }}
+
+            {{ govukButton({
+              text: "Save and come back later",
+              classes: "govuk-button--secondary"
+            }) }}
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+{% endblock %}

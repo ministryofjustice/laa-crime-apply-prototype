@@ -1,5 +1,12 @@
+//
+// For guidance on how to create routes see:
+// https://prototype-kit.service.gov.uk/docs/create-routes
+//
 const express = require('express');
-const router = express.Router();
+const govukPrototypeKit = require('govuk-prototype-kit')
+const router = govukPrototypeKit.requests.setupRouter()
+
+// Add your routes here
 const _ = require('lodash');
 const statusCheck = require('./data/form-status');
 const fetch = require('./data/fetch');
@@ -529,4 +536,30 @@ router.get('/delete/:id', async (req, res, next) => {
   }
 });
 
-module.exports = router;
+// 2023 onwards //
+router.post('/first-court-answer', function(request, response) {
+
+    var initialCourtName = request.session.data['first-court-name']
+    if (initialCourtName == "") {
+        response.redirect("initial-mags/first-hearing-error")
+    } else {
+      response.redirect("initial-mags/check-answers")
+    }
+});
+
+router.post('/same-court-answer', function(request, response) {
+
+    var initialCourt = request.session.data['same-court']
+    if (initialCourt == "yes") {
+        response.redirect("initial-mags/check-answers")
+    } else if (initialCourt == "na") {
+        response.redirect("initial-mags/check-answers-no-hearing")
+    } else if (initialCourt == "no") {
+        response.redirect("initial-mags/first-hearing")
+    } else {
+      response.redirect("initial-mags/next-hearing-error")
+    }
+});
+// also need to add error screen //
+
+router.use('/node_modules', express.static('node_modules'));

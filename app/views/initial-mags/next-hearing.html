@@ -1,0 +1,93 @@
+{% extends "layout_new.html" %}
+
+{% block content %}
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <form action="/same-court-answer" method="post" novalidate>
+          
+          <h1 class="govuk-heading-xl">Enter the details of the next court hearing</h1>
+
+          {% from "govuk/components/input/macro.njk" import govukInput %}
+
+          {{ govukInput({
+            label: {
+              text: "Court name",
+              classes: "govuk-label--m",
+              isPageHeading: true
+            },
+            hint: {
+              text: "For example, Bristol Magistrates Court"
+            },
+            classes: "govuk-!-width-two-thirds govuk-!-margin-bottom-4",
+            id: "event-name",
+            name: "eventName"
+          }) }}
+
+          {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+
+          {{ govukDateInput({
+            id: "passport-issued",
+            namePrefix: "passport-issued",
+            fieldset: {
+              legend: {
+                text: "Date of next hearing",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            classes: "govuk-!-margin-bottom-4",
+            hint: {
+              text: "For example, 27 3 2024"
+            }
+          }) }}
+
+          {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+          {{ govukRadios({
+            name: "same-court",
+            fieldset: {
+              legend: {
+                text: "Is this the same court that heard the first hearing?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            items: [
+              {
+                value: "yes",
+                text: "Yes"
+              },
+              {
+                value: "no",
+                text: "No"
+              },
+              {
+                value: "na",
+                text: "There has not been a first hearing"
+              }
+            ]
+          }) }}
+         <!-- <button class="govuk-button" data-module="govuk-button">
+  Continue
+</button> -->
+
+          {% from "govuk/components/button/macro.njk" import govukButton %}
+
+          <div class="govuk-button-group">
+            {{ govukButton({
+              text: "Save and continue"
+            }) }}
+
+            {{ govukButton({
+              text: "Save and come back later",
+              classes: "govuk-button--secondary"
+            }) }}
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+{% endblock %}
