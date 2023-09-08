@@ -541,7 +541,7 @@ router.post('/first-court-answer', function(request, response) {
 
     var initialCourtName = request.session.data['first-court-name']
     if (initialCourtName == "") {
-        response.redirect("initial-mags/first-hearing-error")
+        response.redirect("initial-mags/where-was-first-court-hearing-error")
     } else {
       response.redirect("initial-mags/check-answers")
     }
@@ -555,9 +555,9 @@ router.post('/same-court-answer', function(request, response) {
     } else if (initialCourt == "na") {
         response.redirect("initial-mags/check-answers-no-hearing")
     } else if (initialCourt == "no") {
-        response.redirect("initial-mags/first-hearing")
+        response.redirect("initial-mags/where-was-first-court-hearing")
     } else {
-      response.redirect("initial-mags/next-hearing-error")
+      response.redirect("initial-mags/hearing-details-error")
     }
 });
 // also need to add error screen //

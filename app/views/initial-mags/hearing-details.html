@@ -5,9 +5,11 @@
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-xl">Enter the details of the next court hearing</h1>
+        <form action="/same-court-answer" method="post" novalidate>
+          
+          <h1 class="govuk-heading-xl">Enter the details of the next court hearing</h1>
 
-        {% from "govuk/components/input/macro.njk" import govukInput %}
+          {% from "govuk/components/input/macro.njk" import govukInput %}
 
           {{ govukInput({
             label: {
@@ -22,7 +24,6 @@
             id: "event-name",
             name: "eventName"
           }) }}
-
 
           {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
 
@@ -42,58 +43,41 @@
             }
           }) }}
 
-
           {% from "govuk/components/radios/macro.njk" import govukRadios %}
-          {% from "govuk/components/input/macro.njk" import govukInput %}
-
-          {% set initialMags %}
-          {{ govukInput({
-            id: "contact-by-text",
-            name: "contactByText",
-            type: "tel",
-            autocomplete: "tel",
-            classes: "govuk-!-width-two-thirds",
-            label: {
-              text: "Name of first magistrates court"
-            }
-          }) }}
-          {% endset -%}
 
           {{ govukRadios({
-            name: "contact",
+            name: "same-court",
             fieldset: {
               legend: {
-                text: "Is this the same court that heard the first hearing?",
+                text: "Did this court also hear the first hearing?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--m"
               }
             },
             items: [
               {
-                value: "email",
+                value: "yes",
                 text: "Yes"
               },
               {
-                value: "text",
-                text: "No",
-                conditional: {
-                  html: initialMags
-                }
+                value: "no",
+                text: "No"
               },
               {
                 value: "na",
-                text: "There has not been a first hearing"
+                text: "There has not been a hearing yet"
               }
             ]
           }) }}
-
+         <!-- <button class="govuk-button" data-module="govuk-button">
+  Continue
+</button> -->
 
           {% from "govuk/components/button/macro.njk" import govukButton %}
 
           <div class="govuk-button-group">
             {{ govukButton({
-              text: "Save and continue",
-              href: "check-answers"
+              text: "Save and continue"
             }) }}
 
             {{ govukButton({
@@ -102,6 +86,7 @@
             }) }}
           </div>
 
+        </form>
       </div>
     </div>
 
