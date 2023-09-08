@@ -5,6 +5,17 @@
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
+        {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+{{ govukErrorSummary({
+  titleText: "There is a problem",
+  errorList: [
+    {
+      text: "Tell us the name of the court that held the first hearing of this case",
+      href: "#first-court-name-error"
+    }
+  ]
+}) }}
         <form action="/first-court-answer" method="post" novalidate>
 
         {% from "govuk/components/input/macro.njk" import govukInput %}
@@ -17,6 +28,9 @@
             },
             hint: {
               text: "For example, Bristol Magistrates Court"
+            },
+            errorMessage: {
+              text: "Tell us the name of the court that held the first hearing of this case"
             },
             classes: "govuk-!-width-two-thirds govuk-!-margin-bottom-4",
             id: "first-court-name",

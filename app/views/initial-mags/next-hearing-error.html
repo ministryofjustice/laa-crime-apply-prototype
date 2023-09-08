@@ -5,9 +5,22 @@
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-xl">Enter the details of the next court hearing</h1>
+        <form action="/same-court-answer" method="post" novalidate>
+          {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
-        {% from "govuk/components/input/macro.njk" import govukInput %}
+          {{ govukErrorSummary({
+            titleText: "There is a problem",
+            errorList: [
+              {
+                text: "Select yes if the initial hearing was also at this court",
+                href: "#first-court-error"
+              }
+            ]
+          }) }}
+          
+          <h1 class="govuk-heading-xl">Enter the details of the next court hearing</h1>
+
+          {% from "govuk/components/input/macro.njk" import govukInput %}
 
           {{ govukInput({
             label: {
@@ -22,7 +35,6 @@
             id: "event-name",
             name: "eventName"
           }) }}
-
 
           {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
 
@@ -42,11 +54,10 @@
             }
           }) }}
 
-
           {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
           {{ govukRadios({
-            name: "contact",
+            name: "same-court",
             fieldset: {
               legend: {
                 text: "Is this the same court that heard the first hearing?",
@@ -56,22 +67,28 @@
             },
             items: [
               {
-                value: "email",
+                value: "yes",
                 text: "Yes"
               },
               {
-                value: "text",
+                value: "no",
                 text: "No"
+              },
+              {
+                value: "na",
+                text: "There has not been a first hearing"
               }
-            ]
+            ],
+            errorMessage: {
+              text: "Select yes if the initial hearing was also at this court"
+            }
           }) }}
 
           {% from "govuk/components/button/macro.njk" import govukButton %}
 
           <div class="govuk-button-group">
             {{ govukButton({
-              text: "Save and continue",
-              href: "first-hearing"
+              text: "Save and continue"
             }) }}
 
             {{ govukButton({
@@ -80,6 +97,7 @@
             }) }}
           </div>
 
+        </form>
       </div>
     </div>
 
