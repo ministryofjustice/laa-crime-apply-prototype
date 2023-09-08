@@ -6,6 +6,17 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <form action="/same-court-answer" method="post" novalidate>
+          {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+          {{ govukErrorSummary({
+            titleText: "There is a problem",
+            errorList: [
+              {
+                text: "Select if this court also heard the first hearing",
+                href: "#first-court-error"
+              }
+            ]
+          }) }}
           
           <h1 class="govuk-heading-xl">Enter the details of the next court hearing</h1>
 
@@ -49,7 +60,7 @@
             name: "same-court",
             fieldset: {
               legend: {
-                text: "Is this the same court that heard the first hearing?",
+                text: "Did this court also hear the first hearing?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--m"
               }
@@ -65,13 +76,13 @@
               },
               {
                 value: "na",
-                text: "There has not been a first hearing"
+                text: "There has not been a hearing yet"
               }
-            ]
+            ],
+            errorMessage: {
+              text: "Select if this court also heard the first hearing"
+            }
           }) }}
-         <!-- <button class="govuk-button" data-module="govuk-button">
-  Continue
-</button> -->
 
           {% from "govuk/components/button/macro.njk" import govukButton %}
 

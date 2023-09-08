@@ -5,22 +5,9 @@
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <form action="/same-court-answer" method="post" novalidate>
-          {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+        <h1 class="govuk-heading-xl">Enter the details of the next court hearing</h1>
 
-          {{ govukErrorSummary({
-            titleText: "There is a problem",
-            errorList: [
-              {
-                text: "Select yes if the initial hearing was also at this court",
-                href: "#first-court-error"
-              }
-            ]
-          }) }}
-          
-          <h1 class="govuk-heading-xl">Enter the details of the next court hearing</h1>
-
-          {% from "govuk/components/input/macro.njk" import govukInput %}
+        {% from "govuk/components/input/macro.njk" import govukInput %}
 
           {{ govukInput({
             label: {
@@ -35,6 +22,7 @@
             id: "event-name",
             name: "eventName"
           }) }}
+
 
           {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
 
@@ -54,41 +42,58 @@
             }
           }) }}
 
+
           {% from "govuk/components/radios/macro.njk" import govukRadios %}
+          {% from "govuk/components/input/macro.njk" import govukInput %}
+
+          {% set initialMags %}
+          {{ govukInput({
+            id: "contact-by-text",
+            name: "contactByText",
+            type: "tel",
+            autocomplete: "tel",
+            classes: "govuk-!-width-two-thirds",
+            label: {
+              text: "Name of first magistrates court"
+            }
+          }) }}
+          {% endset -%}
 
           {{ govukRadios({
-            name: "same-court",
+            name: "contact",
             fieldset: {
               legend: {
-                text: "Is this the same court that heard the first hearing?",
+                text: "Did this court also hear the first hearing?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--m"
               }
             },
             items: [
               {
-                value: "yes",
+                value: "email",
                 text: "Yes"
               },
               {
-                value: "no",
-                text: "No"
+                value: "text",
+                text: "No",
+                conditional: {
+                  html: initialMags
+                }
               },
               {
                 value: "na",
-                text: "There has not been a first hearing"
+                text: "There has not been a hearing yet"
               }
-            ],
-            errorMessage: {
-              text: "Select yes if the initial hearing was also at this court"
-            }
+            ]
           }) }}
+
 
           {% from "govuk/components/button/macro.njk" import govukButton %}
 
           <div class="govuk-button-group">
             {{ govukButton({
-              text: "Save and continue"
+              text: "Save and continue",
+              href: "check-answers"
             }) }}
 
             {{ govukButton({
@@ -97,7 +102,6 @@
             }) }}
           </div>
 
-        </form>
       </div>
     </div>
 
