@@ -16,7 +16,7 @@ To install the app:
 - Run `npm install` in the project folder to install all modules and their dependencies
 
 To start the app:
-- Run `npm start` in the project folder to start the app
+- Run `npm run dev` in the project folder to start the app
 - Visit http://localhost:3000
 
 # Making and deploying changes
