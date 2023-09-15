@@ -1,37 +1,36 @@
-
-{% extends "layout.html" %}
+{% extends "layout_index.html" %}
 
 {% block pageTitle %}
-  Apply for criminal legal aid - frontend prototype
+  Crime Apply Prototypes
 {% endblock %}
 
 {% block content %}
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">
-        Apply for criminal legal aid
-        <span class="govuk-caption-xl">Prototype</span>
-      </h1>{{releaseVersion | log }}
+      <h1 class="govuk-heading-l">Full user journey</h1>
 
-            <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-            <div class="govuk-notification-banner__header">
-              <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-                Important
-              </h2>
-            </div>
-            <div class="govuk-notification-banner__content">
-              <p class="govuk-notification-banner__heading">
-                This prototype is not up to date in places.
-              </p>
-              <p class="govuk-body">For the latest designs, <a class="govuk-notification-banner__link" href="https://www.figma.com/file/thkvnDBbQbHlSqzt1TE3lk/Crime-Apply">view Figma</a> or <a class="govuk-notification-banner__link" href="https://laa-apply-for-criminal-legal-aid-staging.apps.live.cloud-platform.service.justice.gov.uk">view staging</a> (u: apply p:crime.mvp).</p>
-            </div>
-            </div>
+      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Important
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <p class="govuk-notification-banner__heading">
+            This prototype is not up to date.
+          </p>
+          <p class="govuk-body">For the latest designs, <a class="govuk-notification-banner__link" href="https://www.figma.com/file/thkvnDBbQbHlSqzt1TE3lk/Crime-Apply">view Figma</a> or <a class="govuk-notification-banner__link" href="https://laa-apply-for-criminal-legal-aid-staging.apps.live.cloud-platform.service.justice.gov.uk">view staging</a> (u: apply p:crime.mvp).</p>
+        </div>
+      </div>
+      <p>This is a prototype of a service that allows users to submit applications for criminal legal aid.</p>
+        {% from "govuk/components/button/macro.njk" import govukButton %}
 
-      <p>
-        This is a prototype of a service that allows users to submit applications for criminal legal aid.
-      </p>
-      <h3 class="govuk-heading-m"> Current (from September 2023) design work</h3>
+          {{ govukButton({
+            text: "Start now",
+            href: "/laa_portal?mvp=false",
+            isStartButton: true
+          }) }}
+      <h3 class="govuk-heading-m"> Specific points in the journey</h3>
       <ul class="govuk-list govuk-list--bullet">
         <li>
           <a class="govuk-link--no-visited-state" href="/initial-mags/hearing-details">Get initial court information</a> - <a class="govuk-link--no-visited-state" href="/initial-mags/hearing-details-reveal">(javascript conditional reveal version)</a>
@@ -44,9 +43,6 @@
           <a href="/laa_portal?mvp=true">Start an application (MVP)</a>
         </li>
         <li>
-          <a href="/laa_portal?mvp=false">Start an application (beyond MVP)</a>
-        </li>
-        <li>
           <a href="/provider-csm">Inject application data from external system</a>
         </li>
         <li>
@@ -57,6 +53,30 @@
         </li>
       </ul>
     </div>
+
+    <div class="govuk-grid-column-one-third">
+    <aside class="app-related-items" role="complementary">
+      <h3 class="govuk-heading-s govuk-!-margin-bottom-2" id="subsection-title">
+        Related content
+      </h3>
+      <nav role="navigation" aria-labelledby="subsection-title">
+        <ul class="govuk-list govuk-!-font-size-18">
+          <li>
+            <a class="govuk-link--no-visited-state" href="https://dsdmoj.atlassian.net/wiki/spaces/CRIMAP/pages/4512416051/Beta+Design">Confluence</a>
+          </li>
+          <li>
+            Design History (TBC)
+          </li>
+          <li>
+            <a class="govuk-link--no-visited-state" href="https://dsdmoj.atlassian.net/jira/software/projects/CRIMAP/boards/897">Jira board</a>
+          </li>
+          <li>
+            <a class="govuk-link--no-visited-state" href="https://miro.com/app/board/uXjVOx3tJT0=/?share_link_id=25534245728">Miro board</a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
   </div>
+</div>
 
 {% endblock %}
