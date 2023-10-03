@@ -1,0 +1,253 @@
+{% extends "layout_new.html" %}
+
+{% block content %}
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-xl">Income assessment</span>
+        <h1 class="govuk-heading-xl">Which of these payments does your client get?</h1>
+
+          {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+          {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+          {% set amountFREQUENCY %}
+            {% from "govuk/components/input/macro.njk" import govukInput %}
+
+            {{ govukInput({
+              id: "payment-amount",
+              name: "paymentAmount",
+              label: {
+                text: "Enter amount",
+                classes: "govuk-label--s",
+                isPageHeading: true
+              },
+              prefix: {
+                text: "£"
+              },
+              classes: "govuk-input--width-10",
+              spellcheck: false
+            }) }}
+
+            {{ govukRadios({
+              name: "paymentFrequency",
+              fieldset: {
+                legend: {
+                  text: "Select how often they get this payment",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              items: [
+                {
+                  value: "every week",
+                  text: "Every week"
+                },
+                {
+                  value: "every 2 weeks",
+                  text: "Every 2 weeks"
+                },
+                {
+                  value: "every 4 weeks",
+                  text: "Every 4 weeks"
+                },
+                {
+                  value: "monthly",
+                  text: "Monthly"
+                },
+                {
+                  value: "total in the last 3 months",
+                  text: "Total in the last 3 months"
+                }
+              ]
+            }) }}
+          {% endset -%}
+
+
+          {% set amountFREQUENCYdetails %}
+            {% from "govuk/components/input/macro.njk" import govukInput %}
+
+            {{ govukInput({
+              id: "payment-amount",
+              name: "paymentAmount",
+              label: {
+                text: "Enter amount",
+                classes: "govuk-label--s",
+                isPageHeading: true
+              },
+              prefix: {
+                text: "£"
+              },
+              classes: "govuk-input--width-10",
+              spellcheck: false
+            }) }}
+
+            {{ govukRadios({
+              name: "paymentFrequency",
+              fieldset: {
+                legend: {
+                  text: "Select how often they get this payment",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              items: [
+                {
+                  value: "every week",
+                  text: "Every week"
+                },
+                {
+                  value: "every 2 weeks",
+                  text: "Every 2 weeks"
+                },
+                {
+                  value: "every 4 weeks",
+                  text: "Every 4 weeks"
+                },
+                {
+                  value: "monthly",
+                  text: "Monthly"
+                },
+                {
+                  value: "total in the last 3 months",
+                  text: "Total in the last 3 months"
+                }
+              ]
+            }) }}
+
+            {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+            {{ govukTextarea({
+              name: "details",
+              id: "details",
+              label: {
+                text: "Details",
+                classes: "govuk-label--s",
+                isPageHeading: true
+              },
+              hint: {
+                text: ""
+              }
+            }) }}
+          {% endset -%}
+
+
+          {{ govukCheckboxes({
+            name: "payments your client gets",
+            fieldset: {
+              legend: {
+                text: "",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: "Select all that apply"
+            },
+            items: [
+              {
+                value: "financial help",
+                text: "Financial help from friends or family",
+                hint: {
+                  text: "Select if a friend or relative regularly gives your client money to help with living costs. Do not include one-off payments."
+                },
+                conditional: {
+                  html: amountFREQUENCY
+                }
+              },
+              {
+                value: "maintenance",
+                text: "Maintenance payments from a former partner",
+                hint: {
+                  text: "This includes child maintenance."
+                },
+                conditional: {
+                  html: amountFREQUENCY
+                }
+              },
+              {
+                value: "board",
+                text: "Board from a family lodger",
+                conditional: {
+                  html: amountFREQUENCY
+                }
+              },
+              {
+                value: "rent",
+                text: "Rent from a tenant or other property",
+                conditional: {
+                  html: amountFREQUENCY
+                }
+              },
+              {
+                value: "private pensions",
+                text: "Private pensions",
+                conditional: {
+                  html: amountFREQUENCY
+                }
+              },
+              {
+                value: "state pension",
+                text: "State pension",
+                conditional: {
+                  html: amountFREQUENCY
+                }
+              },
+              {
+                value: "student finance",
+                text: "Student grant or loan",
+                conditional: {
+                  html: amountFREQUENCY
+                }
+              },
+              {
+                value: "interest from savings",
+                text: "Interest from savings",
+                conditional: {
+                  html: amountFREQUENCY
+                }
+              },
+              {
+                value: "interest from investments",
+                text: "Interest from investments",
+                conditional: {
+                  html: amountFREQUENCY
+                }
+              },
+              {
+                value: "other",
+                text: "Other sources of income",
+                conditional: {
+                  html: amountFREQUENCYdetails
+                }
+              },
+              {
+                divider: "or"
+              },
+              {
+                value: "none of these",
+                text: "My client does not get any of these payments",
+                behaviour: "exclusive"
+              }
+            ]
+          }) }}
+
+
+          {% from "govuk/components/button/macro.njk" import govukButton %}
+
+          <div class="govuk-button-group">
+            {{ govukButton({
+              text: "Save and continue",
+              href: "check-answers"
+            }) }}
+
+            {{ govukButton({
+              text: "Save and come back later",
+              classes: "govuk-button--secondary"
+            }) }}
+          </div>
+
+      </div>
+    </div>
+
+{% endblock %}
