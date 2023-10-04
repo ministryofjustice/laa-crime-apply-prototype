@@ -1,0 +1,98 @@
+{% extends "layout_new.html" %}
+
+{% block content %}
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-xl">Income assessment</span>
+        <h1 class="govuk-heading-xl">What is your client’s employment status?</h1>
+
+          {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+          {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+          {% set employmentHTML %}
+            {{ govukRadios({
+              name: "whereDoYouLive",
+              fieldset: {
+                legend: {
+                  text: "Has your client ended employment in the last 3 months?",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              items: [
+                {
+                  value: "yes",
+                  text: "Yes"
+                },
+                {
+                  value: "no",
+                  text: "No"
+                }
+              ]
+            }) }}
+          {% endset -%}
+
+          {{ govukCheckboxes({
+            name: "employment status",
+            fieldset: {
+              legend: {
+                text: "",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: "Select all that apply"
+            },
+            items: [
+              {
+                value: "employed",
+                text: "Employed"
+              },
+              {
+                value: "self employed",
+                text: "Self-employed"
+              },
+              {
+                value: "business partner",
+                text: "Business partner"
+              },
+              {
+                value: "company director or shareholder",
+                text: "Company director or shareholder"
+              },
+              {
+                divider: "or"
+              },
+              {
+                value: "none of these",
+                text: "My client’s employment status is none of these",
+                behaviour: "exclusive",
+                conditional: {
+                  html: employmentHTML
+                }
+              }
+            ]
+          }) }}
+
+
+          {% from "govuk/components/button/macro.njk" import govukButton %}
+
+          <div class="govuk-button-group">
+            {{ govukButton({
+              text: "Save and continue",
+              href: "/income-assessment/clients-income-12475"
+            }) }}
+
+            {{ govukButton({
+              text: "Save and come back later",
+              classes: "govuk-button--secondary"
+            }) }}
+          </div>
+
+      </div>
+    </div>
+
+{% endblock %}
