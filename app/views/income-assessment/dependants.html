@@ -10,8 +10,24 @@
 
           {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
-          <p class="govuk-body">A dependant is someone who will be aged 18 or under on their next birthday who:</p>
+          {% set moreDETAILS %}
+            {% from "govuk/components/input/macro.njk" import govukInput %}
+
+            {{ govukInput({
+              label: {
+                text: "How many dependants does your client have?",
+                classes: "govuk-label--s",
+                isPageHeading: true
+              },
+              classes: "govuk-input--width-5",
+              id: "event-name",
+              name: "eventName"
+            }) }}
+          {% endset -%}
+
+          <p class="govuk-body">A dependant is anyone who:</p>
           <ul class="govuk-list govuk-list--bullet">
+            <li>will be 18 years old or under on their next birthday</li>
             <li>lives with your client</li>
             <li>depends on your client for financial support</li>
           </ul>
@@ -29,7 +45,10 @@
             items: [
               {
                 value: "yes",
-                text: "Yes"
+                text: "Yes",
+                conditional: {
+                  html: moreDETAILS
+                }
               },
               {
                 value: "no",
@@ -44,7 +63,7 @@
           <div class="govuk-button-group">
             {{ govukButton({
               text: "Save and continue",
-              href: "check-answers"
+              href: "dependant-details"
             }) }}
 
             {{ govukButton({
