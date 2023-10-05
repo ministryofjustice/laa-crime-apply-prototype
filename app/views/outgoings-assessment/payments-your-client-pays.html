@@ -5,8 +5,8 @@
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <span class="govuk-caption-xl">Income assessment</span>
-        <h1 class="govuk-heading-xl">Which of these payments does your client get?</h1>
+        <span class="govuk-caption-xl">Outgoings assessment</span>
+        <h1 class="govuk-heading-xl">Which of these payments does your client pay?</h1>
 
           {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
           {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -33,7 +33,7 @@
               name: "paymentFrequency",
               fieldset: {
                 legend: {
-                  text: "Select how often they get this payment",
+                  text: "Select how often they pay this",
                   isPageHeading: true,
                   classes: "govuk-fieldset__legend--s"
                 }
@@ -64,14 +64,14 @@
           {% endset -%}
 
 
-          {% set amountFREQUENCYdetails %}
+          {% set amountFREQUENCYreference %}
             {% from "govuk/components/input/macro.njk" import govukInput %}
 
             {{ govukInput({
               id: "payment-amount",
               name: "paymentAmount",
               label: {
-                text: "Enter total amount of all other sources of income",
+                text: "Enter amount",
                 classes: "govuk-label--s",
                 isPageHeading: true
               },
@@ -86,7 +86,7 @@
               name: "paymentFrequency",
               fieldset: {
                 legend: {
-                  text: "Select how often they get these payments",
+                  text: "Select how often they pay this",
                   isPageHeading: true,
                   classes: "govuk-fieldset__legend--s"
                 }
@@ -121,13 +121,32 @@
               name: "details",
               id: "details",
               label: {
-                text: "Details",
+                text: "What is the case reference of the criminal rep order or civil certificate?",
                 classes: "govuk-label--s",
                 isPageHeading: true
               },
               hint: {
                 text: ""
               }
+            }) }}
+          {% endset -%}
+
+          {% set yearlyAMOUNT %}
+            {% from "govuk/components/input/macro.njk" import govukInput %}
+
+            {{ govukInput({
+              id: "payment-amount",
+              name: "paymentAmount",
+              label: {
+                text: "Enter yearly amount",
+                classes: "govuk-label--s",
+                isPageHeading: true
+              },
+              prefix: {
+                text: "£"
+              },
+              classes: "govuk-input--width-10",
+              spellcheck: false
             }) }}
           {% endset -%}
 
@@ -146,10 +165,24 @@
             },
             items: [
               {
-                value: "financial help",
-                text: "Financial help from friends or family",
+                value: "rent or mortgage",
+                text: "Rent or mortgage",
+                conditional: {
+                  html: amountFREQUENCY
+                }
+              },
+              {
+                value: "board and lodging",
+                text: "Board and lodging",
+                conditional: {
+                  html: amountFREQUENCY
+                }
+              },
+              {
+                value: "childcare",
+                text: "Childcare payments",
                 hint: {
-                  text: "Select if a friend or relative regularly gives your client money to help with living costs. Do not include one-off payments."
+                  text: "For example, to a childminder, nanny or nursery."
                 },
                 conditional: {
                   html: amountFREQUENCY
@@ -157,7 +190,7 @@
               },
               {
                 value: "maintenance",
-                text: "Maintenance payments from a former partner",
+                text: "Maintenance payments to a former partner",
                 hint: {
                   text: "This includes child maintenance."
                 },
@@ -166,59 +199,17 @@
                 }
               },
               {
-                value: "board",
-                text: "Board from a family lodger",
+                value: "legal aid contributions",
+                text: "Contributions towards criminal or civil legal aid",
                 conditional: {
-                  html: amountFREQUENCY
+                  html: amountFREQUENCYreference
                 }
               },
               {
-                value: "rent",
-                text: "Rent from a tenant or other property",
+                value: "council tax",
+                text: "Council tax",
                 conditional: {
-                  html: amountFREQUENCY
-                }
-              },
-              {
-                value: "private pensions",
-                text: "Private pensions",
-                conditional: {
-                  html: amountFREQUENCY
-                }
-              },
-              {
-                value: "state pension",
-                text: "State pension",
-                conditional: {
-                  html: amountFREQUENCY
-                }
-              },
-              {
-                value: "student finance",
-                text: "Student grant or loan",
-                conditional: {
-                  html: amountFREQUENCY
-                }
-              },
-              {
-                value: "interest from savings",
-                text: "Interest from savings",
-                conditional: {
-                  html: amountFREQUENCY
-                }
-              },
-              {
-                value: "interest from investments",
-                text: "Interest from investments",
-                conditional: {
-                  html: amountFREQUENCY
-                }
-              },
-              {
-                value: "other income",
-                text: "Other sources of income",
-                conditional: {
-                  html: amountFREQUENCYdetails
+                  html: yearlyAMOUNT
                 }
               },
               {
@@ -226,7 +217,7 @@
               },
               {
                 value: "none of these",
-                text: "My client does not get any of these payments",
+                text: "My client does not pay any of these payments",
                 behaviour: "exclusive"
               }
             ]
@@ -238,7 +229,7 @@
           <div class="govuk-button-group">
             {{ govukButton({
               text: "Save and continue",
-              href: "/income-assessment/non-passporting-benefits-your-client-gets"
+              href: "/outgoings-assessment/board-and-lodging"
             }) }}
 
             {{ govukButton({
