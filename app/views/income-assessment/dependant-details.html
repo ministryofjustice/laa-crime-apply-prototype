@@ -7,96 +7,22 @@
       <div class="govuk-grid-column-two-thirds">
         <span class="govuk-caption-xl">Income assessment</span>
         <h1 class="govuk-heading-xl">Dependants’ ages</h1>
+        <form action="income-check-answers" method="post" novalidate>
+          <p class="govuk-body">You told us your client has {{ data['numberOfDependants'] }} dependants.</p>
 
-          <p class="govuk-body">You told us your client has 2 dependants.</p>
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="ageOfDependants" value="{{ data['ageOfDependants'] }}">
+              How old is the first dependant?
+            </label>
+            <input class="govuk-input govuk-input--width-2" id="ageOfDependants" name="ageOfDependants" type="text">
+          </div>
 
-          {% from "govuk/components/select/macro.njk" import govukSelect %}
-
-          {{ govukSelect({
-            id: "sort",
-            name: "sort",
-            label: {
-              text: "How old will the first dependant be on their next birthday?"
-            },
-            items: [
-              {
-                value: "choose",
-                text: "Choose age",
-                selected: true
-              },
-              {
-                value: "0-1",
-                text: "0 to 1 years old"
-              },
-              {
-                value: "2-4",
-                text: "2 to 4 years old"
-              },
-              {
-                value: "5-7",
-                text: "5 to 7 years old"
-              },
-              {
-                value: "8-10",
-                text: "8 to 10 years old"
-              },
-              {
-                value: "11-12",
-                text: "11 to 12 years old"
-              },
-              {
-                value: "13-15",
-                text: "13 to 15 years old"
-              },
-              {
-                value: "16-18",
-                text: "16 to 18 years old"
-              }
-            ]
-          }) }}
-
-          {{ govukSelect({
-            id: "sort",
-            name: "sort",
-            label: {
-              text: "How old will the second dependant be on their next birthday?"
-            },
-            items: [
-              {
-                value: "choose",
-                text: "Choose age",
-                selected: true
-              },
-              {
-                value: "0-1",
-                text: "0 to 1 years old"
-              },
-              {
-                value: "2-4",
-                text: "2 to 4 years old"
-              },
-              {
-                value: "5-7",
-                text: "5 to 7 years old"
-              },
-              {
-                value: "8-10",
-                text: "8 to 10 years old"
-              },
-              {
-                value: "11-12",
-                text: "11 to 12 years old"
-              },
-              {
-                value: "13-15",
-                text: "13 to 15 years old"
-              },
-              {
-                value: "16-18",
-                text: "16 to 18 years old"
-              }
-            ]
-          }) }}
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="ageOfDependants-2" value="{{ data['ageOfDependants-2'] }}">
+              How old is the second dependant?
+            </label>
+            <input class="govuk-input govuk-input--width-2" id="ageOfDependants-2" name="ageOfDependants-2" type="text">
+          </div>
 
 
           {% from "govuk/components/button/macro.njk" import govukButton %}
@@ -104,7 +30,7 @@
           <div class="govuk-button-group">
             {{ govukButton({
               text: "Save and continue",
-              href: "check-answers"
+              href: "income-check-answers"
             }) }}
 
             {{ govukButton({
@@ -112,7 +38,7 @@
               classes: "govuk-button--secondary"
             }) }}
           </div>
-
+        </form>
       </div>
     </div>
 

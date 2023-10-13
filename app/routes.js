@@ -536,7 +536,8 @@ router.get('/delete/:id', async (req, res, next) => {
   }
 });
 
-// 2023 onwards //
+// 2023 onwards 
+// Initial magistrates routing
 router.post('/first-court-answer', function(request, response) {
 
     var initialCourtName = request.session.data['first-court-name']
@@ -560,6 +561,38 @@ router.post('/same-court-answer', function(request, response) {
       response.redirect("initial-mags/hearing-details-error")
     }
 });
-// also need to add error screen //
+
+// Income assessment
+router.post('/income-employment-check', function(request, response) {
+
+    var incomeCheck = request.session.data['employed-3-months']
+    if (incomeCheck == "yes") {
+        response.redirect("income-assessment/client-lost-their-job")
+    } else {
+      response.redirect("income-assessment/clients-income-12475")
+    }
+});
+
+router.post('/income-dependants-check', function(request, response) {
+
+    var incomeCheck = request.session.data['any-dependants']
+    if (incomeCheck == "Yes, ") {
+        response.redirect("income-assessment/dependant-details")
+    } else if (incomeCheck == "Yes") {
+        response.redirect("income-assessment/b-dependant-details")
+    } else {
+      response.redirect("income-assessment/income-check-answers")
+    }
+});
+
+router.post('/income-benefits-check', function(request, response) {
+
+    var benefitsCheck = request.session.data['payments-your-client-gets']
+    if (benefitsCheck == "") {
+        response.redirect("income-assessment/no-income")
+    } else {
+      response.redirect("income-assessment/no-income")
+    }
+});
 
 router.use('/node_modules', express.static('node_modules'));

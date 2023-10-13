@@ -7,45 +7,39 @@
       <div class="govuk-grid-column-two-thirds">
         <span class="govuk-caption-xl">Income assessment</span>
         <h1 class="govuk-heading-xl">Is your client’s total gross annual income less than £12,475?</h1>
+        <form action="payments-your-client-gets" method="post" novalidate>
+          {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
-        {% from "govuk/components/radios/macro.njk" import govukRadios %}
-
-        {{ govukRadios({
-          name: "whereDoYouLive",
-          fieldset: {
-            legend: {
-              text: "",
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
-            }
-          },
-          items: [
-            {
-              value: "yes",
-              text: "Yes"
+          {{ govukRadios({
+            name: "threshold",
+            fieldset: {
             },
-            {
-              value: "no",
-              text: "No"
-            }
-          ]
-        }) }}
+            items: [
+              {
+                value: "yes",
+                text: "Yes"
+              },
+              {
+                value: "no",
+                text: "No"
+              }
+            ]
+          }) }}
 
 
-          {% from "govuk/components/button/macro.njk" import govukButton %}
+            {% from "govuk/components/button/macro.njk" import govukButton %}
 
-          <div class="govuk-button-group">
-            {{ govukButton({
-              text: "Save and continue",
-              href: "/income-assessment/payments-your-client-gets"
-            }) }}
+            <div class="govuk-button-group">
+              {{ govukButton({
+                text: "Save and continue"
+              }) }}
 
-            {{ govukButton({
-              text: "Save and come back later",
-              classes: "govuk-button--secondary"
-            }) }}
-          </div>
-
+              {{ govukButton({
+                text: "Save and come back later",
+                classes: "govuk-button--secondary"
+              }) }}
+            </div>
+        </form>
       </div>
     </div>
 

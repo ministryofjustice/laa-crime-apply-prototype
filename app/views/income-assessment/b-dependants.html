@@ -10,28 +10,12 @@
         <form action="/income-dependants-check" method="post" novalidate>
           {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
-          {% set moreDETAILS %}
-            {% from "govuk/components/input/macro.njk" import govukInput %}
-
-            {{ govukInput({
-              label: {
-                text: "How many dependants does your client have?",
-                classes: "govuk-label--s",
-                isPageHeading: true
-              },
-              classes: "govuk-input--width-5",
-              id: "event-name",
-              name: "numberOfDependants"
-            }) }}
-          {% endset -%}
-
           <p class="govuk-body">A dependant is anyone who:</p>
           <ul class="govuk-list govuk-list--bullet">
             <li>will be 18 years old or under on their next birthday</li>
             <li>lives with your client</li>
             <li>depends on your client for financial support</li>
           </ul>
-
 
           {{ govukRadios({
             name: "any-dependants",
@@ -44,11 +28,8 @@
             },
             items: [
               {
-                value: "Yes, ",
-                text: "Yes",
-                conditional: {
-                  html: moreDETAILS
-                }
+                value: "Yes",
+                text: "Yes"
               },
               {
                 value: "No",
@@ -56,7 +37,6 @@
               }
             ]
           }) }}
-
 
           {% from "govuk/components/button/macro.njk" import govukButton %}
 
