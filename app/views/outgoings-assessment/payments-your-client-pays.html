@@ -5,8 +5,8 @@
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <span class="govuk-caption-xl">Income assessment</span>
-        <h1 class="govuk-heading-xl">Which of these non-passporting benefits does your client get?</h1>
+        <span class="govuk-caption-xl">Outgoings assessment</span>
+        <h1 class="govuk-heading-xl">Which of these payments does your client pay?</h1>
 
           {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
           {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -33,7 +33,7 @@
               name: "paymentFrequency",
               fieldset: {
                 legend: {
-                  text: "Select how often they get this benefit",
+                  text: "Select how often they pay this",
                   isPageHeading: true,
                   classes: "govuk-fieldset__legend--s"
                 }
@@ -64,14 +64,14 @@
           {% endset -%}
 
 
-          {% set amountFREQUENCYdetails %}
+          {% set amountFREQUENCYreference %}
             {% from "govuk/components/input/macro.njk" import govukInput %}
 
             {{ govukInput({
               id: "payment-amount",
               name: "paymentAmount",
               label: {
-                text: "Enter total amount of all other benefits",
+                text: "Enter amount",
                 classes: "govuk-label--s",
                 isPageHeading: true
               },
@@ -86,7 +86,7 @@
               name: "paymentFrequency",
               fieldset: {
                 legend: {
-                  text: "Select how often they get these benefits",
+                  text: "Select how often they pay this",
                   isPageHeading: true,
                   classes: "govuk-fieldset__legend--s"
                 }
@@ -121,13 +121,32 @@
               name: "details",
               id: "details",
               label: {
-                text: "Details",
+                text: "What is the case reference of the criminal rep order or civil certificate?",
                 classes: "govuk-label--s",
                 isPageHeading: true
               },
               hint: {
                 text: ""
               }
+            }) }}
+          {% endset -%}
+
+          {% set yearlyAMOUNT %}
+            {% from "govuk/components/input/macro.njk" import govukInput %}
+
+            {{ govukInput({
+              id: "payment-amount",
+              name: "paymentAmount",
+              label: {
+                text: "Enter yearly amount",
+                classes: "govuk-label--s",
+                isPageHeading: true
+              },
+              prefix: {
+                text: "£"
+              },
+              classes: "govuk-input--width-10",
+              spellcheck: false
             }) }}
           {% endset -%}
 
@@ -142,49 +161,55 @@
               }
             },
             hint: {
-              text: "Select all that apply."
+              text: "Select all that apply"
             },
             items: [
               {
-                value: "child benefit",
-                text: "Child Benefit",
+                value: "rent or mortgage",
+                text: "Rent or mortgage",
                 conditional: {
                   html: amountFREQUENCY
                 }
               },
               {
-                value: "tax credit",
-                text: "Working Tax Credit or Child Tax Credit",
+                value: "board and lodging",
+                text: "Board and lodging",
                 conditional: {
                   html: amountFREQUENCY
                 }
               },
               {
-                value: "incapacity benefit",
-                text: "Incapacity Benefit",
+                value: "childcare",
+                text: "Childcare payments",
+                hint: {
+                  text: "For example, to a childminder, nanny or nursery."
+                },
                 conditional: {
                   html: amountFREQUENCY
                 }
               },
               {
-                value: "industrial injuries disablement benefit",
-                text: "Industrial Injuries Disablement Benefit",
+                value: "maintenance",
+                text: "Maintenance payments to a former partner",
+                hint: {
+                  text: "This includes child maintenance."
+                },
                 conditional: {
                   html: amountFREQUENCY
                 }
               },
               {
-                value: "contribution-based jsa",
-                text: "Contribution-based Job Seekers Allowance",
+                value: "legal aid contributions",
+                text: "Contributions towards criminal or civil legal aid",
                 conditional: {
-                  html: amountFREQUENCY
+                  html: amountFREQUENCYreference
                 }
               },
               {
-                value: "other benefits",
-                text: "Other benefits (except Housing Benefit)",
+                value: "council tax",
+                text: "Council tax",
                 conditional: {
-                  html: amountFREQUENCYdetails
+                  html: yearlyAMOUNT
                 }
               },
               {
@@ -192,7 +217,7 @@
               },
               {
                 value: "none of these",
-                text: "My client does not get any of these benefits",
+                text: "My client does not pay any of these payments",
                 behaviour: "exclusive"
               }
             ]
@@ -204,7 +229,7 @@
           <div class="govuk-button-group">
             {{ govukButton({
               text: "Save and continue",
-              href: "/income-assessment/no-income"
+              href: "/outgoings-assessment/board-and-lodging"
             }) }}
 
             {{ govukButton({
