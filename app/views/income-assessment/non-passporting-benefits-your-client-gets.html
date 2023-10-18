@@ -134,7 +134,7 @@
 
 
           {{ govukCheckboxes({
-            name: "payments-your-client-gets",
+            name: "non-passporting-benefits-your-client-gets",
             fieldset: {
               legend: {
                 text: "",
@@ -147,42 +147,42 @@
             },
             items: [
               {
-                value: "child benefit",
+                value: "Child Benefit",
                 text: "Child Benefit",
                 conditional: {
                   html: amountFREQUENCY
                 }
               },
               {
-                value: "tax credit",
+                value: "Working Tax Credit or Child Tax Credit",
                 text: "Working Tax Credit or Child Tax Credit",
                 conditional: {
                   html: amountFREQUENCY
                 }
               },
               {
-                value: "incapacity benefit",
+                value: "Incapacity Benefit",
                 text: "Incapacity Benefit",
                 conditional: {
                   html: amountFREQUENCY
                 }
               },
               {
-                value: "industrial injuries disablement benefit",
+                value: "Industrial Injuries Disablement Benefit",
                 text: "Industrial Injuries Disablement Benefit",
                 conditional: {
                   html: amountFREQUENCY
                 }
               },
               {
-                value: "contribution-based jsa",
+                value: "Contribution-based Job Seekers Allowance",
                 text: "Contribution-based Job Seekers Allowance",
                 conditional: {
                   html: amountFREQUENCY
                 }
               },
               {
-                value: "other benefits",
+                value: "Other benefits",
                 text: "Other benefits (except Housing Benefit)",
                 conditional: {
                   html: amountFREQUENCYdetails
@@ -192,7 +192,7 @@
                 divider: "or"
               },
               {
-                value: "none of these",
+                value: "My client does not get any of these benefits",
                 text: "My client does not get any of these benefits",
                 behaviour: "exclusive"
               }

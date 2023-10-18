@@ -6,7 +6,7 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <span class="govuk-caption-xl">Income assessment</span>
-        <h1 class="govuk-heading-xl">Is your client’s total gross annual income less than £12,475?</h1>
+        <h1 class="govuk-heading-xl">Is your client’s gross yearly income less than £12,475?</h1>
         <form action="payments-your-client-gets" method="post" novalidate>
           {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
@@ -14,13 +14,16 @@
             name: "threshold",
             fieldset: {
             },
+            hint: {
+              text: "Include all sources of income."
+             },
             items: [
               {
-                value: "yes",
+                value: "Yes",
                 text: "Yes"
               },
               {
-                value: "no",
+                value: "No",
                 text: "No"
               }
             ]
