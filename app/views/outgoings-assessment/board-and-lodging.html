@@ -7,14 +7,39 @@
       <div class="govuk-grid-column-two-thirds">
         <span class="govuk-caption-xl">Outgoings assessment</span>
         <h1 class="govuk-heading-xl">Board and lodging payments</h1>
+        <p class="govuk-body">You told us your client pays {{ data['amountFREQUENCY'] }} on board and lodging.</p>
+
 
         {% from "govuk/components/input/macro.njk" import govukInput %}
+
+          {{ govukInput({
+            label: {
+              text: "Who do they pay for board and lodging?",
+              classes: "govuk-label--s",
+              isPageHeading: true
+            },
+            classes: "govuk-!-width-three-quarters",
+            id: "event-name",
+            name: "eventName"
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "What is their relationship to this person?",
+              classes: "govuk-label--s",
+              isPageHeading: true
+            },
+            classes: "govuk-!-width-three-quarters",
+            id: "event-name",
+            name: "eventName"
+          }) }}
+
 
         {{ govukInput({
           id: "cost-for-food",
           name: "costForFood",
           label: {
-            text: "How much of this payment includes food?",
+            text: "How much of the payment includes food?",
             classes: "govuk-label--s",
             isPageHeading: true
           },
@@ -31,7 +56,7 @@
               name: "paymentFrequency",
               fieldset: {
                 legend: {
-                  text: "Select how often they pay this",
+                  text: "Select how often they pay for food",
                   isPageHeading: true,
                   classes: "govuk-fieldset__legend--s"
                 }
@@ -54,37 +79,11 @@
                   text: "Monthly"
                 },
                 {
-                  value: "total in the last 3 months",
-                  text: "Total in the last 3 months"
+                  value: "yearly",
+                  text: "Yearly"
                 }
               ]
             }) }}
-
-          {% from "govuk/components/input/macro.njk" import govukInput %}
-
-          {{ govukInput({
-            label: {
-              text: "Who do they pay this to?",
-              classes: "govuk-label--s",
-              isPageHeading: true
-            },
-            classes: "govuk-!-width-three-quarters",
-            id: "event-name",
-            name: "eventName"
-          }) }}
-
-          {% from "govuk/components/input/macro.njk" import govukInput %}
-
-          {{ govukInput({
-            label: {
-              text: "What is their relationship to the person they pay this to?",
-              classes: "govuk-label--s",
-              isPageHeading: true
-            },
-            classes: "govuk-!-width-three-quarters",
-            id: "event-name",
-            name: "eventName"
-          }) }}
 
 
           {% from "govuk/components/button/macro.njk" import govukButton %}
