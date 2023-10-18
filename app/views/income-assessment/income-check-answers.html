@@ -6,10 +6,10 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <span class="govuk-caption-xl">Income assessment</span>
-        <h1 class="govuk-heading-xl">Check your answers before completing this section</h1>
+        <h1 class="govuk-heading-xl">Check your answers</h1>
         {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+        
         <h3 class="govuk-heading-m">Employment details</h3>
-
         {{ govukSummaryList({
           classes: "govuk-!-margin-bottom-9",
           rows: [
@@ -81,7 +81,8 @@
         </dl>
         {% endif %}
 
-          <h3 class="govuk-heading-m">Income</h3>
+        
+        <h3 class="govuk-heading-m">Income</h3>
           {{ govukSummaryList({
             classes: "govuk-!-margin-bottom-9",
             rows: [
@@ -107,6 +108,127 @@
           }) }}
 
 
+        <h3 class="govuk-heading-m">Payments your client gets</h3>
+
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Financial help from friends or family
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['paymentAmount'] }} {{ data['paymentFrequency'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="payments-your-client-gets">
+                  Change<span class="govuk-visually-hidden"> financial help from friends or family</span>
+                </a>
+              </dd>
+            </div>
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Maintenance payments from a former partner
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['paymentAmount'] }} {{ data['paymentFrequency'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="payments-your-client-gets">
+                  Change<span class="govuk-visually-hidden"> maintenance payments from a former partner</span>
+                </a>
+              </dd>
+            </div>
+          </dl>
+
+
+          <h3 class="govuk-heading-m">Non-passporting benefits your client gets</h3>
+          {{ govukSummaryList({
+            classes: "govuk-!-margin-bottom-9",
+            rows: [
+
+              {
+                key: {
+                  text: "Which of these non-passporting benefits does your client get?"
+                },
+                value: {
+                  text: data['non-passporting-benefits-your-client-gets']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "non-passporting-benefits-your-client-gets",
+                      text: "Change",
+                      visuallyHiddenText: "gross yearly income"
+                    }
+                  ]
+                }
+              }
+            ]
+          }) }}
+
+
+          <h3 class="govuk-heading-m">Other sources of income</h3>
+          {{ govukSummaryList({
+            classes: "govuk-!-margin-bottom-9",
+            rows: [
+
+              {
+                key: {
+                  text: "How does your client manage with no income?"
+                },
+                value: {
+                  html: data['manageWithNoIncome'] +'<br>'+ data['details']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "#",
+                      text: "Change",
+                      visuallyHiddenText: "address"
+                    }
+                  ]
+                }
+              }
+            ]
+          }) }}
+
+          <h3 class="govuk-heading-m">Dependants</h3>
+
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Does your client have any dependants?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['any-dependants'] }} {{ data['numberOfDependants'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="dependants">
+                  Change<span class="govuk-visually-hidden"> number of dependants</span>
+                </a>
+              </dd>
+            </div>
+            {% if (data['any-dependants'] == 'Yes, ') %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Dependants' ages
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <ul class="govuk-list">
+                  <li>First dependant is {{ data['ageOfDependants'] or "15"}}</li>
+                  <li>Second dependant is {{ data['ageOfDependants-2'] or "8"}}</li>
+                </ul>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="dependant-details">
+                  Change<span class="govuk-visually-hidden"> dependants ages</span>
+                </a>
+              </dd>
+            </div>
+           {% endif %}
+          </dl>
+
+<!-- OPTION FOR SUMMARY CARDS
           <div class="govuk-summary-card">
             <div class="govuk-summary-card__title-wrapper">
               <h2 class="govuk-summary-card__title">Which of these payments does your clients get?</h2>
@@ -177,72 +299,15 @@
               </dl>
             </div>
           </div>
+-->
 
-          {{ govukSummaryList({
-            classes: "govuk-!-margin-bottom-9",
-            rows: [
-
-              {
-                key: {
-                  text: "How does your client manage with no income?"
-                },
-                value: {
-                  html: data['manageWithNoIncome'] +'<br>'+ data['details']
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "#",
-                      text: "Change",
-                      visuallyHiddenText: "address"
-                    }
-                  ]
-                }
-              }
-            ]
-          }) }}
-
-          <h3 class="govuk-heading-m">Dependants</h3>
-
-          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Does your client have any dependants?
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {{ data['any-dependants'] }} {{ data['numberOfDependants'] }}
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="dependants">
-                  Change<span class="govuk-visually-hidden"> number of dependants</span>
-                </a>
-              </dd>
-            </div>
-            {% if (data['any-dependants'] == 'Yes, ') %}
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Dependants' ages
-              </dt>
-              <dd class="govuk-summary-list__value">
-                <ul class="govuk-list">
-                  <li>First dependant is {{ data['ageOfDependants'] or "15"}}</li>
-                  <li>Second dependant is {{ data['ageOfDependants-2'] or "8"}}</li>
-                </ul>
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="dependant-details">
-                  Change<span class="govuk-visually-hidden"> dependants ages</span>
-                </a>
-              </dd>
-            </div>
-           {% endif %}
-          </dl>
 
           {% from "govuk/components/button/macro.njk" import govukButton %}
 
           <div class="govuk-button-group">
             {{ govukButton({
-              text: "Save and continue"
+              text: "Save and continue",
+              href: "/outgoings-assessment/payments-your-client-pays"
             }) }}
 
            {{ govukButton({
