@@ -7,7 +7,7 @@
       <div class="govuk-grid-column-two-thirds">
         <span class="govuk-caption-xl">Income assessment</span>
         <h1 class="govuk-heading-xl">How does your client manage with no income?</h1>
-
+        <form action="ab-dependants" method="post" novalidate>
           {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
           {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
@@ -44,23 +44,23 @@
             },
             items: [
               {
-                value: "sleep on friends sofa",
+                value: "They sleep on a friend's sofa for free",
                 text: "They sleep on a friend's sofa for free"
               },
               {
-                value: "stay with family",
+                value: "They stay with family for free",
                 text: "They stay with family for free"
               },
               {
-                value: "homeless",
+                value: "They are homeless",
                 text: "They are homeless"
               },
               {
-                value: "in custody for more than 3 months",
+                value: "They have been in custody for more than 3 months",
                 text: "They have been in custody for more than 3 months"
               },
               {
-                value: "other",
+                value: "Other reason: ",
                 text: "Other",
                 conditional: {
                   html: moreDETAILS
@@ -74,8 +74,7 @@
 
           <div class="govuk-button-group">
             {{ govukButton({
-              text: "Save and continue",
-              href: "/income-assessment/dependants"
+              text: "Save and continue"
             }) }}
 
             {{ govukButton({
@@ -83,7 +82,7 @@
               classes: "govuk-button--secondary"
             }) }}
           </div>
-
+        </form>
       </div>
     </div>
 

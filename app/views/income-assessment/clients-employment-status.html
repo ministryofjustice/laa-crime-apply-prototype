@@ -7,18 +7,17 @@
       <div class="govuk-grid-column-two-thirds">
         <span class="govuk-caption-xl">Income assessment</span>
         <h1 class="govuk-heading-xl">What is your client’s employment status?</h1>
-
+        <form action="/income-employment-check" method="post" novalidate>
           {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
           {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
           {% set employmentHTML %}
             {{ govukRadios({
-              name: "whereDoYouLive",
+              name: "employed-3-months",
               fieldset: {
                 legend: {
-                  text: "Has your client ended employment in the last 3 months?",
-                  isPageHeading: true,
-                  classes: "govuk-fieldset__legend--s"
+                text: "Has your client ended employment in the last 3 months?",
+                isPageHeading: true
                 }
               },
               items: [
@@ -35,7 +34,7 @@
           {% endset -%}
 
           {{ govukCheckboxes({
-            name: "employment status",
+            name: "employment-status",
             fieldset: {
               legend: {
                 text: "",
@@ -44,7 +43,7 @@
               }
             },
             hint: {
-              text: "Select all that apply"
+              text: "Select all that apply."
             },
             items: [
               {
@@ -52,22 +51,22 @@
                 text: "Employed"
               },
               {
-                value: "self employed",
+                value: "self-employed",
                 text: "Self-employed"
               },
               {
-                value: "business partner",
-                text: "Business partner"
+                value: "business",
+                text: "In a business partnership"
               },
               {
-                value: "company director or shareholder",
+                value: "director",
                 text: "Company director or shareholder"
               },
               {
                 divider: "or"
               },
               {
-                value: "none of these",
+                value: "Client’s employment status is none of these",
                 text: "My client’s employment status is none of these",
                 behaviour: "exclusive",
                 conditional: {
@@ -79,11 +78,9 @@
 
 
           {% from "govuk/components/button/macro.njk" import govukButton %}
-
           <div class="govuk-button-group">
             {{ govukButton({
-              text: "Save and continue",
-              href: "/income-assessment/client-lost-their-job"
+              text: "Save and continue"
             }) }}
 
             {{ govukButton({
@@ -91,7 +88,7 @@
               classes: "govuk-button--secondary"
             }) }}
           </div>
-
+        </form>
       </div>
     </div>
 

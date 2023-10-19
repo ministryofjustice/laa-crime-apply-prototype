@@ -7,6 +7,7 @@
       <div class="govuk-grid-column-two-thirds">
         <span class="govuk-caption-xl">Income assessment</span>
         <h1 class="govuk-heading-xl">Which of these non-passporting benefits does your client get?</h1>
+        <form action="/income-benefits-check" method="post" novalidate>
 
           {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
           {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -40,15 +41,15 @@
               },
               items: [
                 {
-                  value: "every week",
+                  value: "every-week",
                   text: "Every week"
                 },
                 {
-                  value: "every 2 weeks",
+                  value: "every-2-weeks",
                   text: "Every 2 weeks"
                 },
                 {
-                  value: "every 4 weeks",
+                  value: "every-4-weeks",
                   text: "Every 4 weeks"
                 },
                 {
@@ -56,8 +57,8 @@
                   text: "Monthly"
                 },
                 {
-                  value: "total in the last 3 months",
-                  text: "Total in the last 3 months"
+                  value: "yearly",
+                  text: "Yearly"
                 }
               ]
             }) }}
@@ -93,15 +94,15 @@
               },
               items: [
                 {
-                  value: "every week",
+                  value: "every-week",
                   text: "Every week"
                 },
                 {
-                  value: "every 2 weeks",
+                  value: "every-2-weeks",
                   text: "Every 2 weeks"
                 },
                 {
-                  value: "every 4 weeks",
+                  value: "every-4-weeks",
                   text: "Every 4 weeks"
                 },
                 {
@@ -109,8 +110,8 @@
                   text: "Monthly"
                 },
                 {
-                  value: "total in the last 3 months",
-                  text: "Total in the last 3 months"
+                  value: "yearly",
+                  text: "Yearly"
                 }
               ]
             }) }}
@@ -121,7 +122,7 @@
               name: "details",
               id: "details",
               label: {
-                text: "Details",
+                text: "What other benefits do they get?",
                 classes: "govuk-label--s",
                 isPageHeading: true
               },
@@ -133,7 +134,7 @@
 
 
           {{ govukCheckboxes({
-            name: "payments your client gets",
+            name: "non-passporting-benefits-your-client-gets",
             fieldset: {
               legend: {
                 text: "",
@@ -142,46 +143,46 @@
               }
             },
             hint: {
-              text: "Select all that apply"
+              text: "Select all that apply."
             },
             items: [
               {
-                value: "child benefit",
-                text: "Child benefit",
+                value: "Child Benefit",
+                text: "Child Benefit",
                 conditional: {
                   html: amountFREQUENCY
                 }
               },
               {
-                value: "tax credit",
+                value: "Working Tax Credit or Child Tax Credit",
                 text: "Working Tax Credit or Child Tax Credit",
                 conditional: {
                   html: amountFREQUENCY
                 }
               },
               {
-                value: "incapacity benefit",
+                value: "Incapacity Benefit",
                 text: "Incapacity Benefit",
                 conditional: {
                   html: amountFREQUENCY
                 }
               },
               {
-                value: "industrial injuries disablement benefit",
+                value: "Industrial Injuries Disablement Benefit",
                 text: "Industrial Injuries Disablement Benefit",
                 conditional: {
                   html: amountFREQUENCY
                 }
               },
               {
-                value: "contribution-based jsa",
+                value: "Contribution-based Job Seekers Allowance",
                 text: "Contribution-based Job Seekers Allowance",
                 conditional: {
                   html: amountFREQUENCY
                 }
               },
               {
-                value: "other benefits",
+                value: "Other benefits",
                 text: "Other benefits (except Housing Benefit)",
                 conditional: {
                   html: amountFREQUENCYdetails
@@ -191,7 +192,7 @@
                 divider: "or"
               },
               {
-                value: "none of these",
+                value: "My client does not get any of these benefits",
                 text: "My client does not get any of these benefits",
                 behaviour: "exclusive"
               }
@@ -203,8 +204,7 @@
 
           <div class="govuk-button-group">
             {{ govukButton({
-              text: "Save and continue",
-              href: "/income-assessment/no-income"
+              text: "Save and continue"
             }) }}
 
             {{ govukButton({
@@ -212,7 +212,7 @@
               classes: "govuk-button--secondary"
             }) }}
           </div>
-
+        </form>
       </div>
     </div>
 

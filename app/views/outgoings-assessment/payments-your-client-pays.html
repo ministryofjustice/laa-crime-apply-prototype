@@ -56,8 +56,8 @@
                   text: "Monthly"
                 },
                 {
-                  value: "total in the last 3 months",
-                  text: "Total in the last 3 months"
+                  value: "yearly",
+                  text: "Yearly"
                 }
               ]
             }) }}
@@ -109,26 +109,25 @@
                   text: "Monthly"
                 },
                 {
-                  value: "total in the last 3 months",
-                  text: "Total in the last 3 months"
+                  value: "yearly",
+                  text: "Yearly"
                 }
               ]
             }) }}
 
-            {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+            {% from "govuk/components/input/macro.njk" import govukInput %}
 
-            {{ govukTextarea({
-              name: "details",
-              id: "details",
+            {{ govukInput({
               label: {
                 text: "What is the case reference of the criminal rep order or civil certificate?",
                 classes: "govuk-label--s",
                 isPageHeading: true
               },
-              hint: {
-                text: ""
-              }
+              classes: "govuk-input--width-20",
+              id: "event-name",
+              name: "eventName"
             }) }}
+
           {% endset -%}
 
           {% set yearlyAMOUNT %}
@@ -161,7 +160,7 @@
               }
             },
             hint: {
-              text: "Select all that apply"
+              text: "Select all that apply."
             },
             items: [
               {
@@ -207,7 +206,7 @@
               },
               {
                 value: "council tax",
-                text: "Council tax",
+                text: "Council Tax",
                 conditional: {
                   html: yearlyAMOUNT
                 }

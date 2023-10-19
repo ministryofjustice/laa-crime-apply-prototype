@@ -5,240 +5,582 @@
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <span class="govuk-caption-xl">Income assessment</span>
-        <h1 class="govuk-heading-xl">Which of these payments does your client get?</h1>
 
-          {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
-          {% from "govuk/components/radios/macro.njk" import govukRadios %}
+        <form action="non-passporting-benefits-your-client-gets" method="post" novalidate>
 
-          {% set amountFREQUENCY %}
-            {% from "govuk/components/input/macro.njk" import govukInput %}
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                <span class="govuk-caption-xl govuk-!-margin-bottom-2">Income assessment</span>
+                <h1 class="govuk-fieldset__heading">
+                  Which of these payments does your client get?
+                </h1>
+              </legend>
+              <div id="contact-hint" class="govuk-hint govuk-!-margin-top-7">
+                Select all that apply.
+              </div>
+              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="payment-1" name="payment" type="checkbox" value="Financial help from friends or family" data-aria-controls="conditional-payment-1">
+                  <label class="govuk-label govuk-checkboxes__label" for="payment-1">
+                    Financial help from friends or family
+                  </label>
+                  <div id="nationality-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                    Select if a friend or relative regularly gives your client money to help with living costs. Do not include one-off payments.
+                  </div>
+                </div>
 
-            {{ govukInput({
-              id: "payment-amount",
-              name: "paymentAmount",
-              label: {
-                text: "Enter amount",
-                classes: "govuk-label--s",
-                isPageHeading: true
-              },
-              prefix: {
-                text: "£"
-              },
-              classes: "govuk-input--width-10",
-              spellcheck: false
-            }) }}
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-payment-1">
+                  <div class="govuk-form-group">
+                    <h2 class="govuk-label-wrapper">
+                      <label class="govuk-label govuk-label--s" for="payment-amount-1">Enter amount</label>
+                    </h2>
+                    <div class="govuk-input__wrapper">
+                      <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                      <input class="govuk-input govuk-input--width-10" id="payment-amount-1" name="paymentAmount" type="text" spellcheck="false">
+                    </div>
+                  </div>
+                  <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                        <h1 class="govuk-fieldset__heading">Select how often they get this payment</h1>
+                      </legend>
+                      <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="paymentFrequency" name="paymentFrequency" type="radio" value="every week">
+                          <label class="govuk-label govuk-radios__label" for="paymentFrequency">Every week</label>
+                        </div>
 
-            {{ govukRadios({
-              name: "paymentFrequency",
-              fieldset: {
-                legend: {
-                  text: "Select how often they get this payment",
-                  isPageHeading: true,
-                  classes: "govuk-fieldset__legend--s"
-                }
-              },
-              items: [
-                {
-                  value: "every week",
-                  text: "Every week"
-                },
-                {
-                  value: "every 2 weeks",
-                  text: "Every 2 weeks"
-                },
-                {
-                  value: "every 4 weeks",
-                  text: "Every 4 weeks"
-                },
-                {
-                  value: "monthly",
-                  text: "Monthly"
-                },
-                {
-                  value: "total in the last 3 months",
-                  text: "Total in the last 3 months"
-                }
-              ]
-            }) }}
-          {% endset -%}
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="paymentFrequency-2" name="paymentFrequency" type="radio" value="every 2 weeks">
+                          <label class="govuk-label govuk-radios__label" for="paymentFrequency-2">Every 2 weeks</label>
+                        </div>
 
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="paymentFrequency-3" name="paymentFrequency" type="radio" value="every 4 weeks">
+                          <label class="govuk-label govuk-radios__label" for="paymentFrequency-3">Every 4 weeks</label>
+                        </div>
 
-          {% set amountFREQUENCYdetails %}
-            {% from "govuk/components/input/macro.njk" import govukInput %}
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="paymentFrequency-4" name="paymentFrequency" type="radio" value="monthly">
+                          <label class="govuk-label govuk-radios__label" for="paymentFrequency-4">Monthly</label>
+                        </div>
 
-            {{ govukInput({
-              id: "payment-amount",
-              name: "paymentAmount",
-              label: {
-                text: "Enter total amount of all other sources of income",
-                classes: "govuk-label--s",
-                isPageHeading: true
-              },
-              prefix: {
-                text: "£"
-              },
-              classes: "govuk-input--width-10",
-              spellcheck: false
-            }) }}
-
-            {{ govukRadios({
-              name: "paymentFrequency",
-              fieldset: {
-                legend: {
-                  text: "Select how often they get these payments",
-                  isPageHeading: true,
-                  classes: "govuk-fieldset__legend--s"
-                }
-              },
-              items: [
-                {
-                  value: "every week",
-                  text: "Every week"
-                },
-                {
-                  value: "every 2 weeks",
-                  text: "Every 2 weeks"
-                },
-                {
-                  value: "every 4 weeks",
-                  text: "Every 4 weeks"
-                },
-                {
-                  value: "monthly",
-                  text: "Monthly"
-                },
-                {
-                  value: "total in the last 3 months",
-                  text: "Total in the last 3 months"
-                }
-              ]
-            }) }}
-
-            {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
-
-            {{ govukTextarea({
-              name: "details",
-              id: "details",
-              label: {
-                text: "Details",
-                classes: "govuk-label--s",
-                isPageHeading: true
-              },
-              hint: {
-                text: ""
-              }
-            }) }}
-          {% endset -%}
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="paymentFrequency-5" name="paymentFrequency" type="radio" value="yearly">
+                          <label class="govuk-label govuk-radios__label" for="paymentFrequency-5">Yearly</label>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                </div>
 
 
-          {{ govukCheckboxes({
-            name: "payments your client gets",
-            fieldset: {
-              legend: {
-                text: "",
-                isPageHeading: true,
-                classes: "govuk-fieldset__legend--l"
-              }
-            },
-            hint: {
-              text: "Select all that apply"
-            },
-            items: [
-              {
-                value: "financial help",
-                text: "Financial help from friends or family",
-                hint: {
-                  text: "Select if a friend or relative regularly gives your client money to help with living costs. Do not include one-off payments."
-                },
-                conditional: {
-                  html: amountFREQUENCY
-                }
-              },
-              {
-                value: "maintenance",
-                text: "Maintenance payments from a former partner",
-                hint: {
-                  text: "This includes child maintenance."
-                },
-                conditional: {
-                  html: amountFREQUENCY
-                }
-              },
-              {
-                value: "board",
-                text: "Board from a family lodger",
-                conditional: {
-                  html: amountFREQUENCY
-                }
-              },
-              {
-                value: "rent",
-                text: "Rent from a tenant or other property",
-                conditional: {
-                  html: amountFREQUENCY
-                }
-              },
-              {
-                value: "private pensions",
-                text: "Private pensions",
-                conditional: {
-                  html: amountFREQUENCY
-                }
-              },
-              {
-                value: "state pension",
-                text: "State pension",
-                conditional: {
-                  html: amountFREQUENCY
-                }
-              },
-              {
-                value: "student finance",
-                text: "Student grant or loan",
-                conditional: {
-                  html: amountFREQUENCY
-                }
-              },
-              {
-                value: "interest from savings",
-                text: "Interest from savings",
-                conditional: {
-                  html: amountFREQUENCY
-                }
-              },
-              {
-                value: "interest from investments",
-                text: "Interest from investments",
-                conditional: {
-                  html: amountFREQUENCY
-                }
-              },
-              {
-                value: "other income",
-                text: "Other sources of income",
-                conditional: {
-                  html: amountFREQUENCYdetails
-                }
-              },
-              {
-                divider: "or"
-              },
-              {
-                value: "none of these",
-                text: "My client does not get any of these payments",
-                behaviour: "exclusive"
-              }
-            ]
-          }) }}
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="payment-2" name="payment" type="checkbox" value="Financial help from friends or family" data-aria-controls="conditional-payment-2">
+                  <label class="govuk-label govuk-checkboxes__label" for="payment-2">
+                    Maintenance payments from a former partner
+                  </label>
+                  <div id="nationality-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                    This includes child maintenance.
+                  </div>
+                </div>
+
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-payment-2">
+                  <div class="govuk-form-group">
+                    <h2 class="govuk-label-wrapper">
+                      <label class="govuk-label govuk-label--s" for="payment-amount-2">Enter amount</label>
+                    </h2>
+                    <div class="govuk-input__wrapper">
+                      <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                      <input class="govuk-input govuk-input--width-10" id="payment-amount-2" name="paymentAmount" type="text" spellcheck="false">
+                    </div>
+                  </div>
+                  <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                        <h1 class="govuk-fieldset__heading">Select how often they get this payment</h1>
+                      </legend>
+                      <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="2paymentFrequency" name="2paymentFrequency" type="radio" value="every week">
+                          <label class="govuk-label govuk-radios__label" for="2paymentFrequency">Every week</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="2paymentFrequency-2" name="2paymentFrequency" type="radio" value="every 2 weeks">
+                          <label class="govuk-label govuk-radios__label" for="2paymentFrequency-2">Every 2 weeks</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="2paymentFrequency-3" name="2paymentFrequency" type="radio" value="every 4 weeks">
+                          <label class="govuk-label govuk-radios__label" for="2paymentFrequency-3">Every 4 weeks</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="2paymentFrequency-4" name="2paymentFrequency" type="radio" value="monthly">
+                          <label class="govuk-label govuk-radios__label" for="2paymentFrequency-4">Monthly</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="2paymentFrequency-5" name="2paymentFrequency" type="radio" value="yearly">
+                          <label class="govuk-label govuk-radios__label" for="2paymentFrequency-5">Yearly</label>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="payment-3" name="payment" type="checkbox" value="Financial help from friends or family" data-aria-controls="conditional-payment-3">
+                  <label class="govuk-label govuk-checkboxes__label" for="payment-3">
+                    Board from family members living with your client
+                  </label>
+                  <div id="nationality-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                    This includes any non-contractual payments.
+                  </div>
+                </div>
+
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-payment-3">
+                  <div class="govuk-form-group">
+                    <h2 class="govuk-label-wrapper">
+                      <label class="govuk-label govuk-label--s" for="payment-amount-3">Enter amount</label>
+                    </h2>
+                    <div class="govuk-input__wrapper">
+                      <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                      <input class="govuk-input govuk-input--width-10" id="payment-amount-3" name="paymentAmount" type="text" spellcheck="false">
+                    </div>
+                  </div>
+                  <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                        <h1 class="govuk-fieldset__heading">Select how often they get this payment</h1>
+                      </legend>
+                      <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="3paymentFrequency" name="3paymentFrequency" type="radio" value="every week">
+                          <label class="govuk-label govuk-radios__label" for="3paymentFrequency">Every week</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="3paymentFrequency-2" name="3paymentFrequency" type="radio" value="every 2 weeks">
+                          <label class="govuk-label govuk-radios__label" for="3paymentFrequency-2">Every 2 weeks</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="3paymentFrequency-3" name="3paymentFrequency" type="radio" value="every 4 weeks">
+                          <label class="govuk-label govuk-radios__label" for="3paymentFrequency-3">Every 4 weeks</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="3paymentFrequency-4" name="3paymentFrequency" type="radio" value="monthly">
+                          <label class="govuk-label govuk-radios__label" for="3paymentFrequency-4">Monthly</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="3paymentFrequency-5" name="3paymentFrequency" type="radio" value="yearly">
+                          <label class="govuk-label govuk-radios__label" for="3paymentFrequency-5">Yearly</label>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="payment-4" name="payment" type="checkbox" value="Financial help from friends or family" data-aria-controls="conditional-payment-4">
+                  <label class="govuk-label govuk-checkboxes__label" for="payment-4">
+                    Rent from a tenant
+                  </label>
+                  <div id="nationality-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                    This includes contractual payments from property your client does not live in.
+                  </div>
+                </div>
+
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-payment-4">
+                  <div class="govuk-form-group">
+                    <h2 class="govuk-label-wrapper">
+                      <label class="govuk-label govuk-label--s" for="payment-amount-4">Enter amount</label>
+                    </h2>
+                    <div class="govuk-input__wrapper">
+                      <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                      <input class="govuk-input govuk-input--width-10" id="payment-amount-4" name="paymentAmount" type="text" spellcheck="false">
+                    </div>
+                  </div>
+                  <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                        <h1 class="govuk-fieldset__heading">Select how often they get this payment</h1>
+                      </legend>
+                      <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="4paymentFrequency" name="4paymentFrequency" type="radio" value="every week">
+                          <label class="govuk-label govuk-radios__label" for="4paymentFrequency">Every week</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="4paymentFrequency-2" name="4paymentFrequency" type="radio" value="every 2 weeks">
+                          <label class="govuk-label govuk-radios__label" for="4paymentFrequency-2">Every 2 weeks</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="4paymentFrequency-3" name="4paymentFrequency" type="radio" value="every 4 weeks">
+                          <label class="govuk-label govuk-radios__label" for="4paymentFrequency-3">Every 4 weeks</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="4paymentFrequency-4" name="4paymentFrequency" type="radio" value="monthly">
+                          <label class="govuk-label govuk-radios__label" for="4paymentFrequency-4">Monthly</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="4paymentFrequency-5" name="4paymentFrequency" type="radio" value="yearly">
+                          <label class="govuk-label govuk-radios__label" for="4paymentFrequency-5">Yearly</label>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="payment-5" name="payment" type="checkbox" value="Financial help from friends or family" data-aria-controls="conditional-payment-5">
+                  <label class="govuk-label govuk-checkboxes__label" for="payment-5">
+                    Private pensions
+                  </label>
+                </div>
+
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-payment-5">
+                  <div class="govuk-form-group">
+                    <h2 class="govuk-label-wrapper">
+                      <label class="govuk-label govuk-label--s" for="payment-amount-5">Enter amount</label>
+                    </h2>
+                    <div class="govuk-input__wrapper">
+                      <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                      <input class="govuk-input govuk-input--width-10" id="payment-amount-5" name="paymentAmount" type="text" spellcheck="false">
+                    </div>
+                  </div>
+                  <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                        <h1 class="govuk-fieldset__heading">Select how often they get this payment</h1>
+                      </legend>
+                      <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="5paymentFrequency" name="5paymentFrequency" type="radio" value="every week">
+                          <label class="govuk-label govuk-radios__label" for="5paymentFrequency">Every week</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="5paymentFrequency-2" name="5paymentFrequency" type="radio" value="every 2 weeks">
+                          <label class="govuk-label govuk-radios__label" for="5paymentFrequency-2">Every 2 weeks</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="5paymentFrequency-3" name="5paymentFrequency" type="radio" value="every 4 weeks">
+                          <label class="govuk-label govuk-radios__label" for="5paymentFrequency-3">Every 4 weeks</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="5paymentFrequency-4" name="5paymentFrequency" type="radio" value="monthly">
+                          <label class="govuk-label govuk-radios__label" for="5paymentFrequency-4">Monthly</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="5paymentFrequency-5" name="5paymentFrequency" type="radio" value="yearly">
+                          <label class="govuk-label govuk-radios__label" for="5paymentFrequency-5">Yearly</label>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="payment-6" name="payment" type="checkbox" value="Financial help from friends or family" data-aria-controls="conditional-payment-6">
+                  <label class="govuk-label govuk-checkboxes__label" for="payment-6">
+                    State Pension
+                  </label>
+                </div>
+
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-payment-6">
+                  <div class="govuk-form-group">
+                    <h2 class="govuk-label-wrapper">
+                      <label class="govuk-label govuk-label--s" for="payment-amount-6">Enter amount</label>
+                    </h2>
+                    <div class="govuk-input__wrapper">
+                      <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                      <input class="govuk-input govuk-input--width-10" id="payment-amount-6" name="paymentAmount" type="text" spellcheck="false">
+                    </div>
+                  </div>
+                  <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                        <h1 class="govuk-fieldset__heading">Select how often they get this payment</h1>
+                      </legend>
+                      <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="6paymentFrequency" name="6paymentFrequency" type="radio" value="every week">
+                          <label class="govuk-label govuk-radios__label" for="6paymentFrequency">Every week</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="6paymentFrequency-2" name="6paymentFrequency" type="radio" value="every 2 weeks">
+                          <label class="govuk-label govuk-radios__label" for="6paymentFrequency-2">Every 2 weeks</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="6paymentFrequency-3" name="6paymentFrequency" type="radio" value="every 4 weeks">
+                          <label class="govuk-label govuk-radios__label" for="6paymentFrequency-3">Every 4 weeks</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="6paymentFrequency-4" name="6paymentFrequency" type="radio" value="monthly">
+                          <label class="govuk-label govuk-radios__label" for="6paymentFrequency-4">Monthly</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="6paymentFrequency-5" name="6paymentFrequency" type="radio" value="yearly">
+                          <label class="govuk-label govuk-radios__label" for="6paymentFrequency-5">Yearly</label>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="payment-7" name="payment" type="checkbox" value="Financial help from friends or family" data-aria-controls="conditional-payment-7">
+                  <label class="govuk-label govuk-checkboxes__label" for="payment-7">
+                    Student grant or loan
+                  </label>
+                </div>
+
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-payment-7">
+                  <div class="govuk-form-group">
+                    <h2 class="govuk-label-wrapper">
+                      <label class="govuk-label govuk-label--s" for="payment-amount-7">Enter amount</label>
+                    </h2>
+                    <div class="govuk-input__wrapper">
+                      <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                      <input class="govuk-input govuk-input--width-10" id="payment-amount-7" name="paymentAmount" type="text" spellcheck="false">
+                    </div>
+                  </div>
+                  <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                        <h1 class="govuk-fieldset__heading">Select how often they get this payment</h1>
+                      </legend>
+                      <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="7paymentFrequency" name="7paymentFrequency" type="radio" value="every week">
+                          <label class="govuk-label govuk-radios__label" for="7paymentFrequency">Every week</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="7paymentFrequency-2" name="7paymentFrequency" type="radio" value="every 2 weeks">
+                          <label class="govuk-label govuk-radios__label" for="7paymentFrequency-2">Every 2 weeks</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="7paymentFrequency-3" name="7paymentFrequency" type="radio" value="every 4 weeks">
+                          <label class="govuk-label govuk-radios__label" for="7paymentFrequency-3">Every 4 weeks</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="7paymentFrequency-4" name="7paymentFrequency" type="radio" value="monthly">
+                          <label class="govuk-label govuk-radios__label" for="7paymentFrequency-4">Monthly</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="7paymentFrequency-5" name="7paymentFrequency" type="radio" value="yearly">
+                          <label class="govuk-label govuk-radios__label" for="7paymentFrequency-5">Yearly</label>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="payment-8" name="payment" type="checkbox" value="Financial help from friends or family" data-aria-controls="conditional-payment-8">
+                  <label class="govuk-label govuk-checkboxes__label" for="payment-8">
+                    Interest from savings
+                  </label>
+                </div>
+
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-payment-8">
+                  <div class="govuk-form-group">
+                    <h2 class="govuk-label-wrapper">
+                      <label class="govuk-label govuk-label--s" for="payment-amount-8">Enter amount</label>
+                    </h2>
+                    <div class="govuk-input__wrapper">
+                      <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                      <input class="govuk-input govuk-input--width-10" id="payment-amount-8" name="paymentAmount" type="text" spellcheck="false">
+                    </div>
+                  </div>
+                  <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                        <h1 class="govuk-fieldset__heading">Select how often they get this payment</h1>
+                      </legend>
+                      <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="8paymentFrequency" name="8paymentFrequency" type="radio" value="every week">
+                          <label class="govuk-label govuk-radios__label" for="8paymentFrequency">Every week</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="8paymentFrequency-2" name="8paymentFrequency" type="radio" value="every 2 weeks">
+                          <label class="govuk-label govuk-radios__label" for="8paymentFrequency-2">Every 2 weeks</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="8paymentFrequency-3" name="8paymentFrequency" type="radio" value="every 4 weeks">
+                          <label class="govuk-label govuk-radios__label" for="8paymentFrequency-3">Every 4 weeks</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="8paymentFrequency-4" name="8paymentFrequency" type="radio" value="monthly">
+                          <label class="govuk-label govuk-radios__label" for="8paymentFrequency-4">Monthly</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="8paymentFrequency-5" name="8paymentFrequency" type="radio" value="yearly">
+                          <label class="govuk-label govuk-radios__label" for="8paymentFrequency-5">Yearly</label>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="payment-9" name="payment" type="checkbox" value="Financial help from friends or family" data-aria-controls="conditional-payment-9">
+                  <label class="govuk-label govuk-checkboxes__label" for="payment-9">
+                    Interest from investments
+                  </label>
+                </div>
+
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-payment-9">
+                  <div class="govuk-form-group">
+                    <h2 class="govuk-label-wrapper">
+                      <label class="govuk-label govuk-label--s" for="payment-amount-9">Enter amount</label>
+                    </h2>
+                    <div class="govuk-input__wrapper">
+                      <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                      <input class="govuk-input govuk-input--width-10" id="payment-amount-9" name="paymentAmount" type="text" spellcheck="false">
+                    </div>
+                  </div>
+                  <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                        <h1 class="govuk-fieldset__heading">Select how often they get this payment</h1>
+                      </legend>
+                      <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="9paymentFrequency" name="9paymentFrequency" type="radio" value="every week">
+                          <label class="govuk-label govuk-radios__label" for="9paymentFrequency">Every week</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="9paymentFrequency-2" name="9paymentFrequency" type="radio" value="every 2 weeks">
+                          <label class="govuk-label govuk-radios__label" for="9paymentFrequency-2">Every 2 weeks</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="9paymentFrequency-3" name="9paymentFrequency" type="radio" value="every 4 weeks">
+                          <label class="govuk-label govuk-radios__label" for="9paymentFrequency-3">Every 4 weeks</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="9paymentFrequency-4" name="9paymentFrequency" type="radio" value="monthly">
+                          <label class="govuk-label govuk-radios__label" for="9paymentFrequency-4">Monthly</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="9paymentFrequency-5" name="9paymentFrequency" type="radio" value="yearly">
+                          <label class="govuk-label govuk-radios__label" for="9paymentFrequency-5">Yearly</label>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="payment-10" name="payment" type="checkbox" value="Financial help from friends or family" data-aria-controls="conditional-payment-10">
+                  <label class="govuk-label govuk-checkboxes__label" for="payment-10">
+                    Other sources of income
+                  </label>
+                </div>
+
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-payment-10">
+                  <div class="govuk-form-group">
+                    <h2 class="govuk-label-wrapper">
+                      <label class="govuk-label govuk-label--s" for="payment-amount-10">Enter amount</label>
+                    </h2>
+                    <div class="govuk-input__wrapper">
+                      <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                      <input class="govuk-input govuk-input--width-10" id="payment-amount-10" name="paymentAmount" type="text" spellcheck="false">
+                    </div>
+                  </div>
+                  <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                        <h1 class="govuk-fieldset__heading">Select how often they get this payment</h1>
+                      </legend>
+                      <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="10paymentFrequency" name="10paymentFrequency" type="radio" value="every week">
+                          <label class="govuk-label govuk-radios__label" for="10paymentFrequency">Every week</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="10paymentFrequency-2" name="10paymentFrequency" type="radio" value="every 2 weeks">
+                          <label class="govuk-label govuk-radios__label" for="10paymentFrequency-2">Every 2 weeks</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="10paymentFrequency-3" name="10paymentFrequency" type="radio" value="every 4 weeks">
+                          <label class="govuk-label govuk-radios__label" for="10paymentFrequency-3">Every 4 weeks</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="10paymentFrequency-4" name="10paymentFrequency" type="radio" value="monthly">
+                          <label class="govuk-label govuk-radios__label" for="10paymentFrequency-4">Monthly</label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="10paymentFrequency-5" name="10paymentFrequency" type="radio" value="yearly">
+                          <label class="govuk-label govuk-radios__label" for="10paymentFrequency-5">Yearly</label>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+
+                      <div class="govuk-form-group">
+                        <h1 class="govuk-label-wrapper">
+                          <label class="govuk-label govuk-label--s" for="more-detail">
+                            What other sources of income do they get?
+                          </label>
+                        </h1>
+                        <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
+                      </div>
+
+                </div>
+
+                <div class="govuk-checkboxes__divider">or</div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="payment-none" name="payment" type="checkbox" value="none" data-behaviour="exclusive">
+                  <label class="govuk-label govuk-checkboxes__label" for="payment-none">
+                    My client does not get any of these payments
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
 
 
           {% from "govuk/components/button/macro.njk" import govukButton %}
 
           <div class="govuk-button-group">
             {{ govukButton({
-              text: "Save and continue",
-              href: "/income-assessment/non-passporting-benefits-your-client-gets"
+              text: "Save and continue"
             }) }}
 
             {{ govukButton({
@@ -246,7 +588,7 @@
               classes: "govuk-button--secondary"
             }) }}
           </div>
-
+        </form>
       </div>
     </div>
 

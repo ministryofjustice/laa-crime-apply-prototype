@@ -8,3 +8,4 @@ const addFilter = govukPrototypeKit.views.addFilter
 
 // Add your filters here
 
+addFilter("splitLine", (data) => data.join(",<br>"))

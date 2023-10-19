@@ -1,0 +1,92 @@
+{% extends "layout_new.html" %}
+
+{% block content %}
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-xl">Income assessment</span>
+        <h1 class="govuk-heading-xl">How many dependants does your client have in these age groups?</h1>
+        <form action="b-income-check-answers" method="post" novalidate>
+
+          {% from "govuk/components/input/macro.njk" import govukInput %}
+
+          {{ govukInput({
+            label: {
+              text: "1 year old on next birthday"
+            },
+            classes: "govuk-input--width-2",
+            id: "ageRange1",
+            name: "ageRange1"
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "2 to 4 years old on next birthday"
+            },
+            classes: "govuk-input--width-2",
+            id: "ageRange2",
+            name: "ageRange2"
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "5 to 7 years old on next birthday"
+            },
+            classes: "govuk-input--width-2",
+            id: "ageRange3",
+            name: "ageRange3"
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "8 to 10 years old on next birthday"
+            },
+            classes: "govuk-input--width-2",
+            id: "ageRange4",
+            name: "ageRange4"
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "11 to 12 years old on next birthday"
+            },
+            classes: "govuk-input--width-2",
+            id: "ageRange5",
+            name: "ageRange5"
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "13 to 15 years old on next birthday"
+            },
+            classes: "govuk-input--width-2",
+            id: "ageRange6",
+            name: "ageRange6"
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "16 to 18 years old on next birthday"
+            },
+            classes: "govuk-input--width-2",
+            id: "ageRange7",
+            name: "ageRange7"
+          }) }}
+          {% from "govuk/components/button/macro.njk" import govukButton %}
+
+          <div class="govuk-button-group">
+            {{ govukButton({
+              text: "Save and continue"
+            }) }}
+
+            {{ govukButton({
+              text: "Save and come back later",
+              classes: "govuk-button--secondary"
+            }) }}
+          </div>
+        </form>
+      </div>
+    </div>
+
+{% endblock %}

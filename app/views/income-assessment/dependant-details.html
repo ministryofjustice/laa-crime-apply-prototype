@@ -1,0 +1,45 @@
+{% extends "layout_new.html" %}
+
+{% block content %}
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-xl">Income assessment</span>
+        <h1 class="govuk-heading-xl">Dependants’ ages</h1>
+        <form action="income-check-answers" method="post" novalidate>
+          <p class="govuk-body">You told us your client has {{ data['numberOfDependants'] }} dependants.</p>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="ageOfDependants" value="{{ data['ageOfDependants'] }}">
+              How old is the first dependant?
+            </label>
+            <input class="govuk-input govuk-input--width-2" id="ageOfDependants" name="ageOfDependants" type="text">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="ageOfDependants-2" value="{{ data['ageOfDependants-2'] }}">
+              How old is the second dependant?
+            </label>
+            <input class="govuk-input govuk-input--width-2" id="ageOfDependants-2" name="ageOfDependants-2" type="text">
+          </div>
+
+
+          {% from "govuk/components/button/macro.njk" import govukButton %}
+
+          <div class="govuk-button-group">
+            {{ govukButton({
+              text: "Save and continue",
+              href: "income-check-answers"
+            }) }}
+
+            {{ govukButton({
+              text: "Save and come back later",
+              classes: "govuk-button--secondary"
+            }) }}
+          </div>
+        </form>
+      </div>
+    </div>
+
+{% endblock %}

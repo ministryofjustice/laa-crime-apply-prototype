@@ -1,0 +1,30 @@
+{% extends "layout_new-start.html" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Apply for criminal legal aid</h1>
+
+    <p class="govuk-body">Use this service to apply for criminal legal aid. The application will be means tested.</p>
+
+    <p class="govuk-body">Your client cannot have a partner.</p>
+
+    <p class="govuk-body">They must be one of the following:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>receiving a passporting benefit, including Universal Credit</li>
+      <li>not working</li>
+      <li>a pensioner</li>
+    </ul>
+
+    <p class="govuk-body"><a href="#">Use eForms for all other applications</a>.</p>
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+    {{ govukButton({
+      text: "Start now",
+      href: "/account_number",
+      isStartButton: true
+    }) }}
+  </div>
+</div>
+{% endblock %}
