@@ -66,8 +66,11 @@
                 divider: "or"
               },
               {
-                value: "Client’s employment status is none of these",
-                text: "My client’s employment status is none of these",
+                value: "not working",
+                text: "My client is not working",
+                hint: {
+                  text: "This includes anyone who is unemployed, never had a job, or is a pensioner."
+                },
                 behaviour: "exclusive",
                 conditional: {
                   html: employmentHTML
