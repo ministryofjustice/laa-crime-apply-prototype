@@ -568,8 +568,10 @@ router.post('/income-employment-check', function(request, response) {
     var incomeCheck = request.session.data['employed-3-months']
     if (incomeCheck == "yes") {
         response.redirect("income-assessment/client-lost-their-job")
+    } else if (incomeCheck == "no") {
+        response.redirect("income-assessment/clients-income-12475")
     } else {
-      response.redirect("income-assessment/clients-income-12475")
+      response.redirect("/eforms_redirect")
     }
 });
 
