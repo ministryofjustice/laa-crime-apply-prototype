@@ -588,12 +588,12 @@ router.post('/income-dependants-check', function(request, response) {
 });
 
 router.post('/income-benefits-check', function(request, response) {
-
-    var benefitsCheck = request.session.data['payments-your-client-gets']
-    if (benefitsCheck == "") {
+    var paymentsCheck = request.session.data['payment']
+    var benefitsCheck = request.session.data['non-passporting-benefits-your-client-gets']
+    if (benefitsCheck == 'My client does not get any of these benefits' && paymentsCheck == 'none') {
         response.redirect("income-assessment/no-income")
     } else {
-      response.redirect("income-assessment/no-income")
+      response.redirect("income-assessment/ab-dependants")
     }
 });
 
