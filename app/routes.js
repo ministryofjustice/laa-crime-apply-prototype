@@ -597,4 +597,15 @@ router.post('/income-benefits-check', function(request, response) {
     }
 });
 
+// Outgoings assessment
+router.post('/outgoing-payments-check', function(request, response) {
+
+    var outgoingsCheck = request.session.data['board-and-lodging']
+    if (outgoingsCheck == "board and lodging") {
+        response.redirect("outgoings-assessment/board-and-lodging")
+    } else {
+      response.redirect("outgoings-assessment/income-tax-rate")
+    }
+});
+
 router.use('/node_modules', express.static('node_modules'));

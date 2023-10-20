@@ -7,6 +7,7 @@
       <div class="govuk-grid-column-two-thirds">
         <span class="govuk-caption-xl">Outgoings assessment</span>
         <h1 class="govuk-heading-xl">Which of these payments does your client pay?</h1>
+        <form action="/outgoing-payments-check" method="post" novalidate>
 
           {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
           {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -151,7 +152,7 @@
 
 
           {{ govukCheckboxes({
-            name: "payments your client gets",
+            name: "outgoing-payments",
             fieldset: {
               legend: {
                 text: "",
@@ -171,6 +172,7 @@
                 }
               },
               {
+                name: "board-and-lodging",
                 value: "board and lodging",
                 text: "Board and lodging",
                 conditional: {
@@ -227,8 +229,7 @@
 
           <div class="govuk-button-group">
             {{ govukButton({
-              text: "Save and continue",
-              href: "/outgoings-assessment/board-and-lodging"
+              text: "Save and continue"
             }) }}
 
             {{ govukButton({
@@ -236,7 +237,7 @@
               classes: "govuk-button--secondary"
             }) }}
           </div>
-
+        </form>
       </div>
     </div>
 
