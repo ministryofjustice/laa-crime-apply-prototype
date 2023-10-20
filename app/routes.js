@@ -568,8 +568,10 @@ router.post('/income-employment-check', function(request, response) {
     var incomeCheck = request.session.data['employed-3-months']
     if (incomeCheck == "yes") {
         response.redirect("income-assessment/client-lost-their-job")
+    } else if (incomeCheck == "no") {
+        response.redirect("income-assessment/clients-income-12475")
     } else {
-      response.redirect("income-assessment/clients-income-12475")
+      response.redirect("/eforms_redirect")
     }
 });
 
@@ -586,12 +588,23 @@ router.post('/income-dependants-check', function(request, response) {
 });
 
 router.post('/income-benefits-check', function(request, response) {
-
-    var benefitsCheck = request.session.data['payments-your-client-gets']
-    if (benefitsCheck == "") {
+    var paymentsCheck = request.session.data['payment']
+    var benefitsCheck = request.session.data['non-passporting-benefits-your-client-gets']
+    if (benefitsCheck == 'My client does not get any of these benefits' && paymentsCheck == 'none') {
         response.redirect("income-assessment/no-income")
     } else {
-      response.redirect("income-assessment/no-income")
+      response.redirect("income-assessment/ab-dependants")
+    }
+});
+
+// Outgoings assessment
+router.post('/outgoing-payments-check', function(request, response) {
+
+    var outgoingsCheck = request.session.data['board-and-lodging']
+    if (outgoingsCheck == "board and lodging") {
+        response.redirect("outgoings-assessment/board-and-lodging")
+    } else {
+      response.redirect("outgoings-assessment/income-tax-rate")
     }
 });
 
