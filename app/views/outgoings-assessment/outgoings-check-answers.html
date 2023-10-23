@@ -1,0 +1,152 @@
+{% extends "layout_new.html" %}
+
+{% block content %}
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-xl">Outgoings assessment</span>
+        <h1 class="govuk-heading-xl">Check your answers</h1>
+        {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+        <h2 class="govuk-heading-l">Your client’s outgoings</h2>
+        
+<h3 class="govuk-heading-m">Payments your client pays</h3>
+
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Housing payments
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £500 every 4 weeks
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="payments-your-client-pays">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Childcare payments
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £25 every week
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="payments-your-client-pays">
+                Change<span class="govuk-visually-hidden"> date of birth</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Maintenance payments to a former partner
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £25 every week
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="payments-your-client-pays">
+                Change<span class="govuk-visually-hidden"> address</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Board and lodging
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £100 every week
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="payments-your-client-pays">
+                Change<span class="govuk-visually-hidden"> address</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              More
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Paid to John Doe<br>
+              (client’s father)<br>
+              Includes £25 on food every week
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="board-and-lodging">
+                Change<span class="govuk-visually-hidden"> address</span>
+              </a>
+            </dd>
+          </div>
+        </dl>
+
+<h3 class="govuk-heading-m">Tax paid</h3>
+
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              In the last 2 years, has your client paid the 40% income tax rate?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              No
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="income-tax-rate">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+        </dl>
+
+<h3 class="govuk-heading-m">Other outgoings</h3>
+
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Are your client’s outgoings more than their income?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Yes
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="outgoings-exceed-income">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              How does your client manage if their outgoings are more than their income?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              They have a credit card to pay for expenses
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="outgoings-exceed-income">
+                Change<span class="govuk-visually-hidden"> date of birth</span>
+              </a>
+            </dd>
+          </div>
+        </dl>
+
+          {% from "govuk/components/button/macro.njk" import govukButton %}
+
+          <div class="govuk-button-group">
+            {{ govukButton({
+              text: "Save and continue",
+              href: "/outgoings-assessment/payments-your-client-pays"
+            }) }}
+
+           {{ govukButton({
+              text: "Save and come back later",
+              classes: "govuk-button--secondary"
+            }) }}
+          </div>
+
+      </div>
+    </div>
+
+{% endblock %}
