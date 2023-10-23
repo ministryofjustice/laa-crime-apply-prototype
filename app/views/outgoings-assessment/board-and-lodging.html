@@ -7,7 +7,7 @@
       <div class="govuk-grid-column-two-thirds">
         <span class="govuk-caption-xl">Outgoings assessment</span>
         <h1 class="govuk-heading-xl">Board and lodging payments</h1>
-        <p class="govuk-body">You told us your client pays {{ data['amountFREQUENCY'] }} on board and lodging.</p>
+        <p class="govuk-body">You told us your client pays £50 on board and lodging.</p>
 
 
         {% from "govuk/components/input/macro.njk" import govukInput %}
@@ -39,7 +39,7 @@
           id: "cost-for-food",
           name: "costForFood",
           label: {
-            text: "How much of the board and lodging payment includes food?",
+            text: "How much of the £50 board and lodging payment includes food?",
             classes: "govuk-label--s",
             isPageHeading: true
           },
