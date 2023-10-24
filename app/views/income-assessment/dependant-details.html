@@ -14,14 +14,26 @@
             <label class="govuk-label" for="ageOfDependants" value="{{ data['ageOfDependants'] }}">
               How old is the first dependant?
             </label>
-            <input class="govuk-input govuk-input--width-2" id="ageOfDependants" name="ageOfDependants" type="text">
+            <div id="nationality-hint" class="govuk-hint">
+              If the dependant is currently under 1 year old, enter ‘0’.
+            </div>
+            <div class="govuk-input__wrapper">
+              <input class="govuk-input govuk-input--width-2" id="ageOfDependants" name="ageOfDependants" type="text" spellcheck="false">
+              <div class="govuk-input__suffix" aria-hidden="true">years old</div>
+            </div>
           </div>
 
           <div class="govuk-form-group">
             <label class="govuk-label" for="ageOfDependants-2" value="{{ data['ageOfDependants-2'] }}">
               How old is the second dependant?
             </label>
-            <input class="govuk-input govuk-input--width-2" id="ageOfDependants-2" name="ageOfDependants-2" type="text">
+            <div id="nationality-hint" class="govuk-hint">
+              If the dependant is currently under 1 year old, enter ‘0’.
+            </div>
+            <div class="govuk-input__wrapper">
+              <input class="govuk-input govuk-input--width-2" id="ageOfDependants-2" name="ageOfDependants-2" type="text" spellcheck="false">
+              <div class="govuk-input__suffix" aria-hidden="true">years old</div>
+            </div>
           </div>
 
 
